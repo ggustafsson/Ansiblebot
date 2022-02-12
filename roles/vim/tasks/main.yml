@@ -3,13 +3,17 @@
   ansible.builtin.debug:
     msg:
       - "ansible_env.HOME is {{ ansible_env.HOME }}"
-      - "git_url_dotfiles is {{ git_url_dotfiles }}"
 
 # FIXME: Add git clone of Dot-Files etc...
-#- name: Git clone Dot-Files
+#- name: Git clone {{ git_url_dotfiles }}
 #  ansible.builtin.git:
 #    repo: "{{ git_url_dotfiles }}"
 #    dest: "{{ ansible_env.HOME }}/Projects/Dot-Files"
+
+#- name: Git clone {{ git_url_electricboogaloo }}
+#  ansible.builtin.git:
+#    repo: "{{ git_url_electricboogaloo }}"
+#    dest: "{{ ansible_env.HOME }}/Projects/electricboogaloo.vim"
 
 - name: Create directory ~/.vim/pack/ggustafsson/start
   ansible.builtin.file:

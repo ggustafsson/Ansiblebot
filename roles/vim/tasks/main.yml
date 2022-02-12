@@ -1,9 +1,4 @@
 ---
-- name: Print debug info
-  ansible.builtin.debug:
-    msg:
-      - "ansible_env.HOME is {{ ansible_env.HOME }}"
-
 # FIXME: Add git clone of Dot-Files etc...
 #- name: Git clone {{ git_url_dotfiles }}
 #  ansible.builtin.git:
@@ -15,32 +10,58 @@
 #    repo: "{{ git_url_electricboogaloo }}"
 #    dest: "{{ ansible_env.HOME }}/Projects/electricboogaloo.vim"
 
-- name: Create directory ~/.vim/pack/ggustafsson/start
+- name: Git clone {{ git_url_staticcolorscheme }}
+  ansible.builtin.git:
+    repo: "{{ git_url_staticcolorscheme }}"
+    dest: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
+
+- name: Create directory {{ ansible_env.HOME }}/.vim/backup
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/backup"
+    state: directory
+
+- name: Create directory {{ ansible_env.HOME }}/.vim/swap
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/swap"
+    state: directory
+
+- name: Create directory {{ ansible_env.HOME }}/.vim/undo
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/undo"
+    state: directory
+
+- name: Create directory {{ ansible_env.HOME }}/.vim/pack/ggustafsson/start
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.vim/pack/ggustafsson/start"
     state: directory
 
-- name: Create directory ~/.vim/pack/others/start
+- name: Create directory {{ ansible_env.HOME }}/.vim/pack/others/start
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.vim/pack/others/start"
     state: directory
 
-- name: Create symbolic link at ~/.vimrc
+- name: Create symbolic link {{ ansible_env.HOME }}/.vimrc
   ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vimrc"
     dest: "{{ ansible_env.HOME }}/.vimrc"
     state: link
 
-- name: Create symbolic link at ~/.vim/after
+- name: Create symbolic link {{ ansible_env.HOME }}/.vim/after
   ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vim/after"
     dest: "{{ ansible_env.HOME }}/.vim/after"
     state: link
 
-- name: Create symbolic link at ~/.vim/templates
+- name: Create symbolic link {{ ansible_env.HOME }}/.vim/templates
   ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vim/templates"
     dest: "{{ ansible_env.HOME }}/.vim/templates"
+    state: link
+
+- name: Create symbolic link {{ ansible_env.HOME }}/.vim/pack/ggustafsson/start/Static-Color-Scheme
+  ansible.builtin.file:
+    src: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
+    dest: "{{ ansible_env.HOME }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
     state: link
 
 - name: Git clone https://github.com/vim-syntastic/syntastic.git

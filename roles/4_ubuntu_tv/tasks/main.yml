@@ -1,0 +1,9 @@
+---
+- name: Install misc packages
+  ansible.builtin.apt:
+    pkg:
+    - abcde
+    - kodi
+    - sshguard
+    update_cache: yes
+  become: yes

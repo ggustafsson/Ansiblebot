@@ -2,5 +2,6 @@
 - name: Upgrade installed packages
   ansible.builtin.apt:
     update_cache: yes
-    upgrade: dist
+    upgrade: full
+    autoremove: yes
   become: yes

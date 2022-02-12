@@ -1,4 +1,9 @@
 ---
+- name: Create directory {{ ansible_env.HOME }}/Projects
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Projects"
+    state: directory
+
 # FIXME: Add git clone of Dot-Files etc...
 #- name: Git clone {{ git_url_dotfiles }}
 #  ansible.builtin.git:

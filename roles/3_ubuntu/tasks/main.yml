@@ -5,3 +5,19 @@
     upgrade: full
     autoremove: yes
   become: yes
+
+- name: Install misc packages
+  ansible.builtin.apt:
+    pkg:
+      - ansible
+      - dnsutils
+      - flac
+      - golang
+      - html2text
+      - links
+      - nmap
+      - ruby
+      - tree
+      - zsh
+    update_cache: yes
+  become: yes

@@ -2,8 +2,11 @@
 - name: Install misc packages
   ansible.builtin.apt:
     pkg:
-      - abcde
-      - kodi
-      - sshguard
+      - ansible-lint
+      - flake8
+      - pylint3
+      - shellcheck
+      - tidy
+      - yamllint
     update_cache: yes
   become: yes

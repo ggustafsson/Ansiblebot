@@ -18,6 +18,11 @@
     owner: "{{ ansible_env.USER }}"
     mode: 0700
 
+- name: Create directory {{ ansible_env.HOME }}/Projects
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Projects"
+    state: directory
+
 - name: Git clone {{ git_url_dotfiles }}
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"

@@ -1,0 +1,8 @@
+---
+- name: Setup Arch Linux system
+  hosts: arch
+  roles:
+    - 1_common
+    - 2_linux
+    - 3_arch
+    - vim

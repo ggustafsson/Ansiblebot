@@ -1,0 +1,6 @@
+---
+- name: Upgrade installed packages
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes
+  become: yes

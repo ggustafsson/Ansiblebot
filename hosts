@@ -1,18 +1,9 @@
-[arch_vm]
+[macos]
+localhost ansible_connection=local
+
+
+[arch]
 arch-lxc1
-
-[arch:children]
-arch_vm
-
-[macos_home]
-localhost ansible_connection=local
-
-[macos_work]
-localhost ansible_connection=local
-
-[macos:children]
-macos_home
-macos_work
 
 [ubuntu_tv]
 hoth
@@ -23,3 +14,7 @@ ubuntu-lxc1
 [ubuntu:children]
 ubuntu_tv
 ubuntu_vm
+
+[linux:children]
+arch
+ubuntu

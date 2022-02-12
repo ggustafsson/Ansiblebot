@@ -1,0 +1,8 @@
+---
+- name: Setup macOS system
+  hosts: macos
+  roles:
+    - 1_common
+    - 2_macos
+    - 3_macos_home
+    - vim

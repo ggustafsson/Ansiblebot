@@ -1,0 +1,26 @@
+---
+- name: Print debug info
+  ansible.builtin.debug:
+    msg:
+      - "ansible_env.HOME is {{ ansible_env.HOME }}"
+      - "ansible_env.USER is {{ ansible_env.USER }}"
+      - "git_url_dotfiles is {{ git_url_dotfiles }}"
+
+- name: Set home directory permissions
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: 0700
+
+- name: Set ~/.ssh directory permissions
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    mode: 0700
+
+- name: Git clone Dot-Files
+  ansible.builtin.git:
+    repo: "{{ git_url_dotfiles }}"
+    dest: "{{ ansible_env.HOME }}/Projects/Dot-Files"

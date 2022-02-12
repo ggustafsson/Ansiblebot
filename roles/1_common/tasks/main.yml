@@ -22,3 +22,4 @@
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"
     dest: "{{ ansible_env.HOME }}/Projects/Dot-Files"
+    update: yes

@@ -1,5 +1,5 @@
 ---
-- name: Upgrade installed packages
+- name: Upgrade all packages
   ansible.builtin.apt:
     update_cache: yes
     upgrade: full
@@ -19,5 +19,6 @@
       - ruby
       - tree
       - zsh
+    state: latest
     update_cache: yes
   become: yes

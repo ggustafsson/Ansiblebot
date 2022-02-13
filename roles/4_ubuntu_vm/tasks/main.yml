@@ -8,5 +8,6 @@
       - shellcheck
       - tidy
       - yamllint
+    state: latest
     update_cache: yes
   become: yes

@@ -72,6 +72,12 @@
     dest: "{{ ansible_env.HOME }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
     state: link
 
+- name: Git clone https://github.com/pearofducks/ansible-vim.git
+  ansible.builtin.git:
+    repo: "https://github.com/pearofducks/ansible-vim.git"
+    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/ansible-vim"
+    update: yes
+
 - name: Git clone https://github.com/vim-syntastic/syntastic.git
   ansible.builtin.git:
     repo: "https://github.com/vim-syntastic/syntastic.git"

@@ -4,6 +4,6 @@
   roles:
     - 1_common
     - 2_linux
-    - 3_ubunt
+    - 3_ubuntu
     - 4_ubuntu_tv
     - vim

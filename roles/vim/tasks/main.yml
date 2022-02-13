@@ -23,48 +23,36 @@
     dest: "{{ projects_dir }}/Static-Color-Scheme"
     update: yes
 
-- name: Create directory {{ vim_dir }}/backup
+- name: Create directories {{ vim_dir }} & ~/.vim/{backup,swap,undo}
   ansible.builtin.file:
-    path: "{{ vim_dir }}/backup"
+    path: "{{ item }}"
     state: directory
+  loop:
+    - "{{ vim_dir }}"
+    - "{{ vim_dir }}/backup"
+    - "{{ vim_dir }}/swap"
+    - "{{ vim_dir }}/undo"
 
-- name: Create directory {{ vim_dir }}/swap
+- name: Create directories {{ vim_dir }}/pack/{ggustafsson,others}/start
   ansible.builtin.file:
-    path: "{{ vim_dir }}/swap"
+    path: "{{ item }}"
     state: directory
+  loop:
+    - "{{ vim_dir }}/pack/ggustafsson/start"
+    - "{{ vim_dir }}/pack/others/start"
 
-- name: Create directory {{ vim_dir }}/undo
+- name: Create symbolic links for {{ ansible_env.HOME }}/.vimrc & ~/vim/{after,template}
   ansible.builtin.file:
-    path: "{{ vim_dir }}/undo"
-    state: directory
-
-- name: Create directory {{ vim_dir }}/pack/ggustafsson/start
-  ansible.builtin.file:
-    path: "{{ vim_dir }}/pack/ggustafsson/start"
-    state: directory
-
-- name: Create directory {{ vim_dir }}/pack/others/start
-  ansible.builtin.file:
-    path: "{{ vim_dir }}/pack/others/start"
-    state: directory
-
-- name: Create symbolic link {{ vim_dir }}rc
-  ansible.builtin.file:
-    src: "{{ projects_dir }}/Dot-Files/vimrc"
-    dest: "{{ vim_dir }}rc"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     state: link
-
-- name: Create symbolic link {{ vim_dir }}/after
-  ansible.builtin.file:
-    src: "{{ projects_dir }}/Dot-Files/vim/after"
-    dest: "{{ vim_dir }}/after"
-    state: link
-
-- name: Create symbolic link {{ vim_dir }}/templates
-  ansible.builtin.file:
-    src: "{{ projects_dir }}/Dot-Files/vim/templates"
-    dest: "{{ vim_dir }}/templates"
-    state: link
+  loop:
+    - src: "{{ projects_dir }}/Dot-Files/vimrc"
+      dest: "{{ ansible_env.HOME }}/.vimrc"
+    - src: "{{ projects_dir }}/Dot-Files/vim/after"
+      dest: "{{ vim_dir }}/after"
+    - src: "{{ projects_dir }}/Dot-Files/vim/templates"
+      dest: "{{ vim_dir }}/templates"
 
 - name: Create symbolic link {{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme
   ansible.builtin.file:
@@ -72,74 +60,33 @@
     dest: "{{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme"
     state: link
 
-- name: Git clone https://github.com/pearofducks/ansible-vim.git
+- name: Git clone/pull misc Vim plugins
   ansible.builtin.git:
-    repo: "https://github.com/pearofducks/ansible-vim.git"
-    dest: "{{ vim_dir }}/pack/others/start/ansible-vim"
+    repo: "{{ item.url }}"
+    dest: "{{ vim_dir }}/pack/others/start/{{ item.name }}"
     update: yes
-
-- name: Git clone https://github.com/vim-syntastic/syntastic.git
-  ansible.builtin.git:
-    repo: "https://github.com/vim-syntastic/syntastic.git"
-    dest: "{{ vim_dir }}/pack/others/start/syntastic"
-    update: yes
-
-- name: Git clone https://github.com/fatih/vim-go.git
-  ansible.builtin.git:
-    repo: "https://github.com/fatih/vim-go.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-go"
-    update: yes
-
-- name: Git clone https://github.com/simnalamburt/vim-mundo.git
-  ansible.builtin.git:
-    repo: "https://github.com/simnalamburt/vim-mundo.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-mundo"
-    update: yes
-
-- name: Git clone https://github.com/lambdalisue/fern.vim.git
-  ansible.builtin.git:
-    repo: "https://github.com/lambdalisue/fern.vim.git"
-    dest: "{{ vim_dir }}/pack/others/start/fern.vim"
-    update: yes
-
-- name: Git clone https://github.com/lambdalisue/fern-hijack.vim.git
-  ansible.builtin.git:
-    repo: "https://github.com/lambdalisue/fern-hijack.vim.git"
-    dest: "{{ vim_dir }}/pack/others/start/fern-hijack.vim"
-    update: yes
-
-- name: Git clone https://github.com/lambdalisue/fern-git-status.vim.git
-  ansible.builtin.git:
-    repo: "https://github.com/lambdalisue/fern-git-status.vim.git"
-    dest: "{{ vim_dir }}/pack/others/start/fern-git-status.vim"
-    update: yes
-
-- name: Git clone https://github.com/tpope/vim-commentary.git
-  ansible.builtin.git:
-    repo: "https://github.com/tpope/vim-commentary.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-commentary"
-    update: yes
-
-- name: Git clone https://github.com/tpope/vim-endwise.git
-  ansible.builtin.git:
-    repo: "https://github.com/tpope/vim-endwise.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-endwise"
-    update: yes
-
-- name: Git clone https://github.com/tpope/vim-repeat.git
-  ansible.builtin.git:
-    repo: "https://github.com/tpope/vim-repeat.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-repeat"
-    update: yes
-
-- name: Git clone https://github.com/tpope/vim-speeddating.git
-  ansible.builtin.git:
-    repo: "https://github.com/tpope/vim-speeddating.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-speeddating"
-    update: yes
-
-- name: Git clone https://github.com/tpope/vim-surround.git
-  ansible.builtin.git:
-    repo: "https://github.com/tpope/vim-surround.git"
-    dest: "{{ vim_dir }}/pack/others/start/vim-surround"
-    update: yes
+  loop:
+    - name: ansible-vim
+      url: "https://github.com/pearofducks/ansible-vim.git"
+    - name: syntastic
+      url: "https://github.com/vim-syntastic/syntastic.git"
+    - name: vim-go.git
+      url: "https://github.com/fatih/vim-go.git"
+    - name: vim-mundo.git
+      url: "https://github.com/simnalamburt/vim-mundo.git"
+    - name: fern.vim.git
+      url: "https://github.com/lambdalisue/fern.vim.git"
+    - name: fern-hijack.vim.git
+      url: "https://github.com/lambdalisue/fern-hijack.vim.git"
+    - name: fern-git-status.vim.git
+      url: "https://github.com/lambdalisue/fern-git-status.vim.git"
+    - name: vim-commentary.git
+      url: "https://github.com/tpope/vim-commentary.git"
+    - name: vim-endwise.git
+      url: "https://github.com/tpope/vim-endwise.git"
+    - name: vim-repeat.git
+      url: "https://github.com/tpope/vim-repeat.git"
+    - name: vim-speeddating.git
+      url: "https://github.com/tpope/vim-speeddating.git"
+    - name: vim-surround.git
+      url: "https://github.com/tpope/vim-surround.git"

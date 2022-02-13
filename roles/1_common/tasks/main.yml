@@ -4,19 +4,15 @@
     msg:
       - "ansible_env.USER is {{ ansible_env.USER }}"
 
-- name: Set {{ ansible_env.HOME }} directory permissions
+- name: Set {{ ansible_env.HOME }} & ~/.ssh directory permissions
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ ansible_env.USER }}"
     mode: 0700
-
-- name: Set {{ ansible_env.HOME }}/.ssh directory permissions
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.ssh"
-    state: directory
-    owner: "{{ ansible_env.USER }}"
-    mode: 0700
+  loop:
+    - "{{ ansible_env.HOME }}"
+    - "{{ ansible_env.HOME }}/.ssh"
 
 - name: Create directory {{ ansible_env.HOME }}/Projects
   ansible.builtin.file:

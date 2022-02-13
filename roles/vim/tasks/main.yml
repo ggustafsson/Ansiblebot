@@ -1,145 +1,145 @@
 ---
-- name: Create directory {{ ansible_env.HOME }}/Projects
+- name: Create directory {{ projects_dir }}
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/Projects"
+    path: "{{ projects_dir }}"
     state: directory
 
 # FIXME: Add git clone of Dot-Files etc...
 #- name: Git clone {{ git_url_dotfiles }}
 #  ansible.builtin.git:
 #    repo: "{{ git_url_dotfiles }}"
-#    dest: "{{ ansible_env.HOME }}/Projects/Dot-Files"
+#    dest: "{{ projects_dir }}/Dot-Files"
 #    update: yes
 
 #- name: Git clone {{ git_url_electricboogaloo }}
 #  ansible.builtin.git:
 #    repo: "{{ git_url_electricboogaloo }}"
-#    dest: "{{ ansible_env.HOME }}/Projects/electricboogaloo.vim"
+#    dest: "{{ projects_dir }}/electricboogaloo.vim"
 #    update: yes
 
 - name: Git clone {{ git_url_staticcolorscheme }}
   ansible.builtin.git:
     repo: "{{ git_url_staticcolorscheme }}"
-    dest: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
+    dest: "{{ projects_dir }}/Static-Color-Scheme"
     update: yes
 
-- name: Create directory {{ ansible_env.HOME }}/.vim/backup
+- name: Create directory {{ vim_dir }}/backup
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.vim/backup"
+    path: "{{ vim_dir }}/backup"
     state: directory
 
-- name: Create directory {{ ansible_env.HOME }}/.vim/swap
+- name: Create directory {{ vim_dir }}/swap
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.vim/swap"
+    path: "{{ vim_dir }}/swap"
     state: directory
 
-- name: Create directory {{ ansible_env.HOME }}/.vim/undo
+- name: Create directory {{ vim_dir }}/undo
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.vim/undo"
+    path: "{{ vim_dir }}/undo"
     state: directory
 
-- name: Create directory {{ ansible_env.HOME }}/.vim/pack/ggustafsson/start
+- name: Create directory {{ vim_dir }}/pack/ggustafsson/start
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.vim/pack/ggustafsson/start"
+    path: "{{ vim_dir }}/pack/ggustafsson/start"
     state: directory
 
-- name: Create directory {{ ansible_env.HOME }}/.vim/pack/others/start
+- name: Create directory {{ vim_dir }}/pack/others/start
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.vim/pack/others/start"
+    path: "{{ vim_dir }}/pack/others/start"
     state: directory
 
-- name: Create symbolic link {{ ansible_env.HOME }}/.vimrc
+- name: Create symbolic link {{ vim_dir }}rc
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vimrc"
-    dest: "{{ ansible_env.HOME }}/.vimrc"
+    src: "{{ projects_dir }}/Dot-Files/vimrc"
+    dest: "{{ vim_dir }}rc"
     state: link
 
-- name: Create symbolic link {{ ansible_env.HOME }}/.vim/after
+- name: Create symbolic link {{ vim_dir }}/after
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vim/after"
-    dest: "{{ ansible_env.HOME }}/.vim/after"
+    src: "{{ projects_dir }}/Dot-Files/vim/after"
+    dest: "{{ vim_dir }}/after"
     state: link
 
-- name: Create symbolic link {{ ansible_env.HOME }}/.vim/templates
+- name: Create symbolic link {{ vim_dir }}/templates
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/Projects/Dot-Files/vim/templates"
-    dest: "{{ ansible_env.HOME }}/.vim/templates"
+    src: "{{ projects_dir }}/Dot-Files/vim/templates"
+    dest: "{{ vim_dir }}/templates"
     state: link
 
-- name: Create symbolic link {{ ansible_env.HOME }}/.vim/pack/ggustafsson/start/Static-Color-Scheme
+- name: Create symbolic link {{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme
   ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
+    src: "{{ projects_dir }}/Static-Color-Scheme"
+    dest: "{{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme"
     state: link
 
 - name: Git clone https://github.com/pearofducks/ansible-vim.git
   ansible.builtin.git:
     repo: "https://github.com/pearofducks/ansible-vim.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/ansible-vim"
+    dest: "{{ vim_dir }}/pack/others/start/ansible-vim"
     update: yes
 
 - name: Git clone https://github.com/vim-syntastic/syntastic.git
   ansible.builtin.git:
     repo: "https://github.com/vim-syntastic/syntastic.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/syntastic"
+    dest: "{{ vim_dir }}/pack/others/start/syntastic"
     update: yes
 
 - name: Git clone https://github.com/fatih/vim-go.git
   ansible.builtin.git:
     repo: "https://github.com/fatih/vim-go.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-go"
+    dest: "{{ vim_dir }}/pack/others/start/vim-go"
     update: yes
 
 - name: Git clone https://github.com/simnalamburt/vim-mundo.git
   ansible.builtin.git:
     repo: "https://github.com/simnalamburt/vim-mundo.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-mundo"
+    dest: "{{ vim_dir }}/pack/others/start/vim-mundo"
     update: yes
 
 - name: Git clone https://github.com/lambdalisue/fern.vim.git
   ansible.builtin.git:
     repo: "https://github.com/lambdalisue/fern.vim.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/fern.vim"
+    dest: "{{ vim_dir }}/pack/others/start/fern.vim"
     update: yes
 
 - name: Git clone https://github.com/lambdalisue/fern-hijack.vim.git
   ansible.builtin.git:
     repo: "https://github.com/lambdalisue/fern-hijack.vim.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/fern-hijack.vim"
+    dest: "{{ vim_dir }}/pack/others/start/fern-hijack.vim"
     update: yes
 
 - name: Git clone https://github.com/lambdalisue/fern-git-status.vim.git
   ansible.builtin.git:
     repo: "https://github.com/lambdalisue/fern-git-status.vim.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/fern-git-status.vim"
+    dest: "{{ vim_dir }}/pack/others/start/fern-git-status.vim"
     update: yes
 
 - name: Git clone https://github.com/tpope/vim-commentary.git
   ansible.builtin.git:
     repo: "https://github.com/tpope/vim-commentary.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-commentary"
+    dest: "{{ vim_dir }}/pack/others/start/vim-commentary"
     update: yes
 
 - name: Git clone https://github.com/tpope/vim-endwise.git
   ansible.builtin.git:
     repo: "https://github.com/tpope/vim-endwise.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-endwise"
+    dest: "{{ vim_dir }}/pack/others/start/vim-endwise"
     update: yes
 
 - name: Git clone https://github.com/tpope/vim-repeat.git
   ansible.builtin.git:
     repo: "https://github.com/tpope/vim-repeat.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-repeat"
+    dest: "{{ vim_dir }}/pack/others/start/vim-repeat"
     update: yes
 
 - name: Git clone https://github.com/tpope/vim-speeddating.git
   ansible.builtin.git:
     repo: "https://github.com/tpope/vim-speeddating.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-speeddating"
+    dest: "{{ vim_dir }}/pack/others/start/vim-speeddating"
     update: yes
 
 - name: Git clone https://github.com/tpope/vim-surround.git
   ansible.builtin.git:
     repo: "https://github.com/tpope/vim-surround.git"
-    dest: "{{ ansible_env.HOME }}/.vim/pack/others/start/vim-surround"
+    dest: "{{ vim_dir }}/pack/others/start/vim-surround"
     update: yes

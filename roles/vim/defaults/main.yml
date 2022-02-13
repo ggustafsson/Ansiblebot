@@ -1,4 +1,6 @@
 ---
+vim_dir: "{{ ansible_env.HOME }}/.vim"
+projects_dir: "{{ ansible_env.HOME }}/Projects"
 git_url_dotfiles: https://github.com/ggustafsson/Dot-Files.git
 git_url_electricboogaloo: https://github.com:ggustafsson/electric-boogaloo.vim.git
 git_url_staticcolorscheme: https://github.com:ggustafsson/Static-Color-Scheme.git

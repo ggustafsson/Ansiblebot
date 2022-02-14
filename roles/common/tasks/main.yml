@@ -37,3 +37,24 @@
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"
     dest: "{{ projects_dir }}/Dot-Files"
+
+- name: Create symbolic links to Dot-Files
+  ansible.builtin.file:
+    src: "{{ projects_dir }}/Dot-Files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - src: Scripts
+      dest: "{{ ansible_env.HOME }}/Scripts"
+    - src: gitconfig
+      dest: "{{ ansible_env.HOME }}/.gitconfig"
+    - src: gitignore_global
+      dest: "{{ ansible_env.HOME }}/.gitignore_global"
+    - src: ssh_config
+      dest: "{{ ansible_env.HOME }}/.ssh/config"
+    - src: tmux.conf
+      dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    - src: zshenv
+      dest: "{{ ansible_env.HOME }}/.zshenv"
+    - src: zshrc
+      dest: "{{ ansible_env.HOME }}/.zshrc"

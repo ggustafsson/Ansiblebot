@@ -4,7 +4,7 @@
     msg:
       - "ansible_env.USER is {{ ansible_env.USER }}"
 
-- name: Set {{ ansible_env.HOME }} & ~/.ssh directory permissions
+- name: Set misc directory permissions
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -14,13 +14,13 @@
     - "{{ ansible_env.HOME }}"
     - "{{ ansible_env.HOME }}/.ssh"
 
-- name: Create directory {{ ansible_env.HOME }}/Projects
+- name: Create directory {{ projects_dir }}
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/Projects"
+    path: "{{ projects_dir }}"
     state: directory
 
-- name: Git clone {{ git_url_dotfiles }}
+- name: Git clone/pull {{ git_url_dotfiles }}
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"
-    dest: "{{ ansible_env.HOME }}/Projects/Dot-Files"
+    dest: "{{ projects_dir }}/Dot-Files"
     update: yes

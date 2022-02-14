@@ -19,3 +19,15 @@
   become: yes
   notify:
     - Restart sshd
+
+- name: Set AutomaticLogin in /etc/gdm3/custom.conf
+  ansible.builtin.lineinfile:
+    path: /etc/gdm3/custom.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  become: yes
+  loop:
+    - regexp: "^#  AutomaticLoginEnable = true"
+      line: "AutomaticLoginEnable = true"
+    - regexp: "^#  AutomaticLogin = user1"
+      line: "AutomaticLogin = gleg"

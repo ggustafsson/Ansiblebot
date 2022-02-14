@@ -1,9 +1,4 @@
 ---
-- name: Print debug info
-  ansible.builtin.debug:
-    msg:
-      - "ansible_env.USER is {{ ansible_env.USER }}"
-
 - name: Set misc directory permissions
   ansible.builtin.file:
     path: "{{ item }}"

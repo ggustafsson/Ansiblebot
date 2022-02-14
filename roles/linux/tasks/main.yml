@@ -1,7 +1,8 @@
 ---
 - name: Copy file to /etc/motd
   ansible.builtin.copy:
-    src: "{{ projects_dir }}/motd"
+    remote_src: yes
+    src: "{{ projects_dir }}/Dot-Files/motd"
     dest: /etc/motd
     owner: root
     group: root

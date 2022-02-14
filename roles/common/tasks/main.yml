@@ -25,7 +25,7 @@
     state: file
     owner: "{{ ansible_env.USER }}"
     mode: 0600
-  when: id_ed25519.stat.exists == True
+  when: id_ed25519.stat.exists
 
 - name: Create directory {{ projects_dir }}
   ansible.builtin.file:

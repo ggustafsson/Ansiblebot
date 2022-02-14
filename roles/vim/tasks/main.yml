@@ -8,7 +8,6 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ projects_dir }}/{{ item.name }}"
-    update: yes
   loop:
     - name: Dot-Files
       url: "{{ git_url_dotfiles }}"
@@ -50,7 +49,6 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ vim_dir }}/pack/others/start/{{ item.name }}"
-    update: yes
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git

@@ -2,8 +2,8 @@
 - name: Setup Ubuntu Desktop system
   hosts: ubuntu
   roles:
-    - 1_common
-    - 2_linux
-    - 3_ubuntu
-    - 4_ubuntu_vm
+    - common
+    - linux
+    - linux_ubuntu
+    - linux_ubuntu_vm
     - vim

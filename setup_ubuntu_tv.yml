@@ -1,6 +1,6 @@
 ---
 - name: Setup Ubuntu Desktop system
-  hosts: ubuntu
+  hosts: ubuntu_tv
   roles:
     - common
     - linux

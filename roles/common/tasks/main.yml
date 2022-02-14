@@ -14,14 +14,18 @@
     - "{{ ansible_env.HOME }}"
     - "{{ ansible_env.HOME }}/.ssh"
 
-- name: Set misc file permissions
+- name: Get stats on {{ ansible_env.HOME }}/.ssh/id_ed25519
+  stat:
+    path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+  register: id_ed25519
+
+- name: Set file permissions on {{ ansible_env.HOME }}/.ssh/id_ed25519
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
     state: file
     owner: "{{ ansible_env.USER }}"
     mode: 0600
-  loop:
-    - "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+  when: id_ed25519.stat.exists == True
 
 - name: Create directory {{ projects_dir }}
   ansible.builtin.file:

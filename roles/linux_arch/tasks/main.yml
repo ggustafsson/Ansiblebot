@@ -4,3 +4,19 @@
     update_cache: yes
     upgrade: yes
   become: yes
+
+#- name: Install misc packages
+#  community.general.pacman:
+#    pkg:
+#      - x
+#    state: latest
+#    update_cache: yes
+#  become: yes
+
+- name: Set AllowUsers in /etc/ssh/sshd_config
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^AllowUsers"
+    line: "AllowUsers {{ ansible_env.USER }}"
+    validate: "/usr/sbin/sshd -T -f %s"
+  notify: Restart sshd

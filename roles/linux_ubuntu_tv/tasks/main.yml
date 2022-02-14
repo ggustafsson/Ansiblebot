@@ -17,7 +17,7 @@
     group: root
     mode: 0644
   become: yes
-  notify: Restart sshd
+  notify: restart sshd
 
 - name: Set AutomaticLogin in /etc/gdm3/custom.conf
   ansible.builtin.lineinfile:

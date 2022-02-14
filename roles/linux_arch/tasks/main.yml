@@ -18,5 +18,5 @@
     path: /etc/ssh/sshd_config
     regexp: "^AllowUsers"
     line: "AllowUsers {{ ansible_env.USER }}"
-    validate: "/usr/sbin/sshd -T -f %s"
-  notify: Restart sshd
+    validate: /usr/sbin/sshd -T -f %s
+  notify: restart sshd

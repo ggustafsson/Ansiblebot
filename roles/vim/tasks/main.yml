@@ -1,21 +1,8 @@
 ---
-- name: Create directory {{ projects_dir }}
-  ansible.builtin.file:
-    path: "{{ projects_dir }}"
-    state: directory
-    mode: 0700
-
-- name: Git clone/pull Dot-Files and Vim colorscheme
+- name: Git clone/pull {{ git_url_staticcolorscheme }}
   ansible.builtin.git:
-    repo: "{{ item.url }}"
-    dest: "{{ projects_dir }}/{{ item.name }}"
-  loop:
-    - name: Dot-Files
-      url: "{{ git_url_dotfiles }}"
-    - name: Static-Color-Scheme
-      url: "{{ git_url_staticcolorscheme }}"
-#    - name: electricboogaloo.vim
-#      url: "{{ git_url_electricboogaloo }}"
+    repo: "{{ git_url_staticcolorscheme }}"
+    dest: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
 
 - name: Create directories under {{ vim_dir }}
   ansible.builtin.file:
@@ -44,8 +31,6 @@
       dest: "{{ vim_dir }}/templates"
     - src: Static-Color-Scheme
       dest: "{{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme"
-#    - src: electricboogaloo.vim
-#      dest: "{{ vim_dir }}/pack/ggustafsson/start/electricboogaloo.vim"
 
 - name: Git clone/pull misc Vim plugins
   ansible.builtin.git:

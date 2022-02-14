@@ -22,3 +22,14 @@
     state: latest
     update_cache: yes
   become: yes
+
+- name: Copy AllowUsers.conf to /etc/ssh/sshd_config.d
+  ansible.builtin.copy:
+    src: sshd_config.d/AllowUsers.conf
+    dest: /etc/ssh/sshd_config.d/AllowUsers.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  notify:
+    - Restart sshd

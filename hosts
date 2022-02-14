@@ -1,7 +1,3 @@
-[macos]
-localhost ansible_connection=local
-
-
 [arch]
 arch-lxc1
 
@@ -18,3 +14,6 @@ ubuntu_vm
 [linux:children]
 arch
 ubuntu
+
+[macos]
+localhost ansible_connection=local

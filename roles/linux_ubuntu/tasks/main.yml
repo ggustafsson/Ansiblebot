@@ -24,8 +24,8 @@
   become: yes
 
 - name: Copy AllowUsers.conf to /etc/ssh/sshd_config.d
-  ansible.builtin.copy:
-    src: sshd_config.d/AllowUsers.conf
+  ansible.builtin.template:
+    src: sshd_config.d/AllowUsers.conf.j2
     dest: /etc/ssh/sshd_config.d/AllowUsers.conf
     owner: root
     group: root

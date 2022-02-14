@@ -8,5 +8,4 @@
     - vim
   vars:
     git_url_dotfiles: git@github.com:ggustafsson/Dot-Files.git
-    git_url_electricboogaloo: git@github.com:ggustafsson/electric-boogaloo.vim.git
     git_url_staticcolorscheme: git@github.com:ggustafsson/Static-Color-Scheme.git

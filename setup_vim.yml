@@ -1,0 +1,5 @@
+---
+- name: Setup Vim environment
+  hosts: all
+  roles:
+    - vim

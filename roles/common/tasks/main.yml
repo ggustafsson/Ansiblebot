@@ -14,6 +14,15 @@
     - "{{ ansible_env.HOME }}"
     - "{{ ansible_env.HOME }}/.ssh"
 
+- name: Set misc file permissions
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: file
+    owner: "{{ ansible_env.USER }}"
+    mode: 0600
+  loop:
+    - "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+
 - name: Create directory {{ projects_dir }}
   ansible.builtin.file:
     path: "{{ projects_dir }}"

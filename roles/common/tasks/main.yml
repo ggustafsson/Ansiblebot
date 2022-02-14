@@ -18,6 +18,7 @@
   ansible.builtin.file:
     path: "{{ projects_dir }}"
     state: directory
+    mode: 0700
 
 - name: Git clone/pull {{ git_url_dotfiles }}
   ansible.builtin.git:

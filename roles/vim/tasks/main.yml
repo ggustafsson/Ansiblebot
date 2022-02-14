@@ -3,6 +3,7 @@
   ansible.builtin.file:
     path: "{{ projects_dir }}"
     state: directory
+    mode: 0700
 
 - name: Git clone/pull Dot-Files and Vim colorscheme
   ansible.builtin.git:
@@ -20,6 +21,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: 0700
   loop:
     - "{{ vim_dir }}"
     - "{{ vim_dir }}/backup"

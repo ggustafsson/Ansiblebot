@@ -1,4 +1,3 @@
----
 - name: Install misc packages
   ansible.builtin.apt:
     pkg:

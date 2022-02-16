@@ -1,4 +1,3 @@
----
 - name: Git clone/pull {{ git_url_staticcolorscheme }}
   ansible.builtin.git:
     repo: "{{ git_url_staticcolorscheme }}"

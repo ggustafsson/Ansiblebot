@@ -1,4 +1,3 @@
----
 - name: Restart OpenSSH daemon
   service: name=sshd state=restarted
   become: yes

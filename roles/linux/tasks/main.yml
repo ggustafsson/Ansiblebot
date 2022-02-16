@@ -1,4 +1,3 @@
----
 - name: Copy file to /etc/motd
   ansible.builtin.copy:
     remote_src: yes

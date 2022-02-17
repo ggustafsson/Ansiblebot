@@ -40,6 +40,8 @@
   loop:
     - src: Scripts
       dest: "{{ ansible_env.HOME }}/Scripts"
+    - src: ansible.cfg
+      dest: "{{ ansible_env.HOME }}/.ansible.cfg"
     - src: gitconfig
       dest: "{{ ansible_env.HOME }}/.gitconfig"
     - src: gitignore_global

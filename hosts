@@ -2,7 +2,7 @@
 arch-lxc1
 
 [ubuntu_tv]
-hoth
+ubuntu-tv1
 
 [ubuntu_vm]
 ubuntu-lxc1

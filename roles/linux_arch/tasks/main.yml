@@ -4,6 +4,7 @@
     upgrade: yes
   become: yes
 
+# FIXME
 #- name: Install misc packages
 #  community.general.pacman:
 #    pkg:

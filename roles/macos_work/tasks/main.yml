@@ -1,1 +1,17 @@
 # FIXME
+#- name: Install misc packages
+#  community.general.homebrew:
+#    name:
+#      - x
+#    state: latest
+#    update_cache: yes
+#  become: yes
+
+# FIXME
+#- name: Install misc applications
+#  community.general.homebrew_casks:
+#    name:
+#      - x
+#    state: latest
+#    update_cache: yes
+#    install_options: "appdir=~/Applications"

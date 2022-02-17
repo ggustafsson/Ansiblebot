@@ -1,1 +1,28 @@
-# FIXME
+- name: Install misc packages
+  community.general.homebrew:
+    name:
+      - cuetools
+      - ffmpeg
+      - flac
+      - imagemagick
+      - lame
+      - shntool
+      - svtplay-dl
+      - youtube-dl
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Install misc applications
+  community.general.homebrew_casks:
+    name:
+      - 1password
+      - dropbox
+      - handbrake
+      - openemu
+      - tor-browser
+      - transmission
+      - vlc
+    state: latest
+    update_cache: yes
+    install_options: "appdir=~/Applications"

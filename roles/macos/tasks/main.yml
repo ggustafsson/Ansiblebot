@@ -1,1 +1,84 @@
 # FIXME
+# sudoers
+
+# FIXME
+# Install Xcode
+# +
+# xcode-select --install
+
+# FIXME
+# Install Homebrew
+
+- name: Upgrade all packages
+  community.general.homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+  become: yes
+
+- name: Install misc packages
+  community.general.homebrew:
+    name:
+      - ansible
+      - ansible-lint
+      - bash
+      - coreutils
+      - curl
+      - flake8
+      - git
+      - golang
+      - grep
+      - html2text
+      - less
+      - links
+      - neovim
+      - nmap
+      - openssh
+      - pylint
+      - python
+      - renameutils
+      - rsync
+      - ruby
+      - shellcheck
+      - tidy-html5
+      - tmux
+      - tree
+      - vim
+      - wget
+      - yamllint
+      - zsh
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Install misc applications
+  community.general.homebrew_casks:
+    name:
+      - docker
+      - google-chrome
+      - hammerspoon
+      - visual-studio-code
+    state: latest
+    update_cache: yes
+    install_options: "appdir=~/Applications"
+
+- name: Create misc symbolic links
+  ansible.builtin.file:
+    src: "/opt/homebrew/bin/{{ item.src }}"
+    dest: "/opt/homebrew/bin/{{ item.dest }}"
+    state: link
+  loop:
+    - src: ggrep
+      dest: grep
+    - src: gls
+      dest: ls
+
+- name: Add /usr/local/bin/zsh to /etc/shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
+
+# FIXME
+# chflags nohidden ~/Library
+
+# FIXME
+# defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

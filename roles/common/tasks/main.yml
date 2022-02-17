@@ -9,7 +9,7 @@
     - "{{ ansible_env.HOME }}/.ssh"
 
 - name: Get stats on {{ ansible_env.HOME }}/.ssh/id_ed25519
-  stat:
+  ansible.builtin.stat:
     path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
   register: id_ed25519
 

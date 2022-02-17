@@ -1,4 +1,4 @@
-- name: Setup Ubuntu Desktop system
+- name: Setup Ubuntu Desktop system (tv)
   hosts: ubuntu_tv
   roles:
     - common

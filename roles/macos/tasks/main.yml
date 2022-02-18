@@ -61,10 +61,11 @@
     update_homebrew: yes
     install_options: "appdir=~/Applications"
 
+# TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
 - name: Create misc symbolic links
   ansible.builtin.file:
-    src: "/opt/homebrew/bin/{{ item.src }}"
-    dest: "/opt/homebrew/bin/{{ item.dest }}"
+    src: "/usr/local/bin/{{ item.src }}"
+    dest: "/usr/local/bin/{{ item.dest }}"
     state: link
   loop:
     - src: ggrep

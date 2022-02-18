@@ -10,7 +10,6 @@
       - svtplay-dl
       - youtube-dl
     state: latest
-  become: yes
 
 - name: Install misc applications
   community.general.homebrew_cask:

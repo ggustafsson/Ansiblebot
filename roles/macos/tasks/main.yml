@@ -19,7 +19,6 @@
   community.general.homebrew:
     update_homebrew: yes
     upgrade_all: yes
-  become: yes
 
 - name: Install misc packages
   community.general.homebrew:
@@ -53,7 +52,6 @@
       - yamllint
       - zsh
     state: latest
-  become: yes
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -83,10 +81,22 @@
     path: /etc/shells
     line: /usr/local/bin/zsh
 
+- name: Create directory {{ ansible_env.HOME }}/.terminfo/74
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.terminfo/74"
+    state: directory
+    mode: 0700
+
+- name: Create symbolic link {{ ansible_env.HOME }}/.terminfo/74/tmux-256color
+  ansible.builtin.file:
+    src: "{{ projects_dir }}/Dot-Files/Misc/tmux-256color"
+    dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
+    state: link
+
+# TODO: Is there a better way?
+- name: Disable 'Press and Hold' for VSCode
+  shell: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 # TODO: Is there a better way?
 - name: Unhide {{ ansible_env.HOME }}
   shell: chflags nohidden ~/Library
-
-# TODO: Is there a better way?
-- name: Disable 'Press And Hold' for VSCode
-  shell: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

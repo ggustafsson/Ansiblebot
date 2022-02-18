@@ -4,7 +4,6 @@
 #    name:
 #      - x
 #    state: latest
-#  become: yes
 
 # FIXME
 #- name: Install misc applications

@@ -107,8 +107,8 @@
 
 # TODO: Is there a better way?
 - name: Disable 'Press and Hold' for VSCode
-  shell: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+  command: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # TODO: Is there a better way?
 - name: Unhide {{ ansible_env.HOME }}
-  shell: chflags nohidden ~/Library
+  command: chflags nohidden ~/Library

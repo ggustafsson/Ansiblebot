@@ -82,6 +82,12 @@
   debug: var=brew.msg
 
 # TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
+- name: Add /usr/local/bin/zsh to /etc/shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
+
+# TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
 - name: Create misc symbolic links
   ansible.builtin.file:
     src: "/usr/local/bin/{{ item.src }}"
@@ -92,12 +98,6 @@
       dest: grep
     - src: gls
       dest: ls
-
-# TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
-- name: Add /usr/local/bin/zsh to /etc/shells
-  ansible.builtin.lineinfile:
-    path: /etc/shells
-    line: /usr/local/bin/zsh
 
 - name: Create directory {{ ansible_env.HOME }}/.terminfo/74
   ansible.builtin.file:
@@ -112,9 +112,11 @@
     state: link
 
 # TODO: Is there a better way?
-- name: Disable 'Press and Hold' for VSCode
+- name: Execute misc defaults commands
   ansible.builtin.command:
-    cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    cmd: "{{ item.cmd }}"
+  loop:
+    - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # TODO: Is there a better way?
 - name: Unhide {{ ansible_env.HOME }}/Library

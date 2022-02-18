@@ -47,18 +47,18 @@
       - yamllint
       - zsh
     state: latest
-    update_cache: yes
+    update_homebrew: yes
   become: yes
 
 - name: Install misc applications
-  community.general.homebrew_casks:
+  community.general.homebrew_cask:
     name:
       - docker
       - google-chrome
       - hammerspoon
       - visual-studio-code
     state: latest
-    update_cache: yes
+    update_homebrew: yes
     install_options: "appdir=~/Applications"
 
 - name: Create misc symbolic links
@@ -77,8 +77,10 @@
     path: /etc/shells
     line: /usr/local/bin/zsh
 
-# FIXME
-# chflags nohidden ~/Library
+# TODO: Is there a better way?
+- name: Unhide {{ ansible_env.HOME }}
+  shell: chflags nohidden ~/Library
 
-# FIXME
-# defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+# TODO: Is there a better way?
+- name: Disable 'Press And Hold' for VSCode
+  shell: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

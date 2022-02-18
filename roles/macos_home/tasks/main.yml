@@ -10,11 +10,11 @@
       - svtplay-dl
       - youtube-dl
     state: latest
-    update_cache: yes
+    update_homebrew: yes
   become: yes
 
 - name: Install misc applications
-  community.general.homebrew_casks:
+  community.general.homebrew_cask:
     name:
       - 1password
       - dropbox
@@ -24,5 +24,5 @@
       - transmission
       - vlc
     state: latest
-    update_cache: yes
+    update_homebrew: yes
     install_options: "appdir=~/Applications"

@@ -30,4 +30,4 @@
   register: brew
 
 - name: "Install misc applications : debug"
-  debug: var=brew.changed_pkgs
+  debug: var=brew.msg

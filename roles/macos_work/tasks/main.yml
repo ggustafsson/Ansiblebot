@@ -6,7 +6,8 @@
 #    state: latest
 #  register: brew
 #
-#- debug: var=brew.changed_pkgs
+#- name: "Install misc packages : debug"
+#  debug: var=brew.changed_pkgs
 
 # FIXME
 #- name: Install misc applications
@@ -17,4 +18,5 @@
 #    install_options: "appdir=~/Applications"
 #  register: brew
 #
-#- debug: var=brew.changed_pkgs
+#- name: "Install misc applications : debug"
+#  debug: var=brew.changed_pkgs

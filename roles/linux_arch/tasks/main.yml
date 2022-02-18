@@ -5,7 +5,8 @@
   become: yes
   register: pacman
 
-- debug: var=pacman.packages
+- name: "Upgrade all packages : debug"
+  debug: var=pacman.packages
 
 # FIXME
 #- name: Install misc packages
@@ -16,7 +17,8 @@
 #  become: yes
 #  register: pacman
 #
-#- debug: var=pacman.packages
+#- name: "Install misc packages : debug"
+#  debug: var=pacman.packages
 
 - name: Set AllowUsers in /etc/ssh/sshd_config
   ansible.builtin.lineinfile:

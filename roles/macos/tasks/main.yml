@@ -21,7 +21,8 @@
     upgrade_all: yes
   register: brew
 
-- debug: var=brew.changed_pkgs
+- name: "Upgrade all packages : debug"
+  debug: var=brew.changed_pkgs
 
 - name: Install misc packages
   community.general.homebrew:
@@ -57,7 +58,8 @@
     state: latest
   register: brew
 
-- debug: var=brew.changed_pkgs
+- name: "Install misc packages : debug"
+  debug: var=brew.changed_pkgs
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -70,7 +72,8 @@
     install_options: "appdir=~/Applications"
   register: brew
 
-- debug: var=brew.msg
+- name: "Install misc applications : debug"
+  debug: var=brew.msg
 
 # TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
 - name: Create misc symbolic links

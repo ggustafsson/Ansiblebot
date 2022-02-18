@@ -12,7 +12,8 @@
     state: latest
   register: brew
 
-- debug: var=brew.changed_pkgs
+- name: "Install misc packages : debug"
+  debug: var=brew.changed_pkgs
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -28,4 +29,5 @@
     install_options: "appdir=~/Applications"
   register: brew
 
-- debug: var=brew.changed_pkgs
+- name: "Install misc applications : debug"
+  debug: var=brew.changed_pkgs

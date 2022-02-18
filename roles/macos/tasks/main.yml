@@ -111,14 +111,10 @@
     dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
     state: link
 
-# TODO: Is there a better way?
-- name: Execute misc defaults commands
+- name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:
     cmd: "{{ item.cmd }}"
   loop:
+    - cmd: chflags nohidden ~/Library
     - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-
-# TODO: Is there a better way?
-- name: Unhide {{ ansible_env.HOME }}/Library
-  ansible.builtin.command:
-    cmd: chflags nohidden ~/Library
+  changed_when: False

@@ -1,5 +1,11 @@
-# FIXME
-# sudoers
+- name: Create file /etc/sudoers.d/custom
+  ansible.builtin.template:
+    src: sudoers.d/custom.j2
+    dest: /etc/sudoers.d/custom
+    owner: root
+    group: wheel
+    mode: 0640
+  become: yes
 
 # FIXME
 # Install Xcode
@@ -111,6 +117,6 @@
     cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # TODO: Is there a better way?
-- name: Unhide {{ ansible_env.HOME }}
+- name: Unhide {{ ansible_env.HOME }}/Library
   ansible.builtin.command:
     cmd: chflags nohidden ~/Library

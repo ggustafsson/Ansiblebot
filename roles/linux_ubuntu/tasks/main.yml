@@ -29,7 +29,7 @@
 - name: "Install misc packages : debug"
   debug: var=apt.stdout
 
-- name: Copy AllowUsers.conf to /etc/ssh/sshd_config.d
+- name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
   ansible.builtin.template:
     src: sshd_config.d/AllowUsers.conf.j2
     dest: /etc/ssh/sshd_config.d/AllowUsers.conf

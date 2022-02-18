@@ -19,7 +19,6 @@
       - tree
       - zsh
     state: latest
-    update_cache: yes
   become: yes
 
 - name: Copy AllowUsers.conf to /etc/ssh/sshd_config.d

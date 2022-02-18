@@ -9,6 +9,12 @@
 # FIXME
 # Install Homebrew
 
+- name: Create directory {{ ansible_env.HOME }}/Applications
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Applications"
+    state: directory
+    mode: 0700
+
 - name: Upgrade all packages
   community.general.homebrew:
     update_homebrew: yes
@@ -47,7 +53,6 @@
       - yamllint
       - zsh
     state: latest
-    update_homebrew: yes
   become: yes
 
 - name: Install misc applications
@@ -58,7 +63,6 @@
       - hammerspoon
       - visual-studio-code
     state: latest
-    update_homebrew: yes
     install_options: "appdir=~/Applications"
 
 # TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.

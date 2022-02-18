@@ -10,7 +10,6 @@
       - svtplay-dl
       - youtube-dl
     state: latest
-    update_homebrew: yes
   become: yes
 
 - name: Install misc applications
@@ -24,5 +23,4 @@
       - transmission
       - vlc
     state: latest
-    update_homebrew: yes
     install_options: "appdir=~/Applications"

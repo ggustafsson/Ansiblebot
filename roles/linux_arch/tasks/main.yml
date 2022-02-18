@@ -10,7 +10,6 @@
 #    pkg:
 #      - x
 #    state: latest
-#    update_cache: yes
 #  become: yes
 
 - name: Set AllowUsers in /etc/ssh/sshd_config

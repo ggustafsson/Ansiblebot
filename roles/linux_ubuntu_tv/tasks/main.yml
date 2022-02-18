@@ -5,7 +5,6 @@
       - kodi
       - sshguard
     state: latest
-    update_cache: yes
   become: yes
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d

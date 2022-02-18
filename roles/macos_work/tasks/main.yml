@@ -4,14 +4,12 @@
 #    name:
 #      - x
 #    state: latest
-#    update_cache: yes
 #  become: yes
 
 # FIXME
 #- name: Install misc applications
-#  community.general.homebrew_casks:
+#  community.general.homebrew_cask:
 #    name:
 #      - x
 #    state: latest
-#    update_cache: yes
 #    install_options: "appdir=~/Applications"

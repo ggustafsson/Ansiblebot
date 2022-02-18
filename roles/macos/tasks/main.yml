@@ -12,8 +12,16 @@
 # +
 # xcode-select --install
 
-# FIXME
-# Install Homebrew
+# FIXME: Install Homebrew
+#- name: Set directory permission /opt/homebrew
+#  ansible.builtin.file:
+#    path: "/opt/homebrew"
+#    state: directory
+#    owner: "{{ ansible_env.USER }}"
+#    mode: 0700
+#  become: yes
+#
+#  ...
 
 - name: Create directory {{ ansible_env.HOME }}/Applications
   ansible.builtin.file:

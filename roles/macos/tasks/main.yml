@@ -19,6 +19,9 @@
   community.general.homebrew:
     update_homebrew: yes
     upgrade_all: yes
+  register: brew
+
+- debug: var=brew.changed_pkgs
 
 - name: Install misc packages
   community.general.homebrew:
@@ -52,6 +55,9 @@
       - yamllint
       - zsh
     state: latest
+  register: brew
+
+- debug: var=brew.changed_pkgs
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -62,6 +68,9 @@
       - visual-studio-code
     state: latest
     install_options: "appdir=~/Applications"
+  register: brew
+
+- debug: var=brew.msg
 
 # TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
 - name: Create misc symbolic links

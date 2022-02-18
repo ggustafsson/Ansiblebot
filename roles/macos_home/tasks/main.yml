@@ -10,6 +10,9 @@
       - svtplay-dl
       - youtube-dl
     state: latest
+  register: brew
+
+- debug: var=brew.changed_pkgs
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -23,3 +26,6 @@
       - vlc
     state: latest
     install_options: "appdir=~/Applications"
+  register: brew
+
+- debug: var=brew.changed_pkgs

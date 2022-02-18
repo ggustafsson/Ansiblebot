@@ -3,6 +3,9 @@
     update_cache: yes
     upgrade: yes
   become: yes
+  register: pacman
+
+- debug: var=pacman.packages
 
 # FIXME
 #- name: Install misc packages
@@ -11,6 +14,9 @@
 #      - x
 #    state: latest
 #  become: yes
+#  register: pacman
+#
+#- debug: var=pacman.packages
 
 - name: Set AllowUsers in /etc/ssh/sshd_config
   ansible.builtin.lineinfile:

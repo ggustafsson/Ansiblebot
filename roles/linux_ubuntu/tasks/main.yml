@@ -4,6 +4,9 @@
     upgrade: full
     autoremove: yes
   become: yes
+  register: apt
+
+- debug: var=apt.stdout
 
 - name: Install misc packages
   ansible.builtin.apt:
@@ -20,6 +23,9 @@
       - zsh
     state: latest
   become: yes
+  register: apt
+
+- debug: var=apt.stdout
 
 - name: Copy AllowUsers.conf to /etc/ssh/sshd_config.d
   ansible.builtin.template:

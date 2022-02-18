@@ -9,3 +9,6 @@
       - yamllint
     state: latest
   become: yes
+  register: apt
+
+- debug: var=apt.stdout

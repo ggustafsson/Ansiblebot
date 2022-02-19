@@ -86,22 +86,13 @@
 - name: "Install misc applications : debug"
   debug: var=brew.msg
 
-# TODO: Enable after moving over to new MacBook Pro.
+# TODO: Adjust name & line after moving over to new MacBook Pro.
 #- name: Add /opt/homebrew/bin/zsh to /etc/shells
-#  ansible.builtin.lineinfile:
-#    path: /etc/shells
+- name: Add /usr/local/bin/zsh to /etc/shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
 #    line: /opt/homebrew/bin/zsh
-#
-#- name: Create misc symbolic links
-#  ansible.builtin.file:
-#    src: "/opt/homebrew/bin/{{ item.src }}"
-#    dest: "/opt/homebrew/bin/{{ item.dest }}"
-#    state: link
-#  loop:
-#    - src: ggrep
-#      dest: grep
-#    - src: gls
-#      dest: ls
 
 - name: Create directory {{ ansible_env.HOME }}/.terminfo/74
   ansible.builtin.file:
@@ -109,11 +100,25 @@
     state: directory
     mode: 0700
 
-- name: Create symbolic link {{ ansible_env.HOME }}/.terminfo/74/tmux-256color
+# TODO: Adjust src & dest after moving over to new MacBook Pro.
+- name: Create misc symbolic links
   ansible.builtin.file:
-    src: "{{ projects_dir }}/Dot-Files/Misc/tmux-256color"
-    dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     state: link
+  loop:
+    - src: /usr/local/bin/ggrep
+      dest: /usr/local/bin/grep
+    - src: /usr/local/bin/gls
+      dest: /usr/local/bin/ls
+#    - src: /opt/homebrew/bin/ggrep
+#      dest: /opt/homebrew/bin/grep
+#    - src: /opt/homebrew/bin/gls
+#      dest: /opt/homebrew/bin/ls
+    - src: "{{ projects_dir }}/Dot-Files/Misc/Swedish-Pro-No_Dead_Keys.bundle"
+      dest: "{{ ansible_env.HOME }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
+    - src: "{{ projects_dir }}/Dot-Files/Misc/tmux-256color"
+      dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
 
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:

@@ -1,4 +1,4 @@
-# FIXME
+# TODO: Adjust and enable after starting new job.
 #- name: Install misc packages
 #  community.general.homebrew:
 #    name:
@@ -9,7 +9,6 @@
 #- name: "Install misc packages : debug"
 #  debug: var=brew.changed_pkgs
 
-# FIXME
 #- name: Install misc applications
 #  community.general.homebrew_cask:
 #    name:
@@ -19,4 +18,4 @@
 #  register: brew
 #
 #- name: "Install misc applications : debug"
-#  debug: var=brew.changed_pkgs
+#  debug: var=brew.msg

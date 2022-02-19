@@ -8,7 +8,7 @@
 - name: "Upgrade all packages : debug"
   debug: var=pacman.packages
 
-# FIXME
+# TODO: Adjust and enable after playing around with Docker.
 #- name: Install misc packages
 #  community.general.pacman:
 #    pkg:

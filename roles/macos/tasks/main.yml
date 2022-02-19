@@ -7,12 +7,9 @@
     mode: 0640
   become: yes
 
-# FIXME
-# Install Xcode
-# +
-# xcode-select --install
+# FIXME: Install Xcode Command Line Tools.
 
-# FIXME: Install Homebrew
+# FIXME: Install Homebrew.
 #- name: Set directory permission /opt/homebrew
 #  ansible.builtin.file:
 #    path: "/opt/homebrew"
@@ -89,23 +86,22 @@
 - name: "Install misc applications : debug"
   debug: var=brew.msg
 
-# TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
-- name: Add /usr/local/bin/zsh to /etc/shells
-  ansible.builtin.lineinfile:
-    path: /etc/shells
-    line: /usr/local/bin/zsh
-
-# TODO: Switch to /opt/homebrew/bin after moving over to new MacBook Pro.
-- name: Create misc symbolic links
-  ansible.builtin.file:
-    src: "/usr/local/bin/{{ item.src }}"
-    dest: "/usr/local/bin/{{ item.dest }}"
-    state: link
-  loop:
-    - src: ggrep
-      dest: grep
-    - src: gls
-      dest: ls
+# TODO: Enable after moving over to new MacBook Pro.
+#- name: Add /opt/homebrew/bin/zsh to /etc/shells
+#  ansible.builtin.lineinfile:
+#    path: /etc/shells
+#    line: /opt/homebrew/bin/zsh
+#
+#- name: Create misc symbolic links
+#  ansible.builtin.file:
+#    src: "/opt/homebrew/bin/{{ item.src }}"
+#    dest: "/opt/homebrew/bin/{{ item.dest }}"
+#    state: link
+#  loop:
+#    - src: ggrep
+#      dest: grep
+#    - src: gls
+#      dest: ls
 
 - name: Create directory {{ ansible_env.HOME }}/.terminfo/74
   ansible.builtin.file:

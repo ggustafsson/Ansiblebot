@@ -1,2 +1,4 @@
 projects_dir: "{{ ansible_env.HOME }}/Projects"
+dotfiles_dir: "{{ projects_dir }}/Dot-Files"
+
 git_url_dotfiles: https://github.com/ggustafsson/Dot-Files.git

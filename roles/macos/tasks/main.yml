@@ -115,9 +115,9 @@
 #      dest: /opt/homebrew/bin/grep
 #    - src: /opt/homebrew/bin/gls
 #      dest: /opt/homebrew/bin/ls
-    - src: "{{ projects_dir }}/Dot-Files/Misc/Swedish-Pro-No_Dead_Keys.bundle"
+    - src: "{{ dotfiles_dir }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
       dest: "{{ ansible_env.HOME }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
-    - src: "{{ projects_dir }}/Dot-Files/Misc/tmux-256color"
+    - src: "{{ dotfiles_dir }}/Misc/tmux-256color"
       dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
 
 - name: Execute misc 'defaults' and 'chflags' commands

@@ -1,3 +1,5 @@
-vim_dir: "{{ ansible_env.HOME }}/.vim"
 projects_dir: "{{ ansible_env.HOME }}/Projects"
+dotfiles_dir: "{{ projects_dir }}/Dot-Files"
+vim_dir: "{{ ansible_env.HOME }}/.vim"
+
 git_url_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git

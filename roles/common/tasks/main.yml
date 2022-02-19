@@ -30,11 +30,11 @@
 - name: Git clone/pull {{ git_url_dotfiles }}
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"
-    dest: "{{ projects_dir }}/Dot-Files"
+    dest: "{{ dotfiles_dir }}"
 
 - name: Create symbolic links to Dot-Files
   ansible.builtin.file:
-    src: "{{ projects_dir }}/Dot-Files/{{ item.src }}"
+    src: "{{ dotfiles_dir }}/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:

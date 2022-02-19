@@ -5,52 +5,52 @@
     owner: "{{ ansible_env.USER }}"
     mode: 0700
   loop:
-    - "{{ ansible_env.HOME }}"
-    - "{{ ansible_env.HOME }}/.ssh"
+    - "{{ path_home }}"
+    - "{{ path_home }}/.ssh"
 
-- name: Get stats on {{ ansible_env.HOME }}/.ssh/id_ed25519
+- name: Get stats on {{ path_home }}/.ssh/id_ed25519
   ansible.builtin.stat:
-    path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+    path: "{{ path_home }}/.ssh/id_ed25519"
   register: id_ed25519
 
-- name: Set file permissions on {{ ansible_env.HOME }}/.ssh/id_ed25519
+- name: Set file permissions on {{ path_home }}/.ssh/id_ed25519
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
+    path: "{{ path_home }}/.ssh/id_ed25519"
     state: file
     owner: "{{ ansible_env.USER }}"
     mode: 0600
   when: id_ed25519.stat.exists
 
-- name: Create directory {{ projects_dir }}
+- name: Create directory {{ path_projects }}
   ansible.builtin.file:
-    path: "{{ projects_dir }}"
+    path: "{{ path_projects }}"
     state: directory
     mode: 0700
 
 - name: Git clone/pull {{ git_url_dotfiles }}
   ansible.builtin.git:
     repo: "{{ git_url_dotfiles }}"
-    dest: "{{ dotfiles_dir }}"
+    dest: "{{ path_dotfiles }}"
 
 - name: Create symbolic links to Dot-Files
   ansible.builtin.file:
-    src: "{{ dotfiles_dir }}/{{ item.src }}"
+    src: "{{ path_dotfiles }}/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
     - src: Scripts
-      dest: "{{ ansible_env.HOME }}/Scripts"
+      dest: "{{ path_home }}/Scripts"
     - src: ansible.cfg
-      dest: "{{ ansible_env.HOME }}/.ansible.cfg"
+      dest: "{{ path_home }}/.ansible.cfg"
     - src: gitconfig
-      dest: "{{ ansible_env.HOME }}/.gitconfig"
+      dest: "{{ path_home }}/.gitconfig"
     - src: gitignore_global
-      dest: "{{ ansible_env.HOME }}/.gitignore_global"
+      dest: "{{ path_home }}/.gitignore_global"
     - src: ssh/config
-      dest: "{{ ansible_env.HOME }}/.ssh/config"
+      dest: "{{ path_home }}/.ssh/config"
     - src: tmux.conf
-      dest: "{{ ansible_env.HOME }}/.tmux.conf"
+      dest: "{{ path_home }}/.tmux.conf"
     - src: zshenv
-      dest: "{{ ansible_env.HOME }}/.zshenv"
+      dest: "{{ path_home }}/.zshenv"
     - src: zshrc
-      dest: "{{ ansible_env.HOME }}/.zshrc"
+      dest: "{{ path_home }}/.zshrc"

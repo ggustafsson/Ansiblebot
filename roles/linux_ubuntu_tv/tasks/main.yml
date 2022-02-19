@@ -14,7 +14,7 @@
 - name: Copy motd-dragon to /etc/motd
   ansible.builtin.copy:
     remote_src: yes
-    src: "{{ dotfiles_dir }}/etc/motd-dragon"
+    src: "{{ path_dotfiles }}/etc/motd-dragon"
     dest: /etc/motd
     owner: root
     group: root

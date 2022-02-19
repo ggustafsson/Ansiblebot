@@ -1,40 +1,40 @@
 - name: Git clone/pull {{ git_url_staticcolorscheme }}
   ansible.builtin.git:
     repo: "{{ git_url_staticcolorscheme }}"
-    dest: "{{ ansible_env.HOME }}/Projects/Static-Color-Scheme"
+    dest: "{{ path_home }}/Projects/Static-Color-Scheme"
 
-- name: Create directories under {{ vim_dir }}
+- name: Create directories under {{ path_vim }}
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: 0700
   loop:
-    - "{{ vim_dir }}"
-    - "{{ vim_dir }}/backup"
-    - "{{ vim_dir }}/swap"
-    - "{{ vim_dir }}/undo"
-    - "{{ vim_dir }}/pack/ggustafsson/start"
-    - "{{ vim_dir }}/pack/others/start"
+    - "{{ path_vim }}"
+    - "{{ path_vim }}/backup"
+    - "{{ path_vim }}/swap"
+    - "{{ path_vim }}/undo"
+    - "{{ path_vim }}/pack/ggustafsson/start"
+    - "{{ path_vim }}/pack/others/start"
 
 - name: Create symbolic links to Dot-Files and Vim colorscheme
   ansible.builtin.file:
-    src: "{{ projects_dir }}/{{ item.src }}"
+    src: "{{ path_projects }}/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
     - src: Dot-Files/vimrc
-      dest: "{{ ansible_env.HOME }}/.vimrc"
+      dest: "{{ path_home }}/.vimrc"
     - src: Dot-Files/vim/after
-      dest: "{{ vim_dir }}/after"
+      dest: "{{ path_vim }}/after"
     - src: Dot-Files/vim/templates
-      dest: "{{ vim_dir }}/templates"
+      dest: "{{ path_vim }}/templates"
     - src: Static-Color-Scheme
-      dest: "{{ vim_dir }}/pack/ggustafsson/start/Static-Color-Scheme"
+      dest: "{{ path_vim }}/pack/ggustafsson/start/Static-Color-Scheme"
 
 - name: Git clone/pull misc Vim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ vim_dir }}/pack/others/start/{{ item.name }}"
+    dest: "{{ path_vim }}/pack/others/start/{{ item.name }}"
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git

@@ -20,9 +20,9 @@
 #
 #  ...
 
-- name: Create directory {{ ansible_env.HOME }}/Applications
+- name: Create directory {{ path_home }}/Applications
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/Applications"
+    path: "{{ path_home }}/Applications"
     state: directory
     mode: 0700
 
@@ -94,9 +94,9 @@
     line: /usr/local/bin/zsh
 #    line: /opt/homebrew/bin/zsh
 
-- name: Create directory {{ ansible_env.HOME }}/.terminfo/74
+- name: Create directory {{ path_home }}/.terminfo/74
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.terminfo/74"
+    path: "{{ path_home }}/.terminfo/74"
     state: directory
     mode: 0700
 
@@ -115,10 +115,10 @@
 #      dest: /opt/homebrew/bin/grep
 #    - src: /opt/homebrew/bin/gls
 #      dest: /opt/homebrew/bin/ls
-    - src: "{{ dotfiles_dir }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
-      dest: "{{ ansible_env.HOME }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
-    - src: "{{ dotfiles_dir }}/Misc/tmux-256color"
-      dest: "{{ ansible_env.HOME }}/.terminfo/74/tmux-256color"
+    - src: "{{ path_dotfiles }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
+      dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
+    - src: "{{ path_dotfiles }}/Misc/tmux-256color"
+      dest: "{{ path_home }}/.terminfo/74/tmux-256color"
 
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:

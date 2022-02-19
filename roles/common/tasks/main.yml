@@ -46,7 +46,7 @@
       dest: "{{ ansible_env.HOME }}/.gitconfig"
     - src: gitignore_global
       dest: "{{ ansible_env.HOME }}/.gitignore_global"
-    - src: ssh_config
+    - src: ssh/config
       dest: "{{ ansible_env.HOME }}/.ssh/config"
     - src: tmux.conf
       dest: "{{ ansible_env.HOME }}/.tmux.conf"

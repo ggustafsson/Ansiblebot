@@ -38,12 +38,12 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: Misc/figlet
-      dest: "{{ path_home }}/.figlet"
     - src: Scripts
       dest: "{{ path_home }}/Scripts"
     - src: ansible.cfg
       dest: "{{ path_home }}/.ansible.cfg"
+    - src: figlet
+      dest: "{{ path_home }}/.figlet"
     - src: gitconfig
       dest: "{{ path_home }}/.gitconfig"
     - src: gitignore_global

@@ -50,8 +50,8 @@
       dest: "{{ path_home }}/.ssh/config"
     - src: tmux.conf
       dest: "{{ path_home }}/.tmux.conf"
-    - src: zprofile
-      dest: "{{ path_home }}/.zprofile"
+    - src: zlogin
+      dest: "{{ path_home }}/.zlogin"
     - src: zshenv
       dest: "{{ path_home }}/.zshenv"
     - src: zshrc

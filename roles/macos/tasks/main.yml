@@ -43,6 +43,7 @@
       - bash
       - coreutils
       - curl
+      - figlet
       - flake8
       - git
       - golang

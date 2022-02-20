@@ -14,6 +14,7 @@
     pkg:
       - ansible
       - dnsutils
+      - figlet
       - flac
       - golang
       - html2text

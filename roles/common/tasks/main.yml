@@ -38,6 +38,8 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
+    - src: Misc/figlet
+      dest: "{{ path_home }}/.figlet"
     - src: Scripts
       dest: "{{ path_home }}/Scripts"
     - src: ansible.cfg

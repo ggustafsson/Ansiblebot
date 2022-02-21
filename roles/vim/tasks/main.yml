@@ -60,3 +60,7 @@
       url: https://github.com/tpope/vim-speeddating.git
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
+
+- name: Genereate help tags for all Vim plugins
+  ansible.builtin.command: vim -c 'helptags ALL' -c q
+  changed_when: false

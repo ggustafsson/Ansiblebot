@@ -142,3 +142,20 @@
     - cmd: chflags nohidden ~/Library
     - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
+
+# TODO: Check if extensions are already installed. Changed state would be nice.
+- name: Install Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: "code --install-extension {{ item.name }}"
+  loop:
+    - name: asvetliakov.vscode-neovim
+    - name: golang.go
+    - name: ms-azuretools.vscode-docker
+    - name: ms-python.python
+    - name: ms-python.vscode-pylance
+    - name: ms-vscode-remote.remote-containers
+    - name: ms-vscode-remote.remote-ssh
+    - name: ms-vscode-remote.remote-ssh-edit
+    - name: redhat.ansible
+    - name: redhat.vscode-yaml
+  changed_when: false

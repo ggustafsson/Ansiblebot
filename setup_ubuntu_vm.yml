@@ -1,4 +1,4 @@
-- name: Setup Ubuntu Desktop system (vm)
+- name: Setup Ubuntu Desktop system (VM)
   hosts: ubuntu_vm
   roles:
     - common

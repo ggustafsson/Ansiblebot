@@ -7,7 +7,15 @@
     mode: 0640
   become: yes
 
-# FIXME: Install Xcode Command Line Tools.
+- name: Check if Xcode Command Line Tools is installed
+  ansible.builtin.command: "xcode-select -p"
+  register: xcode_select
+  changed_when: false
+
+# TODO: Verify after moving over to new MacBook Pro.
+- name: Install Xcode Command Line Tools
+  ansible.builtin.command: xcode-select --install
+  when: xcode_select.stdout != "/Applications/Xcode.app/Contents/Developer"
 
 # FIXME: Install Homebrew.
 #- name: Set directory permission /opt/homebrew
@@ -127,4 +135,4 @@
   loop:
     - cmd: chflags nohidden ~/Library
     - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-  changed_when: False
+  changed_when: false

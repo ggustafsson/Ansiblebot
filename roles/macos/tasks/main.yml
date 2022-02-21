@@ -124,6 +124,10 @@
 #      dest: /opt/homebrew/bin/grep
 #    - src: /opt/homebrew/bin/gls
 #      dest: /opt/homebrew/bin/ls
+    - src: "{{ path_dotfiles }}/vscode/keybindings.json"
+      dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
+    - src: "{{ path_dotfiles }}/vscode/settings.json"
+      dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
     - src: "{{ path_dotfiles }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
       dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
     - src: "{{ path_dotfiles }}/Misc/tmux-256color"

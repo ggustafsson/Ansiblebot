@@ -28,7 +28,7 @@
     line: "{{ item.line }}"
   become: yes
   loop:
-    - regexp: "^#  AutomaticLoginEnable = true"
+    - regexp: '^#  AutomaticLoginEnable = true'
       line: "AutomaticLoginEnable = true"
-    - regexp: "^#  AutomaticLogin = user1"
+    - regexp: '^#  AutomaticLogin = user1'
       line: "AutomaticLogin = gleg"

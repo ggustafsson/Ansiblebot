@@ -1,4 +1,4 @@
-- name: Setup macOS system (Home)
+- name: Setup macOS system - Home
   hosts: macos
   roles:
     - common

@@ -52,6 +52,7 @@
       - bash
       - coreutils
       - curl
+      - dialog
       - figlet
       - flake8
       - git

@@ -1,1 +1,1 @@
-path_wallpaper: "{{ path_dotfiles }}/Misc/Wallpapers/SolarGradients-macOS.heic"
+path_wallpaper: /System/Library/Desktop Pictures/Solar Gradients.heic

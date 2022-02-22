@@ -12,4 +12,5 @@
   register: apt
 
 - name: "Install misc packages : debug"
-  debug: var=apt.stdout
+  ansible.builtin.debug:
+    var: apt.stdout

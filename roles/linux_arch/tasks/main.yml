@@ -6,7 +6,8 @@
   register: pacman
 
 - name: "Upgrade all packages : debug"
-  debug: var=pacman.packages
+  ansible.builtin.debug:
+    var: pacman.packages
 
 # TODO: Adjust and enable after playing around with Docker.
 #- name: Install misc packages
@@ -18,7 +19,8 @@
 #  register: pacman
 #
 #- name: "Install misc packages : debug"
-#  debug: var=pacman.packages
+#  ansible.builtin.debug:
+#    var: pacman.packages
 
 - name: Set AllowUsers in /etc/ssh/sshd_config
   ansible.builtin.lineinfile:

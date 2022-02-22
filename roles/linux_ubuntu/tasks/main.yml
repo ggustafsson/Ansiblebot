@@ -7,7 +7,8 @@
   register: apt
 
 - name: "Upgrade all packages : debug"
-  debug: var=apt.stdout
+  ansible.builtin.debug:
+    var: apt.stdout
 
 - name: Install misc packages
   ansible.builtin.apt:
@@ -28,7 +29,8 @@
   register: apt
 
 - name: "Install misc packages : debug"
-  debug: var=apt.stdout
+  ansible.builtin.debug:
+    var: apt.stdout
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
   ansible.builtin.template:

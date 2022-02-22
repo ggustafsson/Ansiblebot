@@ -9,7 +9,8 @@
   register: apt
 
 - name: "Install misc packages : debug"
-  debug: var=apt.stdout
+  ansible.builtin.debug:
+    var: apt.stdout
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d
   ansible.builtin.copy:
@@ -29,6 +30,6 @@
   become: yes
   loop:
     - regexp: '^#  AutomaticLoginEnable = true'
-      line: "AutomaticLoginEnable = true"
+      line: AutomaticLoginEnable = true
     - regexp: '^#  AutomaticLogin = user1'
-      line: "AutomaticLogin = gleg"
+      line: AutomaticLogin = gleg

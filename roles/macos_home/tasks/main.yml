@@ -13,7 +13,8 @@
   register: brew
 
 - name: "Install misc packages : debug"
-  debug: var=brew.changed_pkgs
+  ansible.builtin.debug:
+    var: brew.changed_pkgs
 
 - name: Install misc applications
   community.general.homebrew_cask:
@@ -26,8 +27,9 @@
       - transmission
       - vlc
     state: latest
-    install_options: "appdir=~/Applications"
+    install_options: appdir=~/Applications
   register: brew
 
 - name: "Install misc applications : debug"
-  debug: var=brew.msg
+  ansible.builtin.debug:
+    var: brew.msg

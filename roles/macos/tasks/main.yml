@@ -140,10 +140,10 @@
 
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:
-    cmd: "{{ item.cmd }}"
+    cmd: "{{ item }}"
   loop:
-    - cmd: chflags nohidden ~/Library
-    - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    - chflags nohidden ~/Library
+    - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 
 - name: Check desktop wallpaper
@@ -154,13 +154,13 @@
 
 - name: Set desktop wallpaper
   ansible.builtin.command:
-    cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "{{ item.sql }}"
+    cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "{{ item }}"
   loop:
-    - sql: DELETE FROM data
-    - sql: DELETE FROM pictures
-    - sql: DELETE FROM preferences
-    - sql: "INSERT INTO data (value) VALUES ('{{ path_wallpaper }}')"
-    - sql: INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
+    - DELETE FROM data
+    - DELETE FROM pictures
+    - DELETE FROM preferences
+    - "INSERT INTO data (value) VALUES ('{{ path_wallpaper }}')"
+    - INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
   notify: restart dock
   when: path_wallpaper not in dock_wallpaper.stdout
 
@@ -172,16 +172,16 @@
 
 - name: Install Visual Studio Code extensions
   ansible.builtin.command:
-    cmd: code --install-extension "{{ item.name }}"
+    cmd: code --install-extension "{{ item }}"
   loop:
-    - name: asvetliakov.vscode-neovim
-    - name: golang.go
-    - name: ms-azuretools.vscode-docker
-    - name: ms-python.python
-    - name: ms-python.vscode-pylance
-    - name: ms-vscode-remote.remote-containers
-    - name: ms-vscode-remote.remote-ssh
-    - name: ms-vscode-remote.remote-ssh-edit
-    - name: redhat.ansible
-    - name: redhat.vscode-yaml
-  when: item.name not in code_extensions.stdout
+    - asvetliakov.vscode-neovim
+    - golang.go
+    - ms-azuretools.vscode-docker
+    - ms-python.python
+    - ms-python.vscode-pylance
+    - ms-vscode-remote.remote-containers
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - redhat.ansible
+    - redhat.vscode-yaml
+  when: item not in code_extensions.stdout

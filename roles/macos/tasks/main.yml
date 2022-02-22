@@ -143,6 +143,7 @@
     cmd: "{{ item }}"
   loop:
     - chflags nohidden ~/Library
+    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-666</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 

@@ -15,7 +15,7 @@
 # TODO: Verify after moving over to new MacBook Pro.
 - name: Install Xcode Command Line Tools
   ansible.builtin.command: xcode-select --install
-  when: xcode_select.stdout != "/Applications/Xcode.app/Contents/Developer"
+  when: xcode_select.stdout != "/Library/Developer/CommandLineTools"
 
 # FIXME: Install Homebrew.
 #- name: Set directory permission /opt/homebrew
@@ -143,7 +143,12 @@
     - cmd: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 
-# TODO: Check if extensions are already installed. Changed state would be nice.
+- name: Check installed Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --list-extensions
+  register: code_extensions
+  changed_when: false
+
 - name: Install Visual Studio Code extensions
   ansible.builtin.command:
     cmd: "code --install-extension {{ item.name }}"
@@ -158,4 +163,4 @@
     - name: ms-vscode-remote.remote-ssh-edit
     - name: redhat.ansible
     - name: redhat.vscode-yaml
-  changed_when: false
+  when: item.name not in code_extensions.stdout

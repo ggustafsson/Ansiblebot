@@ -138,6 +138,7 @@
     - src: "{{ path_projects }}/Tim/tim"
       dest: "{{ path_home }}/Scripts/tim"
 
+# TODO: Fix keyboard layout switching.
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:
     cmd: "{{ item }}"

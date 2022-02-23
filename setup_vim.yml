@@ -1,4 +1,4 @@
 - name: Setup Vim environment
-  hosts: all
+  hosts: localhost
   roles:
     - vim

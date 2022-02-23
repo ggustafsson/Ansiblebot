@@ -1,5 +1,7 @@
 - name: Setup macOS system - Home
   hosts: macos
+  vars:
+    hostname: Onett
   roles:
     - common
     - macos

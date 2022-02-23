@@ -16,4 +16,4 @@ arch
 ubuntu
 
 [macos]
-localhost ansible_connection=local
+localhost

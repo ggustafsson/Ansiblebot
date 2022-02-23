@@ -177,7 +177,7 @@
 #    cmd: "{{ item }}"
 #  loop:
 #  - defaults write com.apple.HIToolbox ...
-#  notify: restart x
+#  notify: restart finder
 #  when: defaults_read.stdout != "org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys"
 
 - name: Check installed Visual Studio Code extensions

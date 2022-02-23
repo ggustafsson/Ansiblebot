@@ -139,13 +139,11 @@
     - src: "{{ path_projects }}/Tim/tim"
       dest: "{{ path_home }}/Scripts/tim"
 
-# TODO: Fix keyboard layout switching.
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:
     cmd: "{{ item }}"
   loop:
     - chflags nohidden ~/Library
-    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-666</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 
@@ -166,6 +164,21 @@
     - INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
   notify: restart dock
   when: path_wallpaper not in dock_wallpaper.stdout
+
+- name: Check keyboard layout
+  ansible.builtin.command:
+    cmd: defaults read com.apple.HIToolbox.plist AppleCurrentKeyboardLayoutInputSourceID
+  register: defaults_read
+  changed_when: false
+
+# TODO: Fix keyboard layout switching.
+#- name: Set keyboard layout
+#  ansible.builtin.command:
+#    cmd: "{{ item }}"
+#  loop:
+#  - defaults write com.apple.HIToolbox ...
+#  notify: restart x
+#  when: defaults_read.stdout != "org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys"
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:

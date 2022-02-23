@@ -2,4 +2,7 @@ path_home: "{{ ansible_env.HOME }}"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dot-Files"
 
+path_wallpaper: /System/Library/Desktop Pictures/Solar Gradients.heic
+
 git_url_dotfiles: https://github.com/ggustafsson/Dot-Files.git
+git_url_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git

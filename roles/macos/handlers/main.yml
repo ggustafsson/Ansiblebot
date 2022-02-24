@@ -2,8 +2,3 @@
   ansible.builtin.command:
     cmd: killall Dock
   listen: restart dock
-
-- name: Restart Finder
-  ansible.builtin.command:
-    cmd: killall Finder
-  listen: restart finder

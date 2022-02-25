@@ -21,6 +21,7 @@
     mode: 0600
   when: id_ed25519.stat.exists
 
+
 - name: Create directory {{ path_projects }}
   ansible.builtin.file:
     path: "{{ path_projects }}"

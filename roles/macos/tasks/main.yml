@@ -1,3 +1,9 @@
+- name: Create directory {{ path_home }}/Applications
+  ansible.builtin.file:
+    path: "{{ path_home }}/Applications"
+    state: directory
+    mode: 0700
+
 - name: Create file /etc/sudoers.d/custom
   ansible.builtin.template:
     src: sudoers.d/custom.j2
@@ -6,6 +12,7 @@
     group: wheel
     mode: 0640
   become: yes
+
 
 - name: Check if Xcode Command Line Tools is installed
   ansible.builtin.command: xcode-select -p
@@ -27,12 +34,6 @@
 #  become: yes
 #
 #  ...
-
-- name: Create directory {{ path_home }}/Applications
-  ansible.builtin.file:
-    path: "{{ path_home }}/Applications"
-    state: directory
-    mode: 0700
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
@@ -113,13 +114,6 @@
   ansible.builtin.debug:
     var: pip.name
 
-# TODO: Adjust name & line after moving over to new MacBook Pro.
-#- name: Add /opt/homebrew/bin/zsh to /etc/shells
-- name: Add /usr/local/bin/zsh to /etc/shells
-  ansible.builtin.lineinfile:
-    path: /etc/shells
-#    line: /opt/homebrew/bin/zsh
-    line: /usr/local/bin/zsh
 
 - name: Create directory {{ path_home }}/.terminfo/74
   ansible.builtin.file:
@@ -152,6 +146,15 @@
       dest: "{{ path_home }}/.terminfo/74/tmux-256color"
     - src: "{{ path_projects }}/Tim/tim"
       dest: "{{ path_home }}/Scripts/tim"
+
+# TODO: Adjust name & line after moving over to new MacBook Pro.
+#- name: Add /opt/homebrew/bin/zsh to /etc/shells
+- name: Add /usr/local/bin/zsh to /etc/shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+#    line: /opt/homebrew/bin/zsh
+    line: /usr/local/bin/zsh
+
 
 - name: Execute misc 'defaults' and 'chflags' commands
   ansible.builtin.command:
@@ -195,6 +198,7 @@
     #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
     #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
   when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
+
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:

@@ -1,16 +1,16 @@
-- name: Upgrade all packages
+- name: Upgrade all Pacman packages
   community.general.pacman:
     update_cache: yes
     upgrade: yes
   become: yes
   register: pacman
 
-- name: "Upgrade all packages : debug"
+- name: "Upgrade all Pacman packages : debug"
   ansible.builtin.debug:
     var: pacman.packages
 
 # TODO: Adjust and enable after playing around with Docker.
-#- name: Install misc packages
+#- name: Install misc Pacman packages
 #  community.general.pacman:
 #    pkg:
 #      - x
@@ -18,7 +18,7 @@
 #  become: yes
 #  register: pacman
 #
-#- name: "Install misc packages : debug"
+#- name: "Install misc Pacman packages : debug"
 #  ansible.builtin.debug:
 #    var: pacman.packages
 

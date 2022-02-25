@@ -1,4 +1,4 @@
-- name: Install misc packages
+- name: Install misc Homebrew packages
   community.general.homebrew:
     name:
       - cuetools
@@ -12,11 +12,11 @@
     state: latest
   register: brew
 
-- name: "Install misc packages : debug"
+- name: "Install misc Homebrew packages : debug"
   ansible.builtin.debug:
     var: brew.changed_pkgs
 
-- name: Install misc applications
+- name: Install misc Homebrew applications
   community.general.homebrew_cask:
     name:
       - 1password
@@ -30,6 +30,6 @@
     install_options: appdir=~/Applications
   register: brew
 
-- name: "Install misc applications : debug"
+- name: "Install misc Homebrew applications : debug"
   ansible.builtin.debug:
     var: brew.msg

@@ -1,4 +1,4 @@
-- name: Upgrade all packages
+- name: Upgrade all APT packages
   ansible.builtin.apt:
     update_cache: yes
     upgrade: full
@@ -6,11 +6,11 @@
   become: yes
   register: apt
 
-- name: "Upgrade all packages : debug"
+- name: "Upgrade all APT packages : debug"
   ansible.builtin.debug:
     var: apt.stdout
 
-- name: Install misc packages
+- name: Install misc APT packages
   ansible.builtin.apt:
     pkg:
       - ansible
@@ -29,7 +29,7 @@
   become: yes
   register: apt
 
-- name: "Install misc packages : debug"
+- name: "Install misc APT packages : debug"
   ansible.builtin.debug:
     var: apt.stdout
 

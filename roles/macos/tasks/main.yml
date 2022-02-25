@@ -47,14 +47,11 @@
 - name: Install misc Homebrew packages
   community.general.homebrew:
     name:
-      - ansible
-      - ansible-lint
       - bash
       - coreutils
       - curl
       - dialog
       - figlet
-      - flake8
       - git
       - golang
       - grep
@@ -64,7 +61,6 @@
       - neovim
       - nmap
       - openssh
-      - pylint
       - python
       - renameutils
       - rsync
@@ -75,7 +71,6 @@
       - tree
       - vim
       - wget
-      - yamllint
       - zsh
     state: latest
   register: brew
@@ -103,8 +98,12 @@
 - name: Install misc Pip packages
   ansible.builtin.pip:
     name:
+      - ansible
+      - ansible-lint
       - docker
+      - flake8
       - pip
+      - pylint
     state: latest
     executable: /usr/local/bin/pip3
   register: pip

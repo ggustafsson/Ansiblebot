@@ -1,0 +1,16 @@
+- name: Install misc Pip packages
+  ansible.builtin.pip:
+    name:
+      - ansible
+      - ansible-lint
+      - flake8
+      - pip
+      - pylint
+    state: latest
+    executable: pip3
+  register: pip
+
+# FIXME: ansible.builtin.pip only returns useless info...
+- name: "Install misc Pip packages : debug"
+  ansible.builtin.debug:
+    var: pip.name

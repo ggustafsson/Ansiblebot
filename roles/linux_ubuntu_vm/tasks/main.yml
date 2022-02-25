@@ -1,16 +1,1 @@
-- name: Install misc APT packages
-  ansible.builtin.apt:
-    pkg:
-      - ansible-lint
-      - flake8
-      - pylint3
-      - shellcheck
-      - tidy
-      - yamllint
-    state: latest
-  become: yes
-  register: apt
-
-- name: "Install misc APT packages : debug"
-  ansible.builtin.debug:
-    var: apt.stdout
+# ...

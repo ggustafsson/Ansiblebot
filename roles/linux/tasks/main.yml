@@ -5,7 +5,6 @@
       - ansible-lint
       - flake8
       - pip
-      - pylint
     state: latest
     executable: pip3
   register: pip

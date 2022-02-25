@@ -179,22 +179,22 @@
   notify: restart dock
   when: path_wallpaper not in dock_wallpaper.stdout
 
-# FIXME: Fix and verify after moving over to new MacBook Pro.
-#- name: Check keyboard layout
-#  ansible.builtin.command:
-#    cmd: defaults read com.apple.HIToolbox AppleEnabledInputSources
-#  register: defaults_read
-#  changed_when: false
-#
-#- name: Set keyboard layout
-#  ansible.builtin.command:
-#    cmd: "{{ item }}"
-#  loop:
-#    - defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys
-#    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
-#    - defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
-#    - defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
-#  when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
+- name: Check keyboard layout
+  ansible.builtin.command:
+    cmd: defaults read com.apple.HIToolbox AppleEnabledInputSources
+  register: defaults_read
+  changed_when: false
+
+# FIXME: Finish and verify after moving over to new MacBook Pro.
+- name: Set keyboard layout
+  ansible.builtin.command:
+    cmd: "{{ item }}"
+  loop:
+    #- defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys
+    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
+    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
+    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
+  when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:

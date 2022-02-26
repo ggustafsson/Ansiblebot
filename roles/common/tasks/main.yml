@@ -1,3 +1,8 @@
+- name: "Set hostname to {{ hostname }}"
+  ansible.builtin.hostname:
+    name: "{{ hostname }}"
+
+
 - name: Set misc directory permissions
   ansible.builtin.file:
     path: "{{ item }}"

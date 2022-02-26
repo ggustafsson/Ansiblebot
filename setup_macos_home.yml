@@ -1,7 +1,8 @@
 - name: Setup macOS system - Home
   hosts: macos
+  # TODO: Adjust hostname line after getting new MacBook Pro.
   vars:
-    hostname: Onett
+    hostname: Coruscant
   roles:
     - common
     - macos

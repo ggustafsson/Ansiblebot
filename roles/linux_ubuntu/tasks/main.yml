@@ -17,12 +17,15 @@
       - dnsutils
       - figlet
       - flac
+      - fzf
       - golang
       - html2text
       - links
       - nmap
+      - python3-pip
       - ruby
       - shellcheck
+      - silversearcher-ag
       - tidy
       - tree
       - zsh
@@ -34,6 +37,32 @@
   ansible.builtin.debug:
     var: apt.stdout
 
+- name: Install misc Pip packages
+  ansible.builtin.pip:
+    name:
+      - ansible
+      - ansible-lint
+      - flake8
+      - pip
+    state: latest
+  register: pip
+
+# FIXME: ansible.builtin.pip only returns useless info...
+- name: "Install misc Pip packages : debug"
+  ansible.builtin.debug:
+    var: pip.name
+
+
+- name: Create misc symbolic links
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - src: /usr/share/doc/fzf/examples
+      dest: "{{ path_home }}/.vim/pack/others/start/fzf"
+    - src: /usr/share/doc/fzf/examples
+      dest: "{{ path_home }}/.zsh/fzf"
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
   ansible.builtin.template:

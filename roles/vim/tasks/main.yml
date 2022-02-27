@@ -31,6 +31,7 @@
     - src: Static-Color-Scheme
       dest: "{{ path_home }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
 
+# TODO: Install vim-go another way since git repo is dev repo.
 - name: Git clone/pull misc Vim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
@@ -38,18 +39,22 @@
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
+    - name: fzf.vim
+      url: https://github.com/junegunn/fzf.vim.git
     - name: syntastic
       url: https://github.com/vim-syntastic/syntastic.git
     - name: vim-go
       url: https://github.com/fatih/vim-go.git
     - name: vim-mundo
       url: https://github.com/simnalamburt/vim-mundo.git
+
     - name: fern.vim
       url: https://github.com/lambdalisue/fern.vim.git
     - name: fern-hijack.vim
       url: https://github.com/lambdalisue/fern-hijack.vim.git
     - name: fern-git-status.vim
       url: https://github.com/lambdalisue/fern-git-status.vim.git
+
     - name: vim-commentary
       url: https://github.com/tpope/vim-commentary.git
     - name: vim-endwise

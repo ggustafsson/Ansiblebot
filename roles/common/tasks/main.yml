@@ -28,16 +28,24 @@
   when: id_ed25519.stat.exists
 
 
-- name: Create directory {{ path_projects }}
+- name: Create misc directories
   ansible.builtin.file:
-    path: "{{ path_projects }}"
+    path: "{{ item }}"
     state: directory
     mode: 0700
+  loop:
+    - "{{ path_projects }}"
+    - "{{ path_home }}/.zsh"
 
-- name: Git clone/pull {{ git_url_dotfiles }}
+- name: Git clone/pull misc repos
   ansible.builtin.git:
-    repo: "{{ git_url_dotfiles }}"
-    dest: "{{ path_dotfiles }}"
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - repo: "{{ git_url_dotfiles }}"
+      dest: "{{ path_dotfiles }}"
+    - repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+      dest: "{{ path_home }}/.zsh/zsh-autosuggestions"
 
 - name: Create symbolic links to Dot-Files
   ansible.builtin.file:

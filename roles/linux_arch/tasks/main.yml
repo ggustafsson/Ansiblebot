@@ -22,6 +22,21 @@
 #  ansible.builtin.debug:
 #    var: pacman.packages
 
+- name: Install misc Pip packages
+  ansible.builtin.pip:
+    name:
+      - ansible
+      - ansible-lint
+      - flake8
+      - pip
+    state: latest
+  register: pip
+
+# FIXME: ansible.builtin.pip only returns useless info...
+- name: "Install misc Pip packages : debug"
+  ansible.builtin.debug:
+    var: pip.name
+
 
 - name: Set AllowUsers in /etc/ssh/sshd_config
   ansible.builtin.lineinfile:

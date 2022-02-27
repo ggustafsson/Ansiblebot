@@ -9,26 +9,20 @@
   ansible.builtin.debug:
     var: pacman.packages
 
-# TODO: Adjust and enable after playing around with Docker.
-#- name: Install misc Pacman packages
-#  community.general.pacman:
-#    pkg:
-#      - x
-#    state: latest
-#  become: yes
-#  register: pacman
-#
-#- name: "Install misc Pacman packages : debug"
-#  ansible.builtin.debug:
-#    var: pacman.packages
+- name: Install misc Pacman packages
+  community.general.pacman:
+    pkg: "{{ pacman_arch }}"
+    state: latest
+  become: yes
+  register: pacman
+
+- name: "Install misc Pacman packages : debug"
+  ansible.builtin.debug:
+    var: pacman.packages
 
 - name: Install misc Pip packages
   ansible.builtin.pip:
-    name:
-      - ansible
-      - ansible-lint
-      - flake8
-      - pip
+    name: "{{ pip_arch }}"
     state: latest
   register: pip
 

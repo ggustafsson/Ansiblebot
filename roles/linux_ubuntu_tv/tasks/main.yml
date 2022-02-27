@@ -1,9 +1,6 @@
 - name: Install misc APT packages
   ansible.builtin.apt:
-    pkg:
-      - abcde
-      - kodi
-      - sshguard
+    pkg: "{{ apt_ubuntu_tv }}"
     state: latest
   become: yes
   register: apt

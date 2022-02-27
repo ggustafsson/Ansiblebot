@@ -42,7 +42,7 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
   loop:
-    - repo: "{{ git_url_dotfiles }}"
+    - repo: "{{ git_dotfiles }}"
       dest: "{{ path_dotfiles }}"
     - repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
       dest: "{{ path_home }}/.zsh/zsh-autosuggestions"

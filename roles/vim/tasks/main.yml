@@ -1,6 +1,6 @@
-- name: Git clone/pull {{ git_url_staticcolorscheme }}
+- name: Git clone/pull {{ git_staticcolorscheme }}
   ansible.builtin.git:
-    repo: "{{ git_url_staticcolorscheme }}"
+    repo: "{{ git_staticcolorscheme }}"
     dest: "{{ path_home }}/Projects/Static-Color-Scheme"
 
 - name: Create directories under {{ path_home }}/.vim

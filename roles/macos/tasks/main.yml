@@ -47,34 +47,7 @@
 
 - name: Install misc Homebrew packages
   community.general.homebrew:
-    name:
-      - bash
-      - coreutils
-      - curl
-      - dialog
-      - figlet
-      - fzf
-      - git
-      - golang
-      - grep
-      - html2text
-      - less
-      - links
-      - neovim
-      - nmap
-      - openssh
-      - python
-      - renameutils
-      - rsync
-      - ruby
-      - shellcheck
-      - the_silver_searcher
-      - tidy-html5
-      - tmux
-      - tree
-      - vim
-      - wget
-      - zsh
+    name: "{{ brew_macos }}"
     state: latest
   register: brew
 
@@ -84,11 +57,7 @@
 
 - name: Install misc Homebrew applications
   community.general.homebrew_cask:
-    name:
-      - docker
-      - google-chrome
-      - hammerspoon
-      - visual-studio-code
+    name: "{{ cask_macos }}"
     state: latest
     install_options: appdir=~/Applications
   register: brew
@@ -100,12 +69,7 @@
 # TODO: Adjust executable line after moving over to new MacBook Pro.
 - name: Install misc Pip packages
   ansible.builtin.pip:
-    name:
-      - ansible
-      - ansible-lint
-      - docker
-      - flake8
-      - pip
+    name: "{{ pip_macos }}"
     state: latest
     executable: /usr/local/bin/pip3
   register: pip

@@ -4,5 +4,118 @@ path_dotfiles: "{{ path_projects }}/Dot-Files"
 
 path_wallpaper: /System/Library/Desktop Pictures/Solar Gradients.heic
 
-git_url_dotfiles: https://github.com/ggustafsson/Dot-Files.git
-git_url_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git
+
+git_dotfiles: https://github.com/ggustafsson/Dot-Files.git
+git_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git
+
+
+brew_macos:
+  - bash
+  - coreutils
+  - curl
+  - dialog
+  - figlet
+  - fzf
+  - git
+  - golang
+  - grep
+  - html2text
+  - less
+  - links
+  - neovim
+  - nmap
+  - openssh
+  - python
+  - renameutils
+  - rsync
+  - ruby
+  - shellcheck
+  - the_silver_searcher
+  - tidy-html5
+  - tmux
+  - tree
+  - vim
+  - wget
+  - zsh
+
+brew_macos_home:
+  - cuetools
+  - ffmpeg
+  - flac
+  - imagemagick
+  - lame
+  - shntool
+  - svtplay-dl
+  - youtube-dl
+
+#brew_macos_work:
+#  - x
+
+cask_macos:
+  - docker
+  - google-chrome
+  - hammerspoon
+  - visual-studio-code
+
+cask_macos_home:
+  - 1password
+  - dropbox
+  - handbrake
+  - openemu
+  - tor-browser
+  - transmission
+  - vlc
+
+#cask_macos_work:
+#  - x
+
+
+apt_ubuntu:
+  - dialog
+  - dnsutils
+  - figlet
+  - flac
+  - fzf
+  - golang
+  - html2text
+  - links
+  - nmap
+  - python3-pip
+  - ruby
+  - shellcheck
+  - silversearcher-ag
+  - tidy
+  - tree
+  - zsh
+
+apt_ubuntu_tv:
+  - abcde
+  - kodi
+  - sshguard
+
+
+#pacman_arch:
+#  - x
+
+
+pip_macos:
+  - ansible
+  - ansible-lint
+  - docker
+  - flake8
+  - pip
+
+#pip_macos_home:
+#  - x
+
+#pip_macos_work:
+#  - x
+
+pip_linux:
+  - ansible
+  - ansible-lint
+  - flake8
+  - pip
+
+pip_arch: "{{ pip_linux }}"
+pip_ubuntu: "{{ pip_linux }}"

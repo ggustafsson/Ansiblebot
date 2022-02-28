@@ -79,6 +79,7 @@ apt_ubuntu:
   - golang
   - html2text
   - links
+  - neovim
   - nmap
   - python3-pip
   - ruby

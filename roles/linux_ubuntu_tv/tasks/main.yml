@@ -5,10 +5,6 @@
   become: yes
   register: apt
 
-- name: "Install misc APT packages : debug"
-  ansible.builtin.debug:
-    var: apt.stdout
-
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d
   ansible.builtin.copy:

@@ -41,19 +41,11 @@
     upgrade_all: yes
   register: brew
 
-- name: "Upgrade all Homebrew packages : debug"
-  ansible.builtin.debug:
-    var: brew.changed_pkgs
-
 - name: Install misc Homebrew packages
   community.general.homebrew:
     name: "{{ brew_macos }}"
     state: latest
   register: brew
-
-- name: "Install misc Homebrew packages : debug"
-  ansible.builtin.debug:
-    var: brew.changed_pkgs
 
 - name: Install misc Homebrew applications
   community.general.homebrew_cask:
@@ -62,10 +54,6 @@
     install_options: appdir=~/Applications
   register: brew
 
-- name: "Install misc Homebrew applications : debug"
-  ansible.builtin.debug:
-    var: brew.msg
-
 # TODO: Adjust executable line after moving over to new MacBook Pro.
 - name: Install misc Pip packages
   ansible.builtin.pip:
@@ -73,11 +61,6 @@
     state: latest
     executable: /usr/local/bin/pip3
   register: pip
-
-# FIXME: ansible.builtin.pip only returns useless info...
-- name: "Install misc Pip packages : debug"
-  ansible.builtin.debug:
-    var: pip.name
 
 
 - name: Create directory {{ path_home }}/.terminfo/74

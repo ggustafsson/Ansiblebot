@@ -6,10 +6,6 @@
   become: yes
   register: apt
 
-- name: "Upgrade all APT packages : debug"
-  ansible.builtin.debug:
-    var: apt.stdout
-
 - name: Install misc APT packages
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu }}"
@@ -17,20 +13,11 @@
   become: yes
   register: apt
 
-- name: "Install misc APT packages : debug"
-  ansible.builtin.debug:
-    var: apt.stdout
-
 - name: Install misc Pip packages
   ansible.builtin.pip:
     name: "{{ pip_ubuntu }}"
     state: latest
   register: pip
-
-# FIXME: ansible.builtin.pip only returns useless info...
-- name: "Install misc Pip packages : debug"
-  ansible.builtin.debug:
-    var: pip.name
 
 
 - name: Create misc symbolic links

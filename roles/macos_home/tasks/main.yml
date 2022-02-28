@@ -5,22 +5,12 @@
   register: brew
   when: brew_macos_home is defined
 
-- name: "Install misc Homebrew packages : debug"
-  ansible.builtin.debug:
-    var: brew.changed_pkgs
-  when: brew_macos_home is defined
-
 - name: Install misc Homebrew applications
   community.general.homebrew_cask:
     name: "{{ cask_macos_home }}"
     state: latest
     install_options: appdir=~/Applications
   register: brew
-  when: cask_macos_home is defined
-
-- name: "Install misc Homebrew applications : debug"
-  ansible.builtin.debug:
-    var: brew.msg
   when: cask_macos_home is defined
 
 # TODO: Adjust executable line after moving over to new MacBook Pro.
@@ -30,10 +20,4 @@
     state: latest
     executable: /usr/local/bin/pip3
   register: pip
-  when: pip_macos_home is defined
-
-# FIXME: ansible.builtin.pip only returns useless info...
-- name: "Install misc Pip packages : debug"
-  ansible.builtin.debug:
-    var: pip.name
   when: pip_macos_home is defined

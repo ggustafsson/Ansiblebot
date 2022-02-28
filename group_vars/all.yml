@@ -15,7 +15,6 @@ brew_macos:
   - curl
   - dialog
   - figlet
-  - fzf
   - git
   - golang
   - grep
@@ -75,7 +74,6 @@ apt_ubuntu:
   - dnsutils
   - figlet
   - flac
-  - fzf
   - golang
   - html2text
   - links

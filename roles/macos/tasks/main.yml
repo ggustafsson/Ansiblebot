@@ -84,10 +84,6 @@
       dest: /usr/local/bin/grep
     - src: /usr/local/bin/gls
       dest: /usr/local/bin/ls
-    - src: /usr/local/opt/fzf
-      dest: "{{ path_home }}/.vim/pack/others/start/fzf"
-    - src: /usr/local/opt/fzf/shell
-      dest: "{{ path_home }}/.zsh/fzf"
     - src: "{{ path_dotfiles }}/vscode/keybindings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
     - src: "{{ path_dotfiles }}/vscode/settings.json"

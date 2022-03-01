@@ -10,7 +10,6 @@ ubuntu_tv
 ubuntu_vm
 
 [linux:children]
-arch
 ubuntu
 
 [macos]

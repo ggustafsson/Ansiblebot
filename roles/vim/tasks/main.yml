@@ -18,7 +18,7 @@
 
 - name: Create symbolic links to Dot-Files, Vim colorscheme, etc
   ansible.builtin.file:
-    src: "{{ path_projects }}/{{ item.src }}"
+    src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:

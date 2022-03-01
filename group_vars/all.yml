@@ -93,8 +93,10 @@ apt_ubuntu_tv:
   - sshguard
 
 
-#pacman_arch:
-#  - x
+linuxbrew:
+  - fzf
+
+linuxbrew_ubuntu: "{{ linuxbrew }}"
 
 
 pip_macos:
@@ -116,5 +118,4 @@ pip_linux:
   - flake8
   - pip
 
-pip_arch: "{{ pip_linux }}"
 pip_ubuntu: "{{ pip_linux }}"

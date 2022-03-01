@@ -28,11 +28,17 @@
   when: id_ed25519.stat.exists
 
 
-- name: Create directory {{ path_projects }}
+- name: Create misc directories
   ansible.builtin.file:
-    path: "{{ path_projects }}"
+    path: "{{ item }}"
     state: directory
     mode: 0700
+  loop:
+    - "{{ path_projects }}"
+    - "{{ path_home }}/.config"
+    - "{{ path_home }}/.local"
+    - "{{ path_home }}/.local/bin"
+    - "{{ path_home }}/.local/share"
 
 - name: Git clone/pull {{ git_dotfiles }}
   ansible.builtin.git:

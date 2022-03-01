@@ -1,1 +1,23 @@
 # TODO: Install Linuxbrew here.
+
+#- name: Upgrade all Homebrew packages
+#  community.general.homebrew:
+#    update_homebrew: yes
+#    upgrade_all: yes
+#  register: brew
+#
+#- name: Install misc Homebrew packages
+#  community.general.homebrew:
+#    name: "{{ brew_macos }}"
+#    state: latest
+#  register: brew
+
+
+#- name: Create misc symbolic links
+#  ansible.builtin.file:
+#    src: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#    state: link
+#  loop:
+#    - src: "{{ path_home }}/.linuxbrew/opt/fzf"
+#      dest: "{{ path_home }}/.local/share/fzf"

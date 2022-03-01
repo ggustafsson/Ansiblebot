@@ -16,20 +16,22 @@
     - "{{ path_home }}/.vim/pack/ggustafsson/start"
     - "{{ path_home }}/.vim/pack/others/start"
 
-- name: Create symbolic links to Dot-Files and Vim colorscheme
+- name: Create symbolic links to Dot-Files, Vim colorscheme, etc
   ansible.builtin.file:
     src: "{{ path_projects }}/{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: Dot-Files/vimrc
+    - src: "{{ path_projects }}/Dot-Files/vimrc"
       dest: "{{ path_home }}/.vimrc"
-    - src: Dot-Files/vim/after
+    - src: "{{ path_projects }}/Dot-Files/vim/after"
       dest: "{{ path_home }}/.vim/after"
-    - src: Dot-Files/vim/templates
+    - src: "{{ path_projects }}/Dot-Files/vim/templates"
       dest: "{{ path_home }}/.vim/templates"
-    - src: Static-Color-Scheme
+    - src: "{{ path_projects }}/Static-Color-Scheme"
       dest: "{{ path_home }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
+    - src: "{{ path_home }}/.local/share/fzf"
+      dest: "{{ path_home }}/.vim/pack/others/start/fzf"
 
 # TODO: Install vim-go another way since git repo is dev repo.
 - name: Git clone/pull misc Vim plugins

@@ -15,6 +15,7 @@ brew_macos:
   - curl
   - dialog
   - figlet
+  - fzf
   - git
   - golang
   - grep

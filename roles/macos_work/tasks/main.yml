@@ -1,23 +1,19 @@
-- name: Install misc Homebrew packages
+- name: Install Homebrew packages from list 'brew_macos_work'
   community.general.homebrew:
     name: "{{ brew_macos_work }}"
     state: latest
-  register: brew
   when: brew_macos_work is defined
 
-- name: Install misc Homebrew applications
+- name: Install Homebrew applications from list 'cask_macos_work'
   community.general.homebrew_cask:
     name: "{{ cask_macos_work }}"
     state: latest
     install_options: appdir=~/Applications
-  register: brew
   when: cask_macos_work is defined
 
-# TODO: Adjust executable line after moving over to new MacBook Pro.
-- name: Install misc Pip packages
+- name: Install Pip packages from list 'pip_macos_work'
   ansible.builtin.pip:
     name: "{{ pip_macos_work }}"
     state: latest
-    executable: /usr/local/bin/pip3
-  register: pip
+    executable: "{{ pip_exec }}"
   when: pip_macos_work is defined

@@ -1,0 +1,3 @@
+# TODO: Adjust path after moving over to new MacBook Pro.
+path_brew: /usr/local
+pip_exec: "{{ path_brew }}/bin/pip3"

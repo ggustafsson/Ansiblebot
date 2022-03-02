@@ -78,7 +78,6 @@ apt_ubuntu:
   - golang
   - html2text
   - links
-  - neovim
   - nmap
   - python3-pip
   - ruby
@@ -93,11 +92,23 @@ apt_ubuntu_tv:
   - kodi
   - sshguard
 
+#apt_ubuntu_vm:
+#  - x
+
 
 linuxbrew:
   - fzf
+  - neovim
+  - vim
 
-linuxbrew_ubuntu: "{{ linuxbrew }}"
+#linuxbrew_ubuntu:
+#  - x
+
+#linuxbrew_ubuntu_tv:
+#  - x
+
+#linuxbrew_ubuntu_vm:
+#  - x
 
 
 pip_macos:
@@ -120,3 +131,9 @@ pip_linux:
   - pip
 
 pip_ubuntu: "{{ pip_linux }}"
+
+#pip_ubuntu_tv:
+#  - x
+
+#pip_ubuntu_vm:
+#  - x

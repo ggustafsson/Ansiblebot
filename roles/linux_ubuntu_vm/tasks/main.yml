@@ -1,1 +1,18 @@
-# ...
+- name: Install APT packages from list 'apt_ubuntu_vm'
+  ansible.builtin.apt:
+    pkg: "{{ apt_ubuntu_vm }}"
+    state: latest
+  become: yes
+  when: apt_ubuntu_vm is defined
+
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu_vm'
+  community.general.homebrew:
+    name: "{{ linuxbrew_ubuntu_vm }}"
+    state: latest
+  when: linuxbrew_ubuntu_vm is defined
+
+- name: Install Pip packages from list 'pip_ubuntu_vm'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_vm }}"
+    state: latest
+  when: pip_ubuntu_vm is defined

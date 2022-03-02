@@ -4,20 +4,25 @@
     upgrade: full
     autoremove: yes
   become: yes
-  register: apt
 
-- name: Install misc APT packages
+- name: Install APT packages from list 'apt_ubuntu'
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu }}"
     state: latest
   become: yes
-  register: apt
+  when: apt_ubuntu is defined
 
-- name: Install misc Pip packages
+- name: Install Linuxbrew packages from list 'linuxbrew_ubuntu'
+  community.general.homebrew:
+    name: "{{ linuxbrew_ubuntu }}"
+    state: latest
+  when: linuxbrew_ubuntu is defined
+
+- name: Install Pip packages from list 'pip_ubuntu'
   ansible.builtin.pip:
     name: "{{ pip_ubuntu }}"
     state: latest
-  register: pip
+  when: pip_ubuntu is defined
 
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf

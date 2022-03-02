@@ -1,9 +1,21 @@
-- name: Install misc APT packages
+- name: Install APT packages from list 'apt_ubuntu_tv'
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu_tv }}"
     state: latest
   become: yes
-  register: apt
+  when: apt_ubuntu_tv is defined
+
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu_tv'
+  community.general.homebrew:
+    name: "{{ linuxbrew_ubuntu_tv }}"
+    state: latest
+  when: linuxbrew_ubuntu_tv is defined
+
+- name: Install Pip packages from list 'pip_ubuntu_tv'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_tv }}"
+    state: latest
+  when: pip_ubuntu_tv is defined
 
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d

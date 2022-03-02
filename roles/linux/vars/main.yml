@@ -1,0 +1,2 @@
+path_linuxbrew: "{{ path_home }}/.linuxbrew"
+path_tarball: /tmp/brew.tar.gz

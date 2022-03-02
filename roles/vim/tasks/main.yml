@@ -68,6 +68,6 @@
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
 
-- name: Genereate help tags for all Vim plugins
+- name: Generate help tags for all Vim plugins
   ansible.builtin.command: vim -c 'helptags ALL' -c q
   changed_when: false

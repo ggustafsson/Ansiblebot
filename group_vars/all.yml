@@ -72,6 +72,7 @@ cask_macos_work:
 
 
 apt_ubuntu:
+  - build-essential
   - dialog
   - dnsutils
   - figlet
@@ -99,6 +100,7 @@ apt_ubuntu_tv:
 
 linuxbrew:
   - fzf
+  - gcc
   - neovim
   - vim
   - zsh-autosuggestions

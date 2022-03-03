@@ -66,8 +66,8 @@ cask_macos_home:
   - transmission
   - vlc
 
-#cask_macos_work:
-#  - x
+cask_macos_work:
+  - slack
 
 
 apt_ubuntu:

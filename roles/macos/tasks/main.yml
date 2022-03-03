@@ -70,6 +70,8 @@
       dest: "{{ path_brew }}/bin/ls"
     - src: "{{ path_brew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
+    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+      dest: "{{ path_home }}/.zsh/zsh-autosuggestions"
     - src: "{{ path_dotfiles }}/vscode/keybindings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
     - src: "{{ path_dotfiles }}/vscode/settings.json"

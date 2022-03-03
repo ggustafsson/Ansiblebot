@@ -39,6 +39,7 @@
     - "{{ path_home }}/.local"
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
+    - "{{ path_home }}/.zsh"
 
 - name: Git clone/pull {{ git_dotfiles }}
   ansible.builtin.git:

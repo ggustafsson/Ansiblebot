@@ -51,5 +51,7 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_home }}/.linuxbrew/opt/fzf"
+    - src: "{{ path_linuxbrew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
+    - src: "{{ path_linuxbrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+      dest: "{{ path_home }}/.zsh/zsh-autosuggestions"

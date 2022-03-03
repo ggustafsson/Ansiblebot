@@ -37,6 +37,7 @@ brew_macos:
   - vim
   - wget
   - zsh
+  - zsh-autosuggestions
 
 brew_macos_home:
   - cuetools
@@ -100,6 +101,7 @@ linuxbrew:
   - fzf
   - neovim
   - vim
+  - zsh-autosuggestions
 
 #linuxbrew_ubuntu:
 #  - x

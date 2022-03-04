@@ -99,8 +99,8 @@ apt_ubuntu_tv:
 
 
 linuxbrew:
-  - fzf
   - gcc
+  - fzf
   - neovim
   - vim
   - zsh-autosuggestions

@@ -1,10 +1,10 @@
+- name: Get stats on {{ path_linuxbrew }}/bin/brew
+  ansible.builtin.stat:
+    path: "{{ path_linuxbrew }}/bin/brew"
+  register: brew_bin
+
 - name: Install Linuxbrew at {{ path_linuxbrew }}
   block:
-    - name: Get stats on {{ path_linuxbrew }}
-      ansible.builtin.stat:
-        path: "{{ path_linuxbrew }}"
-      register: stat_linuxbrew
-
     - name: Fetching https://api.github.com/repos/Homebrew/brew/releases/latest
       ansible.builtin.uri:
         url: https://api.github.com/repos/Homebrew/brew/releases/latest
@@ -15,11 +15,11 @@
     - name: Fetching {{ release.json.tarball_url }}
       ansible.builtin.get_url:
         url: "{{ release.json.tarball_url }}"
-        dest: "{{ path_tarball }}"
+        dest: "{{ path_linuxbrew_tar }}"
 
-    - name: Extract file {{ path_tarball }}
+    - name: Extract file {{ path_linuxbrew_tar }}
       ansible.builtin.unarchive:
-        src: "{{ path_tarball }}"
+        src: "{{ path_linuxbrew_tar }}"
         dest: /tmp
         remote_src: yes
         list_files: yes
@@ -31,7 +31,7 @@
         dest: "{{ path_linuxbrew }}"
         remote_src: yes
         mode: 0700
-  when: stat_linuxbrew.stat.isdir is not defined
+  when: brew_bin.stat.exists == false
 
 - name: Upgrade all Linuxbrew packages
   community.general.homebrew:

@@ -24,7 +24,43 @@
   ansible.builtin.command: xcode-select --install
   when: xcode_select.stdout != "/Library/Developer/CommandLineTools"
 
-# FIXME: Install Homebrew here.
+- name: Get stats on {{ path_homebrew }}/bin/brew
+  ansible.builtin.stat:
+    path: "{{ path_homebrew }}/bin/brew"
+  register: brew_bin
+
+- name: Install Homebrew at {{ path_homebrew }}
+  block:
+    - name: Fetching https://api.github.com/repos/Homebrew/brew/releases/latest
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/Homebrew/brew/releases/latest
+        return_content: yes
+      register: release
+      failed_when: release.json.zipball_url is not defined
+
+    - name: Fetching {{ release.json.zipball_url }}
+      ansible.builtin.get_url:
+        url: "{{ release.json.zipball_url }}"
+        dest: "{{ path_homebrew_zip }}"
+
+    - name: Extract file {{ path_homebrew_zip }}
+      ansible.builtin.unarchive:
+        src: "{{ path_homebrew_zip }}"
+        dest: /tmp
+        remote_src: yes
+        list_files: yes
+      register: unarchive
+
+    - name: Copy /tmp/{{ unarchive.files[0] }} to {{ path_homebrew }}
+      ansible.builtin.copy:
+        src: /tmp/{{ unarchive.files[0] }}
+        dest: "{{ path_homebrew }}"
+        remote_src: yes
+        owner: "{{ ansible_user_uid }}"
+        group: "{{ ansible_user_gid }}"
+        mode: 0700
+      become: yes
+  when: brew_bin.stat.exists == false
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
@@ -64,13 +100,13 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_brew }}/bin/ggrep"
-      dest: "{{ path_brew }}/bin/grep"
-    - src: "{{ path_brew }}/bin/gls"
-      dest: "{{ path_brew }}/bin/ls"
-    - src: "{{ path_brew }}/opt/fzf"
+    - src: "{{ path_homebrew }}/bin/ggrep"
+      dest: "{{ path_homebrew }}/bin/grep"
+    - src: "{{ path_homebrew }}/bin/gls"
+      dest: "{{ path_homebrew }}/bin/ls"
+    - src: "{{ path_homebrew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
-    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+    - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
       dest: "{{ path_home }}/.zsh/zsh-autosuggestions"
     - src: "{{ path_dotfiles }}/vscode/keybindings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
@@ -83,10 +119,10 @@
     - src: "{{ path_projects }}/Tim/tim"
       dest: "{{ path_home }}/Scripts/tim"
 
-- name: Add {{ path_brew }}/bin/zsh to /etc/shells
+- name: Add {{ path_homebrew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:
     path: /etc/shells
-    line: "{{ path_brew }}/bin/zsh"
+    line: "{{ path_homebrew }}/bin/zsh"
 
 
 - name: Execute misc 'defaults' and 'chflags' commands

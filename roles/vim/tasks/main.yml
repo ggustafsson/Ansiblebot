@@ -1,7 +1,7 @@
 - name: Git clone/pull {{ git_staticcolorscheme }}
   ansible.builtin.git:
     repo: "{{ git_staticcolorscheme }}"
-    dest: "{{ path_home }}/Projects/Static-Color-Scheme"
+    dest: "{{ path_projects }}/Static-Color-Scheme"
 
 - name: Create directories under {{ path_vim }}
   ansible.builtin.file:
@@ -22,11 +22,11 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_projects }}/Dot-Files/vimrc"
+    - src: "{{ path_dotfiles }}/vimrc"
       dest: "{{ path_home }}/.vimrc"
-    - src: "{{ path_projects }}/Dot-Files/vim/after"
+    - src: "{{ path_dotfiles }}/vim/after"
       dest: "{{ path_vim }}/after"
-    - src: "{{ path_projects }}/Dot-Files/vim/templates"
+    - src: "{{ path_dotfiles }}/vim/templates"
       dest: "{{ path_vim }}/templates"
     - src: "{{ path_projects }}/Static-Color-Scheme"
       dest: "{{ path_vim_pack_ggustafsson }}/Static-Color-Scheme"

@@ -121,6 +121,8 @@ pip_macos:
   - docker
   - flake8
   - pip
+  - pylint
+  - yamllint
 
 #pip_macos_home:
 #  - x
@@ -133,6 +135,8 @@ pip_linux:
   - ansible-lint
   - flake8
   - pip
+  - pylint
+  - yamllint
 
 pip_ubuntu: "{{ pip_linux }}"
 

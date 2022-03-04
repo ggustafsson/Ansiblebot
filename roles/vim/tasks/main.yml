@@ -3,18 +3,18 @@
     repo: "{{ git_staticcolorscheme }}"
     dest: "{{ path_home }}/Projects/Static-Color-Scheme"
 
-- name: Create directories under {{ path_home }}/.vim
+- name: Create directories under {{ path_vim }}
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: 0700
   loop:
-    - "{{ path_home }}/.vim"
-    - "{{ path_home }}/.vim/backup"
-    - "{{ path_home }}/.vim/swap"
-    - "{{ path_home }}/.vim/undo"
-    - "{{ path_home }}/.vim/pack/ggustafsson/start"
-    - "{{ path_home }}/.vim/pack/others/start"
+    - "{{ path_vim }}"
+    - "{{ path_vim }}/backup"
+    - "{{ path_vim }}/swap"
+    - "{{ path_vim }}/undo"
+    - "{{ path_vim_pack_ggustafsson }}"
+    - "{{ path_vim_pack_others }}"
 
 - name: Create symbolic links to Dot-Files, Vim colorscheme, etc
   ansible.builtin.file:
@@ -25,19 +25,18 @@
     - src: "{{ path_projects }}/Dot-Files/vimrc"
       dest: "{{ path_home }}/.vimrc"
     - src: "{{ path_projects }}/Dot-Files/vim/after"
-      dest: "{{ path_home }}/.vim/after"
+      dest: "{{ path_vim }}/after"
     - src: "{{ path_projects }}/Dot-Files/vim/templates"
-      dest: "{{ path_home }}/.vim/templates"
+      dest: "{{ path_vim }}/templates"
     - src: "{{ path_projects }}/Static-Color-Scheme"
-      dest: "{{ path_home }}/.vim/pack/ggustafsson/start/Static-Color-Scheme"
+      dest: "{{ path_vim_pack_ggustafsson }}/Static-Color-Scheme"
     - src: "{{ path_home }}/.local/share/fzf"
-      dest: "{{ path_home }}/.vim/pack/others/start/fzf"
+      dest: "{{ path_vim_pack_others }}/fzf"
 
-# TODO: Install vim-go another way since git repo is dev repo.
 - name: Git clone/pull misc Vim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_home }}/.vim/pack/others/start/{{ item.name }}"
+    dest: "{{ path_vim_pack_others }}/{{ item.name }}"
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
@@ -45,8 +44,6 @@
       url: https://github.com/junegunn/fzf.vim.git
     - name: syntastic
       url: https://github.com/vim-syntastic/syntastic.git
-    - name: vim-go
-      url: https://github.com/fatih/vim-go.git
     - name: vim-mundo
       url: https://github.com/simnalamburt/vim-mundo.git
 
@@ -67,8 +64,43 @@
       url: https://github.com/tpope/vim-speeddating.git
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
-  register: vim_plugins
+  notify: generate tags
 
-- name: Generate help tags for all Vim plugins
-  ansible.builtin.command: vim -c 'helptags ALL' -c q
-  when: vim_plugins.changed
+- name: Get stats on {{ path_vimgo }}
+  ansible.builtin.stat:
+    path: "{{ path_vimgo }}"
+  register: vim_go_plugin
+
+- name: Install vim-go at {{ path_vimgo }}
+  block:
+    - name: Fetching https://api.github.com/repos/fatih/vim-go/releases/latest
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/fatih/vim-go/releases/latest
+        return_content: yes
+      register: release
+      failed_when: release.json.zipball_url is not defined
+
+    - name: Fetching {{ release.json.zipball_url }}
+      ansible.builtin.get_url:
+        url: "{{ release.json.zipball_url }}"
+        dest: "{{ path_vimgo_zip }}"
+      when: release.json.zipball_url is defined
+
+    - name: Extract file {{ path_vimgo_zip }}
+      ansible.builtin.unarchive:
+        src: "{{ path_vimgo_zip }}"
+        dest: /tmp
+        remote_src: yes
+        list_files: yes
+      register: unarchive
+      when: release.json.zipball_url is defined
+
+    - name: Copy /tmp/{{ unarchive.files[0] }} to {{ path_vimgo }}
+      ansible.builtin.copy:
+        src: /tmp/{{ unarchive.files[0] }}
+        dest: "{{ path_vimgo }}"
+        remote_src: yes
+        mode: 0700
+      when: unarchive.changed
+  notify: generate tags
+  when: vim_go_plugin.stat.exists == false

@@ -38,12 +38,12 @@
     repo: "{{ item.url }}"
     dest: "{{ path_vim_pack_others }}/{{ item.name }}"
   loop:
+    - name: ale
+      url: https://github.com/dense-analysis/ale.git
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
-    - name: syntastic
-      url: https://github.com/vim-syntastic/syntastic.git
     - name: vim-mundo
       url: https://github.com/simnalamburt/vim-mundo.git
 

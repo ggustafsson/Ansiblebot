@@ -1,15 +1,15 @@
 - name: Upgrade all APT packages
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     upgrade: full
-    autoremove: yes
-  become: yes
+    autoremove: true
+  become: true
 
 - name: Install APT packages from list 'apt_ubuntu'
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu }}"
     state: latest
-  become: yes
+  become: true
   when: apt_ubuntu is defined
 
 - name: Install Linuxbrew packages from list 'linuxbrew_ubuntu'
@@ -32,5 +32,5 @@
     owner: root
     group: root
     mode: 0644
-  become: yes
+  become: true
   notify: restart sshd

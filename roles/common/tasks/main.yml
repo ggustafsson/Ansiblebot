@@ -1,7 +1,7 @@
 - name: Set hostname to {{ hostname }}
   ansible.builtin.hostname:
     name: "{{ hostname }}"
-  become: yes
+  become: true
 
 
 - name: Set misc directory permissions
@@ -62,7 +62,7 @@
     - src: gitignore_global
       dest: "{{ path_home }}/.gitignore_global"
     - src: pylintrc
-      dest: "{{ path_home }}/.pylintrc"
+      dest: "{{ path_home }}/.config/pylintrc"
     - src: ssh/config
       dest: "{{ path_home }}/.ssh/config"
     - src: tmux.conf

@@ -76,7 +76,7 @@
     - name: Fetching https://api.github.com/repos/fatih/vim-go/releases/latest
       ansible.builtin.uri:
         url: https://api.github.com/repos/fatih/vim-go/releases/latest
-        return_content: yes
+        return_content: true
       register: release
       failed_when: release.json.zipball_url is not defined
 
@@ -90,8 +90,8 @@
       ansible.builtin.unarchive:
         src: "{{ path_vimgo_zip }}"
         dest: /tmp
-        remote_src: yes
-        list_files: yes
+        remote_src: true
+        list_files: true
       register: unarchive
       when: release.json.zipball_url is defined
 
@@ -99,7 +99,7 @@
       ansible.builtin.copy:
         src: /tmp/{{ unarchive.files[0] }}
         dest: "{{ path_vimgo }}"
-        remote_src: yes
+        remote_src: true
         mode: 0700
       when: unarchive.changed
   notify: generate tags

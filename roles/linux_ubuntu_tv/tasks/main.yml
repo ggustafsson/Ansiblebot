@@ -2,7 +2,7 @@
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu_tv }}"
     state: latest
-  become: yes
+  become: true
   when: apt_ubuntu_tv is defined
 
 - name: Install Homebrew packages from list 'linuxbrew_ubuntu_tv'
@@ -25,7 +25,7 @@
     owner: root
     group: root
     mode: 0644
-  become: yes
+  become: true
   notify: restart sshd
 
 - name: Set AutomaticLogin in /etc/gdm3/custom.conf
@@ -33,7 +33,7 @@
     path: /etc/gdm3/custom.conf
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-  become: yes
+  become: true
   loop:
     - regexp: '^#  AutomaticLoginEnable = true'
       line: AutomaticLoginEnable = true

@@ -2,7 +2,7 @@
   ansible.builtin.apt:
     pkg: "{{ apt_ubuntu_vm }}"
     state: latest
-  become: yes
+  become: true
   when: apt_ubuntu_vm is defined
 
 - name: Install Homebrew packages from list 'linuxbrew_ubuntu_vm'

@@ -11,7 +11,7 @@
     owner: root
     group: wheel
     mode: 0640
-  become: yes
+  become: true
 
 
 - name: Check if Xcode Command Line Tools is installed
@@ -34,7 +34,7 @@
     - name: Fetching https://api.github.com/repos/Homebrew/brew/releases/latest
       ansible.builtin.uri:
         url: https://api.github.com/repos/Homebrew/brew/releases/latest
-        return_content: yes
+        return_content: true
       register: release
       failed_when: release.json.zipball_url is not defined
 
@@ -48,8 +48,8 @@
       ansible.builtin.unarchive:
         src: "{{ path_homebrew_zip }}"
         dest: /tmp
-        remote_src: yes
-        list_files: yes
+        remote_src: true
+        list_files: true
       register: unarchive
       when: release.json.zipball_url is defined
 
@@ -57,18 +57,18 @@
       ansible.builtin.copy:
         src: /tmp/{{ unarchive.files[0] }}
         dest: "{{ path_homebrew }}"
-        remote_src: yes
+        remote_src: true
         owner: "{{ ansible_user_uid }}"
         group: "{{ ansible_user_gid }}"
         mode: 0700
-      become: yes
+      become: true
       when: unarchive.changed
   when: brew_bin.stat.exists == false
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
-    update_homebrew: yes
-    upgrade_all: yes
+    update_homebrew: true
+    upgrade_all: true
 
 - name: Install Homebrew packages from list 'brew_macos'
   community.general.homebrew:
@@ -165,10 +165,10 @@
   ansible.builtin.command:
     cmd: "{{ item }}"
   loop:
-    #- defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys
+    # - defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys
     - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
-    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
-    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
+    # - defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
+    # - defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
   when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
 
 

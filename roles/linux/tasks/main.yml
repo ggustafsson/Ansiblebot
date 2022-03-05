@@ -8,7 +8,7 @@
     - name: Fetching https://api.github.com/repos/Homebrew/brew/releases/latest
       ansible.builtin.uri:
         url: https://api.github.com/repos/Homebrew/brew/releases/latest
-        return_content: yes
+        return_content: true
       register: release
       failed_when: release.json.tarball_url is not defined
 
@@ -22,8 +22,8 @@
       ansible.builtin.unarchive:
         src: "{{ path_linuxbrew_tar }}"
         dest: /tmp
-        remote_src: yes
-        list_files: yes
+        remote_src: true
+        list_files: true
       register: unarchive
       when: release.json.tarball_url is defined
 
@@ -31,15 +31,15 @@
       ansible.builtin.copy:
         src: /tmp/{{ unarchive.files[0] }}
         dest: "{{ path_linuxbrew }}"
-        remote_src: yes
+        remote_src: true
         mode: 0700
       when: unarchive.changed
   when: brew_bin.stat.exists == false
 
 - name: Upgrade all Linuxbrew packages
   community.general.homebrew:
-    update_homebrew: yes
-    upgrade_all: yes
+    update_homebrew: true
+    upgrade_all: true
 
 - name: Install Linuxbrew packages from list 'linuxbrew'
   community.general.homebrew:

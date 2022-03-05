@@ -36,6 +36,7 @@
   loop:
     - "{{ path_projects }}"
     - "{{ path_home }}/.config"
+    - "{{ path_home }}/.config/yamllint"
     - "{{ path_home }}/.local"
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
@@ -60,10 +61,14 @@
       dest: "{{ path_home }}/.gitconfig"
     - src: gitignore_global
       dest: "{{ path_home }}/.gitignore_global"
+    - src: pylintrc
+      dest: "{{ path_home }}/.pylintrc"
     - src: ssh/config
       dest: "{{ path_home }}/.ssh/config"
     - src: tmux.conf
       dest: "{{ path_home }}/.tmux.conf"
+    - src: yamllint/config
+      dest: "{{ path_home }}/.config/yamllint/config"
     - src: zlogin
       dest: "{{ path_home }}/.zlogin"
     - src: zshenv

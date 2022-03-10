@@ -5,4 +5,5 @@
     - linux
     - linux_ubuntu
     - linux_ubuntu_vm
+    - tmux
     - vim

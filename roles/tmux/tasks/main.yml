@@ -1,0 +1,27 @@
+- name: Create directory {{ path_tmux }}
+  ansible.builtin.file:
+    path: "{{ path_tmux }}"
+    state: directory
+    mode: 0700
+
+- name: Create symbolic link to {{ path_dotfiles }}/tmux.conf
+  ansible.builtin.file:
+    src: "{{ path_dotfiles }}/tmux.conf"
+    dest: "{{ path_home }}/.tmux.conf"
+    state: link
+
+- name: Git clone/pull misc Tmux plugins
+  ansible.builtin.git:
+    repo: "{{ item.url }}"
+    dest: "{{ path_tmux }}/{{ item.name }}"
+  loop:
+    - name: tmux-pain-control
+      url: https://github.com/tmux-plugins/tmux-pain-control.git
+    - name: tmux-prefix-highlight
+      url: https://github.com/tmux-plugins/tmux-prefix-highlight.git
+    - name: tmux-resurrect
+      url: https://github.com/tmux-plugins/tmux-resurrect.git
+    - name: tmux-sessionist
+      url: https://github.com/tmux-plugins/tmux-sessionist.git
+    - name: tmux-yank
+      url: https://github.com/tmux-plugins/tmux-yank.git

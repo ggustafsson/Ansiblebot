@@ -1,0 +1,4 @@
+- name: Setup Tmux environment
+  hosts: all
+  roles:
+    - tmux

@@ -56,7 +56,6 @@ cask_macos:
   - docker
   - google-chrome
   - hammerspoon
-  - visual-studio-code
 
 cask_macos_home:
   - 1password
@@ -98,7 +97,7 @@ apt_ubuntu_tv:
 #   - x
 
 
-linuxbrew:
+linuxbrew_linux:
   - gcc
   - fzf
   - neovim
@@ -115,14 +114,16 @@ linuxbrew:
 #   - x
 
 
-pip_macos:
+pip_common:
   - ansible
   - ansible-lint
-  - docker
   - flake8
   - pip
   - pylint
   - yamllint
+
+pip_macos:
+  - docker
 
 # pip_macos_home:
 #   - x
@@ -130,15 +131,8 @@ pip_macos:
 # pip_macos_work:
 #   - x
 
-pip_linux:
-  - ansible
-  - ansible-lint
-  - flake8
-  - pip
-  - pylint
-  - yamllint
-
-pip_ubuntu: "{{ pip_linux }}"
+# pip_ubuntu:
+#   - x
 
 # pip_ubuntu_tv:
 #   - x

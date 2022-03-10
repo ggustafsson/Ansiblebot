@@ -18,6 +18,12 @@
     state: latest
   when: linuxbrew_ubuntu is defined
 
+- name: Install Pip packages from list 'pip_common'
+  ansible.builtin.pip:
+    name: "{{ pip_common }}"
+    state: latest
+  when: pip_common is defined
+
 - name: Install Pip packages from list 'pip_ubuntu'
   ansible.builtin.pip:
     name: "{{ pip_ubuntu }}"

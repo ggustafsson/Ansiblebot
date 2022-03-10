@@ -41,11 +41,11 @@
     update_homebrew: true
     upgrade_all: true
 
-- name: Install Linuxbrew packages from list 'linuxbrew'
+- name: Install Linuxbrew packages from list 'linuxbrew_linux'
   community.general.homebrew:
-    name: "{{ linuxbrew }}"
+    name: "{{ linuxbrew_linux }}"
     state: latest
-  when: linuxbrew is defined
+  when: linuxbrew_linux is defined
 
 
 - name: Create misc symbolic links

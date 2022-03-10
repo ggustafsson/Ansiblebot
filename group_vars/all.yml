@@ -49,8 +49,8 @@ brew_macos_home:
   - svtplay-dl
   - youtube-dl
 
-# brew_macos_work:
-#   - x
+#brew_macos_work:
+#  - x
 
 cask_macos:
   - docker
@@ -93,8 +93,8 @@ apt_ubuntu_tv:
   - kodi
   - sshguard
 
-# apt_ubuntu_vm:
-#   - x
+#apt_ubuntu_vm:
+#  - x
 
 
 linuxbrew_linux:
@@ -104,14 +104,14 @@ linuxbrew_linux:
   - vim
   - zsh-autosuggestions
 
-# linuxbrew_ubuntu:
-#   - x
+#linuxbrew_ubuntu:
+#  - x
 
-# linuxbrew_ubuntu_tv:
-#   - x
+#linuxbrew_ubuntu_tv:
+#  - x
 
-# linuxbrew_ubuntu_vm:
-#   - x
+#linuxbrew_ubuntu_vm:
+#  - x
 
 
 pip_common:
@@ -125,17 +125,17 @@ pip_common:
 pip_macos:
   - docker
 
-# pip_macos_home:
-#   - x
+#pip_macos_home:
+#  - x
 
-# pip_macos_work:
-#   - x
+#pip_macos_work:
+#  - x
 
-# pip_ubuntu:
-#   - x
+#pip_ubuntu:
+#  - x
 
-# pip_ubuntu_tv:
-#   - x
+#pip_ubuntu_tv:
+#  - x
 
-# pip_ubuntu_vm:
-#   - x
+#pip_ubuntu_vm:
+#  - x

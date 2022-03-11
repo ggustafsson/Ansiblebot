@@ -15,8 +15,6 @@
     repo: "{{ item.url }}"
     dest: "{{ path_tmux }}/{{ item.name }}"
   loop:
-    - name: tmux-pain-control
-      url: https://github.com/tmux-plugins/tmux-pain-control.git
     - name: tmux-prefix-highlight
       url: https://github.com/tmux-plugins/tmux-prefix-highlight.git
     - name: tmux-resurrect

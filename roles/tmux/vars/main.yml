@@ -1,1 +1,0 @@
-path_tmux: "{{ path_home }}/.tmux"

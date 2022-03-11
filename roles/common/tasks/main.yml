@@ -65,6 +65,8 @@
       dest: "{{ path_home }}/.config/pylintrc"
     - src: ssh/config
       dest: "{{ path_home }}/.ssh/config"
+    - src: tmux.conf
+      dest: "{{ path_home }}/.tmux.conf"
     - src: yamllint/config
       dest: "{{ path_home }}/.config/yamllint/config"
     - src: zlogin

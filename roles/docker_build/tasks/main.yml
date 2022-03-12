@@ -1,0 +1,12 @@
+- name: Build Docker image {{ docker_base }} based on {{ docker_image }}
+  community.docker.docker_container:
+    name: "{{ docker_base }}"
+    image: "{{ docker_image }}"
+    state: started
+    command: sleep infinity
+
+- name: Add Docker container {{ docker_base }} to Ansible hosts inventory
+  ansible.builtin.add_host:
+    name: "{{ docker_base }}"
+    ansible_connection: docker
+    ansible_ssh_user: root

@@ -1,0 +1,36 @@
+- name: Install Python for Ansible
+  ansible.builtin.raw: apt update && apt install python3 -y
+  when: true
+
+- name: Execute command 'unminimize'
+  ansible.builtin.shell: yes | unminimize
+  when: true
+
+- name: Install misc packages for Ansible
+  ansible.builtin.apt:
+    pkg:
+      - apt-utils
+      - build-essential
+      - curl
+      - git
+      - sudo
+    state: latest
+
+- name: Set password for user root
+  ansible.builtin.user:
+    name: root
+    password: "{{ user_password }}"
+
+- name: Add user {{ user_name }} with primary group {{ user_group }}
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    group: "{{ user_group }}"
+    groups: "{{ user_groups }}"
+    shell: "{{ user_shell }}"
+    password: "{{ user_password }}"
+
+- name: Re-add Docker container {{ docker_base }} to Ansible hosts inventory
+  ansible.builtin.add_host:
+    name: "{{ docker_base }}"
+    ansible_connection: docker
+    ansible_ssh_user: "{{ user_name }}"

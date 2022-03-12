@@ -40,11 +40,13 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
+    path: "{{ path_linuxbrew }}/bin"
 
 - name: Install Linuxbrew packages from list 'linuxbrew_linux'
   community.general.homebrew:
     name: "{{ linuxbrew_linux }}"
     state: latest
+    path: "{{ path_linuxbrew }}/bin"
   when: linuxbrew_linux is defined
 
 

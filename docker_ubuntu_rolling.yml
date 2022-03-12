@@ -1,0 +1,41 @@
+- name: Build image
+  hosts: localhost
+  gather_facts: false
+  vars:
+    docker_base: ubuntu-rolling-base
+    docker_image: ubuntu:rolling
+  roles:
+    - docker_build
+
+- name: Bootstrap Ubuntu
+  hosts: ubuntu-rolling-base
+  gather_facts: false
+  vars:
+    docker_base: ubuntu-rolling-base
+    user_name: gleg
+    user_group: users
+    user_groups: sudo
+    user_shell: /bin/zsh
+    user_password: $6$XyhyxtjslO9vryoo$xg3yUcbw91HobO8iSNY//ZKXuIajISEHLK0HinOcgwNG3WUlSQyLzOcdmeFvB2B0F0D2otmMYXW4ei2Y4wuaQ.
+  roles:
+    - docker_ubuntu
+
+- name: Setup Ubuntu
+  hosts: ubuntu-rolling-base
+  vars:
+    hostname: ubuntu-lxc1
+  roles:
+    - common
+    - linux
+    - linux_ubuntu
+    - linux_ubuntu_vm
+    - common_vim
+
+- name: Snapshot container
+  hosts: localhost
+  gather_facts: false
+  vars:
+    docker_base: ubuntu-rolling-base
+    docker_build: ubuntu-lxc1
+  roles:
+    - docker_snapshot

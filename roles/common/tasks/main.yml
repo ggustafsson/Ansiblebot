@@ -2,13 +2,14 @@
   ansible.builtin.hostname:
     name: "{{ hostname }}"
   become: true
+  when: ansible_facts.virtualization_type != "docker"
 
 
 - name: Set misc directory permissions
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ ansible_user_id }}"
     mode: 0700
   loop:
     - "{{ path_home }}"
@@ -23,7 +24,7 @@
   ansible.builtin.file:
     path: "{{ path_home }}/.ssh/id_ed25519"
     state: file
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ ansible_user_id }}"
     mode: 0600
   when: id_ed25519.stat.exists
 

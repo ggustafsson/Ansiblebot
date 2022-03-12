@@ -1,4 +1,4 @@
-path_home: "{{ ansible_env.HOME }}"
+path_home: "{{ ansible_user_dir }}"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dot-Files"
 
@@ -72,26 +72,41 @@ cask_macos_work:
 
 apt_ubuntu:
   - build-essential
+  - cuetools
+  - curl
   - dialog
   - dnsutils
   - figlet
   - flac
+  - git
   - golang
   - html2text
+  - imagemagick
+  - lame
+  - less
   - links
   - nmap
+  - openssh-server
   - python3-pip
+  - renameutils
   - ripgrep
   - ruby
   - shellcheck
+  - shntool
   - tidy
+  - tmux
   - tree
+  - ubuntu-standard
+  - vim-nox
   - zsh
 
 apt_ubuntu_tv:
   - abcde
+  - ffmpeg
   - kodi
   - sshguard
+  - svtplay-dl
+  - youtube-dl
 
 #apt_ubuntu_vm:
 #  - x

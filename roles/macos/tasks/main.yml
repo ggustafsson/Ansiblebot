@@ -18,6 +18,8 @@
     repo: "{{ item.url }}"
     dest: "{{ path_projects }}/{{ item.name }}"
   loop:
+    - name: electricboogaloo.16colors
+      url: "{{ git_electricboogaloo_16colors }}"
     - name: Project-Assets
       url: "{{ git_projectassets }}"
     - name: Tim

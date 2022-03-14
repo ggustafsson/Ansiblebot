@@ -4,3 +4,5 @@ path_vim_pack_others: "{{ path_vim }}/pack/others/start"
 
 path_vimgo: "{{ path_vim_pack_others }}/vim-go"
 path_vimgo_zip: /tmp/vim-go.zip
+
+git_electricboogaloo_vim: https://github.com/ggustafsson/electric-boogaloo.vim.git

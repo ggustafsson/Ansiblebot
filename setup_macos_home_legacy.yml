@@ -3,8 +3,9 @@
   vars:
     hostname: Coruscant
     git_dotfiles: git@github.com:ggustafsson/Dot-Files.git
+    git_electricboogaloo_16colors: git@github.com:ggustafsson/Static-Color-Scheme.git
+    git_electricboogaloo_vim: git@github.com:ggustafsson/Static-Color-Scheme.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
-    git_staticcolorscheme: git@github.com:ggustafsson/Static-Color-Scheme.git
     git_tim: git@github.com:ggustafsson/Tim.git
     path_homebrew: /usr/local
   roles:

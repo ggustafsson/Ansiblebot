@@ -1,7 +1,7 @@
-- name: Git clone/pull {{ git_staticcolorscheme }}
+- name: Git clone/pull {{ git_electricboogaloo_vim }}
   ansible.builtin.git:
-    repo: "{{ git_staticcolorscheme }}"
-    dest: "{{ path_projects }}/Static-Color-Scheme"
+    repo: "{{ git_electricboogaloo_vim }}"
+    dest: "{{ path_projects }}/electric-boogaloo.vim"
 
 - name: Create directories under {{ path_vim }}
   ansible.builtin.file:

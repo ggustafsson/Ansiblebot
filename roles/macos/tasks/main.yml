@@ -131,6 +131,7 @@
   ansible.builtin.lineinfile:
     path: /etc/shells
     line: "{{ path_homebrew }}/bin/zsh"
+  become: true
 
 
 - name: Execute misc 'defaults' and 'chflags' commands

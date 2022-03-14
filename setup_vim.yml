@@ -1,4 +1,0 @@
-- name: Setup Vim environment
-  hosts: all
-  roles:
-    - common_vim

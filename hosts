@@ -4,6 +4,8 @@ ubuntu-tv1
 [ubuntu_vm]
 ubuntu-lxc1
 ubuntu-lxc2
+ubuntu-vm1
+ubuntu-vm2
 
 [ubuntu:children]
 ubuntu_tv

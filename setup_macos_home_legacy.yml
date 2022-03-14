@@ -1,0 +1,10 @@
+- name: Setup macOS system - Home Legacy
+  hosts: macos
+  vars:
+    hostname: Coruscant
+    path_homebrew: /usr/local
+  roles:
+    - common
+    - macos
+    - macos_home
+    - common_vim

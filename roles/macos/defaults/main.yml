@@ -1,5 +1,5 @@
 # TODO: Adjust path after moving over to new MacBook Pro.
-path_homebrew: /usr/local
+path_homebrew: /opt/homebrew
 path_homebrew_zip: /tmp/brew.zip
 
 pip_exec: "{{ path_homebrew }}/bin/pip3"

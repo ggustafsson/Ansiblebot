@@ -1,4 +1,6 @@
 path_homebrew: /opt/homebrew
 path_homebrew_zip: /tmp/brew.zip
 
+path_wallpaper: /System/Library/Desktop Pictures/Solar Gradients.heic
+
 pip_exec: "{{ path_homebrew }}/bin/pip3"

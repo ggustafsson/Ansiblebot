@@ -2,10 +2,6 @@
   hosts: macos
   vars:
     hostname: Twoson
-    git_dotfiles: https://github.com/ggustafsson/Dot-Files.git
-    git_projectassets: https://github.com/ggustafsson/Project-Assets.git
-    git_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git
-    git_tim: https://github.com/ggustafsson/Tim.git
   roles:
     - common
     - macos

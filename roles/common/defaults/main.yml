@@ -1,0 +1,8 @@
+path_home: "{{ ansible_user_dir }}"
+path_projects: "{{ path_home }}/Projects"
+path_dotfiles: "{{ path_projects }}/Dot-Files"
+
+git_dotfiles: https://github.com/ggustafsson/Dot-Files.git
+git_projectassets: https://github.com/ggustafsson/Project-Assets.git
+git_staticcolorscheme: https://github.com/ggustafsson/Static-Color-Scheme.git
+git_tim: https://github.com/ggustafsson/Tim.git

@@ -19,9 +19,9 @@
     dest: "{{ path_projects }}/{{ item.name }}"
   loop:
     - name: Project-Assets
-      url: git@github.com:ggustafsson/Project-Assets.git
+      url: "{{ git_projectassets }}"
     - name: Tim
-      url: git@github.com:ggustafsson/Tim.git
+      url: "{{ git_tim }}"
 
 
 - name: Get stats on {{ path_homebrew }}/bin/brew

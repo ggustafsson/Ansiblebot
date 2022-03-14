@@ -1,2 +1,4 @@
 git_dotfiles: git@github.com:ggustafsson/Dot-Files.git
+git_projectassets: git@github.com:ggustafsson/Project-Assets.git
 git_staticcolorscheme: git@github.com:ggustafsson/Static-Color-Scheme.git
+git_tim: git@github.com:ggustafsson/Tim.git

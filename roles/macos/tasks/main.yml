@@ -14,16 +14,6 @@
   become: true
 
 
-- name: Check if Xcode Command Line Tools is installed
-  ansible.builtin.command: xcode-select -p
-  register: xcode_select
-  changed_when: false
-
-# TODO: Verify after moving over to new MacBook Pro.
-- name: Install Xcode Command Line Tools
-  ansible.builtin.command: xcode-select --install
-  when: xcode_select.stdout != "/Library/Developer/CommandLineTools"
-
 - name: Get stats on {{ path_homebrew }}/bin/brew
   ansible.builtin.stat:
     path: "{{ path_homebrew }}/bin/brew"

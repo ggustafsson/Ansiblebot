@@ -43,36 +43,45 @@
     - "{{ path_home }}/.local/share"
     - "{{ path_home }}/.zsh"
 
-- name: Git clone/pull {{ git_dotfiles }}
+- name: Git clone/pull misc projects
   ansible.builtin.git:
-    repo: "{{ git_dotfiles }}"
-    dest: "{{ path_dotfiles }}"
+    repo: "{{ item.url }}"
+    dest: "{{ item.name }}"
+  loop:
+    - name: "{{ path_dotfiles }}"
+      url: "{{ git_dotfiles }}"
+    - name: "{{ path_projects }}/Tim"
+      url: "{{ git_tim }}"
 
-- name: Create symbolic links to Dot-Files
+- name: Create misc symbolic links
   ansible.builtin.file:
-    src: "{{ path_dotfiles }}/{{ item.src }}"
+    src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: Scripts
+    - src: "{{ path_dotfiles }}/Scripts"
       dest: "{{ path_home }}/Scripts"
-    - src: figlet
+    - src: "{{ path_dotfiles }}/figlet"
       dest: "{{ path_home }}/.figlet"
-    - src: gitconfig
+    - src: "{{ path_dotfiles }}/gitconfig"
       dest: "{{ path_home }}/.gitconfig"
-    - src: gitignore_global
+    - src: "{{ path_dotfiles }}/gitignore_global"
       dest: "{{ path_home }}/.gitignore_global"
-    - src: pylintrc
+    - src: "{{ path_dotfiles }}/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
-    - src: ssh/config
+    - src: "{{ path_dotfiles }}/ssh/config"
       dest: "{{ path_home }}/.ssh/config"
-    - src: tmux.conf
+    - src: "{{ path_projects }}/Tim/tim"
+      dest: "{{ path_home }}/Scripts/tim"
+    - src: "{{ path_dotfiles }}/timrc"
+      dest: "{{ path_home }}/.timrc"
+    - src: "{{ path_dotfiles }}/tmux.conf"
       dest: "{{ path_home }}/.tmux.conf"
-    - src: yamllint/config
+    - src: "{{ path_dotfiles }}/yamllint/config"
       dest: "{{ path_home }}/.config/yamllint/config"
-    - src: zlogin
+    - src: "{{ path_dotfiles }}/zlogin"
       dest: "{{ path_home }}/.zlogin"
-    - src: zshenv
+    - src: "{{ path_dotfiles }}/zshenv"
       dest: "{{ path_home }}/.zshenv"
-    - src: zshrc
+    - src: "{{ path_dotfiles }}/zshrc"
       dest: "{{ path_home }}/.zshrc"

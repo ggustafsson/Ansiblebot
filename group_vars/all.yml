@@ -102,7 +102,6 @@ apt_ubuntu_tv:
 
 
 linuxbrew_linux:
-  - gcc
   - fzf
   - neovim
   - vim

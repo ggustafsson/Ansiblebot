@@ -22,8 +22,6 @@
       url: "{{ git_electricboogaloo_16colors }}"
     - name: Project-Assets
       url: "{{ git_projectassets }}"
-    - name: Tim
-      url: "{{ git_tim }}"
 
 
 - name: Get stats on {{ path_homebrew }}/bin/brew
@@ -124,8 +122,6 @@
       dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
     - src: "{{ path_dotfiles }}/Misc/tmux-256color"
       dest: "{{ path_home }}/.terminfo/74/tmux-256color"
-    - src: "{{ path_projects }}/Tim/tim"
-      dest: "{{ path_home }}/Scripts/tim"
 
 - name: Add {{ path_homebrew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:

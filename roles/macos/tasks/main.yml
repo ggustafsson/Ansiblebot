@@ -13,6 +13,16 @@
     mode: 0640
   become: true
 
+- name: Git clone/pull misc projects
+  ansible.builtin.git:
+    repo: "{{ item.url }}"
+    dest: "{{ path_projects }}/{{ item.name }}"
+  loop:
+    - name: Project-Assets
+      url: git@github.com:ggustafsson/Project-Assets.git
+    - name: Tim
+      url: git@github.com:ggustafsson/Tim.git
+
 
 - name: Get stats on {{ path_homebrew }}/bin/brew
   ansible.builtin.stat:

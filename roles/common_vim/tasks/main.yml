@@ -28,8 +28,8 @@
       dest: "{{ path_vim }}/after"
     - src: "{{ path_dotfiles }}/vim/templates"
       dest: "{{ path_vim }}/templates"
-    - src: "{{ path_projects }}/Static-Color-Scheme"
-      dest: "{{ path_vim_pack_ggustafsson }}/Static-Color-Scheme"
+    - src: "{{ path_projects }}/electric-boogaloo.vim"
+      dest: "{{ path_vim_pack_ggustafsson }}/electric-boogaloo.vim"
     - src: "{{ path_home }}/.local/share/fzf"
       dest: "{{ path_vim_pack_others }}/fzf"
 

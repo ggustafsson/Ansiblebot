@@ -26,7 +26,6 @@ brew_macos:
   - nmap
   - openssh
   - python
-  - renameutils
   - ripgrep
   - rsync
   - ruby
@@ -38,6 +37,7 @@ brew_macos:
   - wget
   - zsh
   - zsh-autosuggestions
+  #- renameutils # XXX: Does not work on ARM64.
 
 brew_macos_home:
   - cuetools

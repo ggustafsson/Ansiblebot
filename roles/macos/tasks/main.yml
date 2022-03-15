@@ -78,17 +78,16 @@
   when: pip_macos is defined
 
 
-- name: Create directory {{ path_home }}/.terminfo/74
+- name: Create misc directories
   ansible.builtin.file:
-    path: "{{ path_home }}/.terminfo/74"
+    path: "{{ item }}"
     state: directory
     mode: 0700
-
-- name: Create directory {{ path_home }}/Library/Application Support/Code/User"
-  ansible.builtin.file:
-    path: "{{ path_home }}/Library/Application Support/Code/User"
-    state: directory
-    mode: 0700
+  loop:
+    - "{{ path_home }}/.hammerspoon"
+    - "{{ path_home }}/.terminfo/74"
+    - "{{ path_home }}/Library/Application Support/Code/User"
+    - "{{ path_home }}/Library/Desktop Pictures"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -100,6 +99,10 @@
       dest: "{{ path_homebrew }}/bin/grep"
     - src: "{{ path_homebrew }}/bin/gls"
       dest: "{{ path_homebrew }}/bin/ls"
+    - src: "{{ path_dotfiles }}/hammerspoon/init.lua"
+      dest: "{{ path_home }}/.hammerspoon/init.lua"
+    - src: "{{ path_dotfiles }}/hammerspoon/windows.lua"
+      dest: "{{ path_home }}/.hammerspoon/windows.lua"
     - src: "{{ path_homebrew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
     - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
@@ -127,6 +130,11 @@
     - chflags nohidden ~/Library
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
+
+- name: Fetch {{ url_wallpaper }}
+  ansible.builtin.get_url:
+    url: "{{ url_wallpaper }}"
+    dest: "{{ path_wallpaper }}"
 
 - name: Check desktop wallpaper
   ansible.builtin.command:

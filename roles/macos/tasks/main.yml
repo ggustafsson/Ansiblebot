@@ -24,46 +24,15 @@
       url: "{{ git_projectassets }}"
 
 
-- name: Get stats on {{ path_homebrew }}/bin/brew
-  ansible.builtin.stat:
-    path: "{{ path_homebrew }}/bin/brew"
-  register: brew_bin
-
-- name: Install Homebrew at {{ path_homebrew }}
-  block:
-    - name: Fetching https://api.github.com/repos/Homebrew/brew/releases/latest
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/Homebrew/brew/releases/latest
-        return_content: true
-      register: release
-      failed_when: release.json.zipball_url is not defined
-
-    - name: Fetching {{ release.json.zipball_url }}
-      ansible.builtin.get_url:
-        url: "{{ release.json.zipball_url }}"
-        dest: "{{ path_homebrew_zip }}"
-      when: release.json.zipball_url is defined
-
-    - name: Extract file {{ path_homebrew_zip }}
-      ansible.builtin.unarchive:
-        src: "{{ path_homebrew_zip }}"
-        dest: /tmp
-        remote_src: true
-        list_files: true
-      register: unarchive
-      when: release.json.zipball_url is defined
-
-    - name: Copy /tmp/{{ unarchive.files[0] }} to {{ path_homebrew }}
-      ansible.builtin.copy:
-        src: /tmp/{{ unarchive.files[0] }}
-        dest: "{{ path_homebrew }}"
-        remote_src: true
-        owner: "{{ ansible_user_uid }}"
-        group: "{{ ansible_user_gid }}"
-        mode: 0700
-      become: true
-      when: unarchive.changed
-  when: brew_bin.stat.exists == false
+- name: Git clone/pull Homebrew repos
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - repo: https://github.com/Homebrew/brew.git
+      dest: "{{ path_homebrew }}"
+    - repo: https://github.com/Homebrew/homebrew-core
+      dest: "{{ path_homebrew }}/Library/Taps/homebrew/homebrew-core"
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:

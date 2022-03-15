@@ -84,6 +84,12 @@
     state: directory
     mode: 0700
 
+- name: Create directory {{ path_home }}/Library/Application Support/Code/User"
+  ansible.builtin.file:
+    path: "{{ path_home }}/Library/Application Support/Code/User"
+    state: directory
+    mode: 0700
+
 - name: Create misc symbolic links
   ansible.builtin.file:
     src: "{{ item.src }}"

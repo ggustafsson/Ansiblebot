@@ -98,6 +98,10 @@
       dest: "{{ path_home }}/.local/share/fzf"
     - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
       dest: "{{ path_home }}/.zsh/zsh-autosuggestions"
+    - src: "{{ path_dotfiles }}/vscode/keybindings.json"
+      dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
+    - src: "{{ path_dotfiles }}/vscode/settings.json"
+      dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
     - src: "{{ path_dotfiles }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
       dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
     - src: "{{ path_dotfiles }}/Misc/tmux-256color"
@@ -115,6 +119,7 @@
     cmd: "{{ item }}"
   loop:
     - chflags nohidden ~/Library
+    - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 
 - name: Check desktop wallpaper
@@ -151,3 +156,26 @@
     #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
     #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
   when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
+
+
+- name: Check installed Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --list-extensions
+  register: code_extensions
+  changed_when: false
+
+- name: Install Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --install-extension "{{ item }}"
+  loop:
+    - asvetliakov.vscode-neovim
+    - golang.go
+    - ms-azuretools.vscode-docker
+    - ms-python.python
+    - ms-python.vscode-pylance
+    - ms-vscode-remote.remote-containers
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - redhat.ansible
+    - redhat.vscode-yaml
+  when: item not in code_extensions.stdout

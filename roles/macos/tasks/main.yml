@@ -24,6 +24,15 @@
       url: "{{ git_projectassets }}"
 
 
+- name: Create directory {{ path_homebrew }}
+  ansible.builtin.file:
+    path: "{{ path_homebrew }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+    mode: 0700
+  become: true
+
 - name: Git clone/pull Homebrew repos
   ansible.builtin.git:
     repo: "{{ item.repo }}"

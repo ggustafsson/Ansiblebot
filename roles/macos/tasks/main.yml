@@ -33,6 +33,8 @@
       dest: "{{ path_homebrew }}"
     - repo: https://github.com/Homebrew/homebrew-core
       dest: "{{ path_homebrew }}/Library/Taps/homebrew/homebrew-core"
+    - repo: https://github.com/Homebrew/homebrew-cask
+      dest: "{{ path_homebrew }}/Library/Taps/homebrew/homebrew-cask"
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:

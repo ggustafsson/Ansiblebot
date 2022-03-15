@@ -84,7 +84,6 @@
     state: directory
     mode: 0700
   loop:
-    - "{{ path_home }}/.hammerspoon"
     - "{{ path_home }}/.terminfo/74"
     - "{{ path_home }}/Library/Application Support/Code/User"
     - "{{ path_home }}/Library/Desktop Pictures"
@@ -99,10 +98,8 @@
       dest: "{{ path_homebrew }}/bin/grep"
     - src: "{{ path_homebrew }}/bin/gls"
       dest: "{{ path_homebrew }}/bin/ls"
-    - src: "{{ path_dotfiles }}/hammerspoon/init.lua"
-      dest: "{{ path_home }}/.hammerspoon/init.lua"
-    - src: "{{ path_dotfiles }}/hammerspoon/windows.lua"
-      dest: "{{ path_home }}/.hammerspoon/windows.lua"
+    - src: "{{ path_dotfiles }}/hammerspoon"
+      dest: "{{ path_home }}/.hammerspoon"
     - src: "{{ path_homebrew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
     - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"

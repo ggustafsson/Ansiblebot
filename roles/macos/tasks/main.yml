@@ -1,8 +1,11 @@
-- name: Create directory {{ path_home }}/Applications
+- name: Create misc directories
   ansible.builtin.file:
-    path: "{{ path_home }}/Applications"
+    path: "{{ item }}"
     state: directory
     mode: 0700
+  loop:
+    - "{{ path_home }}/Applications"
+    - "{{ path_home }}/Documents/Text"
 
 - name: Create file /etc/sudoers.d/custom
   ansible.builtin.template:

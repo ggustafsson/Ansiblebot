@@ -1,3 +1,4 @@
+# TODO: Remove after legacy decom.
 - name: Setup macOS system - Home Legacy
   hosts: macos
   vars:

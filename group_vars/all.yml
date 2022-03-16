@@ -9,6 +9,7 @@ brew_macos:
   - golang
   - grep
   - html2text
+  - htop
   - less
   - links
   - neovim
@@ -26,7 +27,6 @@ brew_macos:
   - wget
   - zsh
   - zsh-autosuggestions
-  #- renameutils # XXX: Does not work on ARM64.
 
 brew_macos_home:
   - cuetools
@@ -71,6 +71,7 @@ apt_ubuntu:
   - git
   - golang
   - html2text
+  - htop
   - imagemagick
   - lame
   - less

@@ -25,6 +25,7 @@ brew_macos:
   - tree
   - vim
   - wget
+  - yq
   - zsh
   - zsh-autosuggestions
 
@@ -89,6 +90,7 @@ apt_ubuntu:
   - tree
   - ubuntu-standard
   - vim-nox
+  - yq
   - zsh
 
 apt_ubuntu_tv:

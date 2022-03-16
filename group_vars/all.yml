@@ -39,8 +39,8 @@ brew_macos_home:
   - svtplay-dl
   - youtube-dl
 
-#brew_macos_work:
-#  - x
+brew_macos_work:
+  - bitwarden-cli
 
 cask_macos:
   - docker

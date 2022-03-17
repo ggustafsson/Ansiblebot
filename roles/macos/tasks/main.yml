@@ -128,6 +128,10 @@
     cmd: "{{ item }}"
   loop:
     - chflags nohidden ~/Library
+    - defaults write com.apple.Dock appswitcher-all-displays -bool true
+    - defaults write com.apple.Safari IncludeDevelopMenu -bool true
+    - defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+    - defaults write com.apple.Safari ShowOverlayStatusBar -bool true
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false
 

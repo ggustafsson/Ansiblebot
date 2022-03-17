@@ -3,6 +3,7 @@ brew_macos:
   - coreutils
   - curl
   - dialog
+  - fd
   - figlet
   - fzf
   - git
@@ -106,6 +107,7 @@ apt_ubuntu_tv:
 
 
 linuxbrew_linux:
+  - fd
   - fzf
   - neovim
   - vim

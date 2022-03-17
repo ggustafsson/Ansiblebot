@@ -93,7 +93,6 @@ apt_ubuntu:
   - tree
   - ubuntu-standard
   - vim-nox
-  - yq
   - zsh
 
 apt_ubuntu_tv:
@@ -113,6 +112,7 @@ linuxbrew_linux:
   - fzf
   - neovim
   - vim
+  - yq
   - zsh-autosuggestions
 
 #linuxbrew_ubuntu:

@@ -41,6 +41,7 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
+  - bitwarden-cli
   - lastpass-cli
 
 cask_macos:
@@ -59,6 +60,7 @@ cask_macos_home:
   - vlc
 
 cask_macos_work:
+  - bitwarden
   - slack
 
 

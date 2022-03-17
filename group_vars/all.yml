@@ -45,7 +45,6 @@ brew_macos_work:
   - lastpass-cli
 
 cask_macos:
-  - authy
   - docker
   - google-chrome
   - hammerspoon

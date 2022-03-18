@@ -3,7 +3,6 @@
   vars:
     hostname: Onett
     git_dotfiles: git@github.com:ggustafsson/Dot-Files.git
-    git_electricboogaloo_16colors: git@github.com:ggustafsson/electric-boogaloo.16colors.git
     git_electricboogaloo_vim: git@github.com:ggustafsson/electric-boogaloo.vim.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
     git_tim: git@github.com:ggustafsson/Tim.git

@@ -48,7 +48,6 @@ cask_macos:
   - docker
   - google-chrome
   - hammerspoon
-  - visual-studio-code
 
 cask_macos_home:
   - 1password

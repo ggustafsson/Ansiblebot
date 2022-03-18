@@ -84,7 +84,7 @@
       ansible.builtin.get_url:
         url: "{{ release.json.zipball_url }}"
         dest: "{{ path_vimgo_zip }}"
-        mode: 600
+        mode: 0600
       when: release.json.zipball_url is defined
 
     - name: Extract file {{ path_vimgo_zip }}

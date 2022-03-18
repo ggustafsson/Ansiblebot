@@ -3,12 +3,12 @@ brew_macos:
   - coreutils
   - curl
   - dialog
+  - exa
   - fd
   - figlet
   - fzf
   - git
   - golang
-  - grep
   - html2text
   - htop
   - less
@@ -23,7 +23,6 @@ brew_macos:
   - shellcheck
   - tidy-html5
   - tmux
-  - tree
   - vim
   - wget
   - yq
@@ -89,7 +88,6 @@ apt_ubuntu:
   - shntool
   - tidy
   - tmux
-  - tree
   - ubuntu-standard
   - vim-nox
   - zsh
@@ -107,6 +105,7 @@ apt_ubuntu_tv:
 
 
 linuxbrew_linux:
+  - exa
   - fd
   - fzf
   - neovim

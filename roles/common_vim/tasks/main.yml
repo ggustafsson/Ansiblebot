@@ -71,6 +71,7 @@
     path: "{{ path_vimgo }}"
   register: vim_go_plugin
 
+# FIXME: Installs but doesn't keep it up-to-date.
 - name: Install vim-go at {{ path_vimgo }}
   block:
     - name: Fetching https://api.github.com/repos/fatih/vim-go/releases/latest

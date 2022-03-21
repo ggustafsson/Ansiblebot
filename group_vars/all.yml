@@ -40,7 +40,7 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
-  - rbw
+  - bitwarden-cli
 
 cask_macos:
   - docker

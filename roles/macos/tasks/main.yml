@@ -85,7 +85,6 @@
     state: directory
     mode: 0700
   loop:
-    - "{{ path_home }}/.terminfo/74"
     - "{{ path_home }}/Library/Application Support/Code/User"
     - "{{ path_home }}/Library/Desktop Pictures"
 
@@ -107,8 +106,6 @@
       dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
     - src: "{{ path_dotfiles }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
       dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
-    - src: "{{ path_dotfiles }}/Misc/tmux-256color"
-      dest: "{{ path_home }}/.terminfo/74/tmux-256color"
 
 - name: Add {{ path_homebrew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:

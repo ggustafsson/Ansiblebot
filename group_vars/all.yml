@@ -42,6 +42,7 @@ brew_macos_home:
 
 brew_macos_work:
   - rbw
+  - salt
   - terraform
 
 cask_macos:
@@ -142,7 +143,6 @@ pip_macos:
 
 pip_macos_work:
   - openstackclient
-  - salt
   - salt-lint
 
 #pip_ubuntu:

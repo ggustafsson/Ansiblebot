@@ -42,7 +42,6 @@ brew_macos_home:
 
 brew_macos_work:
   - rbw
-  - salt
   - terraform
 
 cask_macos:

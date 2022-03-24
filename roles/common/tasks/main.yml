@@ -77,7 +77,7 @@
       dest: "{{ path_home }}/.timrc"
     - src: "{{ path_dotfiles }}/tmux.conf"
       dest: "{{ path_home }}/.tmux.conf"
-    - src: "{{ path_dotfiles }}/yamllint/config"
+    - src: "{{ path_dotfiles }}/yamllint"
       dest: "{{ path_home }}/.config/yamllint/config"
     - src: "{{ path_dotfiles }}/zlogin"
       dest: "{{ path_home }}/.zlogin"

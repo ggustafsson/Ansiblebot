@@ -44,6 +44,8 @@
       url: https://github.com/pearofducks/ansible-vim.git
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
+    - name: vim-go
+      url: https://github.com/fatih/vim-go.git
     - name: vim-mundo
       url: https://github.com/simnalamburt/vim-mundo.git
 
@@ -65,44 +67,3 @@
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
   notify: generate tags
-
-- name: Get stats on {{ path_vimgo }}
-  ansible.builtin.stat:
-    path: "{{ path_vimgo }}"
-  register: vim_go_plugin
-
-# FIXME: Installs but doesn't keep it up-to-date.
-- name: Install vim-go at {{ path_vimgo }}
-  block:
-    - name: Fetching https://api.github.com/repos/fatih/vim-go/releases/latest
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/fatih/vim-go/releases/latest
-        return_content: true
-      register: release
-      failed_when: release.json.zipball_url is not defined
-
-    - name: Fetching {{ release.json.zipball_url }}
-      ansible.builtin.get_url:
-        url: "{{ release.json.zipball_url }}"
-        dest: "{{ path_vimgo_zip }}"
-        mode: 0600
-      when: release.json.zipball_url is defined
-
-    - name: Extract file {{ path_vimgo_zip }}
-      ansible.builtin.unarchive:
-        src: "{{ path_vimgo_zip }}"
-        dest: /tmp
-        remote_src: true
-        list_files: true
-      register: unarchive
-      when: release.json.zipball_url is defined
-
-    - name: Copy /tmp/{{ unarchive.files[0] }} to {{ path_vimgo }}
-      ansible.builtin.copy:
-        src: /tmp/{{ unarchive.files[0] }}
-        dest: "{{ path_vimgo }}"
-        remote_src: true
-        mode: 0700
-      when: unarchive.changed
-  notify: generate tags
-  when: vim_go_plugin.stat.exists == false

@@ -7,6 +7,7 @@
   roles:
     - docker_build
 
+
 - name: Bootstrap Ubuntu
   hosts: ubuntu-rolling-base
   gather_facts: false
@@ -30,6 +31,7 @@
     - linux_ubuntu
     - linux_ubuntu_vm
     - common_vim
+
 
 - name: Snapshot container
   hosts: localhost

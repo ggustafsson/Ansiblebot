@@ -110,8 +110,6 @@
   loop:
     - src: "{{ path_homebrew }}/bin/ggrep"
       dest: "{{ path_homebrew }}/bin/grep"
-    - src: "{{ path_homebrew }}/bin/gls"
-      dest: "{{ path_homebrew }}/bin/ls"
     - src: "{{ path_dotfiles }}/hammerspoon"
       dest: "{{ path_home }}/.hammerspoon"
     - src: "{{ path_homebrew }}/opt/fzf"

@@ -111,7 +111,6 @@ linuxbrew_linux:
   - fd
   - fzf
   - neovim
-  - vim
   - yq
   - zsh-autosuggestions
 

@@ -41,6 +41,8 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
+  - helm
+  - kubernetes-cli
   - rbw
   - terraform
 

@@ -46,7 +46,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Disable smart quotes and dashes
 - [ ] Use keyboard navigation to move focus
 - [ ] Move focus to next window
-- [ ] Select Swedish no dead keys
+- [ ] Select `Swedish - No Dead Keys`
 
 ## Menu Bar
 - [ ] Move around items
@@ -71,11 +71,12 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Always show sound in menu bar
 
 ## Spaces
-- [ ] Add up to 9 spaces
+- [ ] Add 5 spaces on main display
+- [ ] Add 4 spaces on secondary display
 
 ## Terminal
 - [ ] Open `Dot-Files/Misc/Default.terminal`
-- [ ] Set Default as default
+- [ ] Set `Default` as default
 
 ## Trackpad
 - [ ] Tracking speed 7/10

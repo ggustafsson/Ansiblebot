@@ -128,11 +128,10 @@
   become: true
 
 
-- name: Execute misc 'defaults' and 'chflags' commands
+- name: Execute misc 'defaults' commands
   ansible.builtin.command:
     cmd: "{{ item }}"
   loop:
-    - chflags nohidden ~/Library
     - defaults write com.apple.Dock appswitcher-all-displays -bool true
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   changed_when: false

@@ -118,8 +118,8 @@
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
     - src: "{{ path_dotfiles }}/vscode/settings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
-    - src: "{{ path_dotfiles }}/Misc/Swedish-Pro-No_Dead_Keys.bundle"
-      dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish-Pro-No_Dead_Keys.bundle"
+    - src: "{{ path_dotfiles }}/Misc/Swedish - No Dead Keys.bundle"
+      dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish - No Dead Keys.bundle"
 
 - name: Add {{ path_homebrew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:
@@ -173,10 +173,10 @@
     cmd: "{{ item }}"
   loop:
     #- defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string org.sil.ukelele.keyboardlayout.swedish-pro-nodeadkeys.swedish-pro-nodeadkeys
-    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
-    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-24875</integer><key>KeyboardLayout Name</key><string>Swedish - Pro - No Dead Keys</string></dict>'
+    - defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>7353</integer><key>KeyboardLayout Name</key><string>Swedish - No Dead Keys</string></dict>'
+    #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>7353</integer><key>KeyboardLayout Name</key><string>Swedish - No Dead Keys</string></dict>'
     #- defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
-  when: '"Swedish - Pro - No Dead Keys" not in defaults_read.stdout'
+  when: '"Swedish - No Dead Keys" not in defaults_read.stdout'
 
 
 - name: Check installed Visual Studio Code extensions

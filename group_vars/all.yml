@@ -1,13 +1,20 @@
 brew_macos:
+  - ansible
+  - ansible-lint
   - bash
   - coreutils
   - curl
   - dialog
   - fd
   - figlet
+  - flake8
   - fzf
+  - gawk
   - git
+  - git-filter-repo
+  - gnu-sed
   - golang
+  - grep
   - html2text
   - htop
   - less
@@ -15,6 +22,7 @@ brew_macos:
   - neovim
   - nmap
   - openssh
+  - pylint
   - python
   - ripgrep
   - rsync
@@ -25,7 +33,7 @@ brew_macos:
   - tree
   - vim
   - wget
-  - yq
+  - yamllint
   - zsh
   - zsh-autosuggestions
 
@@ -42,8 +50,11 @@ brew_macos_home:
 brew_macos_work:
   - helm
   - kubernetes-cli
+  - openstackclient
   - rbw
+  - salt-lint
   - terraform
+  - yq
 
 cask_macos:
   - docker
@@ -66,6 +77,8 @@ cask_macos_work:
 
 
 apt_ubuntu:
+  - ansible
+  - ansible-lint
   - build-essential
   - cuetools
   - curl
@@ -73,7 +86,10 @@ apt_ubuntu:
   - dnsutils
   - figlet
   - flac
+  - flake8
+  - gawk
   - git
+  - git-filter-repo
   - golang
   - html2text
   - htop
@@ -83,6 +99,7 @@ apt_ubuntu:
   - links
   - nmap
   - openssh-server
+  - pylint
   - python3-pip
   - renameutils
   - ripgrep
@@ -94,6 +111,7 @@ apt_ubuntu:
   - tree
   - ubuntu-standard
   - vim-nox
+  - yamllint
   - zsh
 
 apt_ubuntu_tv:
@@ -112,7 +130,6 @@ linuxbrew_linux:
   - fd
   - fzf
   - neovim
-  - yq
   - zsh-autosuggestions
 
 #linuxbrew_ubuntu:
@@ -126,13 +143,7 @@ linuxbrew_linux:
 
 
 pip_common:
-  - ansible
-  - ansible-lint
-  - flake8
-  - git-filter-repo
   - pip
-  - pylint
-  - yamllint
 
 pip_macos:
   - docker
@@ -140,10 +151,8 @@ pip_macos:
 #pip_macos_home:
 #  - x
 
-pip_macos_work:
-  - python-heatclient
-  - python-openstackclient
-  - salt-lint
+#pip_macos_work:
+#  - x
 
 #pip_ubuntu:
 #  - x

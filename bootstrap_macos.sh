@@ -38,3 +38,4 @@ mkdir ~/Projects
 git clone https://github.com/ggustafsson/Ansible.git ~/Projects/Ansible
 cd ~/Projects/Ansible
 ansible-playbook $playbook --ask-become -v
+rm -rf ~/Library/Python

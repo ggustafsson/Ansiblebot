@@ -101,7 +101,6 @@ apt_ubuntu:
   - openssh-server
   - pylint
   - python3-pip
-  - renameutils
   - ripgrep
   - ruby
   - shellcheck

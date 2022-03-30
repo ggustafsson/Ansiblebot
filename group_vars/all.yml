@@ -51,6 +51,7 @@ brew_macos_work:
   - helm
   - kubernetes-cli
   - openstackclient
+  - prometheus
   - rbw
   - salt-lint
   - terraform

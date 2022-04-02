@@ -61,6 +61,7 @@ cask_macos:
   - docker
   - google-chrome
   - hammerspoon
+  - utm
   - visual-studio-code
 
 cask_macos_home:

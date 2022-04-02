@@ -42,6 +42,8 @@
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
     - "{{ path_home }}/.zsh"
+    - "{{ path_home }}/Documents"
+    - "{{ path_home }}/Documents/Text"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:

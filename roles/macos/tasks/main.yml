@@ -19,7 +19,6 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Applications"
-    - "{{ path_home }}/Documents/Text"
 
 - name: Create file /etc/sudoers.d/custom
   ansible.builtin.template:

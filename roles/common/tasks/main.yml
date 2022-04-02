@@ -63,8 +63,6 @@
   loop:
     - src: "{{ path_dotfiles }}/Scripts"
       dest: "{{ path_home }}/Scripts"
-    - src: "{{ path_projects }}/Tim/tim"
-      dest: "{{ path_home }}/Scripts/tim"
     - src: "{{ path_dotfiles }}/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/yamllint"
@@ -75,6 +73,8 @@
       dest: "{{ path_home }}/.gitconfig"
     - src: "{{ path_dotfiles }}/gitignore_global"
       dest: "{{ path_home }}/.gitignore_global"
+    - src: "{{ path_projects }}/Tim/tim"
+      dest: "{{ path_home }}/.local/bin/tim"
     - src: "{{ path_dotfiles }}/ssh/config"
       dest: "{{ path_home }}/.ssh/config"
     - src: "{{ path_dotfiles }}/tmux.conf"

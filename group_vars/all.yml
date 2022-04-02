@@ -67,7 +67,6 @@ cask_macos_home:
   - 1password
   - dropbox
   - handbrake
-  - openemu
   - tor-browser
   - transmission
   - vlc

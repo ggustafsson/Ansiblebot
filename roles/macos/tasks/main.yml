@@ -109,6 +109,8 @@
   loop:
     - src: "{{ path_dotfiles }}/hammerspoon"
       dest: "{{ path_home }}/.hammerspoon"
+    - src: "{{ path_dotfiles }}/timrc"
+      dest: "{{ path_home }}/.timrc"
     - src: "{{ path_homebrew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
     - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"

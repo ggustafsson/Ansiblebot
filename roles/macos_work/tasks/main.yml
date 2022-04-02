@@ -17,3 +17,12 @@
     state: latest
     executable: "{{ pip_exec }}"
   when: pip_macos_work is defined
+
+
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+  loop:
+    - "{{ path_home }}/Git"

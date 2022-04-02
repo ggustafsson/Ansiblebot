@@ -133,8 +133,49 @@
   ansible.builtin.command:
     cmd: "{{ item }}"
   loop:
-    - defaults write com.apple.Dock appswitcher-all-displays -bool true
     - defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
+    # Dock
+    - defaults write com.apple.Dock appswitcher-all-displays -bool true
+    - defaults write com.apple.Dock mru-spaces -bool false
+    - defaults write com.apple.Dock showAppExposeGestureEnabled -bool true
+    - defaults write com.apple.Dock tilesize -int 48
+
+    # Finder
+    - defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    - defaults write com.apple.finder DownloadsFolderListViewSettingsVersion -bool true
+    - defaults write com.apple.finder FXDefaultSearchScope -string SCcf
+    - defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+    - defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false
+    - defaults write com.apple.finder FXPreferredViewStyle -string clmv
+    - defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+    - defaults write com.apple.finder NewWindowTarget -string PfHm
+    - defaults write com.apple.finder ShowRecentTags -bool false
+    - defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+    # Keyboard
+    - defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+    - defaults write NSGlobalDomain InitialKeyRepeat -int 15
+    - defaults write NSGlobalDomain KeyRepeat -int 2
+    - defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+    - defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+    - defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+    - defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
+
+    # Menu Bar
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Battery" -int 159
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position BentoBox" -int 127
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Bluetooth" -int 380
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Display" -int 345
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position FocusModes" -int 307
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position NowPlaying" -int 275
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Sound" -int 239
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position WiFi" -int 412
+    - defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -int 1
+    - defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -int 1
+    - defaults write com.apple.systemuiserver "NSStatusItem Preferred Position com.apple.menuextra.TimeMachine" -int 201
+    - defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.TimeMachine" -int 1
+    - defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
   changed_when: false
 
 - name: Fetch {{ url_wallpaper }}

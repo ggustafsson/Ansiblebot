@@ -3,7 +3,6 @@
 Here be dragons... and settings that are not easy to automate through Ansible
 (and settings I've not had time to implement correctly yet).
 
-
 ## Bootstrap
 - [ ] Setup administrator account (Administrator/Admin/admin/a)
 - [ ] Setup personal account (Göran Gustafsson/GLEG/gleg)
@@ -16,72 +15,52 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Create `~/.gitconfig_local`
 - [ ] Run `ssh-keygen -t ed25519`
 
-## Battery
-- [ ] Turn display off after 10min
-- [ ] Prevent your Mac from automatically sleeping
-
-## Bluetooth
-- [ ] Show bluetooth in menu bar
-
-## Displays
-- [ ] Disable True Tone
-- [ ] Night Shift 20:00 - 08:00
-
 ## Dock
 - [ ] Add & remove apps
 
 ## Finder
 - [ ] Rename system disk (macOS Home/Work)
-- [ ] New window show GLEG
-- [ ] Disable all tags
-- [ ] Enable almost all sidebar items
-- [ ] Show Library folder
-- [ ] Show all extensions
-- [ ] Disable all warnings
-
-## Keyboard
-- [ ] Press <Globe> to show emoji
-- [ ] Key repeat fastest
-- [ ] Key delay shortest
-- [ ] Caps-Lock -> Ctrl
-- [ ] Remove replace words
-- [ ] Disable capitalise words
-- [ ] Disable full stop
-- [ ] Disable smart quotes and dashes
-- [ ] Use keyboard navigation to move focus
-- [ ] Move focus to next window
-- [ ] Select `Swedish - No Dead Keys`
-
-## Menu Bar
-- [ ] Move around items
-
-## Mission Control
-- [ ] Disable automatically rearrange spaces
+- [ ] Tags - Disable all under "Show these tags in the sidebar"
+- [ ] Sidebar - Enable almost all sidebar items
+- [ ] View Options - Show Library folder
 
 ## Safari
-- [ ] Show status bar
-- [ ] Opens with all windows from last session
-- [ ] Disable open safe files
-- [ ] Show full website address
-- [ ] Disable show colour in tab bar
-- [ ] Show develop menu
-
-## Security
-- [ ] Require password immediately
-- [ ] Firewall on
-- [ ] Firewall - Disable signed software
-
-## Sound
-- [ ] Always show sound in menu bar
+- [ ] View - Show Status Bar
+- [ ] General - Safari opens with "All windows from last session"
+- [ ] General - Disable "Open safe files after downloading"
+- [ ] Advanced - Show full website address
+- [ ] Advanced - Disable "Show colour in compact tab bar"
+- [ ] Advanced - Show Develop menu in menu bar
 
 ## Spaces
-- [ ] Add 5 spaces on main display
-- [ ] Add 4 spaces on secondary display
+- [ ] Add up to 5 spaces on main display
+- [ ] Add up to 4 spaces on secondary display
 
 ## Terminal
 - [ ] Open `Dot-Files/Misc/Default.terminal`
-- [ ] Set `Default` as default
+- [ ] Profiles - Set `Default` as default
 
-## Trackpad
-- [ ] Tracking speed 7/10
-- [ ] App Exposé gesture
+## System Preferences
+
+### Battery
+- [ ] Battery - Turn display off after 10min
+- [ ] Power Adapter - Prevent your Mac from automatically sleeping
+
+### Displays
+- [ ] Disable True Tone
+- [ ] Night Shift - Schedule 20:00 - 08:00
+
+### Keyboard
+- [ ] Modifier Keys - Caps Lock Key -> Control
+- [ ] Text - Remove all replace words
+- [ ] Shortcuts - Switch to Desktop X
+- [ ] Shortcuts - Move focus to next window (Option-Tab)
+- [ ] Input Sources - Select `Swedish - No Dead Keys`
+
+### Security & Privacy
+- [ ] General - Require password immediately
+- [ ] Firewall - Turn On Firewall
+- [ ] Firewall Options - Disable "Automatically allow downloaded signed software"
+
+### Trackpad
+- [ ] Point & Click - Tracking speed 7/10

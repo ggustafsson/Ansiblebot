@@ -15,6 +15,14 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Create `~/.gitconfig_local`
 - [ ] Run `ssh-keygen -t ed25519`
 
+## Web Browsers - Home
+- [ ] Install plugin 1Password
+- [ ] Install plugin Adblock Plus
+
+## Web Browsers - Work
+- [ ] Install plugin Adblock Plus
+- [ ] Install plugin Bitwarden
+
 ## Dock
 - [ ] Add & remove apps
 
@@ -53,8 +61,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ### Keyboard
 - [ ] Modifier Keys - Caps Lock Key -> Control
 - [ ] Text - Remove all replace words
-- [ ] Shortcuts - Switch to Desktop X
+- [ ] Shortcuts - Switch to Desktop X (Cmd-X)
 - [ ] Shortcuts - Move focus to next window (Option-Tab)
+- [ ] Shortcuts - Disable almost everything under "Services"
 - [ ] Input Sources - Select `Swedish - No Dead Keys`
 
 ### Security & Privacy

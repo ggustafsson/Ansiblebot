@@ -155,8 +155,8 @@
 
     # Keyboard
     - defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
-    - defaults write NSGlobalDomain InitialKeyRepeat -int 10
-    - defaults write NSGlobalDomain KeyRepeat -int 1
+    - defaults write NSGlobalDomain InitialKeyRepeat -int 12
+    - defaults write NSGlobalDomain KeyRepeat -int 2
     - defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
     - defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
     - defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -221,26 +221,16 @@
   when: '"Swedish - No Dead Keys" not in defaults_read.stdout'
 
 
-- name: Check installed Visual Studio Code extensions
-  ansible.builtin.command:
-    cmd: code --list-extensions
-  register: code_extensions
-  changed_when: false
-
-- name: Install Visual Studio Code extensions
-  ansible.builtin.command:
-    cmd: code --install-extension "{{ item }}"
-  loop:
-    - asvetliakov.vscode-neovim
-    - golang.go
-    - hashicorp.terraform
-    - ms-azuretools.vscode-docker
-    - ms-kubernetes-tools.vscode-kubernetes-tools
-    - ms-python.python
-    - ms-python.vscode-pylance
-    - ms-vscode-remote.remote-containers
-    - ms-vscode-remote.remote-ssh
-    - ms-vscode-remote.remote-ssh-edit
-    - redhat.ansible
-    - redhat.vscode-yaml
-  when: item not in code_extensions.stdout
+# XXX: Placeholder for the future.
+#- name: Check installed Visual Studio Code extensions
+#  ansible.builtin.command:
+#    cmd: code --list-extensions
+#  register: code_extensions
+#  changed_when: false
+#
+#- name: Install Visual Studio Code extensions
+#  ansible.builtin.command:
+#    cmd: code --install-extension "{{ item }}"
+#  loop:
+#    - x
+#  when: item not in code_extensions.stdout

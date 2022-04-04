@@ -11,7 +11,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Misc
 - [ ] Open `Dot-Files/Misc/SF-Mono-Regular.otf`
 
-## Work
+## Misc - Work
 - [ ] Create `~/.gitconfig_local`
 - [ ] Run `ssh-keygen -t ed25519`
 

@@ -5,6 +5,7 @@
     hostname: Coruscant
     git_dotfiles: git@github.com:ggustafsson/Dot-Files.git
     git_electricboogaloo_vim: git@github.com:ggustafsson/electric-boogaloo.vim.git
+    git_electricboogaloo_nvim: git@github.com:ggustafsson/electric-boogaloo.nvim.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
     git_tim: git@github.com:ggustafsson/Tim.git
     path_homebrew: /usr/local
@@ -13,3 +14,4 @@
     - macos
     - macos_home
     - common_vim
+    - common_nvim

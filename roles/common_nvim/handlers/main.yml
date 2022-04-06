@@ -1,0 +1,3 @@
+#- name: Generate help tags for all Vim plugins
+#  ansible.builtin.command: vim -c 'helptags ALL' -c q
+#  listen: generate tags

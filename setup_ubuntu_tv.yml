@@ -6,3 +6,4 @@
     - linux_ubuntu
     - linux_ubuntu_tv
     - common_vim
+    - common_nvim

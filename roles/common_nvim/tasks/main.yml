@@ -3,7 +3,7 @@
     repo: "{{ git_electricboogaloo_nvim }}"
     dest: "{{ path_projects }}/electric-boogaloo.nvim"
 
-- name: Create misc directories
+- name: Create NeoVim directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory

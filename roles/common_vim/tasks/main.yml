@@ -16,7 +16,7 @@
     - "{{ path_vim_pack_ggustafsson }}"
     - "{{ path_vim_pack_others }}"
 
-- name: Create symbolic links to Dot-Files, Vim colorscheme, etc
+- name: Create symbolic links to Dot-Files, colorscheme, etc
   ansible.builtin.file:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

@@ -1,6 +1,6 @@
-path_nvim: "{{ path_home }}/.config/nvim"
-path_nvim_pack: "{{ path_home }}/.local/share/nvim/site/pack"
-path_nvim_pack_ggustafsson: "{{ path_nvim_pack }}/ggustafsson/start"
-path_nvim_pack_others: "{{ path_nvim_pack }}/others/start"
+path_nvim_config: "{{ path_home }}/.config/nvim"
+path_nvim_local: "{{ path_home }}/.local/share/nvim"
+path_nvim_pack_ggustafsson: "{{ path_nvim_local }}/site/pack/ggustafsson/start"
+path_nvim_pack_others: "{{ path_nvim_local }}/site/pack/others/start"
 
 git_electricboogaloo_nvim: https://github.com/ggustafsson/electric-boogaloo.nvim.git

@@ -9,6 +9,8 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_nvim_local }}"
+    - "{{ path_nvim_local }}/backup"
     - "{{ path_nvim_pack_ggustafsson }}"
     - "{{ path_nvim_pack_others }}"
 
@@ -19,43 +21,43 @@
     state: link
   loop:
     - src: "{{ path_dotfiles }}/nvim"
-      dest: "{{ path_nvim }}"
+      dest: "{{ path_nvim_config }}"
     - src: "{{ path_projects }}/electric-boogaloo.nvim"
       dest: "{{ path_nvim_pack_ggustafsson }}/electric-boogaloo.nvim"
     - src: "{{ path_home }}/.local/share/fzf"
       dest: "{{ path_nvim_pack_others }}/fzf"
 
-#- name: Git clone/pull misc Vim plugins
-#  ansible.builtin.git:
-#    repo: "{{ item.url }}"
-#    dest: "{{ path_nvim_pack_others }}/{{ item.name }}"
-#  loop:
-#    - name: ale
-#      url: https://github.com/dense-analysis/ale.git
-#    - name: ansible-vim
-#      url: https://github.com/pearofducks/ansible-vim.git
-#    - name: fzf.vim
-#      url: https://github.com/junegunn/fzf.vim.git
-#    - name: vim-go
-#      url: https://github.com/fatih/vim-go.git
-#    - name: vim-mundo
-#      url: https://github.com/simnalamburt/vim-mundo.git
-#
-#    - name: fern.vim
-#      url: https://github.com/lambdalisue/fern.vim.git
-#    - name: fern-hijack.vim
-#      url: https://github.com/lambdalisue/fern-hijack.vim.git
-#    - name: fern-git-status.vim
-#      url: https://github.com/lambdalisue/fern-git-status.vim.git
-#
-#    - name: vim-commentary
-#      url: https://github.com/tpope/vim-commentary.git
-#    - name: vim-endwise
-#      url: https://github.com/tpope/vim-endwise.git
-#    - name: vim-repeat
-#      url: https://github.com/tpope/vim-repeat.git
-#    - name: vim-speeddating
-#      url: https://github.com/tpope/vim-speeddating.git
-#    - name: vim-surround
-#      url: https://github.com/tpope/vim-surround.git
-#  notify: generate tags
+- name: Git clone/pull misc NeoVim plugins
+  ansible.builtin.git:
+    repo: "{{ item.url }}"
+    dest: "{{ path_nvim_pack_others }}/{{ item.name }}"
+  loop:
+    - name: ale
+      url: https://github.com/dense-analysis/ale.git
+    - name: ansible-vim
+      url: https://github.com/pearofducks/ansible-vim.git
+    - name: fzf.vim
+      url: https://github.com/junegunn/fzf.vim.git
+    - name: vim-go
+      url: https://github.com/fatih/vim-go.git
+    - name: vim-mundo
+      url: https://github.com/simnalamburt/vim-mundo.git
+
+    - name: fern.vim
+      url: https://github.com/lambdalisue/fern.vim.git
+    - name: fern-hijack.vim
+      url: https://github.com/lambdalisue/fern-hijack.vim.git
+    - name: fern-git-status.vim
+      url: https://github.com/lambdalisue/fern-git-status.vim.git
+
+    - name: vim-commentary
+      url: https://github.com/tpope/vim-commentary.git
+    - name: vim-endwise
+      url: https://github.com/tpope/vim-endwise.git
+    - name: vim-repeat
+      url: https://github.com/tpope/vim-repeat.git
+    - name: vim-speeddating
+      url: https://github.com/tpope/vim-speeddating.git
+    - name: vim-surround
+      url: https://github.com/tpope/vim-surround.git
+  notify: generate nvim tags

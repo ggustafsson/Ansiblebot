@@ -20,7 +20,7 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_dotfiles }}/nvim"
+    - src: "{{ path_dotfiles }}/config/nvim"
       dest: "{{ path_nvim_config }}"
     - src: "{{ path_projects }}/electric-boogaloo.nvim"
       dest: "{{ path_nvim_pack_ggustafsson }}/electric-boogaloo.nvim"

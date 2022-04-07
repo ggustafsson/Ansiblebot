@@ -31,7 +31,6 @@ brew_macos:
   - tidy-html5
   - tmux
   - tree
-  - vim
   - wget
   - yamllint
   - zsh

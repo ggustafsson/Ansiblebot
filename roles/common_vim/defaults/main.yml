@@ -1,5 +1,0 @@
-path_vim: "{{ path_home }}/.vim"
-path_vim_pack_ggustafsson: "{{ path_vim }}/pack/ggustafsson/start"
-path_vim_pack_others: "{{ path_vim }}/pack/others/start"
-
-git_electricboogaloo_vim: https://github.com/ggustafsson/electric-boogaloo.vim.git

@@ -30,7 +30,6 @@
     - linux
     - linux_ubuntu
     - linux_ubuntu_vm
-    - common_vim
     - common_nvim
 
 

@@ -57,7 +57,6 @@ brew_macos_work:
   - yq
 
 cask_macos:
-  - alacritty
   - docker
   - google-chrome
   - hammerspoon

@@ -75,6 +75,9 @@
     - name: nvim-cmp
       url: https://github.com/hrsh7th/nvim-cmp.git
 
+    - name: nvim-lspconfig
+      url: https://github.com/neovim/nvim-lspconfig.git
+
     - name: nvim-treesitter
       url: https://github.com/nvim-treesitter/nvim-treesitter.git
 

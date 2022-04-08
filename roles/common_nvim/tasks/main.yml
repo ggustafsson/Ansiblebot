@@ -61,7 +61,7 @@
     repo: "{{ item.url }}"
     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
   loop:
-    - name: Comment.nvim
+    - name: comment.nvim
       url: https://github.com/numToStr/Comment.nvim.git
     - name: gitsigns.nvim
       url: https://github.com/lewis6991/gitsigns.nvim.git

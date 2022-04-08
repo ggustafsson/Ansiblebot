@@ -31,7 +31,7 @@ for dir in ~/Library/Python/*; do
 done
 
 echo
-su a -c "echo '$USER  ALL = (ALL) ALL' | sudo tee /etc/sudoers.d/custom"
+su admin -c "echo '$USER  ALL = (ALL) ALL' | sudo tee /etc/sudoers.d/custom"
 
 echo
 mkdir ~/Projects

@@ -4,6 +4,7 @@
   vars:
     hostname: Coruscant
     git_dotfiles: git@github.com:ggustafsson/Dot-Files.git
+    git_defaultz_nvim: git@github.com:ggustafsson/defaultz.nvim.git
     git_electricboogaloo_nvim: git@github.com:ggustafsson/electric-boogaloo.nvim.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
     git_tim: git@github.com:ggustafsson/Tim.git

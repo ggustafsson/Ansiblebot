@@ -1,7 +1,12 @@
-- name: Git clone/pull {{ git_electricboogaloo_nvim }}
+- name: Git clone/pull NeoVim colorschemes
   ansible.builtin.git:
-    repo: "{{ git_electricboogaloo_nvim }}"
-    dest: "{{ path_projects }}/electric-boogaloo.nvim"
+    repo: "{{ item.url }}"
+    dest: "{{ path_projects }}/{{ item.name }}"
+  loop:
+    - name: defaultz.nvim
+      url: "{{ git_defaultz_nvim }}"
+    - name: electric-boogaloo.nvim
+      url: "{{ git_electricboogaloo_nvim }}"
 
 - name: Create NeoVim directories
   ansible.builtin.file:
@@ -14,7 +19,7 @@
     - "{{ path_nvim_pack_ggustafsson }}"
     - "{{ path_nvim_pack_others }}"
 
-- name: Create symbolic links to Dot-Files, colorscheme, etc
+- name: Create symbolic links to Dot-Files, colorschemes, etc
   ansible.builtin.file:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -22,6 +27,8 @@
   loop:
     - src: "{{ path_dotfiles }}/config/nvim"
       dest: "{{ path_nvim_config }}"
+    - src: "{{ path_projects }}/defaultz.nvim"
+      dest: "{{ path_nvim_pack_ggustafsson }}/defaultz.nvim"
     - src: "{{ path_projects }}/electric-boogaloo.nvim"
       dest: "{{ path_nvim_pack_ggustafsson }}/electric-boogaloo.nvim"
     - src: "{{ path_home }}/.local/share/fzf"
@@ -36,6 +43,8 @@
       url: https://github.com/dense-analysis/ale.git
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
+    - name: Comment.nvim
+      url: https://github.com/numToStr/Comment.nvim.git
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
     - name: vim-go
@@ -50,8 +59,6 @@
     - name: fern-git-status.vim
       url: https://github.com/lambdalisue/fern-git-status.vim.git
 
-    - name: vim-commentary
-      url: https://github.com/tpope/vim-commentary.git
     - name: vim-endwise
       url: https://github.com/tpope/vim-endwise.git
     - name: vim-repeat
@@ -60,4 +67,9 @@
       url: https://github.com/tpope/vim-speeddating.git
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
+
+    - name: telescope.nvim
+      url: https://github.com/nvim-telescope/telescope.nvim.git
+    - name: plenary.nvim
+      url: https://github.com/nvim-lua/plenary.nvim.git
   notify: generate nvim tags

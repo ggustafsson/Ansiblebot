@@ -70,6 +70,9 @@
     - name: indent-blankline.nvim
       url: https://github.com/lukas-reineke/indent-blankline.nvim.git
 
+    - name: luasnip
+      url: https://github.com/L3MON4D3/LuaSnip.git
+
     - name: nvim-cmp
       url: https://github.com/hrsh7th/nvim-cmp.git
     - name: cmp-buffer
@@ -82,8 +85,13 @@
     - name: nvim-lspconfig
       url: https://github.com/neovim/nvim-lspconfig.git
 
+    - name: nvim-tree.lua
+      url: https://github.com/kyazdani42/nvim-tree.lua.git
+
     - name: nvim-treesitter
       url: https://github.com/nvim-treesitter/nvim-treesitter.git
+    - name: nvim-treesitter-textobjects
+      url: https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
 
     - name: telescope.nvim
       url: https://github.com/nvim-telescope/telescope.nvim.git

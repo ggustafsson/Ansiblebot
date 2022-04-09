@@ -70,9 +70,6 @@
     - name: indent-blankline.nvim
       url: https://github.com/lukas-reineke/indent-blankline.nvim.git
 
-    - name: luasnip
-      url: https://github.com/L3MON4D3/LuaSnip.git
-
     - name: nvim-cmp
       url: https://github.com/hrsh7th/nvim-cmp.git
     - name: cmp-buffer

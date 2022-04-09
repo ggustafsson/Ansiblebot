@@ -74,8 +74,6 @@
       url: https://github.com/hrsh7th/nvim-cmp.git
     - name: cmp-buffer
       url: https://github.com/hrsh7th/cmp-buffer.git
-    - name: cmp-cmdline
-      url: https://github.com/hrsh7th/cmp-cmdline.git
     - name: cmp-nvim-lsp
       url: https://github.com/hrsh7th/cmp-nvim-lsp.git
     - name: cmp-path

@@ -70,6 +70,9 @@
     - name: indent-blankline.nvim
       url: https://github.com/lukas-reineke/indent-blankline.nvim.git
 
+    - name: luasnip
+      url: https://github.com/L3MON4D3/LuaSnip.git
+
     - name: null-ls.nvim
       url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
 

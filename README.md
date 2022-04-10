@@ -2,8 +2,8 @@
 
 ## 🚨 Description
 
-Personal Ansible playbooks that sets up **everything** on **everything**.
-Use for reference if you want to automate your whole life.
+Personal Ansible playbooks that sets up **everything** on **everything**. Use
+setup for reference if you want to automate your whole life to the max.
 
 ## 🚀 Commands
 

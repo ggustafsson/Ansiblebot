@@ -70,6 +70,9 @@
     - name: indent-blankline.nvim
       url: https://github.com/lukas-reineke/indent-blankline.nvim.git
 
+    - name: null-ls.nvim
+      url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
+
     - name: nvim-cmp
       url: https://github.com/hrsh7th/nvim-cmp.git
     - name: cmp-buffer

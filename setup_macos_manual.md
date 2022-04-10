@@ -9,7 +9,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Download and run `Ansible/bootstrap_macos.sh`
 
 ## Misc
-- [ ] Open `Dot-Files/Misc/SF-Mono-Regular.otf`
+- [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
 
 ## Misc - Work
 - [ ] Create `~/.gitconfig_local`
@@ -45,7 +45,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Add up to 4 spaces on secondary display
 
 ## Terminal
-- [ ] Open `Dot-Files/Misc/Default.terminal`
+- [ ] Open `Dotfiles/Misc/Default.terminal`
 - [ ] Profiles - Set `Default` as default
 
 ## System Preferences

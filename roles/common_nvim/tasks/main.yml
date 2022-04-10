@@ -20,7 +20,7 @@
     - name: electric-boogaloo.nvim
       url: "{{ git_electricboogaloo_nvim }}"
 
-- name: Create symbolic links to Dot-Files, colorschemes, etc
+- name: Create symbolic links to Dotfiles, colorschemes, etc
   ansible.builtin.file:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

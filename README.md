@@ -1,9 +1,9 @@
-# 🤖 ULTRA EXTREME MEGA ANSIBLE AUTOMATION 2000
+# 🤖 ULTRA EXTREME ANSIBLE AUTOMATION 2000
 
 ## 🚨 Description
 
-Personal Ansible playbooks that sets up **everything** on **everything**. Use
-for reference if you want to automate your whole life.
+Personal Ansible playbooks that sets up **everything** on **everything**.
+Use for reference if you want to automate your whole life.
 
 ## 🚀 Commands
 

@@ -64,17 +64,6 @@
     - name: comment.nvim
       url: https://github.com/numToStr/Comment.nvim.git
 
-    - name: gitsigns.nvim
-      url: https://github.com/lewis6991/gitsigns.nvim.git
-
-    - name: indent-blankline.nvim
-      url: https://github.com/lukas-reineke/indent-blankline.nvim.git
-
-    - name: luasnip
-      url: https://github.com/L3MON4D3/LuaSnip.git
-    - name: cmp_luasnip
-      url: https://github.com/saadparwaiz1/cmp_luasnip.git
-
     - name: null-ls.nvim
       url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
 
@@ -99,7 +88,4 @@
       url: https://github.com/nvim-telescope/telescope.nvim.git
     - name: plenary.nvim
       url: https://github.com/nvim-lua/plenary.nvim.git
-
-    - name: trouble.nvim
-      url: https://github.com/folke/trouble.nvim
   notify: generate nvim tags

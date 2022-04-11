@@ -6,7 +6,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Bootstrap
 - [ ] Setup administrator account (Administrator/Admin/admin/a)
 - [ ] Setup personal account (Göran Gustafsson/GLEG/gleg)
-- [ ] Download and run `Ansible/bootstrap_macos.sh`
+- [ ] Download and run `Ansiblebot/bootstrap_macos.sh`
 
 ## Misc
 - [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`

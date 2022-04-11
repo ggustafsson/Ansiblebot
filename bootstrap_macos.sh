@@ -35,7 +35,7 @@ su admin -c "echo '$USER  ALL = (ALL) ALL' | sudo tee /etc/sudoers.d/custom"
 
 echo
 mkdir ~/Projects
-git clone https://github.com/ggustafsson/Ansible.git ~/Projects/Ansible
-cd ~/Projects/Ansible
+git clone https://github.com/ggustafsson/Ansiblebot.git ~/Projects/Ansiblebot
+cd ~/Projects/Ansiblebot
 ansible-playbook $playbook --ask-become -v
 rm -rf ~/Library/Python

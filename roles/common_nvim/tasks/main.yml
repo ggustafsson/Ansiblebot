@@ -72,6 +72,8 @@
 
     - name: luasnip
       url: https://github.com/L3MON4D3/LuaSnip.git
+    - name: cmp_luasnip
+      url: https://github.com/saadparwaiz1/cmp_luasnip.git
 
     - name: null-ls.nvim
       url: https://github.com/jose-elias-alvarez/null-ls.nvim.git

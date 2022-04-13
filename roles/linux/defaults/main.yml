@@ -1,1 +1,1 @@
-path_linuxbrew: "{{ path_home }}/.linuxbrew"
+path_linuxbrew: "/home/linuxbrew/.linuxbrew"

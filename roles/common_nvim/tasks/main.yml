@@ -95,7 +95,8 @@
       url: https://github.com/nvim-lua/plenary.nvim.git
   notify: generate nvim tags
 
-# FIXME: Uncomment "ansible-language-server" after https://github.com/Homebrew/homebrew-core/pull/99170
+# FIXME: Uncomment "ansible-language-server" after merge:
+# https://github.com/Homebrew/homebrew-core/pull/99170
 - name: Install misc language servers
   community.general.homebrew:
     name:

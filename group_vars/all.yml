@@ -21,6 +21,7 @@ brew_macos:
   - links
   - neovim
   - nmap
+  - node
   - openssh
   - pylint
   - python
@@ -99,8 +100,10 @@ apt_ubuntu:
   - less
   - links
   - nmap
+  - npm
   - openssh-server
   - pylint
+  - python-is-python3
   - python3-pip
   - ranger
   - ripgrep

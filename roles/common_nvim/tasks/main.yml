@@ -103,3 +103,9 @@
       - pyright
       - yaml-language-server
     state: latest
+
+- name: Install misc language servers
+  community.general.npm:
+    name: "@ansible/ansible-language-server"
+    global: true
+    state: latest

@@ -14,6 +14,7 @@ brew_macos:
   - git-filter-repo
   - gnu-sed
   - golang
+  - golangci-lint
   - grep
   - html2text
   - htop
@@ -133,6 +134,7 @@ apt_ubuntu_tv:
 linuxbrew_linux:
   - fd
   - fzf
+  - golangci-lint
   - neovim
   - zsh-autosuggestions
 

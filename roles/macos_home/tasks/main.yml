@@ -18,6 +18,12 @@
     executable: "{{ pip_exec }}"
   when: pip_macos_home is defined
 
+- name: Install Go packages from list 'go_macos_home'
+  ansible.builtin.command:
+    cmd: go install {{ item }}
+  loop: "{{ go_macos_home }}"
+  when: go_macos_home is defined
+
 
 - name: Get stats on {{ path_home }}/Documents/Text/Countdowns.csv
   ansible.builtin.stat:

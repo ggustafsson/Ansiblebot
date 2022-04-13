@@ -18,6 +18,12 @@
     executable: "{{ pip_exec }}"
   when: pip_macos_work is defined
 
+- name: Install Go packages from list 'go_macos_work'
+  ansible.builtin.command:
+    cmd: go install {{ item }}
+  loop: "{{ go_macos_work }}"
+  when: go_macos_work is defined
+
 
 - name: Create misc directories
   ansible.builtin.file:

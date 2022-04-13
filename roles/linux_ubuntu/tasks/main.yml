@@ -30,6 +30,18 @@
     state: latest
   when: pip_ubuntu is defined
 
+- name: Install Go packages from list 'go_common'
+  ansible.builtin.command:
+    cmd: go install {{ item }}
+  loop: "{{ go_common }}"
+  when: go_common is defined
+
+- name: Install Go packages from list 'go_ubuntu'
+  ansible.builtin.command:
+    cmd: go install {{ item }}
+  loop: "{{ go_ubuntu }}"
+  when: go_ubuntu is defined
+
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
   ansible.builtin.template:

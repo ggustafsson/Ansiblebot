@@ -17,6 +17,12 @@
     state: latest
   when: pip_ubuntu_tv is defined
 
+- name: Install Go packages from list 'go_ubuntu_tv'
+  ansible.builtin.command:
+    cmd: go install {{ item }}
+  loop: "{{ go_ubuntu_tv }}"
+  when: go_ubuntu_tv is defined
+
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d
   ansible.builtin.copy:

@@ -35,12 +35,14 @@
     cmd: go install {{ item }}
   loop: "{{ go_common }}"
   when: go_common is defined
+  changed_when: false
 
 - name: Install Go packages from list 'go_ubuntu'
   ansible.builtin.command:
     cmd: go install {{ item }}
   loop: "{{ go_ubuntu }}"
   when: go_ubuntu is defined
+  changed_when: false
 
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf

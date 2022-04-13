@@ -96,12 +96,14 @@
     cmd: go install {{ item }}
   loop: "{{ go_common }}"
   when: go_common is defined
+  changed_when: false
 
 - name: Install Go packages from list 'go_macos'
   ansible.builtin.command:
     cmd: go install {{ item }}
   loop: "{{ go_macos }}"
   when: go_macos is defined
+  changed_when: false
 
 
 - name: Create misc directories

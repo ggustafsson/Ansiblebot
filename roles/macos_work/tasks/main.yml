@@ -23,6 +23,7 @@
     cmd: go install {{ item }}
   loop: "{{ go_macos_work }}"
   when: go_macos_work is defined
+  changed_when: false
 
 
 - name: Create misc directories

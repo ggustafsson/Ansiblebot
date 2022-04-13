@@ -22,3 +22,4 @@
     cmd: go install {{ item }}
   loop: "{{ go_ubuntu_vm }}"
   when: go_ubuntu_vm is defined
+  changed_when: false

@@ -22,6 +22,7 @@
     cmd: go install {{ item }}
   loop: "{{ go_ubuntu_tv }}"
   when: go_ubuntu_tv is defined
+  changed_when: false
 
 
 - name: Copy Port.conf to /etc/ssh/sshd_config.d

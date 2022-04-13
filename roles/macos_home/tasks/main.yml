@@ -23,6 +23,7 @@
     cmd: go install {{ item }}
   loop: "{{ go_macos_home }}"
   when: go_macos_home is defined
+  changed_when: false
 
 
 - name: Get stats on {{ path_home }}/Documents/Text/Countdowns.csv

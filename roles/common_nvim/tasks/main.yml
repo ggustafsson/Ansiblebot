@@ -93,6 +93,9 @@
       url: https://github.com/nvim-telescope/telescope.nvim.git
     - name: plenary.nvim
       url: https://github.com/nvim-lua/plenary.nvim.git
+
+    - name: vim-matchup
+      url: https://github.com/andymass/vim-matchup.git
   notify: generate nvim tags
 
 # FIXME: Uncomment "ansible-language-server" after merge:

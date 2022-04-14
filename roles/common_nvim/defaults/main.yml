@@ -5,4 +5,3 @@ path_nvim_pack_vim: "{{ path_nvim_local }}/site/pack/vim/start"
 path_nvim_pack_nvim: "{{ path_nvim_local }}/site/pack/nvim/start"
 
 git_defaultz_nvim: https://github.com/ggustafsson/defaultz.nvim.git
-git_electricboogaloo_nvim: https://github.com/ggustafsson/electric-boogaloo.nvim.git

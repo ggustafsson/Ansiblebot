@@ -16,8 +16,6 @@
   loop:
     - name: defaultz.nvim
       url: "{{ git_defaultz_nvim }}"
-    - name: electric-boogaloo.nvim
-      url: "{{ git_electricboogaloo_nvim }}"
 
 - name: Create symbolic links to Dotfiles, colorschemes, etc
   ansible.builtin.file:
@@ -29,8 +27,6 @@
       dest: "{{ path_nvim_config }}"
     - src: "{{ path_projects }}/defaultz.nvim"
       dest: "{{ path_nvim_pack_ggustafsson }}/defaultz.nvim"
-    - src: "{{ path_projects }}/electric-boogaloo.nvim"
-      dest: "{{ path_nvim_pack_ggustafsson }}/electric-boogaloo.nvim"
     - src: "{{ path_home }}/.local/share/fzf"
       dest: "{{ path_nvim_pack_vim }}/fzf"
 

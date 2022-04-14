@@ -43,8 +43,6 @@
       url: https://github.com/pearofducks/ansible-vim.git
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
-    - name: undotree
-      url: https://github.com/mbbill/undotree.git
     - name: vim-repeat
       url: https://github.com/tpope/vim-repeat.git
     - name: vim-speeddating

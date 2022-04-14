@@ -81,6 +81,9 @@
     - name: nvim-lspconfig
       url: https://github.com/neovim/nvim-lspconfig.git
 
+    - name: nvim-tree.lua
+      url: https://github.com/kyazdani42/nvim-tree.lua.git
+
     - name: nvim-treesitter
       url: https://github.com/nvim-treesitter/nvim-treesitter.git
     - name: nvim-treesitter-textobjects

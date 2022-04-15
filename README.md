@@ -19,6 +19,11 @@ Setup and/or maintain systems:
     ansible-playbook setup_ubuntu_tv.yml --ask-become
     ansible-playbook setup_ubuntu_vm.yml --ask-become
 
+Cleanup leftovers on systems:
+
+    vim cleanup_all.yml
+    ansible-playbook cleanup_all.yml --ask-become
+
 Build new Docker container image:
 
     ansible-playbook docker_ubuntu.yml --ask-become

@@ -1,0 +1,49 @@
+- name: Cleanup leftovers
+  hosts: all
+  vars:
+    # delete_files:
+    #   - "{{ ansible_user_dir }}/.local/share/nvim/site/pack/x/y"
+    #   - "{{ ansible_user_dir }}/x"
+
+    # uninstall_apt:
+    #   - pkg
+
+    # uninstall_brew:
+    #   - pkg
+
+    # uninstall_go:
+    #   - pkg
+
+    # uninstall_pip:
+    #   - pkg
+  tasks:
+    - name: Delete files from list 'delete_files'
+      ansible.builtin.file:
+        path: "{{ delete_files }}"
+        state: absent
+      when: delete_files is defined
+
+    - name: Uninstall packages from list 'uninstall_apt'
+      ansible.builtin.apt:
+        pkg: "{{ uninstall_apt }}"
+        state: absent
+      become: true
+      when: uninstall_apt is defined
+
+    - name: Uninstall packages from list 'uninstall_brew'
+      community.general.homebrew:
+        name: "{{ uninstall_brew }}"
+        state: absent
+      when: uninstall_brew is defined
+
+    - name: Uninstall packages from list 'uninstall_go'
+      ansible.builtin.command:
+        cmd: go uninstall {{ item }}
+      loop: "{{ uninstall_go }}"
+      when: uninstall_go is defined
+
+    - name: Uninstall packages from list 'uninstall_pip'
+      ansible.builtin.pip:
+        name: "{{ uninstall_pip }}"
+        state: absent
+      when: uninstall_pip is defined

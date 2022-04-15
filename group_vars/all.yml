@@ -57,6 +57,7 @@ brew_macos_work:
   - rbw
   - salt-lint
   - terraform
+  - terraform-ls
   - yq
 
 cask_macos:

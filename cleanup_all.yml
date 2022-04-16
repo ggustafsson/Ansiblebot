@@ -3,6 +3,7 @@
   vars:
     # delete_files:
     #   - "{{ ansible_user_dir }}/.local/share/nvim/site/pack/x/y"
+    #   - "{{ ansible_user_dir }}/Golang/bin/x"
     #   - "{{ ansible_user_dir }}/x"
 
     # uninstall_apt:
@@ -11,15 +12,13 @@
     # uninstall_brew:
     #   - pkg
 
-    # uninstall_go:
-    #   - pkg
-
     # uninstall_pip:
     #   - pkg
   tasks:
     - name: Delete files from list 'delete_files'
       ansible.builtin.file:
         path: "{{ delete_files }}"
+        follow: false
         state: absent
       when: delete_files is defined
 
@@ -35,12 +34,6 @@
         name: "{{ uninstall_brew }}"
         state: absent
       when: uninstall_brew is defined
-
-    - name: Uninstall packages from list 'uninstall_go'
-      ansible.builtin.command:
-        cmd: go uninstall {{ item }}
-      loop: "{{ uninstall_go }}"
-      when: uninstall_go is defined
 
     - name: Uninstall packages from list 'uninstall_pip'
       ansible.builtin.pip:

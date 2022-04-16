@@ -3,8 +3,8 @@
   hosts: macos
   vars:
     hostname: Coruscant
+    git_16x256_nvim: git@github.com:ggustafsson/16x256.nvim.git
     git_dotfiles: git@github.com:ggustafsson/Dotfiles.git
-    git_defaultz_nvim: git@github.com:ggustafsson/defaultz.nvim.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
     git_tim: git@github.com:ggustafsson/Tim.git
     path_homebrew: /usr/local

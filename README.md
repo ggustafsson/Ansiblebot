@@ -22,7 +22,7 @@ Setup and/or maintain systems:
 Cleanup leftovers on systems:
 
     vim cleanup_all.yml
-    ansible-playbook cleanup_all.yml --ask-become
+    ansible-playbook cleanup_all.yml --ask-become -v
 
 Build new Docker container image:
 

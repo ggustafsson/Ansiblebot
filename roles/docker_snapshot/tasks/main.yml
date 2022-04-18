@@ -1,5 +1,6 @@
 - name: Snapshot Docker container {{ docker_base }} as {{ docker_build }}
-  ansible.builtin.command: docker commit {{ docker_base }} {{ docker_build }}
+  ansible.builtin.command:
+    cmd: docker commit {{ docker_base }} {{ docker_build }}
   when: true
 
 - name: Stop Docker container {{ docker_base }}

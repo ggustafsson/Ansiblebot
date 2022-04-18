@@ -3,7 +3,8 @@
   when: true
 
 - name: Execute command 'unminimize'
-  ansible.builtin.shell: yes | unminimize
+  ansible.builtin.shell:
+    cmd: yes | unminimize
   when: true
 
 - name: Install misc packages for Ansible

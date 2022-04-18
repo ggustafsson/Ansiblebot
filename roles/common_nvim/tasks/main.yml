@@ -98,12 +98,11 @@
       url: https://github.com/andymass/vim-matchup.git
   notify: generate nvim tags
 
-# FIXME: Uncomment "ansible-language-server" after merge:
 # https://github.com/Homebrew/homebrew-core/pull/99170
 - name: Install misc language servers
   community.general.homebrew:
     name:
-      # - ansible-language-server
+      - ansible-language-server
       - bash-language-server
       - gopls
       - pyright

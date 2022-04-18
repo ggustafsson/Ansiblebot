@@ -86,6 +86,9 @@
     - name: nvim-treesitter-textobjects
       url: https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
 
+    - name: nvim-ts-autotag
+      url: https://github.com/windwp/nvim-ts-autotag.git
+
     - name: telescope.nvim
       url: https://github.com/nvim-telescope/telescope.nvim.git
     - name: plenary.nvim

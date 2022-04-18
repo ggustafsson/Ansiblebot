@@ -98,7 +98,6 @@
       url: https://github.com/andymass/vim-matchup.git
   notify: generate nvim tags
 
-# https://github.com/Homebrew/homebrew-core/pull/99170
 - name: Install misc language servers
   community.general.homebrew:
     name:

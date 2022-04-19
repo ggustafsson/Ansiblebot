@@ -83,6 +83,8 @@
 
     - name: nvim-treesitter
       url: https://github.com/nvim-treesitter/nvim-treesitter.git
+    - name: nvim-treesitter-refactor
+      url: https://github.com/nvim-treesitter/nvim-treesitter-refactor.git
     - name: nvim-treesitter-textobjects
       url: https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
 

@@ -177,17 +177,17 @@
     - defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
 
     # Menu Bar
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Battery" -int 159
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position BentoBox" -int 127
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Bluetooth" -int 380
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Battery" -int 169
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position BentoBox" -int 137
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Bluetooth" -int 317
     - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Display" -int 345
     - defaults write com.apple.controlcenter "NSStatusItem Preferred Position FocusModes" -int 307
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position NowPlaying" -int 275
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Sound" -int 239
-    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position WiFi" -int 412
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position NowPlaying" -int 285
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position Sound" -int 249
+    - defaults write com.apple.controlcenter "NSStatusItem Preferred Position WiFi" -int 349
     - defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -int 1
     - defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -int 1
-    - defaults write com.apple.systemuiserver "NSStatusItem Preferred Position com.apple.menuextra.TimeMachine" -int 201
+    - defaults write com.apple.systemuiserver "NSStatusItem Preferred Position com.apple.menuextra.TimeMachine" -int 211
     - defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.TimeMachine" -int 1
     - defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
   changed_when: false

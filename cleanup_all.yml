@@ -28,7 +28,7 @@
         pkg: "{{ uninstall_apt }}"
         state: absent
       become: true
-      when: uninstall_apt is defined
+      when: uninstall_apt is defined and ansible_distribution == "Ubuntu"
 
     - name: Uninstall packages from list 'uninstall_brew'
       community.general.homebrew:

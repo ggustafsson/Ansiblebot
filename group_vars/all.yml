@@ -1,7 +1,9 @@
 brew_macos:
   - ansible
+  - ansible-language-server
   - ansible-lint
   - bash
+  - bash-language-server
   - coreutils
   - curl
   - dialog
@@ -24,6 +26,7 @@ brew_macos:
   - node
   - openssh
   - pylint
+  - pyright
   - python
   - ranger
   - ripgrep
@@ -34,6 +37,7 @@ brew_macos:
   - tmux
   - tree
   - wget
+  - yaml-language-server
   - yamllint
   - zsh
   - zsh-autosuggestions
@@ -132,9 +136,13 @@ apt_ubuntu_tv:
 
 
 linuxbrew_linux:
+  - ansible-language-server
+  - bash-language-server
   - fd
   - fzf
   - neovim
+  - pyright
+  - yaml-language-server
   - zsh-autosuggestions
 
 #linuxbrew_ubuntu:

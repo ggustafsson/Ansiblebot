@@ -72,6 +72,8 @@
       url: https://github.com/hrsh7th/cmp-buffer.git
     - name: cmp-nvim-lsp
       url: https://github.com/hrsh7th/cmp-nvim-lsp.git
+    - name: cmp-nvim-lua
+      url: https://github.com/hrsh7th/cmp-nvim-lua.git
     - name: cmp-path
       url: https://github.com/hrsh7th/cmp-path.git
 
@@ -95,13 +97,3 @@
     - name: vim-matchup
       url: https://github.com/andymass/vim-matchup.git
   notify: generate nvim tags
-
-- name: Install misc language servers
-  community.general.homebrew:
-    name:
-      - ansible-language-server
-      - bash-language-server
-      - gopls
-      - pyright
-      - yaml-language-server
-    state: latest

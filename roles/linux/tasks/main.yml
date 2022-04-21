@@ -1,7 +1,7 @@
 - name: Add public SSH keys to authorized_keys
   ansible.posix.authorized_key:
     user: "{{ ansible_user_id }}"
-    key: "{% for key in query('fileglob', 'id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
+    key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
     state: present
     exclusive: true
 

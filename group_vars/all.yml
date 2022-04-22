@@ -15,6 +15,7 @@ brew_macos:
   - git
   - git-filter-repo
   - gnu-sed
+  - gnupg
   - golang
   - grep
   - html2text
@@ -97,6 +98,7 @@ apt_ubuntu:
   - gawk
   - git
   - git-filter-repo
+  - gnupg
   - golang
   - html2text
   - htop

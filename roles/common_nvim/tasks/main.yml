@@ -4,6 +4,7 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_nvim_local }}"
     - "{{ path_nvim_local }}/backup"
     - "{{ path_nvim_pack_ggustafsson }}"
     - "{{ path_nvim_pack_vim }}"

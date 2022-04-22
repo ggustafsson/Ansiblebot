@@ -1,17 +1,3 @@
-- name: Delete misc files
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - "{{ path_home }}/Desktop/.localized"
-    - "{{ path_home }}/Documents/.localized"
-    - "{{ path_home }}/Downloads/.localized"
-    - "{{ path_home }}/Library/.localized"
-    - "{{ path_home }}/Movies/.localized"
-    - "{{ path_home }}/Music/.localized"
-    - "{{ path_home }}/Pictures/.localized"
-    - "{{ path_home }}/Public/.localized"
-
 - name: Create misc directories
   ansible.builtin.file:
     path: "{{ item }}"
@@ -28,6 +14,20 @@
     group: wheel
     mode: 0640
   become: true
+
+- name: Delete misc files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ path_home }}/Desktop/.localized"
+    - "{{ path_home }}/Documents/.localized"
+    - "{{ path_home }}/Downloads/.localized"
+    - "{{ path_home }}/Library/.localized"
+    - "{{ path_home }}/Movies/.localized"
+    - "{{ path_home }}/Music/.localized"
+    - "{{ path_home }}/Pictures/.localized"
+    - "{{ path_home }}/Public/.localized"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
@@ -112,6 +112,7 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_home }}/Library/Application Support/Code"
     - "{{ path_home }}/Library/Application Support/Code/User"
     - "{{ path_home }}/Library/Desktop Pictures"
 

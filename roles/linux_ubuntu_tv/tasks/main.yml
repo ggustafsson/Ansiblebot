@@ -25,16 +25,6 @@
   changed_when: false
 
 
-- name: Copy Port.conf to /etc/ssh/sshd_config.d
-  ansible.builtin.copy:
-    src: sshd_config.d/Port.conf
-    dest: /etc/ssh/sshd_config.d/Port.conf
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-  notify: restart sshd
-
 - name: Set AutomaticLogin in /etc/gdm3/custom.conf
   ansible.builtin.lineinfile:
     path: /etc/gdm3/custom.conf
@@ -46,3 +36,13 @@
       line: AutomaticLoginEnable = true
     - regexp: '^#  AutomaticLogin = user1'
       line: AutomaticLogin = gleg
+
+- name: Copy Port.conf to /etc/ssh/sshd_config.d
+  ansible.builtin.copy:
+    src: sshd_config.d/Port.conf
+    dest: /etc/ssh/sshd_config.d/Port.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify: restart sshd

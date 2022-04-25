@@ -9,25 +9,25 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Download and run `Ansiblebot/bootstrap_macos.sh`
 
 ## Misc
-- [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
+- [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
 
 ## Misc - Work
 - [ ] Create `~/.gitconfig_local`
 - [ ] Run `ssh-keygen -t ed25519`
 
 ## Web Browsers - Home
-- [ ] Install plugin 1Password
-- [ ] Install plugin Adblock Plus
+- [ ] Install plugin 1Password
+- [ ] Install plugin Adblock Plus
 
 ## Web Browsers - Work
-- [ ] Install plugin Adblock Plus
-- [ ] Install plugin Bitwarden
+- [ ] Install plugin Adblock Plus
+- [ ] Install plugin Bitwarden
 
 ## Dock
 - [ ] Add & remove apps
 
 ## Finder
-- [ ] Rename system disk (macOS Home/Work)
+- [ ] Rename system disk (macOS Home/Work)
 - [ ] Tags - Disable all under "Show these tags in the sidebar"
 - [ ] Sidebar - Enable almost all sidebar items
 - [ ] View Options - Show Library folder
@@ -68,6 +68,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Security & Privacy
 - [ ] General - Require password immediately
+- [ ] FileVault - Turn On FileVault...
 - [ ] Firewall - Turn On Firewall
 - [ ] Firewall Options - Disable "Automatically allow downloaded signed software"
 

@@ -21,8 +21,9 @@ Setup and/or maintain systems:
 
 Cleanup leftovers on systems:
 
-    vim cleanup_all.yml
-    ansible-playbook cleanup_all.yml --ask-become -v
+    cp cleanup_{all,tmp}.yml
+    nvim cleanup_tmp.yml
+    ansible-playbook cleanup_tmp.yml --ask-become -v
 
 Build new Docker container image:
 

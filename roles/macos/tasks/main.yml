@@ -77,6 +77,13 @@
     install_options: appdir=~/Applications
   when: cask_macos is defined
 
+- name: Install Homebrew applications from list 'cask_macos_root'
+  community.general.homebrew_cask:
+    name: "{{ cask_macos_root }}"
+    state: latest
+    install_options: appdir=/Applications
+  when: cask_macos_root is defined
+
 - name: Install Pip packages from list 'pip_common'
   ansible.builtin.pip:
     name: "{{ pip_common }}"

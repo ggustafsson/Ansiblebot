@@ -71,6 +71,9 @@ cask_macos:
   - utm
   - visual-studio-code
 
+#cask_macos_root:
+#  - x
+
 cask_macos_home:
   - dropbox
   - handbrake

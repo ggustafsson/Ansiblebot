@@ -11,11 +11,11 @@
     install_options: appdir=~/Applications
   when: cask_macos_home is defined
 
-# XXX: 1Password etc must be installed at /Applications because of sandboxing.
 - name: Install Homebrew applications from list 'cask_macos_home_root'
   community.general.homebrew_cask:
     name: "{{ cask_macos_home_root }}"
     state: latest
+    install_options: appdir=/Applications
   when: cask_macos_home_root is defined
 
 - name: Install Pip packages from list 'pip_macos_home'

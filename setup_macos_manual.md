@@ -28,6 +28,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## Finder
 - [ ] Rename system disk (macOS Home/Work)
+- [ ] Desktop - Sort By - Snap to Grid
 - [ ] Tags - Disable all under "Show these tags in the sidebar"
 - [ ] Sidebar - Enable almost all sidebar items
 - [ ] View Options - Show Library folder

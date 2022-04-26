@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 if ! xcode-select -p &> /dev/null; then
+  echo "Installing missing Xcode Command Line Tools..."
   xcode-select --install
-
-  echo "Run again after Xcode Command Line Tools have been installed..."
+  echo "Re-run script after installation has finished! Exiting..."
   exit 1
 fi
 
@@ -17,6 +17,11 @@ read input
 
 case $input in
   h)
+    if [[ ! -f ~/.ssh/id_ed25519 ]]; then
+      echo "\nPrivate SSH key is missing! Exiting..."
+      exit 1
+    fi
+
     playbook=setup_macos_home.yml
     ;;
   w)

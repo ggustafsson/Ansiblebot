@@ -22,9 +22,11 @@ case $input in
       exit 1
     fi
 
+    git_url="git@github.com:ggustafsson/Ansiblebot.git"
     playbook=setup_macos_home.yml
     ;;
   w)
+    git_url="https://github.com/ggustafsson/Ansiblebot.git"
     playbook=setup_macos_work.yml
     ;;
   *)
@@ -47,7 +49,7 @@ su admin -c "echo '$USER  ALL = (ALL) ALL' | sudo tee /etc/sudoers.d/custom"
 
 echo
 mkdir ~/Projects
-git clone https://github.com/ggustafsson/Ansiblebot.git ~/Projects/Ansiblebot
+git clone $git_url ~/Projects/Ansiblebot
 cd ~/Projects/Ansiblebot
 ansible-playbook $playbook --ask-become -v
 rm -rf ~/Library/Python

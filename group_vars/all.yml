@@ -72,16 +72,21 @@ cask_macos:
   - visual-studio-code
 
 cask_macos_home:
-  - 1password
   - dropbox
   - handbrake
   - tor-browser
   - transmission
   - vlc
 
+cask_macos_home_root:
+  - 1password
+
 cask_macos_work:
   - bitwarden
   - slack
+
+#cask_macos_work_root:
+#  - x
 
 
 apt_ubuntu:

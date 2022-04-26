@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if xcode-select -p; then
+if ! xcode-select -p &> /dev/null; then
   xcode-select --install
 
   echo "Run again after Xcode Command Line Tools have been installed..."

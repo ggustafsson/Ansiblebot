@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+if xcode-select -p; then
+  xcode-select --install
+
+  echo "Run again after Xcode Command Line Tools have been installed..."
+  exit 1
+fi
+
 echo -n "Select which Ansible playbook to run...
 
 h - setup_macos_home.yml

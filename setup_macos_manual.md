@@ -24,7 +24,8 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Install plugin Bitwarden
 
 ## Dock
-- [ ] Add & remove apps
+- [ ] Turn Hiding On
+- [ ] Add and remove apps
 
 ## Finder
 - [ ] Rename system disk (macOS Home/Work)

@@ -16,7 +16,6 @@
   community.general.homebrew_cask:
     name: "{{ cask_macos_home_root }}"
     state: latest
-  become: true
   when: cask_macos_home_root is defined
 
 - name: Install Pip packages from list 'pip_macos_home'

@@ -11,7 +11,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Misc
 - [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
 
-## Web Browsers
+## Browser Extensions
 - [ ] Install plugin 1Password/Bitwarden
 - [ ] Install plugin Adblock Plus
 

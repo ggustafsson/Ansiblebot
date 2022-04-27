@@ -11,17 +11,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Misc
 - [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
 
-## Misc - Work
-- [ ] Create `~/.gitconfig_local`
-- [ ] Run `ssh-keygen -t ed25519`
-
-## Web Browsers - Home
-- [ ] Install plugin 1Password
+## Web Browsers
+- [ ] Install plugin 1Password/Bitwarden
 - [ ] Install plugin Adblock Plus
-
-## Web Browsers - Work
-- [ ] Install plugin Adblock Plus
-- [ ] Install plugin Bitwarden
 
 ## Dock
 - [ ] Turn Hiding On
@@ -33,6 +25,16 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Tags - Disable all under "Show these tags in the sidebar"
 - [ ] Sidebar - Enable almost all sidebar items
 - [ ] View Options - Show Library folder
+
+## Mail
+- [ ] ...
+
+## Messages
+- [] General - Set "Keep messages" to "30 Days"
+- [] iMessage - Enable "Enable Messages in iCloud"
+
+## Music
+- [ ] ...
 
 ## Safari
 - [ ] View - Show Status Bar
@@ -48,9 +50,12 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## Terminal
 - [ ] Open `Dotfiles/Misc/Default.terminal`
-- [ ] Profiles - Set `Default` as default
+- [ ] Profiles - Set "Default" as default
 
 ## System Preferences
+
+### Apple ID
+- [ ] Disable unwanted services
 
 ### Battery
 - [ ] Battery - Turn display off after 10min
@@ -66,7 +71,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Shortcuts - Switch to Desktop X (Cmd-X)
 - [ ] Shortcuts - Move focus to next window (Option-Tab)
 - [ ] Shortcuts - Disable almost everything under "Services"
-- [ ] Input Sources - Select `Swedish - No Dead Keys`
+- [ ] Input Sources - Select "Swedish - No Dead Keys"
 
 ### Security & Privacy
 - [ ] General - Require password immediately

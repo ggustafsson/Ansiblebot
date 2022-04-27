@@ -42,16 +42,15 @@
     - "{{ path_home }}/Git"
 
 
-# XXX: Placeholder for the future.
-#- name: Check installed Visual Studio Code extensions
-#  ansible.builtin.command:
-#    cmd: code --list-extensions
-#  register: code_extensions
-#  changed_when: false
-#
-#- name: Install Visual Studio Code extensions
-#  ansible.builtin.command:
-#    cmd: code --install-extension "{{ item }}"
-#  loop:
-#    - x
-#  when: item not in code_extensions.stdout
+- name: Check installed Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --list-extensions
+  register: code_extensions
+  changed_when: false
+
+- name: Install Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --install-extension "{{ item }}"
+  loop:
+    - hashicorp.terraform
+  when: item not in code_extensions.stdout

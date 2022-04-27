@@ -243,16 +243,22 @@
   when: '"Swedish - No Dead Keys" not in defaults_read.stdout'
 
 
-# XXX: Placeholder for the future.
-#- name: Check installed Visual Studio Code extensions
-#  ansible.builtin.command:
-#    cmd: code --list-extensions
-#  register: code_extensions
-#  changed_when: false
-#
-#- name: Install Visual Studio Code extensions
-#  ansible.builtin.command:
-#    cmd: code --install-extension "{{ item }}"
-#  loop:
-#    - x
-#  when: item not in code_extensions.stdout
+- name: check installed visual studio code extensions
+  ansible.builtin.command:
+    cmd: code --list-extensions
+  register: code_extensions
+  changed_when: false
+
+- name: install visual studio code extensions
+  ansible.builtin.command:
+    cmd: code --install-extension "{{ item }}"
+  loop:
+    - golang.go
+    - ms-azuretools.vscode-docker
+    - ms-python.python
+    - ms-vscode-remote.remote-containers
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - redhat.ansible
+    - redhat.vscode-yaml
+  when: item not in code_extensions.stdout

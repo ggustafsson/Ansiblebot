@@ -18,27 +18,29 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Dock
 - [ ] Turn Hiding On
 - [ ] Add and remove apps
+- [ ] Assign apps to desktops
 
 ## Finder
 - [ ] Rename system disk (macOS Home/Work)
 - [ ] Desktop - Sort By - Snap to Grid
 - [ ] Tags - Disable all under "Show these tags in the sidebar"
 - [ ] Sidebar - Enable almost all sidebar items
-- [ ] View Options - Show Library folder
+- [ ] Show View Options - Always open in column view
+- [ ] Show View Options - Show Library folder
 
 ## Mail
 - [ ] ...
 
 ## Messages
 - [] General - Set "Keep messages" to "30 Days"
-- [] iMessage - Enable "Enable Messages in iCloud"
+- [] iMessage - Enable Messages in iCloud
 
 ## Music
 - [ ] ...
 
 ## Safari
 - [ ] View - Show Status Bar
-- [ ] General - Safari opens with "All windows from last session"
+- [ ] General - Safari opens with "All non-private windows from last session"
 - [ ] General - Disable "Open safe files after downloading"
 - [ ] Advanced - Show full website address
 - [ ] Advanced - Disable "Show colour in compact tab bar"
@@ -56,6 +58,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Apple ID
 - [ ] Disable unwanted services
+- [ ] Disable "Optimise Mac Storage"
 
 ### Battery
 - [ ] Battery - Turn display off after 10min
@@ -68,9 +71,11 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ### Keyboard
 - [ ] Modifier Keys - Caps Lock Key -> Control
 - [ ] Text - Remove all replace words
+- [ ] Text - Disable "Capitalise words automatically"
+- [ ] Text - Disable "Add full stop with double-space"
 - [ ] Shortcuts - Switch to Desktop X (Cmd-X)
 - [ ] Shortcuts - Move focus to next window (Option-Tab)
-- [ ] Shortcuts - Disable almost everything under "Services"
+- [ ] Shortcuts - Disable everything under "Services"
 - [ ] Input Sources - Select "Swedish - No Dead Keys"
 
 ### Security & Privacy

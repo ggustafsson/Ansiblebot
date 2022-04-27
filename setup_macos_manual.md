@@ -42,6 +42,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] View - Show Status Bar
 - [ ] General - Safari opens with "All non-private windows from last session"
 - [ ] General - Disable "Open safe files after downloading"
+- [ ] AutoFill - Disable "Usernames and passwords"
 - [ ] Advanced - Show full website address
 - [ ] Advanced - Disable "Show colour in compact tab bar"
 - [ ] Advanced - Show Develop menu in menu bar

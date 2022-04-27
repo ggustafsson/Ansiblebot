@@ -18,8 +18,8 @@
   when: pip_ubuntu_vm is defined
 
 - name: Install Go packages from list 'go_ubuntu_vm'
-  ansible.builtin.command:
-    cmd: go install {{ item }}
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu_vm }}"
   when: go_ubuntu_vm is defined
   changed_when: false

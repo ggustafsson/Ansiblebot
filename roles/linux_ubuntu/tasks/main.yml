@@ -31,15 +31,15 @@
   when: pip_ubuntu is defined
 
 - name: Install Go packages from list 'go_common'
-  ansible.builtin.command:
-    cmd: go install {{ item }}
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_common }}"
   when: go_common is defined
   changed_when: false
 
 - name: Install Go packages from list 'go_ubuntu'
-  ansible.builtin.command:
-    cmd: go install {{ item }}
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu }}"
   when: go_ubuntu is defined
   changed_when: false

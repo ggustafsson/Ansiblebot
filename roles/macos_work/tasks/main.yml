@@ -26,8 +26,8 @@
   when: pip_macos_work is defined
 
 - name: Install Go packages from list 'go_macos_work'
-  ansible.builtin.command:
-    cmd: go install {{ item }}
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_macos_work }}"
   when: go_macos_work is defined
   changed_when: false

@@ -18,8 +18,8 @@
   when: pip_ubuntu_tv is defined
 
 - name: Install Go packages from list 'go_ubuntu_tv'
-  ansible.builtin.command:
-    cmd: go install {{ item }}
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu_tv }}"
   when: go_ubuntu_tv is defined
   changed_when: false

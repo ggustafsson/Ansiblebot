@@ -76,6 +76,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Shortcuts - Switch to Desktop X (Cmd-X)
 - [ ] Shortcuts - Move focus to next window (Option-Tab)
 - [ ] Shortcuts - Disable everything under "Services"
+- [ ] Shortcuts - Safari.app - Show Start Page (Cmd-Shift-H)
 - [ ] Input Sources - Select "Swedish - No Dead Keys"
 
 ### Security & Privacy

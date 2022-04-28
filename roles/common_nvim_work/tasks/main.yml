@@ -1,0 +1,17 @@
+- name: Git clone/pull misc Vim plugins
+  ansible.builtin.git:
+    repo: "{{ item.url }}"
+    dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+  loop:
+    - name: vim-terraform
+      url: https://github.com/hashivim/vim-terraform.git
+  notify: generate nvim tags
+
+#- name: Git clone/pull misc NeoVim plugins
+#  ansible.builtin.git:
+#    repo: "{{ item.url }}"
+#    dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+#  loop:
+#    - name: x
+#      url: y
+#  notify: generate nvim tags

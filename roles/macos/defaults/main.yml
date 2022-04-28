@@ -1,6 +1,4 @@
 path_homebrew: /opt/homebrew
-
-path_wallpaper: "{{ path_home }}/Library/Desktop Pictures/Solar Gradients.heic"
-url_wallpaper: https://www.dropbox.com/s/raw/rlz1ii3qxbt7r2i/SolarGradients.heic
+path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
 pip_exec: "{{ path_homebrew }}/bin/pip3"

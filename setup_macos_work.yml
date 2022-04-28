@@ -2,6 +2,7 @@
   hosts: macos
   vars:
     hostname: Twoson
+    path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Stone.png
   roles:
     - common
     - macos

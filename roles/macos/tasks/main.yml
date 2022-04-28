@@ -200,12 +200,6 @@
     - defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
   changed_when: false
 
-- name: Fetch {{ url_wallpaper }}
-  ansible.builtin.get_url:
-    url: "{{ url_wallpaper }}"
-    dest: "{{ path_wallpaper }}"
-    mode: 0600
-
 - name: Check desktop wallpaper
   ansible.builtin.command:
     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "SELECT value FROM data ORDER BY ROWID DESC LIMIT 1"

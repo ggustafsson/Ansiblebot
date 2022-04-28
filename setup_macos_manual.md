@@ -33,6 +33,10 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Fonts & Colours - Helvetica 13 and SF Mono 12
 - [ ] Fonts & Colours - Use fixed-width font for plain text messages
 
+## Menu Bar
+- [ ] Enable and disable items
+- [ ] Reorganize menu bar items
+
 ## Messages
 - [] General - Set "Keep messages" to "30 Days"
 - [] iMessage - Enable Messages in iCloud

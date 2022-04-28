@@ -68,6 +68,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Battery
 - [ ] Battery - Turn display off after 10min
+- [ ] Battery - Disable "Slightly dim the display while on battery power"
 - [ ] Power Adapter - Prevent your Mac from automatically sleeping
 
 ### Displays

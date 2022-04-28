@@ -53,4 +53,5 @@
     cmd: code --install-extension "{{ item }}"
   loop:
     - hashicorp.terraform
+    - ms-kubernetes-tools.vscode-kubernetes-tools
   when: item not in code_extensions.stdout

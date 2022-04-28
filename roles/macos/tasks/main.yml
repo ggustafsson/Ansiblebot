@@ -247,6 +247,7 @@
   ansible.builtin.command:
     cmd: code --install-extension "{{ item }}"
   loop:
+    - asvetliakov.vscode-neovim
     - golang.go
     - ms-azuretools.vscode-docker
     - ms-python.python

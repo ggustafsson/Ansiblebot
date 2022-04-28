@@ -31,6 +31,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Mail
 - [ ] Add Gmail account
 - [ ] Fonts & Colours - Helvetica 13 and SF Mono 12
+- [ ] Fonts & Colours - Use fixed-width font for plain text messages
 
 ## Messages
 - [] General - Set "Keep messages" to "30 Days"

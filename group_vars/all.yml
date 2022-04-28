@@ -197,8 +197,9 @@ pip_macos:
 #pip_macos_home:
 #  - x
 
-#pip_macos_work:
-#  - x
+pip_macos_work:
+  - opensearch-py
+  - prometheus-client
 
 #pip_ubuntu:
 #  - x

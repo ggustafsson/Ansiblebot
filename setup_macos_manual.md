@@ -29,14 +29,18 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Show View Options - Show Library folder
 
 ## Mail
-- [ ] ...
+- [ ] Add Gmail account
+- [ ] Fonts & Colours - Helvetica 13 and SF Mono 12
 
 ## Messages
 - [] General - Set "Keep messages" to "30 Days"
 - [] iMessage - Enable Messages in iCloud
 
 ## Music
-- [ ] ...
+- [ ] General - Disable "Show Apple Music"
+- [ ] General - Disable "Show iTunes"
+- [ ] Advanced - Automatically Update Artwork for Imported Songs
+- [ ] View Options - Album, Artist & Time
 
 ## Safari
 - [ ] View - Show Status Bar

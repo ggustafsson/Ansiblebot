@@ -33,6 +33,14 @@
   changed_when: false
 
 
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+  loop:
+    - "{{ path_home }}/X-Files"
+
 - name: Get stats on {{ path_home }}/Documents/Text/Countdowns.csv
   ansible.builtin.stat:
     path: "{{ path_home }}/Documents/Text/Countdowns.csv"

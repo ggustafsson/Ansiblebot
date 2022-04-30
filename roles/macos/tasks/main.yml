@@ -5,6 +5,8 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Applications"
+    - "{{ path_home }}/Docker"
+    - "{{ path_home }}/Dump"
 
 - name: Create file /etc/sudoers.d/custom
   ansible.builtin.template:
@@ -121,7 +123,6 @@
   loop:
     - "{{ path_home }}/Library/Application Support/Code"
     - "{{ path_home }}/Library/Application Support/Code/User"
-    - "{{ path_home }}/Library/Desktop Pictures"
 
 - name: Create misc symbolic links
   ansible.builtin.file:

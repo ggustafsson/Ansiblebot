@@ -2,7 +2,6 @@
 ubuntu-tv1
 
 [ubuntu_vm]
-ubuntu-lxc1
 ubuntu-vm1
 
 [ubuntu:children]

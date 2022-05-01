@@ -140,8 +140,8 @@ apt_ubuntu_tv:
   - svtplay-dl
   - youtube-dl
 
-#apt_ubuntu_vm:
-#  - x
+apt_ubuntu_vm:
+  - ubuntu-desktop
 
 
 linuxbrew_linux:

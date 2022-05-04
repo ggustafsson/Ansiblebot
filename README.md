@@ -28,4 +28,3 @@ Cleanup leftovers on systems:
 Build new Docker container image:
 
     ansible-playbook docker_ubuntu.yml --ask-become
-

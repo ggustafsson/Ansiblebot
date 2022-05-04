@@ -100,6 +100,7 @@ apt_ubuntu:
   - curl
   - dialog
   - dnsutils
+  - fd-find
   - figlet
   - flac
   - flake8
@@ -149,7 +150,6 @@ apt_ubuntu_vm:
 linuxbrew_linux:
   - ansible-language-server
   - bash-language-server
-  - fd
   - fzf
   - neovim
   - pyright

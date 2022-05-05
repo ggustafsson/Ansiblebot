@@ -235,6 +235,7 @@
   loop:
     - asvetliakov.vscode-neovim
     - bierner.markdown-mermaid
+    - bpruitt-goddard.mermaid-markdown-syntax-highlighting
     - golang.go
     - ms-azuretools.vscode-docker
     - ms-python.python

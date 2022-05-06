@@ -67,6 +67,7 @@ brew_macos_work:
 
 cask_macos:
   - docker
+  - dropbox
   - hammerspoon
   - utm
   - visual-studio-code
@@ -75,7 +76,6 @@ cask_macos_root:
   - google-chrome
 
 cask_macos_home:
-  - dropbox
   - handbrake
   - tor-browser
   - transmission

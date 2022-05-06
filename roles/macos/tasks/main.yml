@@ -6,16 +6,18 @@
   loop:
     - "{{ path_home }}/Applications"
     - "{{ path_home }}/Docker"
+    - "{{ path_home }}/Dropbox"
+    - "{{ path_home }}/Dropbox/Text"
     - "{{ path_home }}/Dump"
 
-- name: Create file /etc/sudoers.d/custom
-  ansible.builtin.template:
-    src: sudoers.d/custom.j2
-    dest: /etc/sudoers.d/custom
-    owner: root
-    group: wheel
-    mode: 0640
-  become: true
+- name: Create misc symbolic links
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - src: "{{ path_home }}/Dropbox/Text"
+      dest: "{{ path_home }}/Documents/Text"
 
 - name: Delete misc files
   ansible.builtin.file:
@@ -30,6 +32,15 @@
     - "{{ path_home }}/Music/.localized"
     - "{{ path_home }}/Pictures/.localized"
     - "{{ path_home }}/Public/.localized"
+
+- name: Create file /etc/sudoers.d/custom
+  ansible.builtin.template:
+    src: sudoers.d/custom.j2
+    dest: /etc/sudoers.d/custom
+    owner: root
+    group: wheel
+    mode: 0640
+  become: true
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:

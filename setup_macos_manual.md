@@ -96,5 +96,8 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Firewall - Turn On Firewall
 - [ ] Firewall Options - Disable "Automatically allow downloaded signed software"
 
+### Sound
+- [ ] Sound Effects - Play sound on startup
+
 ### Trackpad
 - [ ] Point & Click - Tracking speed 7/10

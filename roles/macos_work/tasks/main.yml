@@ -39,6 +39,7 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_home }}/Docker"
     - "{{ path_home }}/Git"
 
 

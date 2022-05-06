@@ -7,7 +7,8 @@
     - "{{ path_home }}/Applications"
     - "{{ path_home }}/Coredump"
     - "{{ path_home }}/Dropbox"
-    - "{{ path_home }}/Dropbox/Text"
+    - "{{ path_home }}/Dropbox/Twilight Zone"
+    - "{{ path_home }}/Dropbox/Twilight Zone/Text"
 
 - name: Create misc symbolic links
   ansible.builtin.file:

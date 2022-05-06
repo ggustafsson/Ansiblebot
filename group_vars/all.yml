@@ -22,7 +22,6 @@ brew_macos:
   - htop
   - less
   - links
-  - mermaid-cli
   - neovim
   - nmap
   - node
@@ -116,7 +115,6 @@ apt_ubuntu:
   - less
   - links
   - nmap
-  - node-mermaid
   - npm
   - openssh-server
   - pylint

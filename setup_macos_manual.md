@@ -69,7 +69,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Apple ID
 - [ ] Disable unwanted services
-- [ ] Disable "Optimise Mac Storage"
 
 ### Battery
 - [ ] Battery - Turn display off after 10min

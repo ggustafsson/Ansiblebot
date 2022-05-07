@@ -1,3 +1,12 @@
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+  loop:
+    - "{{ path_home }}/Documents/Text"
+    - "{{ path_home }}/Documents/Text/Cheats"
+
 - name: Add public SSH keys to authorized_keys
   ansible.posix.authorized_key:
     user: "{{ ansible_user_id }}"
@@ -25,6 +34,7 @@
     - repo: https://github.com/Homebrew/homebrew-core
       dest: "{{ path_linuxbrew }}/Library/Taps/homebrew/homebrew-core"
 
+# FIXME: Linuxbrew is completely broken on ARM64.
 - name: Upgrade all Linuxbrew packages
   community.general.homebrew:
     update_homebrew: true

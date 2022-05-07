@@ -41,8 +41,6 @@
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
     - "{{ path_home }}/Documents"
-    - "{{ path_home }}/Documents/Text"
-    - "{{ path_home }}/Documents/Text/Cheats"
     - "{{ path_home }}/Downloads"
 
 - name: Git clone/pull misc projects

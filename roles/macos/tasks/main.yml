@@ -245,7 +245,7 @@
     cmd: code --install-extension "{{ item }}"
   loop:
     - asvetliakov.vscode-neovim
-    - bierner.github-markdown-preview
+    - bierner.markdown-mermaid
     - bpruitt-goddard.mermaid-markdown-syntax-highlighting
     - golang.go
     - ms-azuretools.vscode-docker

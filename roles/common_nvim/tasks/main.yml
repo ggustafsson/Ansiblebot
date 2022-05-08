@@ -66,6 +66,8 @@
 
     - name: null-ls.nvim
       url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
+    - name: plenary.nvim
+      url: https://github.com/nvim-lua/plenary.nvim.git
 
     - name: nvim-cmp
       url: https://github.com/hrsh7th/nvim-cmp.git
@@ -86,6 +88,9 @@
 
     - name: nvim-ts-autotag
       url: https://github.com/windwp/nvim-ts-autotag.git
+
+    - name: rnvimr
+      url: https://github.com/kevinhwang91/rnvimr.git
 
     - name: vim-matchup
       url: https://github.com/andymass/vim-matchup.git

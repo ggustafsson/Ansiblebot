@@ -81,19 +81,11 @@
     - name: nvim-lspconfig
       url: https://github.com/neovim/nvim-lspconfig.git
 
-    - name: nvim-tree.lua
-      url: https://github.com/kyazdani42/nvim-tree.lua.git
-
     - name: nvim-treesitter
       url: https://github.com/nvim-treesitter/nvim-treesitter.git
 
     - name: nvim-ts-autotag
       url: https://github.com/windwp/nvim-ts-autotag.git
-
-    - name: telescope.nvim
-      url: https://github.com/nvim-telescope/telescope.nvim.git
-    - name: plenary.nvim
-      url: https://github.com/nvim-lua/plenary.nvim.git
 
     - name: vim-matchup
       url: https://github.com/andymass/vim-matchup.git

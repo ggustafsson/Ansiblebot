@@ -64,6 +64,9 @@
     - name: cmp_luasnip
       url: https://github.com/saadparwaiz1/cmp_luasnip.git
 
+    - name: nnn.nvim
+      url: https://github.com/luukvbaal/nnn.nvim.git
+
     - name: null-ls.nvim
       url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
     - name: plenary.nvim

@@ -63,8 +63,6 @@
       dest: "{{ path_home }}/Scripts"
     - src: "{{ path_dotfiles }}/config/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
-    - src: "{{ path_dotfiles }}/config/ranger"
-      dest: "{{ path_home }}/.config/ranger"
     - src: "{{ path_dotfiles }}/config/yamllint"
       dest: "{{ path_home }}/.config/yamllint"
     - src: "{{ path_dotfiles }}/gitconfig"

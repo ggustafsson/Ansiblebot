@@ -2,6 +2,7 @@ brew_macos:
   - ansible
   - ansible-language-server
   - ansible-lint
+  - asciinema
   - bash
   - bash-language-server
   - coreutils
@@ -94,6 +95,7 @@ cask_macos_work:
 apt_ubuntu:
   - ansible
   - ansible-lint
+  - asciinema
   - build-essential
   - cuetools
   - curl

@@ -23,7 +23,6 @@ brew_macos:
   - htop
   - less
   - links
-  - lua
   - neovim
   - nmap
   - nnn
@@ -93,7 +92,6 @@ cask_macos_work:
 #  - x
 
 
-# XXX: There is no virtual package for latest Lua, must use "lua.5.4".
 apt_ubuntu:
   - ansible
   - ansible-lint
@@ -118,7 +116,6 @@ apt_ubuntu:
   - lame
   - less
   - links
-  - lua5.4
   - nmap
   - nnn
   - npm

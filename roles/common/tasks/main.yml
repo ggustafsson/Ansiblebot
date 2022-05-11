@@ -50,6 +50,8 @@
   loop:
     - name: "{{ path_dotfiles }}"
       url: "{{ git_dotfiles }}"
+    - name: "{{ path_projects }}/Dockerfiles"
+      url: "{{ git_dockerfiles }}"
     - name: "{{ path_projects }}/Tim"
       url: "{{ git_tim }}"
 

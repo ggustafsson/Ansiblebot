@@ -57,7 +57,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] AutoFill - Disable "Usernames and passwords"
 - [ ] Advanced - Show full website address
 - [ ] Advanced - Disable "Show colour in compact tab bar"
-- [ ] Advanced - Save articles for offline reading automatically
 - [ ] Advanced - Show Develop menu in menu bar
 
 ## Spaces

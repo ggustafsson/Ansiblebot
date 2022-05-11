@@ -47,6 +47,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Advanced - Automatically Update Artwork for Imported Songs
 - [ ] View Options - Album, Artist & Time
 
+## Notification Center
+- [ ] Add and remove widgets
+
 ## Safari
 - [ ] View - Show Status Bar
 - [ ] General - Safari opens with "All non-private windows from last session"

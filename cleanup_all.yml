@@ -17,10 +17,9 @@
   tasks:
     - name: Delete files from list 'delete_files'
       ansible.builtin.file:
-        path: "{{ item }}"
+        path: "{{ delete_files }}"
         follow: false
         state: absent
-      loop: "{{ delete_files }}"
       when: delete_files is defined
 
     - name: Uninstall packages from list 'uninstall_apt'

@@ -42,14 +42,6 @@
     mode: 0640
   become: true
 
-- name: Git clone/pull misc projects
-  ansible.builtin.git:
-    repo: "{{ item.url }}"
-    dest: "{{ path_projects }}/{{ item.name }}"
-  loop:
-    - name: Project-Assets
-      url: "{{ git_projectassets }}"
-
 
 - name: Create directory {{ path_homebrew }}
   ansible.builtin.file:

@@ -93,7 +93,7 @@ cask_macos_work:
 #  - x
 
 
-# XXX: There is no virtual package for latest Lua, must use "lua.5.4".
+# XXX: There is no virtual package for latest Lua, must specify "lua5.4".
 apt_ubuntu:
   - ansible
   - ansible-lint

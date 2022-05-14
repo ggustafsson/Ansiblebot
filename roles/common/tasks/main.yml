@@ -35,6 +35,8 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_golang }}"
+    - "{{ path_golang_ggustafsson }}"
     - "{{ path_projects }}"
     - "{{ path_home }}/.config"
     - "{{ path_home }}/.local"
@@ -50,10 +52,16 @@
   loop:
     - name: "{{ path_dotfiles }}"
       url: "{{ git_dotfiles }}"
+    - name: "{{ path_golang_ggustafsson }}/godis"
+      url: "{{ git_godis }}"
     - name: "{{ path_projects }}/Dockerfiles"
       url: "{{ git_dockerfiles }}"
+    - name: "{{ path_projects }}/Kjell"
+      url: "{{ git_kjell }}"
     - name: "{{ path_projects }}/Project-Assets"
       url: "{{ git_projectassets }}"
+    - name: "{{ path_projects }}/Pyttipanna"
+      url: "{{ git_pyttipanna }}"
     - name: "{{ path_projects }}/Tim"
       url: "{{ git_tim }}"
 
@@ -63,6 +71,8 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
+    - src: "{{ path_golang_ggustafsson }}/godis"
+      dest: "{{ path_projects }}/godis"
     - src: "{{ path_dotfiles }}/Scripts"
       dest: "{{ path_home }}/Scripts"
     - src: "{{ path_dotfiles }}/config/pylintrc"

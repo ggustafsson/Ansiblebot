@@ -71,10 +71,10 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_golang_ggustafsson }}/godis"
-      dest: "{{ path_projects }}/godis"
     - src: "{{ path_dotfiles }}/Scripts"
       dest: "{{ path_home }}/Scripts"
+    - src: "{{ path_golang_ggustafsson }}/godis"
+      dest: "{{ path_projects }}/godis"
     - src: "{{ path_dotfiles }}/config/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/config/yamllint"

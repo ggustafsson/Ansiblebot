@@ -9,7 +9,7 @@
 
 - name: Install misc packages for Ansible
   ansible.builtin.apt:
-    pkg:
+    name:
       - apt-utils
       - build-essential
       - curl

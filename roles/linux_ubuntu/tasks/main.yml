@@ -7,7 +7,7 @@
 
 - name: Install APT packages from list 'apt_ubuntu'
   ansible.builtin.apt:
-    pkg: "{{ apt_ubuntu }}"
+    name: "{{ apt_ubuntu }}"
     state: latest
   become: true
   when: apt_ubuntu is defined

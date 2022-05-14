@@ -1,6 +1,6 @@
 - name: Install APT packages from list 'apt_ubuntu_vm'
   ansible.builtin.apt:
-    pkg: "{{ apt_ubuntu_vm }}"
+    name: "{{ apt_ubuntu_vm }}"
     state: latest
   become: true
   when: apt_ubuntu_vm is defined

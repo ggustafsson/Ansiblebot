@@ -1,6 +1,6 @@
 - name: Install APT packages from list 'apt_ubuntu_tv'
   ansible.builtin.apt:
-    pkg: "{{ apt_ubuntu_tv }}"
+    name: "{{ apt_ubuntu_tv }}"
     state: latest
   become: true
   when: apt_ubuntu_tv is defined

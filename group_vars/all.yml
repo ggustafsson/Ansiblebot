@@ -29,6 +29,7 @@ brew_macos:
   - nnn
   - node
   - openssh
+  - pandoc
   - pylint
   - pyright
   - python
@@ -123,6 +124,7 @@ apt_ubuntu:
   - nnn
   - npm
   - openssh-server
+  - pandoc
   - pylint
   - python-is-python3
   - python3-pip

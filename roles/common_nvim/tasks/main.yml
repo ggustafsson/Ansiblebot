@@ -38,8 +38,10 @@
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
+
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
+
     - name: vim-repeat
       url: https://github.com/tpope/vim-repeat.git
     - name: vim-speeddating

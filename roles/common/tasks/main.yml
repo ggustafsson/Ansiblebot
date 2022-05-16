@@ -44,6 +44,7 @@
     - "{{ path_home }}/.local/share"
     - "{{ path_home }}/Documents"
     - "{{ path_home }}/Downloads"
+    - "{{ path_home }}/Playground"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
@@ -74,7 +75,7 @@
     - src: "{{ path_dotfiles }}/Scripts"
       dest: "{{ path_home }}/Scripts"
     - src: "{{ path_golang_ggustafsson }}/godis"
-      dest: "{{ path_projects }}/godis"
+      dest: "{{ path_projects }}/Godis"
     - src: "{{ path_dotfiles }}/config/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/config/yamllint"

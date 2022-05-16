@@ -17,6 +17,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## Dock
 - [ ] Turn Hiding On
+- [ ] Add Playground folder (Display folder & View grid)
 - [ ] Add and remove apps
 - [ ] Assign apps to desktops
 

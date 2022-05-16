@@ -23,7 +23,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Finder
 - [ ] Rename system disk (macOS Home/Work)
 - [ ] Desktop - Sort By - Snap to Grid
-- [ ] Tags - Disable all under "Show these tags in the sidebar"
+- [ ] Tags - Disable all tags
 - [ ] Sidebar - Enable almost all sidebar items
 - [ ] Show View Options - Always open in column view
 - [ ] Show View Options - Show Library folder
@@ -38,12 +38,12 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Reorganize menu bar items
 
 ## Messages
-- [] General - Set "Keep messages" to "30 Days"
+- [] General - Keep messages: 30 Days
 - [] iMessage - Enable Messages in iCloud
 
 ## Music
-- [ ] General - Disable "Show Apple Music"
-- [ ] General - Disable "Show iTunes"
+- [ ] General - Disable: Show Apple Music
+- [ ] General - Disable: Show iTunes
 - [ ] Advanced - Automatically Update Artwork for Imported Songs
 - [ ] View Options - Album, Artist & Time
 
@@ -52,11 +52,11 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## Safari
 - [ ] View - Show Status Bar
-- [ ] General - Safari opens with "All non-private windows from last session"
-- [ ] General - Disable "Open safe files after downloading"
-- [ ] AutoFill - Disable "Usernames and passwords"
+- [ ] General - Safari opens with: All non-private windows from last session
+- [ ] General - Disable: Open safe files after downloading
+- [ ] AutoFill - Disable: Usernames and passwords
 - [ ] Advanced - Show full website address
-- [ ] Advanced - Disable "Show colour in compact tab bar"
+- [ ] Advanced - Disable: Show colour in compact tab bar
 - [ ] Advanced - Show Develop menu in menu bar
 
 ## Spaces
@@ -74,21 +74,26 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Battery
 - [ ] Battery - Turn display off after 10min
-- [ ] Battery - Disable "Slightly dim the display while on battery power"
+- [ ] Battery - Disable: Slightly dim the display while on battery power
 - [ ] Power Adapter - Prevent your Mac from automatically sleeping
 
 ### Displays
-- [ ] Disable True Tone
+- [ ] Disable: True Tone
 - [ ] Night Shift - Schedule 20:00 - 08:00
+
+### General
+- [] Click in the scrollbar to: Jump to the spot that's clicked
+- [] Ask to keep changes when closing documents
+- [] Disable: Close windows when quitting an app
 
 ### Keyboard
 - [ ] Modifier Keys - Caps Lock Key -> Control
 - [ ] Text - Remove all replace words
-- [ ] Text - Disable "Capitalise words automatically"
-- [ ] Text - Disable "Add full stop with double-space"
+- [ ] Text - Disable: Capitalise words automatically
+- [ ] Text - Disable: Add full stop with double-space
 - [ ] Shortcuts - Switch to Desktop X (Cmd-X)
 - [ ] Shortcuts - Move focus to next window (Option-Tab)
-- [ ] Shortcuts - Disable everything under "Services"
+- [ ] Shortcuts - Disable everything under Services
 - [ ] Shortcuts - Safari.app - Show Start Page (Cmd-Shift-H)
 - [ ] Input Sources - Select "Swedish - No Dead Keys"
 
@@ -96,10 +101,10 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] General - Require password immediately
 - [ ] FileVault - Turn On FileVault...
 - [ ] Firewall - Turn On Firewall
-- [ ] Firewall Options - Disable "Automatically allow downloaded signed software"
+- [ ] Firewall Options - Disable: Automatically allow downloaded signed software
 
 ### Sound
-- [ ] Sound Effects - Play sound on startup
+- [ ] Sound Effects - Disable: Play sound on startup
 
 ### Trackpad
 - [ ] Point & Click - Tracking speed 7/10

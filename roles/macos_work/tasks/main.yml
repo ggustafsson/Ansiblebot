@@ -40,7 +40,6 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Bitbucket"
-    - "{{ path_home }}/Dockerfiles"
 
 
 - name: Check installed Visual Studio Code extensions

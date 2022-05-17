@@ -15,6 +15,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Install plugin 1Password/Bitwarden
 - [ ] Install plugin Adblock Plus
 
+## Contacts
+- [ ] General - Sort By: First Name
+
 ## Dock
 - [ ] Turn Hiding On
 - [ ] Add and remove apps

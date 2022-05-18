@@ -40,15 +40,3 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Storage"
-
-- name: Get stats on {{ path_home }}/Documents/Text/Countdowns.csv
-  ansible.builtin.stat:
-    path: "{{ path_home }}/Documents/Text/Countdowns.csv"
-  register: countdowns
-
-- name: Create symbolic link {{ path_home }}/.countdowns -> {{ path_home }}/Documents/Text/Countdowns.csv
-  ansible.builtin.file:
-    src: "{{ path_home }}/Documents/Text/Countdowns.csv"
-    dest: "{{ path_home }}/.countdowns"
-    state: link
-  when: countdowns.stat.exists

@@ -39,7 +39,7 @@
     state: directory
     mode: 0700
   loop:
-    - "{{ path_home }}/X-Files"
+    - "{{ path_home }}/Storage"
 
 - name: Get stats on {{ path_home }}/Documents/Text/Countdowns.csv
   ansible.builtin.stat:

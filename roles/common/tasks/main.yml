@@ -76,6 +76,8 @@
       dest: "{{ path_home }}/Scripts"
     - src: "{{ path_golang_ggustafsson }}/godis"
       dest: "{{ path_projects }}/Godis"
+    - src: "{{ path_dotfiles }}/config/htop"
+      dest: "{{ path_home }}/.config/htop"
     - src: "{{ path_dotfiles }}/config/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/config/yamllint"

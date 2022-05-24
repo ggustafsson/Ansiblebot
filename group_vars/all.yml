@@ -34,6 +34,7 @@ brew_macos:
   - pylint
   - pyright
   - python
+  - qemu
   - ripgrep
   - rsync
   - ruby

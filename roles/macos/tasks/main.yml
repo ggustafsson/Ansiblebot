@@ -55,6 +55,7 @@
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
+    update: false # Let Homebrew handle updates.
   loop:
     - repo: https://github.com/Homebrew/brew.git
       dest: "{{ path_homebrew }}"

@@ -29,7 +29,7 @@
     - common
     - linux
     - linux_ubuntu
-    - linux_ubuntu_vm
+    - linux_ubuntu_lxc
     - common_nvim
 
 

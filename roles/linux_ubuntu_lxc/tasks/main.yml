@@ -1,0 +1,25 @@
+- name: Install APT packages from list 'apt_ubuntu_lxc'
+  ansible.builtin.apt:
+    name: "{{ apt_ubuntu_lxc }}"
+    state: latest
+  become: true
+  when: apt_ubuntu_lxc is defined
+
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu_lxc'
+  community.general.homebrew:
+    name: "{{ linuxbrew_ubuntu_lxc }}"
+    state: latest
+  when: linuxbrew_ubuntu_lxc is defined
+
+- name: Install Pip packages from list 'pip_ubuntu_lxc'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_lxc }}"
+    state: latest
+  when: pip_ubuntu_lxc is defined
+
+- name: Install Go packages from list 'go_ubuntu_lxc'
+  ansible.builtin.shell:
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
+  loop: "{{ go_ubuntu_lxc }}"
+  when: go_ubuntu_lxc is defined
+  changed_when: false

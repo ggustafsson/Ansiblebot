@@ -143,6 +143,9 @@ apt_ubuntu:
   - yamllint
   - zsh
 
+#apt_ubuntu_lxc:
+#  - x
+
 apt_ubuntu_tv:
   - abcde
   - ffmpeg
@@ -152,6 +155,7 @@ apt_ubuntu_tv:
   - youtube-dl
 
 apt_ubuntu_vm:
+  - qemu-guest-agent
   - ubuntu-desktop
 
 
@@ -166,6 +170,9 @@ linuxbrew_linux:
   - zsh-autosuggestions
 
 #linuxbrew_ubuntu:
+#  - x
+
+#linuxbrew_ubuntu_lxc:
 #  - x
 
 #linuxbrew_ubuntu_tv:
@@ -192,6 +199,9 @@ go_common:
 #go_ubuntu:
 #  - x
 
+#go_ubuntu_lxc:
+#  - x
+
 #go_ubuntu_tv:
 #  - x
 
@@ -214,6 +224,9 @@ pip_macos_work:
   - prometheus-client
 
 #pip_ubuntu:
+#  - x
+
+#pip_ubuntu_lxc:
 #  - x
 
 #pip_ubuntu_tv:

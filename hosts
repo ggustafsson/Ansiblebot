@@ -1,3 +1,6 @@
+[ubuntu_lxc]
+ubuntu-lxc1
+
 [ubuntu_tv]
 ubuntu-tv1
 
@@ -5,6 +8,7 @@ ubuntu-tv1
 ubuntu-vm1
 
 [ubuntu:children]
+ubuntu_lxc
 ubuntu_tv
 ubuntu_vm
 

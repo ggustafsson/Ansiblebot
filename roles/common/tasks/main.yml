@@ -112,7 +112,11 @@
   loop:
     - src: "{{ path_home }}/Documents/Text"
       dest: Documents - Text
+    - src: "{{ path_home }}/Downloads"
+      dest: Downloads
     - src: "{{ path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot
     - src: "{{ path_projects }}/Dotfiles"
       dest: Projects - Dotfiles
+    - src: "{{ path_home }}/Playground"
+      dest: Playground

@@ -1,4 +1,5 @@
 path_home: "{{ ansible_user_dir }}"
+path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dotfiles"
 

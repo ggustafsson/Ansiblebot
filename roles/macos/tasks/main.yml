@@ -226,13 +226,13 @@
   when: '"Swedish - No Dead Keys" not in defaults_read.stdout'
 
 
-- name: check installed visual studio code extensions
+- name: Check installed Visual Studio Code extensions
   ansible.builtin.command:
     cmd: code --list-extensions
   register: code_extensions
   changed_when: false
 
-- name: install visual studio code extensions
+- name: Install Visual Studio Code extensions
   ansible.builtin.command:
     cmd: code --install-extension "{{ item }}"
   loop:
@@ -247,3 +247,14 @@
     - redhat.ansible
     - redhat.vscode-yaml
   when: item not in code_extensions.stdout
+
+
+- name: Create misc nnn bookmarks
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+    state: link
+    force: true
+  loop:
+    - src: "{{ path_home }}/Dropbox/Split-Brain"
+      dest: Dropbox - Split-Brain

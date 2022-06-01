@@ -49,6 +49,12 @@
     state: link
     force: true
   loop:
+    - src: "{{ path_projects }}/Godis"
+      dest: Projects - Godis
+    - src: "{{ path_projects }}/Kjell"
+      dest: Projects - Kjell
+    - src: "{{ path_projects }}/Pyttipanna"
+      dest: Projects - Pyttipanna
     - src: /Volumes/External 1
       dest: Volumes - External 1
     - src: /Volumes/External 2

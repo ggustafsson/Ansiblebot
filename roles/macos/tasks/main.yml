@@ -258,3 +258,5 @@
   loop:
     - src: "{{ path_home }}/Dropbox/Split-Brain"
       dest: Dropbox - Split-Brain
+    - src: "{{ path_projects }}/Ansiblebot"
+      dest: Projects - Ansiblebot

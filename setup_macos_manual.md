@@ -111,4 +111,5 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Sound Effects - Disable: Play sound on startup
 
 ### Trackpad
-- [ ] Point & Click - Tracking speed 7/10
+- [ ] Point & Click - Tracking speed 8/10
+- [ ] Force Click and haptic feedback

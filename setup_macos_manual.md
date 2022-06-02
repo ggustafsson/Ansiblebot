@@ -112,4 +112,4 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Trackpad
 - [ ] Point & Click - Tracking speed 8/10
-- [ ] Force Click and haptic feedback
+- [ ] Disable: Force Click and haptic feedback

@@ -8,6 +8,8 @@ brew_macos:
   - coreutils
   - curl
   - dialog
+  - docker
+  - docker-compose
   - fd
   - figlet
   - flake8
@@ -60,6 +62,8 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
+  - helm
+  - kubernetes-cli
   - openstackclient
   - packer
   - prometheus

@@ -124,6 +124,7 @@
     state: directory
     mode: 0700
   loop:
+    - "{{ path_home }}/.docker/cli-plugins"
     - "{{ path_home }}/Library/Application Support/Code"
     - "{{ path_home }}/Library/Application Support/Code/User"
 
@@ -133,6 +134,8 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
+    - src: /opt/homebrew/opt/docker-compose/bin/docker-compose
+      dest: "{{ path_home }}/.docker/cli-plugins/docker-compose"
     - src: "{{ path_dotfiles }}/hammerspoon"
       dest: "{{ path_home }}/.hammerspoon"
     - src: "{{ path_homebrew }}/opt/fzf"

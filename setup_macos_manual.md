@@ -35,6 +35,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Add Gmail account
 - [ ] Fonts & Colours - Helvetica 13 and SF Mono 12
 - [ ] Fonts & Colours - Use fixed-width font for plain text messages
+- [ ] Rules -  Disable: News From Apple
 
 ## Menu Bar
 - [ ] Enable and disable items

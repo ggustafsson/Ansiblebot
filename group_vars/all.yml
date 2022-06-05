@@ -124,6 +124,7 @@ apt_ubuntu:
   - imagemagick
   - lame
   - less
+  - libreadline-dev
   - links
   - lua5.4
   - nmap

@@ -84,7 +84,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Displays
 - [ ] Disable: True Tone
-- [ ] Night Shift - Schedule 20:00 - 08:00
 
 ### General
 - [] Click in the scrollbar to: Jump to the spot that's clicked

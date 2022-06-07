@@ -15,6 +15,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Install plugin 1Password/Bitwarden
 - [ ] Install plugin Adblock Plus
 
+## Calendar
+- [ ] Advanced - Show week numbers
+
 ## Contacts
 - [ ] General - Sort By: First Name
 

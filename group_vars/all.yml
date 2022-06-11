@@ -8,6 +8,7 @@ brew_macos:
   - coreutils
   - curl
   - dialog
+  - diffutils
   - docker
   - docker-compose
   - fd

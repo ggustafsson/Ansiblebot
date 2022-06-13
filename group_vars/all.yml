@@ -11,6 +11,7 @@ brew_macos:
   - diffutils
   - docker
   - docker-compose
+  - docker-credential-helper
   - fd
   - figlet
   - flake8

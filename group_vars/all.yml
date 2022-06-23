@@ -47,6 +47,7 @@ brew_macos:
   - tmux
   - tmux-xpanes
   - tree
+  - watch
   - wget
   - yaml-language-server
   - yamllint

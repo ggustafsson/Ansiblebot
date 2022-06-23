@@ -56,12 +56,8 @@
       url: "{{ git_dotfiles }}"
     - name: "{{ path_golang_ggustafsson }}/godis"
       url: "{{ git_godis }}"
-    - name: "{{ path_projects }}/Dockerfiles"
-      url: "{{ git_dockerfiles }}"
     - name: "{{ path_projects }}/Kjell"
       url: "{{ git_kjell }}"
-    - name: "{{ path_projects }}/Project-Assets"
-      url: "{{ git_projectassets }}"
     - name: "{{ path_projects }}/Pyttipanna"
       url: "{{ git_pyttipanna }}"
     - name: "{{ path_projects }}/Tim"
@@ -112,7 +108,5 @@
   loop:
     - src: "{{ path_home }}/Documents/Text"
       dest: Documents - Text
-    - src: "{{ path_projects }}/Ansiblebot"
-      dest: Projects - Ansiblebot
     - src: "{{ path_projects }}/Dotfiles"
       dest: Projects - Dotfiles

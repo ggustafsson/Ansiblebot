@@ -9,6 +9,16 @@
     - "{{ path_home }}/Dropbox/Split-Brain"
     - "{{ path_home }}/Dropbox/Split-Brain/Text"
 
+- name: Git clone/pull misc projects
+  ansible.builtin.git:
+    repo: "{{ item.url }}"
+    dest: "{{ item.name }}"
+  loop:
+    - name: "{{ path_projects }}/Dockerfiles"
+      url: "{{ git_dockerfiles }}"
+    - name: "{{ path_projects }}/Project-Assets"
+      url: "{{ git_projectassets }}"
+
 - name: Create misc symbolic links
   ansible.builtin.file:
     src: "{{ item.src }}"
@@ -261,3 +271,5 @@
   loop:
     - src: "{{ path_home }}/Dropbox/Split-Brain"
       dest: Dropbox - Split-Brain
+    - src: "{{ path_projects }}/Ansiblebot"
+      dest: Projects - Ansiblebot

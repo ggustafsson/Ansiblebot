@@ -35,8 +35,6 @@
     state: directory
     mode: 0700
   loop:
-    - "{{ path_golang }}"
-    - "{{ path_golang_ggustafsson }}"
     - "{{ path_nnn_bms }}"
     - "{{ path_projects }}"
     - "{{ path_home }}/.config"
@@ -54,7 +52,7 @@
   loop:
     - name: "{{ path_dotfiles }}"
       url: "{{ git_dotfiles }}"
-    - name: "{{ path_golang_ggustafsson }}/godis"
+    - name: "{{ path_projects }}/Godis"
       url: "{{ git_godis }}"
     - name: "{{ path_projects }}/Kjell"
       url: "{{ git_kjell }}"
@@ -69,8 +67,6 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_golang_ggustafsson }}/godis"
-      dest: "{{ path_projects }}/Godis"
     - src: "{{ path_dotfiles }}/config/htop"
       dest: "{{ path_home }}/.config/htop"
     - src: "{{ path_dotfiles }}/config/pylintrc"
@@ -108,3 +104,9 @@
       dest: Documents - Text
     - src: "{{ path_projects }}/Dotfiles"
       dest: Projects - Dotfiles
+    - src: "{{ path_projects }}/Godis"
+      dest: Projects - Godis
+    - src: "{{ path_projects }}/Kjell/src"
+      dest: Projects - Kjell
+    - src: "{{ path_projects }}/Pyttipanna/src"
+      dest: Projects - Pyttipanna

@@ -1,9 +1,9 @@
 - name: Cleanup leftovers
   hosts: all
-  vars:
+  # vars:
     # delete_files:
+    #   - "{{ ansible_user_dir }}/.golang/bin/x"
     #   - "{{ ansible_user_dir }}/.local/share/nvim/site/pack/x/y"
-    #   - "{{ ansible_user_dir }}/Golang/bin/x"
     #   - "{{ ansible_user_dir }}/x"
 
     # uninstall_apt:

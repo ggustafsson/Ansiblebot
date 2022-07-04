@@ -1,10 +1,8 @@
 path_home: "{{ ansible_user_dir }}"
 path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
+path_golang: "{{ path_home }}/.golang"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dotfiles"
-
-path_golang: "{{ path_home }}/Golang"
-path_golang_ggustafsson: "{{ path_golang }}/src/github.com/ggustafsson"
 
 git_dockerfiles: https://github.com/ggustafsson/Dockerfiles.git
 git_dotfiles: https://github.com/ggustafsson/Dotfiles.git

@@ -220,7 +220,6 @@ go_common:
 
 pip_common:
   - pip
-  - pynvim
 
 pip_macos:
   - docker

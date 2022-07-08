@@ -12,6 +12,7 @@ brew_macos:
   - docker
   - docker-compose
   - docker-credential-helper
+  - entr
   - fd
   - figlet
   - flake8
@@ -113,6 +114,7 @@ apt_ubuntu:
   - curl
   - dialog
   - dnsutils
+  - entr
   - fd-find
   - figlet
   - flac

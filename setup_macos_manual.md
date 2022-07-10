@@ -47,6 +47,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Messages
 - [] General - Keep messages: 30 Days
 - [] iMessage - Enable Messages in iCloud
+- [] Shared with You - Turn Off...
 
 ## Music
 - [ ] General - Disable: Show Apple Music

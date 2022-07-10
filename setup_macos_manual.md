@@ -107,6 +107,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ### Mission Control
 - [ ] Hot Corners... - Quick Note -> Desktop
 
+### Notifications & Focus
+- [ ] Disable: Allow notifications: When the screen is locked
+
 ### Security & Privacy
 - [ ] General - Require password immediately
 - [ ] FileVault - Turn On FileVault...

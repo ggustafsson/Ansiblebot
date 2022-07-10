@@ -90,7 +90,4 @@
 
     - name: nvim-ts-autotag
       url: https://github.com/windwp/nvim-ts-autotag.git
-
-    - name: vim-matchup
-      url: https://github.com/andymass/vim-matchup.git
   notify: generate nvim tags

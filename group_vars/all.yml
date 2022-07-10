@@ -27,8 +27,8 @@ brew_macos:
   - html2text
   - htop
   - less
-  - links
   - lua
+  - lynx
   - neovim
   - nmap
   - nnn
@@ -130,8 +130,8 @@ apt_ubuntu:
   - lame
   - less
   - libreadline-dev
-  - links
   - lua5.4
+  - lynx
   - nmap
   - nnn
   - npm

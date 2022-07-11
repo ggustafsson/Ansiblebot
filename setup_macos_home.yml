@@ -9,7 +9,6 @@
     git_kjell: git@github.com:ggustafsson/Kjell.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git
     git_pyttipanna: git@github.com:ggustafsson/Pyttipanna.git
-    git_tim: git@github.com:ggustafsson/Tim.git
   roles:
     - common
     - macos

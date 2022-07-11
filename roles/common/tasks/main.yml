@@ -58,8 +58,6 @@
       url: "{{ git_kjell }}"
     - name: "{{ path_projects }}/Pyttipanna"
       url: "{{ git_pyttipanna }}"
-    - name: "{{ path_projects }}/Tim"
-      url: "{{ git_tim }}"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -77,8 +75,6 @@
       dest: "{{ path_home }}/.gitconfig"
     - src: "{{ path_dotfiles }}/gitignore_global"
       dest: "{{ path_home }}/.gitignore_global"
-    - src: "{{ path_projects }}/Tim/tim"
-      dest: "{{ path_home }}/.local/bin/tim"
     - src: "{{ path_dotfiles }}/local/share/figlet"
       dest: "{{ path_home }}/.local/share/figlet"
     - src: "{{ path_dotfiles }}/ssh/config"

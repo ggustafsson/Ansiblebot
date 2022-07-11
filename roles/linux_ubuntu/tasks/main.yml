@@ -22,12 +22,14 @@
   ansible.builtin.pip:
     name: "{{ pip_common }}"
     state: latest
+    extra_args: --user
   when: pip_common is defined
 
 - name: Install Pip packages from list 'pip_ubuntu'
   ansible.builtin.pip:
     name: "{{ pip_ubuntu }}"
     state: latest
+    extra_args: --user
   when: pip_ubuntu is defined
 
 - name: Install Go packages from list 'go_common'

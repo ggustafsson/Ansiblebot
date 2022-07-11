@@ -15,6 +15,7 @@
   ansible.builtin.pip:
     name: "{{ pip_ubuntu_vm }}"
     state: latest
+    extra_args: --user
   when: pip_ubuntu_vm is defined
 
 - name: Install Go packages from list 'go_ubuntu_vm'

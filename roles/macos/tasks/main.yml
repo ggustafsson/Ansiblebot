@@ -103,6 +103,7 @@
   ansible.builtin.pip:
     name: "{{ pip_common }}"
     state: latest
+    extra_args: --user
     executable: "{{ pip_exec }}"
   when: pip_common is defined
 
@@ -110,6 +111,7 @@
   ansible.builtin.pip:
     name: "{{ pip_macos }}"
     state: latest
+    extra_args: --user
     executable: "{{ pip_exec }}"
   when: pip_macos is defined
 

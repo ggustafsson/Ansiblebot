@@ -36,6 +36,7 @@ brew_macos:
   - openssh
   - pandoc
   - parallel
+  - perl
   - pylint
   - pyright
   - python

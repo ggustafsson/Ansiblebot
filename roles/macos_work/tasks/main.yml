@@ -22,7 +22,6 @@
   ansible.builtin.pip:
     name: "{{ pip_macos_work }}"
     state: latest
-    extra_args: --user
     executable: "{{ pip_exec }}"
   when: pip_macos_work is defined
 

@@ -103,6 +103,7 @@
   ansible.builtin.pip:
     name: "{{ pip_common }}"
     state: latest
+    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
     executable: "{{ pip_exec }}"
   when: pip_common is defined
 
@@ -110,11 +111,13 @@
   ansible.builtin.pip:
     name: "{{ pip_macos }}"
     state: latest
+    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
     executable: "{{ pip_exec }}"
   when: pip_macos is defined
 
 - name: Install Go packages from list 'go_common'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_common }}"
   when: go_common is defined
@@ -122,6 +125,7 @@
 
 - name: Install Go packages from list 'go_macos'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_macos }}"
   when: go_macos is defined

@@ -22,11 +22,13 @@
   ansible.builtin.pip:
     name: "{{ pip_macos_work }}"
     state: latest
+    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
     executable: "{{ pip_exec }}"
   when: pip_macos_work is defined
 
 - name: Install Go packages from list 'go_macos_work'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_macos_work }}"
   when: go_macos_work is defined

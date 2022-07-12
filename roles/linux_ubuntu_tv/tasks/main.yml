@@ -19,6 +19,7 @@
 
 - name: Install Go packages from list 'go_ubuntu_tv'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu_tv }}"
   when: go_ubuntu_tv is defined

@@ -32,6 +32,7 @@
 
 - name: Install Go packages from list 'go_common'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_common }}"
   when: go_common is defined
@@ -39,6 +40,7 @@
 
 - name: Install Go packages from list 'go_ubuntu'
   ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu }}"
   when: go_ubuntu is defined

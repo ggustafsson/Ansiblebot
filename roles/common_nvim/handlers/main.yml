@@ -1,4 +1,4 @@
-- name: Generate help tags for all NeoVim plugins
+- name: Generate help tags for all Neovim plugins
   ansible.builtin.command:
     cmd: nvim -c 'helptags ALL' -c q
   listen: generate nvim tags

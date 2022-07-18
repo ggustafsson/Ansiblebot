@@ -1,4 +1,4 @@
-- name: Create NeoVim directories
+- name: Create Neovim directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -10,7 +10,7 @@
     - "{{ path_nvim_pack_vim }}"
     - "{{ path_nvim_pack_nvim }}"
 
-- name: Git clone/pull NeoVim colorschemes
+- name: Git clone/pull Neovim colorschemes
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_projects }}/{{ item.name }}"
@@ -50,7 +50,7 @@
       url: https://github.com/tpope/vim-surround.git
   notify: generate nvim tags
 
-- name: Git clone/pull misc NeoVim plugins
+- name: Git clone/pull misc Neovim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"

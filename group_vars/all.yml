@@ -44,6 +44,8 @@ brew_macos:
   - ripgrep
   - rsync
   - ruby
+  - rust
+  - rustfmt
   - shellcheck
   - tidy-html5
   - tmux
@@ -145,6 +147,7 @@ apt_ubuntu:
   - python3-pip
   - ripgrep
   - ruby
+  - rust-all
   - shellcheck
   - shntool
   - tidy

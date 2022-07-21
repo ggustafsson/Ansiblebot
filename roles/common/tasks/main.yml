@@ -58,6 +58,8 @@
       url: "{{ git_kjell }}"
     - name: "{{ path_projects }}/Pyttipanna"
       url: "{{ git_pyttipanna }}"
+    - name: "{{ path_projects }}/Skrot"
+      url: "{{ git_skrot }}"
 
 - name: Create misc symbolic links
   ansible.builtin.file:

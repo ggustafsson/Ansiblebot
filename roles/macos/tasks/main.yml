@@ -261,6 +261,7 @@
     - ms-vscode-remote.remote-ssh-edit
     - redhat.ansible
     - redhat.vscode-yaml
+    - rust-lang.rust-analyzer
   when: item not in code_extensions.stdout
 
 

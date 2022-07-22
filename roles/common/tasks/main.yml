@@ -110,3 +110,5 @@
       dest: Projects - Kjell
     - src: "{{ path_projects }}/Pyttipanna/src"
       dest: Projects - Pyttipanna
+    - src: "{{ path_projects }}/Skrot"
+      dest: Projects - Skrot

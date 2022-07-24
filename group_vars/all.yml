@@ -44,6 +44,7 @@ brew_macos:
   - ripgrep
   - rsync
   - ruby
+  - rust-analyzer
   - rustup-init
   - shellcheck
   - tidy-html5
@@ -178,6 +179,7 @@ linuxbrew_linux:
   - fzf
   - neovim
   - pyright
+  - rust-analyzer
   - rustup-init
   - tmux-xpanes
   - yaml-language-server

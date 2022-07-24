@@ -45,9 +45,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Reorganize menu bar items
 
 ## Messages
-- [] General - Keep messages: 30 Days
-- [] iMessage - Enable Messages in iCloud
-- [] Shared with You - Turn Off...
+- [ ] General - Keep messages: 30 Days
+- [ ] iMessage - Enable Messages in iCloud
+- [ ] Shared with You - Turn Off...
 
 ## Music
 - [ ] General - Disable: Show Apple Music
@@ -91,9 +91,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Disable: True Tone
 
 ### General
-- [] Click in the scrollbar to: Jump to the spot that's clicked
-- [] Ask to keep changes when closing documents
-- [] Disable: Close windows when quitting an app
+- [ ] Click in the scrollbar to: Jump to the spot that's clicked
+- [ ] Ask to keep changes when closing documents
+- [ ] Disable: Close windows when quitting an app
 
 ### Keyboard
 - [ ] Modifier Keys - Caps Lock Key -> Control

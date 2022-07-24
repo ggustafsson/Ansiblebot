@@ -44,8 +44,7 @@ brew_macos:
   - ripgrep
   - rsync
   - ruby
-  - rust
-  - rustfmt
+  - rustup-init
   - shellcheck
   - tidy-html5
   - tmux
@@ -147,7 +146,6 @@ apt_ubuntu:
   - python3-pip
   - ripgrep
   - ruby
-  - rust-all
   - shellcheck
   - shntool
   - tidy
@@ -180,6 +178,7 @@ linuxbrew_linux:
   - fzf
   - neovim
   - pyright
+  - rustup-init
   - tmux-xpanes
   - yaml-language-server
   - zsh-autosuggestions

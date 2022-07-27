@@ -18,26 +18,6 @@
     state: latest
   when: linuxbrew_ubuntu is defined
 
-- name: Install Pip packages from list 'pip_common'
-  ansible.builtin.pip:
-    name: "{{ pip_common }}"
-    state: latest
-  when: pip_common is defined
-
-- name: Install Pip packages from list 'pip_ubuntu'
-  ansible.builtin.pip:
-    name: "{{ pip_ubuntu }}"
-    state: latest
-  when: pip_ubuntu is defined
-
-- name: Install Go packages from list 'go_common'
-  ansible.builtin.shell:
-    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
-    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
-  loop: "{{ go_common }}"
-  when: go_common is defined
-  changed_when: false
-
 - name: Install Go packages from list 'go_ubuntu'
   ansible.builtin.shell:
     # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
@@ -45,6 +25,12 @@
   loop: "{{ go_ubuntu }}"
   when: go_ubuntu is defined
   changed_when: false
+
+- name: Install Pip packages from list 'pip_ubuntu'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu }}"
+    state: latest
+  when: pip_ubuntu is defined
 
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf

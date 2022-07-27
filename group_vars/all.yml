@@ -226,8 +226,8 @@ go_common:
 #  - x
 
 
-pip_common:
-  - pip
+#pip_common:
+#  - x
 
 pip_macos:
   - docker

@@ -1,1 +1,4 @@
-path_linuxbrew: /home/linuxbrew/.linuxbrew
+path_brew: /home/linuxbrew/.linuxbrew
+
+# Specify executable only because it is needed on macOS.
+pip_exec: "/usr/bin/pip3"

@@ -11,12 +11,6 @@
     state: latest
   when: linuxbrew_ubuntu_vm is defined
 
-- name: Install Pip packages from list 'pip_ubuntu_vm'
-  ansible.builtin.pip:
-    name: "{{ pip_ubuntu_vm }}"
-    state: latest
-  when: pip_ubuntu_vm is defined
-
 - name: Install Go packages from list 'go_ubuntu_vm'
   ansible.builtin.shell:
     # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
@@ -24,3 +18,9 @@
   loop: "{{ go_ubuntu_vm }}"
   when: go_ubuntu_vm is defined
   changed_when: false
+
+- name: Install Pip packages from list 'pip_ubuntu_vm'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_vm }}"
+    state: latest
+  when: pip_ubuntu_vm is defined

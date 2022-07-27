@@ -1,4 +1,4 @@
-path_homebrew: /opt/homebrew
+path_brew: /opt/homebrew
 path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
-pip_exec: "{{ path_homebrew }}/bin/pip3" # Homebrew > Builtin
+pip_exec: "{{ path_brew }}/bin/pip3" # Homebrew > Builtin

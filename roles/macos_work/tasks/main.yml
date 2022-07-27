@@ -18,14 +18,6 @@
     install_options: appdir=/Applications
   when: cask_macos_work_root is defined
 
-- name: Install Pip packages from list 'pip_macos_work'
-  ansible.builtin.pip:
-    name: "{{ pip_macos_work }}"
-    state: latest
-    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
-    executable: "{{ pip_exec }}"
-  when: pip_macos_work is defined
-
 - name: Install Go packages from list 'go_macos_work'
   ansible.builtin.shell:
     # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
@@ -33,6 +25,14 @@
   loop: "{{ go_macos_work }}"
   when: go_macos_work is defined
   changed_when: false
+
+- name: Install Pip packages from list 'pip_macos_work'
+  ansible.builtin.pip:
+    name: "{{ pip_macos_work }}"
+    state: latest
+    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
+    executable: "{{ pip_exec }}"
+  when: pip_macos_work is defined
 
 
 - name: Create misc directories

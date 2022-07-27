@@ -15,9 +15,9 @@
     exclusive: true
 
 
-- name: Create directory {{ path_linuxbrew }}
+- name: Create directory {{ path_brew }}
   ansible.builtin.file:
-    path: "{{ path_linuxbrew }}"
+    path: "{{ path_brew }}"
     state: directory
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
@@ -31,22 +31,22 @@
     update: false # Let Linuxbrew handle updates.
   loop:
     - repo: https://github.com/Homebrew/brew.git
-      dest: "{{ path_linuxbrew }}"
+      dest: "{{ path_brew }}"
     - repo: https://github.com/Homebrew/homebrew-core
-      dest: "{{ path_linuxbrew }}/Library/Taps/homebrew/homebrew-core"
+      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
 
 # FIXME: Linuxbrew is completely broken on ARM64.
 - name: Upgrade all Linuxbrew packages
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
-    path: "{{ path_linuxbrew }}/bin"
+    path: "{{ path_brew }}/bin"
 
 - name: Install Linuxbrew packages from list 'linuxbrew_linux'
   community.general.homebrew:
     name: "{{ linuxbrew_linux }}"
     state: latest
-    path: "{{ path_linuxbrew }}/bin"
+    path: "{{ path_brew }}/bin"
   when: linuxbrew_linux is defined
 
 
@@ -56,7 +56,7 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_linuxbrew }}/opt/fzf"
+    - src: "{{ path_brew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
-    - src: "{{ path_linuxbrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
       dest: "{{ path_home }}/.local/share/zsh-autosuggestions"

@@ -52,9 +52,9 @@
   become: true
 
 
-- name: Create directory {{ path_homebrew }}
+- name: Create directory {{ path_brew }}
   ansible.builtin.file:
-    path: "{{ path_homebrew }}"
+    path: "{{ path_brew }}"
     state: directory
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
@@ -68,11 +68,11 @@
     update: false # Let Homebrew handle updates.
   loop:
     - repo: https://github.com/Homebrew/brew.git
-      dest: "{{ path_homebrew }}"
+      dest: "{{ path_brew }}"
     - repo: https://github.com/Homebrew/homebrew-core
-      dest: "{{ path_homebrew }}/Library/Taps/homebrew/homebrew-core"
+      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
     - repo: https://github.com/Homebrew/homebrew-cask
-      dest: "{{ path_homebrew }}/Library/Taps/homebrew/homebrew-cask"
+      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-cask"
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
@@ -99,13 +99,13 @@
     install_options: appdir=/Applications
   when: cask_macos_root is defined
 
-- name: Install Pip packages from list 'pip_common'
-  ansible.builtin.pip:
-    name: "{{ pip_common }}"
-    state: latest
-    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
-    executable: "{{ pip_exec }}"
-  when: pip_common is defined
+- name: Install Go packages from list 'go_macos'
+  ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
+  loop: "{{ go_macos }}"
+  when: go_macos is defined
+  changed_when: false
 
 - name: Install Pip packages from list 'pip_macos'
   ansible.builtin.pip:
@@ -114,22 +114,6 @@
     # Specific exec is needed when bootstraping (pre ~/.zshenv population).
     executable: "{{ pip_exec }}"
   when: pip_macos is defined
-
-- name: Install Go packages from list 'go_common'
-  ansible.builtin.shell:
-    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
-    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
-  loop: "{{ go_common }}"
-  when: go_common is defined
-  changed_when: false
-
-- name: Install Go packages from list 'go_macos'
-  ansible.builtin.shell:
-    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
-    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
-  loop: "{{ go_macos }}"
-  when: go_macos is defined
-  changed_when: false
 
 
 - name: Create misc directories
@@ -152,9 +136,9 @@
       dest: "{{ path_home }}/.docker/cli-plugins/docker-compose"
     - src: "{{ path_dotfiles }}/hammerspoon"
       dest: "{{ path_home }}/.hammerspoon"
-    - src: "{{ path_homebrew }}/opt/fzf"
+    - src: "{{ path_brew }}/opt/fzf"
       dest: "{{ path_home }}/.local/share/fzf"
-    - src: "{{ path_homebrew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
       dest: "{{ path_home }}/.local/share/zsh-autosuggestions"
     - src: "{{ path_dotfiles }}/vscode/keybindings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
@@ -163,10 +147,10 @@
     - src: "{{ path_dotfiles }}/Misc/Swedish - No Dead Keys.bundle"
       dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish - No Dead Keys.bundle"
 
-- name: Add {{ path_homebrew }}/bin/zsh to /etc/shells
+- name: Add {{ path_brew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:
     path: /etc/shells
-    line: "{{ path_homebrew }}/bin/zsh"
+    line: "{{ path_brew }}/bin/zsh"
   become: true
 
 

@@ -11,12 +11,6 @@
     state: latest
   when: linuxbrew_ubuntu_tv is defined
 
-- name: Install Pip packages from list 'pip_ubuntu_tv'
-  ansible.builtin.pip:
-    name: "{{ pip_ubuntu_tv }}"
-    state: latest
-  when: pip_ubuntu_tv is defined
-
 - name: Install Go packages from list 'go_ubuntu_tv'
   ansible.builtin.shell:
     # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
@@ -24,6 +18,12 @@
   loop: "{{ go_ubuntu_tv }}"
   when: go_ubuntu_tv is defined
   changed_when: false
+
+- name: Install Pip packages from list 'pip_ubuntu_tv'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_tv }}"
+    state: latest
+  when: pip_ubuntu_tv is defined
 
 
 - name: Set AutomaticLogin in /etc/gdm3/custom.conf

@@ -6,3 +6,4 @@
     - linux_ubuntu
     - linux_ubuntu_vm
     - common_nvim
+    - common_post

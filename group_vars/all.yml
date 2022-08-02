@@ -70,6 +70,7 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
+  - git-secret
   - helm
   - kubernetes-cli
   - openstackclient

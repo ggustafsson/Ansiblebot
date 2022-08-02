@@ -10,13 +10,15 @@
     - "{{ path_nvim_pack_vim }}"
     - "{{ path_nvim_pack_nvim }}"
 
-- name: Git clone/pull Neovim colorschemes
+- name: Git clone/pull personal Neovim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_projects }}/{{ item.name }}"
   loop:
     - name: 16x256.nvim
-      url: "{{ git_16x256_nvim }}"
+      url: "{{ git_16x256 }}"
+    - name: nnn-dir.nvim
+      url: "{{ git_nnndir }}"
 
 - name: Create symbolic links to Dotfiles, colorschemes, etc
   ansible.builtin.file:
@@ -28,6 +30,8 @@
       dest: "{{ path_nvim_config }}"
     - src: "{{ path_projects }}/16x256.nvim"
       dest: "{{ path_nvim_pack_ggustafsson }}/16x256.nvim"
+    - src: "{{ path_projects }}/nnn-dir.nvim"
+      dest: "{{ path_nvim_pack_ggustafsson }}/nnn-dir.nvim"
     - src: "{{ path_home }}/.local/share/fzf"
       dest: "{{ path_nvim_pack_vim }}/fzf"
 

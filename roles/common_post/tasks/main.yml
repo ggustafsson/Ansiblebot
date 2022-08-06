@@ -37,6 +37,6 @@
   ansible.builtin.shell:
     cmd: "{{ item }}"
   loop:
-    - rustup completions zsh > {{ path_brew }}/share/zsh/site-functions/_rustup
-    - rustup completions zsh cargo > {{ path_brew }}/share/zsh/site-functions/_cargo
+    - ~/.cargo/bin/rustup completions zsh > {{ path_brew }}/share/zsh/site-functions/_rustup
+    - ~/.cargo/bin/rustup completions zsh cargo > {{ path_brew }}/share/zsh/site-functions/_cargo
   changed_when: false

@@ -23,6 +23,7 @@
   ansible.builtin.pip:
     name: "{{ pip_ubuntu_tv }}"
     state: latest
+    executable: "{{ pip_exec }}"
   when: pip_ubuntu_tv is defined
 
 

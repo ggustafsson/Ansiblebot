@@ -1,4 +1,4 @@
 path_brew: /home/linuxbrew/.linuxbrew
 
-# Specify executable only because it is needed on macOS.
+# This is used in role "common_post" because of macOS so we need it here too.
 pip_exec: "/usr/bin/pip3"

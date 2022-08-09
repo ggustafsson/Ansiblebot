@@ -111,7 +111,6 @@
   ansible.builtin.pip:
     name: "{{ pip_macos }}"
     state: latest
-    # Specific exec is needed when bootstraping (pre ~/.zshenv population).
     executable: "{{ pip_exec }}"
   when: pip_macos is defined
 

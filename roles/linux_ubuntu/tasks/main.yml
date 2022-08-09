@@ -30,6 +30,7 @@
   ansible.builtin.pip:
     name: "{{ pip_ubuntu }}"
     state: latest
+    executable: "{{ pip_exec }}"
   when: pip_ubuntu is defined
 
 

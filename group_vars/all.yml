@@ -26,7 +26,6 @@ brew_macos:
   - grep
   - html2text
   - htop
-  - ipython
   - less
   - lua
   - lynx
@@ -133,7 +132,6 @@ apt_ubuntu:
   - html2text
   - htop
   - imagemagick
-  - ipython3
   - lame
   - less
   - libreadline-dev

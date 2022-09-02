@@ -238,6 +238,7 @@ pip_macos:
 
 pip_macos_work:
   - opensearch-py
+  - pika
   - prometheus-client
 
 #pip_ubuntu:

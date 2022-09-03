@@ -23,7 +23,7 @@ Build new Docker container image:
 
     ansible-playbook docker_ubuntu.yml --ask-become
 
-Cleanup leftovers on systems:
+Clean up leftovers on systems:
 
     cp cleanup_{all,tmp}.yml
     nvim cleanup_tmp.yml

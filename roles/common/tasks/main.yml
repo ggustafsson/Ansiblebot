@@ -81,6 +81,8 @@
       dest: "{{ path_home }}/.local/share/figlet"
     - src: "{{ path_dotfiles }}/lynxrc"
       dest: "{{ path_home }}/.lynxrc"
+    - src: "{{ path_dotfiles }}/pythonrc"
+      dest: "{{ path_home }}/.pythonrc"
     - src: "{{ path_dotfiles }}/ssh/config"
       dest: "{{ path_home }}/.ssh/config"
     - src: "{{ path_dotfiles }}/tmux.conf"

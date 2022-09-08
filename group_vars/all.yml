@@ -33,7 +33,6 @@ brew_macos:
   - nmap
   - nnn
   - node
-  - nushell
   - openssh
   - pandoc
   - parallel
@@ -179,7 +178,6 @@ linuxbrew_linux:
   - bash-language-server
   - fzf
   - neovim
-  - nushell
   - pyright
   - rust-analyzer
   - rustup-init

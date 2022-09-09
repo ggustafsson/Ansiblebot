@@ -54,6 +54,7 @@ brew_macos:
   - vim
   - watch
   - wget
+  - wireshark
   - yaml-language-server
   - yamllint
   - zsh

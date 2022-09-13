@@ -5,7 +5,6 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Documents/Text"
-    - "{{ path_home }}/Documents/Text/Cheats"
 
 - name: Add public SSH keys to authorized_keys
   ansible.posix.authorized_key:

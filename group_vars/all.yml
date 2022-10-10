@@ -228,8 +228,8 @@ go_common:
 #  - x
 
 
-#pip_common:
-#  - x
+pip_common:
+  - snakeviz
 
 pip_macos:
   - docker

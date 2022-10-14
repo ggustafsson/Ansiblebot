@@ -39,7 +39,6 @@ brew_macos:
   - pandoc
   - parallel
   - perl
-  - py-spy
   - pylint
   - pyright
   - python
@@ -49,6 +48,7 @@ brew_macos:
   - ruby
   - rust-analyzer
   - rustup-init
+  - scalene
   - shellcheck
   - tidy-html5
   - tmux
@@ -74,6 +74,7 @@ brew_macos_home:
   - youtube-dl
 
 brew_macos_work:
+  - awscli
   - helm
   - kubernetes-cli
   - openstackclient

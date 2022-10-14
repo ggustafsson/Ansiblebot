@@ -73,6 +73,8 @@
       dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
     - repo: https://github.com/Homebrew/homebrew-cask
       dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-cask"
+    - repo: https://github.com/plasma-umass/homebrew-scalene.git
+      dest: "{{ path_brew }}/Library/Taps/plasma-umass/homebrew-scalene"
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:

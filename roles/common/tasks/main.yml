@@ -37,6 +37,7 @@
   loop:
     - "{{ path_home }}/.config"
     - "{{ path_nnn_bms }}"
+    - "{{ path_home }}/.ghc"
     - "{{ path_home }}/.local"
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
@@ -67,14 +68,14 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_dotfiles }}/config/ghc"
-      dest: "{{ path_home }}/.config/ghc"
     - src: "{{ path_dotfiles }}/config/htop"
       dest: "{{ path_home }}/.config/htop"
     - src: "{{ path_dotfiles }}/config/pylintrc"
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/config/yamllint"
       dest: "{{ path_home }}/.config/yamllint"
+    - src: "{{ path_dotfiles }}/ghc/ghci.conf"
+      dest: "{{ path_home }}/.ghc/ghci.conf"
     - src: "{{ path_dotfiles }}/gitconfig"
       dest: "{{ path_home }}/.gitconfig"
     - src: "{{ path_dotfiles }}/gitignore_global"

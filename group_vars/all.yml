@@ -7,6 +7,7 @@ brew_macos:
   - asciinema
   - bash
   - bash-language-server
+  - cabal-install
   - coreutils
   - curl
   - dialog
@@ -20,12 +21,15 @@ brew_macos:
   - flake8
   - fzf
   - gawk
+  - ghc
   - git
   - git-filter-repo
   - gnu-sed
   - gnupg
   - golang
   - grep
+  - haskell-language-server
+  - haskell-stack
   - html2text
   - htop
   - less
@@ -119,6 +123,7 @@ apt_ubuntu:
   - ansible-lint
   - asciinema
   - build-essential
+  - cabal-install
   - cuetools
   - curl
   - dialog
@@ -129,10 +134,12 @@ apt_ubuntu:
   - flac
   - flake8
   - gawk
+  - ghc
   - git
   - git-filter-repo
   - gnupg
   - golang
+  - haskell-stack
   - html2text
   - htop
   - imagemagick
@@ -182,6 +189,7 @@ linuxbrew_linux:
   - ansible-language-server
   - bash-language-server
   - fzf
+  - haskell-language-server
   - neovim
   - pyright
   - rust-analyzer

@@ -67,6 +67,8 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
+    - src: "{{ path_dotfiles }}/config/ghc"
+      dest: "{{ path_home }}/.config/ghc"
     - src: "{{ path_dotfiles }}/config/htop"
       dest: "{{ path_home }}/.config/htop"
     - src: "{{ path_dotfiles }}/config/pylintrc"

@@ -6,6 +6,7 @@
     git_dockerfiles: git@github.com:ggustafsson/Dockerfiles.git
     git_dotfiles: git@github.com:ggustafsson/Dotfiles.git
     git_godis: git@github.com:ggustafsson/godis.git
+    git_haxx: git@github.com:ggustafsson/Haxx.git
     git_kjell: git@github.com:ggustafsson/Kjell.git
     git_nnndir: git@github.com:ggustafsson/nnn-dir.nvim.git
     git_projectassets: git@github.com:ggustafsson/Project-Assets.git

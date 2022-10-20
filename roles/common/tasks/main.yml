@@ -55,6 +55,8 @@
       url: "{{ git_dotfiles }}"
     - name: "{{ path_projects }}/Godis"
       url: "{{ git_godis }}"
+    - name: "{{ path_projects }}/Haxx"
+      url: "{{ git_haxx }}"
     - name: "{{ path_projects }}/Kjell"
       url: "{{ git_kjell }}"
     - name: "{{ path_projects }}/Pyttipanna"
@@ -111,6 +113,8 @@
       dest: Projects - Dotfiles
     - src: "{{ path_projects }}/Godis"
       dest: Projects - Godis
+    - src: "{{ path_projects }}/Haxx"
+      dest: Projects - Haxx
     - src: "{{ path_projects }}/Kjell/src"
       dest: Projects - Kjell
     - src: "{{ path_projects }}/Pyttipanna/src"

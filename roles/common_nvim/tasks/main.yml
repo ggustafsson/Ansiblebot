@@ -91,4 +91,6 @@
 
     - name: nvim-ts-autotag
       url: https://github.com/windwp/nvim-ts-autotag.git
-  notify: generate nvim tags
+  notify:
+    - generate help tags
+    - update treesitter parsers

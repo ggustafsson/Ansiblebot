@@ -52,7 +52,7 @@
       url: https://github.com/tpope/vim-speeddating.git
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
-  notify: generate nvim tags
+  notify: generate help tags
 
 - name: Git clone/pull misc Neovim plugins
   ansible.builtin.git:

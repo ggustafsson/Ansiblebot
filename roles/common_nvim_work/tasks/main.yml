@@ -5,7 +5,7 @@
   loop:
     - name: vim-terraform
       url: https://github.com/hashivim/vim-terraform.git
-  notify: generate nvim tags
+  notify: generate help tags
 
 #- name: Git clone/pull misc Neovim plugins
 #  ansible.builtin.git:
@@ -14,4 +14,4 @@
 #  loop:
 #    - name: x
 #      url: y
-#  notify: generate nvim tags
+#  notify: generate help tags

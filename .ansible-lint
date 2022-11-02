@@ -1,5 +1,6 @@
 skip_list:
   - command-instead-of-shell
   - git-latest
+  - name[template]
   - package-latest
   - risky-shell-pipe

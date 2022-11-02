@@ -30,6 +30,7 @@ brew_macos:
   - grep
   - haskell-language-server
   - haskell-stack
+  - hlint
   - html2text
   - htop
   - less
@@ -140,6 +141,7 @@ apt_ubuntu:
   - gnupg
   - golang
   - haskell-stack
+  - hlint
   - html2text
   - htop
   - imagemagick

@@ -14,12 +14,24 @@
   when: pip_common is defined
 
 
+# https://formulae.brew.sh/formula/ghcup
+- name: Execute 'ghcup install' and 'ghcup set' commands
+  ansible.builtin.command:
+    cmd: ghcup {{ item }}
+  loop:
+    - install cabal latest
+    - install ghc latest
+    - install hls latest
+    - set ghc latest
+  changed_when: false
+
+
 - name: Get stats on {{ path_home }}/.rustup
   ansible.builtin.stat:
     path: "{{ path_home }}/.rustup"
   register: rustup
 
-# https://formulae.brew.sh/formula/rustup-init#default
+# https://formulae.brew.sh/formula/rustup-init
 - name: Execute command 'rustup-init --no-modify-path -y'
   ansible.builtin.command:
     cmd: rustup-init --no-modify-path -y

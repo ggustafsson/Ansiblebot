@@ -25,6 +25,8 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
+    - src: "{{ path_dotfiles }}/gnupg/gpg-agent.conf"
+      dest: "{{ path_home }}/.gnupg/gpg-agent.conf"
     - src: "{{ path_home }}/Dropbox/Split-Brain/Text"
       dest: "{{ path_home }}/Documents/Text"
 

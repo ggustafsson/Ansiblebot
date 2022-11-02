@@ -13,6 +13,7 @@
     mode: 0700
   loop:
     - "{{ path_home }}"
+    - "{{ path_home }}/.gnupg"
     - "{{ path_home }}/.ssh"
 
 - name: Get stats on {{ path_home }}/.ssh/id_ed25519

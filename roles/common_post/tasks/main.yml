@@ -22,6 +22,7 @@
     - install cabal latest
     - install ghc latest
     - install hls latest
+    - install stack latest
     - set ghc latest
   changed_when: false
 

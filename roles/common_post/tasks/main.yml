@@ -14,17 +14,22 @@
   when: pip_common is defined
 
 
+- name: Get stats on {{ path_home }}/.ghcup
+  ansible.builtin.stat:
+    path: "{{ path_home }}/.ghcup"
+  register: ghcup
+
+# FIXME: Build script for automatic non-interactive install/upgrade/purge.
 # https://formulae.brew.sh/formula/ghcup
-- name: Execute 'ghcup install' and 'ghcup set' commands
+- name: Execute misc 'ghcup install' commands
   ansible.builtin.command:
-    cmd: ghcup {{ item }}
+    cmd: ghcup install {{ item }}
   loop:
-    - install cabal latest
-    - install ghc latest
-    - install hls latest
-    - install stack latest
-    - set ghc latest
-  changed_when: false
+    - cabal latest
+    - ghc latest --set
+    - hls latest
+    - stack latest
+  when: not ghcup.stat.exists
 
 
 - name: Get stats on {{ path_home }}/.rustup

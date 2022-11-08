@@ -197,7 +197,7 @@
   register: dock_wallpaper
   changed_when: false
 
-# FIXME: Make this work for external displays.
+# XXX: This does not work on external displays.
 - name: Set desktop wallpaper
   ansible.builtin.command:
     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "{{ item }}"

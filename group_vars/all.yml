@@ -33,6 +33,7 @@ brew_macos:
   - htop
   - less
   - lua
+  - lua-language-server
   - lynx
   - neovim
   - nmap
@@ -189,6 +190,7 @@ linuxbrew_linux:
   - bash-language-server
   - fzf
   - ghcup
+  - lua-language-server
   - neovim
   - pyright
   - rust-analyzer

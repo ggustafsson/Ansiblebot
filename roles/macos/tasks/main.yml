@@ -210,12 +210,6 @@
   notify: restart dock
   when: path_wallpaper not in dock_wallpaper.stdout
 
-- name: Check keyboard layout
-  ansible.builtin.command:
-    cmd: defaults read com.apple.HIToolbox AppleEnabledInputSources
-  register: defaults_read
-  changed_when: false
-
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:

@@ -87,6 +87,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Power Adapter - Prevent your Mac from automatically sleeping
 
 ### Displays
+- [ ] More Space
 - [ ] Disable: True Tone
 
 ### General

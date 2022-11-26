@@ -96,6 +96,7 @@ cask_macos:
   - dropbox
   - hammerspoon
   - rancher
+  - the-unarchiver
   - utm
   - visual-studio-code
 

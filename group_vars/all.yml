@@ -1,6 +1,4 @@
 # FIXME: Remove rust-analyzer after next rustup release.
-# https://blog.rust-lang.org/2022/09/22/Rust-1.64.0.html
-# https://github.com/rust-lang/rustup/pull/3022
 brew_macos:
   - ansible
   - ansible-language-server
@@ -186,6 +184,7 @@ apt_ubuntu_vm:
   - ubuntu-desktop
 
 
+# FIXME: Remove rust-analyzer after next rustup release.
 linuxbrew_linux:
   - ansible-language-server
   - bash-language-server

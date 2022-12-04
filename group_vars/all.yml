@@ -94,6 +94,7 @@ cask_macos:
   - dropbox
   - hammerspoon
   - rancher
+  - slack
   - the-unarchiver
   - utm
   - visual-studio-code
@@ -112,7 +113,6 @@ cask_macos_home_root:
 
 cask_macos_work:
   - bitwarden
-  - slack
 
 #cask_macos_work_root:
 #  - x

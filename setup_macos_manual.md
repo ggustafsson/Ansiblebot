@@ -121,6 +121,10 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ### Sound
 - [ ] Sound Effects - Disable: Play sound on startup
 
+### Touch ID & Password
+
+- Disable: Use Touch ID for fast user switching
+
 ### Trackpad
 - [ ] Point & Click - Tracking speed 8/10
 - [ ] Disable: Force Click and haptic feedback

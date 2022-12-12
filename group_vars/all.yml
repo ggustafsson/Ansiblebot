@@ -37,7 +37,6 @@ brew_macos:
   - nmap
   - nnn
   - node
-  - nushell
   - openssh
   - pandoc
   - parallel

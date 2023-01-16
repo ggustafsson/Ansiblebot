@@ -41,6 +41,16 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Storage"
+    - "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
+
+- name: Create misc symbolic links
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
+      dest: "{{ path_home }}/Documents/Reading"
 
 
 - name: Create misc nnn bookmarks

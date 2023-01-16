@@ -5,9 +5,10 @@
     mode: 0700
   loop:
     - "{{ path_home }}/Applications"
-    - "{{ path_home }}/Dropbox"
-    - "{{ path_home }}/Dropbox/Split-Brain"
-    - "{{ path_home }}/Dropbox/Split-Brain/Text"
+    - "{{ path_home }}/Library/CloudStorage/Dropbox"
+    - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
+    - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Reading"
+    - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
@@ -27,7 +28,9 @@
   loop:
     - src: "{{ path_dotfiles }}/gnupg/gpg-agent.conf"
       dest: "{{ path_home }}/.gnupg/gpg-agent.conf"
-    - src: "{{ path_home }}/Dropbox/Split-Brain/Text"
+    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Reading"
+      dest: "{{ path_home }}/Documents/Reading"
+    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
       dest: "{{ path_home }}/Documents/Text"
 
 - name: Delete misc files
@@ -244,7 +247,7 @@
     state: link
     force: true
   loop:
-    - src: "{{ path_home }}/Dropbox/Split-Brain"
+    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
       dest: Dropbox - Split-Brain
     - src: "{{ path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot

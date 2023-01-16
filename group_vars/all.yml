@@ -241,8 +241,8 @@ go_common:
 #  - x
 
 
-#pip_common:
-#  - x
+pip_common:
+  - requests
 
 pip_macos:
   - docker

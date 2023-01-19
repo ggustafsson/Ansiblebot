@@ -40,7 +40,6 @@
     state: directory
     mode: 0700
   loop:
-    - "{{ path_home }}/Storage"
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
 
 - name: Create misc symbolic links

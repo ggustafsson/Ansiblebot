@@ -8,6 +8,7 @@
     - "{{ path_home }}/Library/CloudStorage/Dropbox"
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
+    - "{{ path_home }}/Storage"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:

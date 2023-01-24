@@ -38,7 +38,6 @@
   loop:
     - "{{ path_home }}/.config"
     - "{{ path_nnn_bms }}"
-    - "{{ path_home }}/.ghc"
     - "{{ path_home }}/.local"
     - "{{ path_home }}/.local/bin"
     - "{{ path_home }}/.local/share"
@@ -56,8 +55,6 @@
       url: "{{ git_dotfiles }}"
     - name: "{{ path_projects }}/Godis"
       url: "{{ git_godis }}"
-    - name: "{{ path_projects }}/Haxxell"
-      url: "{{ git_haxxell }}"
     - name: "{{ path_projects }}/Kjell"
       url: "{{ git_kjell }}"
     - name: "{{ path_projects }}/Pyttipanna"
@@ -77,8 +74,6 @@
       dest: "{{ path_home }}/.config/pylintrc"
     - src: "{{ path_dotfiles }}/config/yamllint"
       dest: "{{ path_home }}/.config/yamllint"
-    - src: "{{ path_dotfiles }}/ghc/ghci.conf"
-      dest: "{{ path_home }}/.ghc/ghci.conf"
     - src: "{{ path_dotfiles }}/gitconfig"
       dest: "{{ path_home }}/.gitconfig"
     - src: "{{ path_dotfiles }}/gitignore_global"
@@ -114,8 +109,6 @@
       dest: Projects - Dotfiles
     - src: "{{ path_projects }}/Godis"
       dest: Projects - Godis
-    - src: "{{ path_projects }}/Haxxell"
-      dest: Projects - Haxxell
     - src: "{{ path_projects }}/Kjell/src"
       dest: Projects - Kjell
     - src: "{{ path_projects }}/Pyttipanna/src"

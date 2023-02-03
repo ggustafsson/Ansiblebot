@@ -79,6 +79,7 @@ brew_macos_work:
   - awscli
   - helm
   - jq
+  - kubectx
   - kubernetes-cli
   - openstackclient
   - packer

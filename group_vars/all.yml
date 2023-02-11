@@ -81,6 +81,7 @@ brew_macos_work:
   - jq
   - kubectx
   - kubernetes-cli
+  - lastpass-cli
   - openstackclient
   - packer
   - prometheus

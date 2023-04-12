@@ -123,6 +123,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Touch ID & Password
 
+- Disable: Use Touch ID to unlock your Mac
 - Disable: Use Touch ID for fast user switching
 
 ### Trackpad

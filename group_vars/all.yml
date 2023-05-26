@@ -77,6 +77,7 @@ brew_macos_home:
 brew_macos_work:
   - akamai
   - awscli
+  - hashicorp/tap/vault
   - helm
   - jq
   - kubectx

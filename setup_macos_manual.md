@@ -86,6 +86,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Battery - Disable: Slightly dim the display while on battery power
 - [ ] Power Adapter - Prevent your Mac from automatically sleeping
 
+### Control Centre
+- [ ] Battery - Show Percentage
+
 ### Displays
 - [ ] More Space
 - [ ] Disable: True Tone

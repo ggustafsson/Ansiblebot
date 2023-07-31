@@ -1,4 +1,3 @@
-# FIXME: Remove rust-analyzer after next rustup release.
 brew_macos:
   - ansible
   - ansible-language-server
@@ -47,7 +46,6 @@ brew_macos:
   - ripgrep
   - rsync
   - ruby
-  - rust-analyzer
   - rustup-init
   - scalene
   - shellcheck
@@ -185,7 +183,6 @@ apt_ubuntu_vm:
   - ubuntu-desktop
 
 
-# FIXME: Remove rust-analyzer after next rustup release.
 linuxbrew_linux:
   - ansible-language-server
   - bash-language-server
@@ -193,7 +190,6 @@ linuxbrew_linux:
   - lua-language-server
   - neovim
   - pyright
-  - rust-analyzer
   - rustup-init
   - tmux-xpanes
   - yaml-language-server

@@ -24,6 +24,7 @@
   ansible.builtin.command:
     cmd: rustup-init --no-modify-path -y
   when: not rustup.stat.exists
+  changed_when: true
 
 - name: Execute command 'rustup update'
   ansible.builtin.command:

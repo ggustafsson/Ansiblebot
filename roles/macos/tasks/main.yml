@@ -210,6 +210,7 @@
     - INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
   notify: restart dock
   when: path_wallpaper not in dock_wallpaper.stdout
+  changed_when: true
 
 
 - name: Check installed Visual Studio Code extensions
@@ -235,6 +236,7 @@
     - redhat.vscode-yaml
     - rust-lang.rust-analyzer
   when: item not in code_extensions.stdout
+  changed_when: true
 
 
 - name: Create misc nnn bookmarks

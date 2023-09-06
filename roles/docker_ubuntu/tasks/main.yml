@@ -1,11 +1,11 @@
 - name: Install Python for Ansible
   ansible.builtin.raw: apt update && apt install python3 -y
-  when: true
+  changed_when: true
 
 - name: Execute command 'unminimize'
   ansible.builtin.shell:
     cmd: yes | unminimize
-  when: true
+  changed_when: true
 
 - name: Install misc packages for Ansible
   ansible.builtin.apt:

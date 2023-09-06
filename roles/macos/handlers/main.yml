@@ -2,3 +2,4 @@
   ansible.builtin.command:
     cmd: killall Dock
   listen: restart dock
+  changed_when: true

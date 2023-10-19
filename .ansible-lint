@@ -1,6 +1,7 @@
 skip_list:
   - command-instead-of-shell
   - git-latest
-  - name[template]
+  - name[template]  # Allow Jinja templates inside of names.
   - package-latest
   - risky-shell-pipe
+  - var-naming[no-role-prefix]

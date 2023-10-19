@@ -109,9 +109,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Shortcuts - Safari.app - Show Start Page (Cmd-Shift-H)
 - [ ] Input Sources - Select "Swedish - No Dead Keys"
 
-### Mission Control
-- [ ] Hot Corners... - Quick Note -> Desktop
-
 ### Notifications & Focus
 - [ ] Disable: Allow notifications: When the screen is locked
 

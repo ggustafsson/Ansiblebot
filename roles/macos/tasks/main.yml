@@ -44,6 +44,7 @@
     - "{{ path_home }}/Music/.localized"
     - "{{ path_home }}/Pictures/.localized"
     - "{{ path_home }}/Public/.localized"
+    - "{{ path_home }}/Sites/.localized"
 
 - name: Create file /etc/sudoers.d/custom
   ansible.builtin.template:

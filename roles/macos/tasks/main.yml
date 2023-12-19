@@ -149,8 +149,6 @@
       dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
     - src: "{{ path_dotfiles }}/vscode/settings.json"
       dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
-    - src: "{{ path_dotfiles }}/Misc/Swedish - No Dead Keys.bundle"
-      dest: "{{ path_home }}/Library/Keyboard Layouts/Swedish - No Dead Keys.bundle"
 
 - name: Add {{ path_brew }}/bin/zsh to /etc/shells
   ansible.builtin.lineinfile:

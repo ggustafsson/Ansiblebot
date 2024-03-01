@@ -82,6 +82,7 @@ brew_macos_work:
   - kubernetes-cli
   - lastpass-cli
   - openstackclient
+  - opentofu
   - packer
   - prometheus
   - rbw

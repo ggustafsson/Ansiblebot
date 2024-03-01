@@ -24,4 +24,5 @@
     name: "{{ pip_ubuntu_vm }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_ubuntu_vm is defined

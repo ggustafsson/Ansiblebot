@@ -3,3 +3,4 @@ path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
 # Specify PIP executable so we always end up using Python from Homebrew.
 pip_exec: "{{ path_brew }}/bin/pip3"
+pip_args: "--break-system-packages"

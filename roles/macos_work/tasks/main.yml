@@ -41,6 +41,7 @@
     name: "{{ pip_macos_work }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_macos_work is defined
 
 

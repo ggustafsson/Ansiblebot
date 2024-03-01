@@ -118,6 +118,7 @@
     name: "{{ pip_macos }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_macos is defined
 
 

@@ -11,6 +11,7 @@
     name: "{{ pip_common }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_common is defined
 
 

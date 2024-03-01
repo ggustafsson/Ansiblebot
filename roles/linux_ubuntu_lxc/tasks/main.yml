@@ -24,4 +24,5 @@
     name: "{{ pip_ubuntu_lxc }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_ubuntu_lxc is defined

@@ -2,3 +2,4 @@ path_brew: /home/linuxbrew/.linuxbrew
 
 # This is used in role "common_post" because of macOS so we need it here too.
 pip_exec: "/usr/bin/pip3"
+pip_args: "--break-system-packages"

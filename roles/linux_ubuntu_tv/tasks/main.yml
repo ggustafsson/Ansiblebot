@@ -24,6 +24,7 @@
     name: "{{ pip_ubuntu_tv }}"
     state: latest
     executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
   when: pip_ubuntu_tv is defined
 
 

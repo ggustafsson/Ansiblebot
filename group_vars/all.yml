@@ -64,6 +64,7 @@ brew_macos:
 
 brew_macos_home:
   - cuetools
+  - exiftool
   - ffmpeg
   - flac
   - imagemagick

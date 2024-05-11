@@ -9,6 +9,7 @@
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu_lxc }}"
     state: latest
+    force_formula: true
   when: linuxbrew_ubuntu_lxc is defined
 
 - name: Install Go packages from list 'go_ubuntu_lxc'

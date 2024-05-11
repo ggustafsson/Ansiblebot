@@ -12,6 +12,7 @@
   community.general.homebrew:
     name: "{{ brew_macos_work }}"
     state: latest
+    force_formula: true
   when: brew_macos_work is defined
 
 - name: Install Homebrew applications from list 'cask_macos_work'

@@ -9,6 +9,7 @@
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu_tv }}"
     state: latest
+    force_formula: true
   when: linuxbrew_ubuntu_tv is defined
 
 - name: Install Go packages from list 'go_ubuntu_tv'

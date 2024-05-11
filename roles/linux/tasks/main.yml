@@ -46,6 +46,7 @@
     name: "{{ linuxbrew_linux }}"
     state: latest
     path: "{{ path_brew }}/bin"
+    force_formula: true
   when: linuxbrew_linux is defined
 
 

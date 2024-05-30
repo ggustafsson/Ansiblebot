@@ -1,7 +1,9 @@
+# https://yamllint.readthedocs.io/en/stable/rules.html
+
 skip_list:
   - command-instead-of-shell
   - git-latest
-  - name[template]  # Allow Jinja templates inside of names.
+  - name[template] # Allow Jinja templates inside of names.
   - package-latest
   - risky-shell-pipe
-  - var-naming[no-role-prefix]
+  - var-naming[no-role-prefix] # Do not force role name in var names.

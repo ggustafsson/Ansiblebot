@@ -1,11 +1,11 @@
 - name: Generate help tags for all plugins
   ansible.builtin.command:
     cmd: nvim -c 'helptags ALL' -c q
-  listen: generate help tags
+  listen: Generate help tags
   changed_when: true
 
-- name: Update all treesitter parsers
+- name: Update all Treesitter parsers
   ansible.builtin.command:
     cmd: nvim -c 'TSUpdateSync' -c q
-  listen: update treesitter parsers
+  listen: Update Treesitter parsers
   changed_when: true

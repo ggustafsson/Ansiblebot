@@ -44,4 +44,4 @@
     group: root
     mode: 0644
   become: true
-  notify: restart sshd
+  notify: Restart SSH

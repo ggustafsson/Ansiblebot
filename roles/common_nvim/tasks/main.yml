@@ -52,7 +52,7 @@
       url: https://github.com/tpope/vim-speeddating.git
     - name: vim-surround
       url: https://github.com/tpope/vim-surround.git
-  notify: generate help tags
+  notify: Generate help tags
 
 - name: Git clone/pull misc Neovim plugins
   ansible.builtin.git:
@@ -67,8 +67,10 @@
     - name: cmp_luasnip
       url: https://github.com/saadparwaiz1/cmp_luasnip.git
 
-    - name: null-ls.nvim
-      url: https://github.com/jose-elias-alvarez/null-ls.nvim.git
+    - name: none-ls.nvim
+      url: https://github.com/nvimtools/none-ls.nvim
+    - name: none-ls-extras.nvim
+      url: https://github.com/nvimtools/none-ls-extras.nvim
     - name: plenary.nvim
       url: https://github.com/nvim-lua/plenary.nvim.git
 
@@ -92,5 +94,5 @@
     - name: nvim-ts-autotag
       url: https://github.com/windwp/nvim-ts-autotag.git
   notify:
-    - generate help tags
-    - update treesitter parsers
+    - Generate help tags
+    - Update Treesitter parsers

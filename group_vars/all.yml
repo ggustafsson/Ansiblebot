@@ -47,7 +47,6 @@ brew_macos:
   - rsync
   - ruby
   - rustup-init
-  - scalene
   - shellcheck
   - tidy-html5
   - tmux

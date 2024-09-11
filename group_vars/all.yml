@@ -249,10 +249,7 @@ pip_macos:
 #  - x
 
 pip_macos_work:
-  - kubernetes
-  - opensearch-py
   - pika
-  - prometheus-client
 
 #pip_ubuntu:
 #  - x

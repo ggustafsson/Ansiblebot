@@ -87,6 +87,7 @@ brew_macos_work:
   - prometheus
   - rbw
   - salt-lint
+  - sshpass
   - stern
   - terraform
   - terraform-ls

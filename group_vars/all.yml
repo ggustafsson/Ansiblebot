@@ -70,7 +70,7 @@ brew_macos_home:
   - lame
   - shntool
   - svtplay-dl
-  - youtube-dl
+  - yt-dlp
 
 brew_macos_work:
   - akamai

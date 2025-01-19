@@ -179,7 +179,7 @@ apt_ubuntu_tv:
   - kodi
   - sshguard
   - svtplay-dl
-  - youtube-dl
+  - yt-dlp
 
 apt_ubuntu_vm:
   - qemu-guest-agent

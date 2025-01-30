@@ -80,7 +80,6 @@ brew_macos_work:
   - jq
   - kubectx
   - kubernetes-cli
-  - lastpass-cli
   - openstackclient
   - opentofu
   - packer
@@ -114,11 +113,12 @@ cask_macos_home_root:
   - 1password
 
 cask_macos_work:
+  - 1password-cli
   - bitwarden
   - slack
 
-#cask_macos_work_root:
-#  - x
+cask_macos_work_root:
+  - 1password
 
 
 # XXX: There is no virtual package for latest Lua, must specify "lua5.4".

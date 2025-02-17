@@ -46,7 +46,7 @@ brew_macos:
   - ripgrep
   - rsync
   - ruby
-  - rustup-init
+  - rustup
   - shellcheck
   - tidy-html5
   - tmux
@@ -193,7 +193,7 @@ linuxbrew_linux:
   - lua-language-server
   - neovim
   - pyright
-  - rustup-init
+  - rustup
   - tmux-xpanes
   - yaml-language-server
   - zsh-autosuggestions

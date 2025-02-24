@@ -2,7 +2,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0700
+    mode: "0700"
   loop:
     - "{{ path_home }}/Documents/Text"
 
@@ -20,7 +20,7 @@
     state: directory
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
-    mode: 0700
+    mode: "0700"
   become: true
 
 - name: Git clone/pull Linuxbrew repos

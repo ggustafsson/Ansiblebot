@@ -40,7 +40,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0700
+    mode: "0700"
   loop:
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
 

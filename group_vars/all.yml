@@ -170,8 +170,8 @@ apt_ubuntu:
   - yamllint
   - zsh
 
-#apt_ubuntu_lxc:
-#  - x
+# apt_ubuntu_lxc:
+#   - x
 
 apt_ubuntu_tv:
   - abcde
@@ -198,17 +198,17 @@ linuxbrew_linux:
   - yaml-language-server
   - zsh-autosuggestions
 
-#linuxbrew_ubuntu:
-#  - x
+# linuxbrew_ubuntu:
+#   - x
 
-#linuxbrew_ubuntu_lxc:
-#  - x
+# linuxbrew_ubuntu_lxc:
+#   - x
 
-#linuxbrew_ubuntu_tv:
-#  - x
+# linuxbrew_ubuntu_tv:
+#   - x
 
-#linuxbrew_ubuntu_vm:
-#  - x
+# linuxbrew_ubuntu_vm:
+#   - x
 
 
 go_common:
@@ -218,26 +218,26 @@ go_common:
   - golang.org/x/tools/gopls@latest
   - honnef.co/go/tools/cmd/staticcheck@latest
 
-#go_macos:
-#  - x
+# go_macos:
+#   - x
 
-#go_macos_home:
-#  - x
+# go_macos_home:
+#   - x
 
-#go_macos_work:
-#  - x
+# go_macos_work:
+#   - x
 
-#go_ubuntu:
-#  - x
+# go_ubuntu:
+#   - x
 
-#go_ubuntu_lxc:
-#  - x
+# go_ubuntu_lxc:
+#   - x
 
-#go_ubuntu_tv:
-#  - x
+# go_ubuntu_tv:
+#   - x
 
-#go_ubuntu_vm:
-#  - x
+# go_ubuntu_vm:
+#   - x
 
 
 pip_common:
@@ -246,20 +246,20 @@ pip_common:
 pip_macos:
   - docker
 
-#pip_macos_home:
-#  - x
+# pip_macos_home:
+#   - x
 
 pip_macos_work:
   - pika
 
-#pip_ubuntu:
-#  - x
+# pip_ubuntu:
+#   - x
 
-#pip_ubuntu_lxc:
-#  - x
+# pip_ubuntu_lxc:
+#   - x
 
-#pip_ubuntu_tv:
-#  - x
+# pip_ubuntu_tv:
+#   - x
 
-#pip_ubuntu_vm:
-#  - x
+# pip_ubuntu_vm:
+#   - x

@@ -7,11 +7,11 @@
       url: https://github.com/hashivim/vim-terraform.git
   notify: Generate help tags
 
-#- name: Git clone/pull misc Neovim plugins
-#  ansible.builtin.git:
-#    repo: "{{ item.url }}"
-#    dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
-#  loop:
-#    - name: x
-#      url: y
-#  notify: Generate help tags
+# - name: Git clone/pull misc Neovim plugins
+#   ansible.builtin.git:
+#     repo: "{{ item.url }}"
+#     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+#   loop:
+#     - name: x
+#       url: y
+#   notify: Generate help tags

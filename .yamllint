@@ -1,9 +1,5 @@
 # https://yamllint.readthedocs.io/en/stable/rules.html
-
-extends: default
+# https://ansible.readthedocs.io/projects/lint/rules/yaml/#yamllint-configuration
 
 rules:
-  comments: disable
-  comments-indentation: disable
-  document-start: disable
   line-length: disable

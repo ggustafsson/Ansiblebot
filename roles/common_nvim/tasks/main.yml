@@ -2,7 +2,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0700
+    mode: "0700"
   loop:
     - "{{ path_nvim_local }}"
     - "{{ path_nvim_local }}/backup"

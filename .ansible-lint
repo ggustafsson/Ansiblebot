@@ -7,3 +7,6 @@ skip_list:
   - package-latest
   - risky-shell-pipe
   - var-naming[no-role-prefix] # Do not force role name in var names.
+
+exclude_paths:
+  - roles/*/files

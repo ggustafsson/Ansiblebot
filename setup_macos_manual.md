@@ -16,6 +16,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Install plugin Adblock Plus
 
 ## Calendar
+- [ ] Alerts - Time to Leave
 - [ ] Advanced - Show week numbers
 
 ## Contacts

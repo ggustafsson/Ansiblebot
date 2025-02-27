@@ -14,6 +14,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ item.name }}"
+  diff: false
   loop:
     - name: "{{ path_projects }}/Dockerfiles"
       url: "{{ git_dockerfiles }}"
@@ -70,6 +71,7 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     update: false # Let Homebrew handle updates.
+  diff: false
   loop:
     - repo: https://github.com/Homebrew/brew.git
       dest: "{{ path_brew }}"

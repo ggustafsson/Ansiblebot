@@ -2,6 +2,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+  diff: false
   loop:
     - name: vim-terraform
       url: https://github.com/hashivim/vim-terraform.git
@@ -11,6 +12,7 @@
 #   ansible.builtin.git:
 #     repo: "{{ item.url }}"
 #     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+#   diff: false
 #   loop:
 #     - name: x
 #       url: y

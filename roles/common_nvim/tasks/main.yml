@@ -14,6 +14,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_projects }}/{{ item.name }}"
+  diff: false
   loop:
     - name: 16x256.nvim
       url: "{{ git_16x256 }}"
@@ -39,6 +40,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+  diff: false
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
@@ -58,6 +60,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+  diff: false
   loop:
     - name: comment.nvim
       url: https://github.com/numToStr/Comment.nvim.git

@@ -50,6 +50,7 @@
   ansible.builtin.git:
     repo: "{{ item.url }}"
     dest: "{{ item.name }}"
+  diff: false
   loop:
     - name: "{{ path_dotfiles }}"
       url: "{{ git_dotfiles }}"

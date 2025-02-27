@@ -3,6 +3,7 @@
     repo: "{{ item.repo }}"
     dest: "{{ item.dest }}"
     update: false # Let Homebrew handle updates.
+  diff: false
   loop:
     - repo: https://github.com/hashicorp/homebrew-tap
       dest: "{{ path_brew }}/Library/Taps/hashicorp/homebrew-tap"

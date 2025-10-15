@@ -78,6 +78,7 @@ brew_macos_work:
   - hashicorp/tap/vault
   - helm
   - jq
+  - k9s
   - kubectx
   - kubernetes-cli
   - openstackclient

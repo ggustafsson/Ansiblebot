@@ -79,6 +79,9 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## System Preferences
 
+### Appearance
+- [ ] Liquid Glass - Tinted
+
 ### Apple ID
 - [ ] Disable unwanted services
 

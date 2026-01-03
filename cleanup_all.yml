@@ -2,10 +2,10 @@
   hosts: all
   vars:
     # delete_files:
-    #   - "{{ ansible_user_dir }}/.golang/bin/x"
-    #   - "{{ ansible_user_dir }}/.local/share/nvim/site/pack/x/y"
-    #   - "{{ ansible_user_dir }}/.config/nnn/bookmarks/x"
-    #   - "{{ ansible_user_dir }}/x"
+    #   - "{{ ansible_facts['user_dir'] }}/.golang/bin/x"
+    #   - "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/x/y"
+    #   - "{{ ansible_facts['user_dir'] }}/.config/nnn/bookmarks/x"
+    #   - "{{ ansible_facts['user_dir'] }}/x"
 
     # uninstall_apt:
     #   - pkg
@@ -32,7 +32,7 @@
         name: "{{ uninstall_apt }}"
         state: absent
       become: true
-      when: uninstall_apt is defined and ansible_distribution == "Ubuntu"
+      when: uninstall_apt is defined and ansible_facts["distribution"] == "Ubuntu"
 
     - name: Uninstall packages from list 'uninstall_brew'
       community.general.homebrew:

@@ -9,7 +9,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
     mode: "0700"
   loop:
     - "{{ path_home }}"
@@ -25,7 +25,7 @@
   ansible.builtin.file:
     path: "{{ path_home }}/.ssh/id_ed25519"
     state: file
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
     mode: "0600"
   when: id_ed25519.stat.exists
 

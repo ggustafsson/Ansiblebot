@@ -8,7 +8,7 @@
 
 - name: Add public SSH keys to authorized_keys
   ansible.posix.authorized_key:
-    user: "{{ ansible_user_id }}"
+    user: "{{ ansible_facts['user_id'] }}"
     key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
     state: present
     exclusive: true
@@ -18,8 +18,8 @@
   ansible.builtin.file:
     path: "{{ path_brew }}"
     state: directory
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
   become: true
 

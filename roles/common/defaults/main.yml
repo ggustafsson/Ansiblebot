@@ -1,4 +1,4 @@
-path_home: "{{ ansible_user_dir }}"
+path_home: "{{ ansible_facts['user_dir'] }}"
 path_golang: "{{ path_home }}/.golang" # GOPATH
 path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
 

@@ -91,6 +91,8 @@ brew_macos_work:
   - stern
   - terraform
   - terraform-ls
+  - terragrunt
+  - uv
   - yq
 
 cask_macos:

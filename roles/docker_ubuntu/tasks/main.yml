@@ -2,11 +2,6 @@
   ansible.builtin.raw: apt update && apt install python3 -y
   changed_when: true
 
-- name: Execute command 'unminimize'
-  ansible.builtin.shell:
-    cmd: yes | unminimize
-  changed_when: true
-
 - name: Install misc packages for Ansible
   ansible.builtin.apt:
     name:
@@ -15,7 +10,13 @@
       - curl
       - git
       - sudo
+      - unminimize
     state: latest
+
+- name: Execute command 'unminimize'
+  ansible.builtin.shell:
+    cmd: yes | unminimize
+  changed_when: true
 
 - name: Set password for user root
   ansible.builtin.user:
@@ -29,6 +30,15 @@
     groups: "{{ user_groups }}"
     shell: "{{ user_shell }}"
     password: "{{ user_password }}"
+
+- name: Create file /etc/sudoers.d/custom
+  ansible.builtin.template:
+    src: sudoers.d/custom.j2
+    dest: /etc/sudoers.d/custom
+    owner: root
+    group: root
+    mode: "0640"
+  become: true
 
 - name: Re-add Docker container {{ docker_base }} to Ansible hosts inventory
   ansible.builtin.add_host:

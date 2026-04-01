@@ -20,7 +20,7 @@
     path: "{{ path_home }}/.rustup"
   register: rustup
 
-# https://formulae.brew.sh/formula/rustup-init
+# https://formulae.brew.sh/formula/rustup
 - name: Execute command 'rustup-init --no-modify-path -y'
   ansible.builtin.command:
     cmd: rustup-init --no-modify-path -y

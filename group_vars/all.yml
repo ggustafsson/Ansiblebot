@@ -75,6 +75,7 @@ brew_macos_home:
 brew_macos_work:
   - akamai
   - awscli
+  - goreleaser
   - hashicorp/tap/vault
   - helm
   - jq
@@ -89,6 +90,7 @@ brew_macos_work:
   - salt-lint
   - sshpass
   - stern
+  - syft
   - terraform
   - terraform-ls
   - terragrunt

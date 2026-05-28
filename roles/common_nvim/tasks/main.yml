@@ -48,6 +48,8 @@
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
 
+    - name: vim-commentary
+      url: https://github.com/tpope/vim-commentary.git
     - name: vim-repeat
       url: https://github.com/tpope/vim-repeat.git
     - name: vim-speeddating
@@ -62,9 +64,6 @@
     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
   diff: false
   loop:
-    - name: comment.nvim
-      url: https://github.com/numToStr/Comment.nvim.git
-
     - name: luasnip
       url: https://github.com/L3MON4D3/LuaSnip.git
     - name: cmp_luasnip

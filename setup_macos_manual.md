@@ -73,6 +73,10 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Add up to 5 spaces on main display
 - [ ] Add up to 4 spaces on secondary display
 
+## Spotlight
+- [ ] Show Related Content
+- [ ] Help Apple Improve Search
+
 ## Terminal
 - [ ] Open `Dotfiles/Misc/Default.terminal`
 - [ ] Profiles - Set "Default" as default

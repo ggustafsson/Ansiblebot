@@ -122,6 +122,7 @@ cask_macos_home_root:
 cask_macos_work:
   - 1password-cli
   - bitwarden
+  - claude-code
   - slack
 
 cask_macos_work_root:

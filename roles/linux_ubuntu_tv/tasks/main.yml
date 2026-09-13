@@ -1,3 +1,14 @@
+- name: Add Jellyfin APT repository
+  ansible.builtin.deb822_repository:
+    name: jellyfin
+    uris: https://repo.jellyfin.org/ubuntu
+    suites: "{{ ansible_facts['distribution_release'] }}"
+    components: main
+    signed_by: https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key
+    state: present
+  become: true
+  notify: Update APT cache
+
 - name: Install APT packages from list 'apt_ubuntu_tv'
   ansible.builtin.apt:
     name: "{{ apt_ubuntu_tv }}"

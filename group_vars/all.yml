@@ -187,6 +187,7 @@ apt_ubuntu:
 
 apt_ubuntu_tv:
   - abcde
+  - jellyfin
 
 apt_ubuntu_vm:
   - qemu-guest-agent

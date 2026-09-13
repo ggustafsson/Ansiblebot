@@ -109,6 +109,7 @@ cask_macos:
 
 cask_macos_root:
   - google-chrome
+  - 1password
 
 cask_macos_home:
   - handbrake
@@ -116,8 +117,8 @@ cask_macos_home:
   - transmission
   - vlc
 
-cask_macos_home_root:
-  - 1password
+# cask_macos_home_root:
+#   - x
 
 cask_macos_work:
   - 1password-cli
@@ -125,8 +126,8 @@ cask_macos_work:
   - claude-code
   - slack
 
-cask_macos_work_root:
-  - 1password
+# cask_macos_work_root:
+#   - x
 
 
 # XXX: There is no virtual package for latest Lua, must specify "lua5.4".
@@ -141,6 +142,7 @@ apt_ubuntu:
   - dnsutils
   - entr
   - fd-find
+  - ffmpeg
   - figlet
   - flac
   - flake8
@@ -155,7 +157,7 @@ apt_ubuntu:
   - lame
   - less
   - libreadline-dev
-  - lua5.4
+  - lua5.5
   - lynx
   - nmap
   - nnn
@@ -170,12 +172,14 @@ apt_ubuntu:
   - ruby
   - shellcheck
   - shntool
+  - svtplay-dl
   - tidy
   - tmux
   - tree
   - ubuntu-standard
   - vim-nox
   - yamllint
+  - yt-dlp
   - zsh
 
 # apt_ubuntu_lxc:
@@ -183,18 +187,13 @@ apt_ubuntu:
 
 apt_ubuntu_tv:
   - abcde
-  - ffmpeg
-  - kodi
-  - sshguard
-  - svtplay-dl
-  - yt-dlp
 
 apt_ubuntu_vm:
   - qemu-guest-agent
   - ubuntu-desktop
 
 
-linuxbrew_linux:
+linuxbrew_ubuntu:
   - ansible-language-server
   - bash-language-server
   - fzf
@@ -205,9 +204,6 @@ linuxbrew_linux:
   - tmux-xpanes
   - yaml-language-server
   - zsh-autosuggestions
-
-# linuxbrew_ubuntu:
-#   - x
 
 # linuxbrew_ubuntu_lxc:
 #   - x
@@ -248,8 +244,8 @@ go_common:
 #   - x
 
 
-pip_common:
-  - requests
+# pip_common:
+#   - x
 
 pip_macos:
   - docker

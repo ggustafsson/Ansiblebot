@@ -1,3 +1,35 @@
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "{{ path_home }}/Documents/Text"
+
+- name: Add public SSH keys to authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ ansible_facts['user_id'] }}"
+    key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
+    state: present
+    exclusive: true
+
+- name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
+  ansible.builtin.template:
+    src: sshd_config.d/AllowUsers.conf.j2
+    dest: /etc/ssh/sshd_config.d/AllowUsers.conf
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: Restart SSH
+
+- name: Ensure locale sv_SE.UTF-8 is present
+  community.general.locale_gen:
+    name: sv_SE.UTF-8
+    state: present
+  become: true
+
+
 - name: Upgrade all APT packages
   ansible.builtin.apt:
     update_cache: true
@@ -12,11 +44,39 @@
   become: true
   when: apt_ubuntu is defined
 
+- name: Create directory {{ path_brew }}
+  ansible.builtin.file:
+    path: "{{ path_brew }}"
+    state: directory
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
+    mode: "0700"
+  become: true
+
+- name: Git clone/pull Linuxbrew repos
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    update: false # Let Linuxbrew handle updates.
+  diff: false
+  loop:
+    - repo: https://github.com/Homebrew/brew.git
+      dest: "{{ path_brew }}"
+    - repo: https://github.com/Homebrew/homebrew-core
+      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
+
+- name: Upgrade all Linuxbrew packages
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+    path: "{{ path_brew }}/bin"
+
 - name: Install Linuxbrew packages from list 'linuxbrew_ubuntu'
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu }}"
     state: latest
     force_formula: true
+    path: "{{ path_brew }}/bin"
   when: linuxbrew_ubuntu is defined
 
 - name: Install Go packages from list 'go_ubuntu'
@@ -36,12 +96,13 @@
   when: pip_ubuntu is defined
 
 
-- name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
-  ansible.builtin.template:
-    src: sshd_config.d/AllowUsers.conf.j2
-    dest: /etc/ssh/sshd_config.d/AllowUsers.conf
-    owner: root
-    group: root
-    mode: "0644"
-  become: true
-  notify: Restart SSH
+- name: Create misc symbolic links
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - src: "{{ path_brew }}/opt/fzf"
+      dest: "{{ path_home }}/.local/share/fzf"
+    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+      dest: "{{ path_home }}/.local/share/zsh-autosuggestions"

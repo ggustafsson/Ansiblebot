@@ -27,7 +27,6 @@
     hostname: ubuntu-lxc1
   roles:
     - common
-    - linux
     - linux_ubuntu
     - linux_ubuntu_lxc
     - common_nvim

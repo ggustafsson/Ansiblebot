@@ -2,7 +2,6 @@
   hosts: ubuntu_vm
   roles:
     - common
-    - linux
     - linux_ubuntu
     - linux_ubuntu_vm
     - common_nvim

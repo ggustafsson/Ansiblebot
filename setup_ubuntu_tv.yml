@@ -2,7 +2,6 @@
   hosts: ubuntu_tv
   roles:
     - common
-    - linux
     - linux_ubuntu
     - linux_ubuntu_tv
     - common_nvim

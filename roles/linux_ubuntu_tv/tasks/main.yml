@@ -29,7 +29,30 @@
   when: pip_ubuntu_tv is defined
 
 
-# TODO: Jellyfin container here
+- name: Create Jellyfin directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_facts['user_id'] }}"
+    mode: "0755"
+  loop:
+    - /media/external/Jellyfin
+    - /media/external/Jellyfin/config
+    - /media/external/Jellyfin/cache
+
+- name: Deploy Jellyfin container
+  containers.podman.podman_container:
+    name: jellyfin
+    hostname: "{{ hostname }}-jellyfin"
+    image: docker.io/jellyfin/jellyfin
+    restart_policy: on-failure
+    ports:
+      - "7359:7359/udp"
+      - "8096:8096/tcp"
+    mount:
+      - "type=bind,source=/media/external,target=/media,ro=true"
+      - "type=bind,source=/media/external/Jellyfin/config,target=/config"
+      - "type=bind,source=/media/external/Jellyfin/cache,target=/cache"
 
 # TODO: Tailscale container here
 

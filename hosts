@@ -3,14 +3,14 @@ localhost
 
 [ubuntu:children]
 ubuntu_lxc
-ubuntu_tv
+ubuntu_srv
 ubuntu_vm
 
 [ubuntu_lxc]
 ubuntu-lxc1
 
-[ubuntu_tv]
-ubuntu-tv1
+[ubuntu_srv]
+ubuntu-srv1
 
 [ubuntu_vm]
 ubuntu-vm1

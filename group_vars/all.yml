@@ -186,7 +186,7 @@ apt_ubuntu:
 # apt_ubuntu_lxc:
 #   - x
 
-apt_ubuntu_tv:
+apt_ubuntu_srv:
   - abcde
   - podman
 
@@ -212,7 +212,7 @@ linuxbrew_ubuntu:
 # linuxbrew_ubuntu_lxc:
 #   - x
 
-# linuxbrew_ubuntu_tv:
+# linuxbrew_ubuntu_srv:
 #   - x
 
 # linuxbrew_ubuntu_vm:
@@ -241,7 +241,7 @@ go_common:
 # go_ubuntu_lxc:
 #   - x
 
-# go_ubuntu_tv:
+# go_ubuntu_srv:
 #   - x
 
 # go_ubuntu_vm:
@@ -266,7 +266,7 @@ pip_macos_work:
 # pip_ubuntu_lxc:
 #   - x
 
-# pip_ubuntu_tv:
+# pip_ubuntu_srv:
 #   - x
 
 # pip_ubuntu_vm:

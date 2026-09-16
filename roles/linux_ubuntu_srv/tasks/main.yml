@@ -1,32 +1,32 @@
-- name: Install APT packages from list 'apt_ubuntu_tv'
+- name: Install APT packages from list 'apt_ubuntu_srv'
   ansible.builtin.apt:
-    name: "{{ apt_ubuntu_tv }}"
+    name: "{{ apt_ubuntu_srv }}"
     state: latest
   become: true
-  when: apt_ubuntu_tv is defined
+  when: apt_ubuntu_srv is defined
 
-- name: Install Homebrew packages from list 'linuxbrew_ubuntu_tv'
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu_srv'
   community.general.homebrew:
-    name: "{{ linuxbrew_ubuntu_tv }}"
+    name: "{{ linuxbrew_ubuntu_srv }}"
     state: latest
     force_formula: true
-  when: linuxbrew_ubuntu_tv is defined
+  when: linuxbrew_ubuntu_srv is defined
 
-- name: Install Go packages from list 'go_ubuntu_tv'
+- name: Install Go packages from list 'go_ubuntu_srv'
   ansible.builtin.shell:
     # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
-  loop: "{{ go_ubuntu_tv }}"
-  when: go_ubuntu_tv is defined
+  loop: "{{ go_ubuntu_srv }}"
+  when: go_ubuntu_srv is defined
   changed_when: false
 
-- name: Install Pip packages from list 'pip_ubuntu_tv'
+- name: Install Pip packages from list 'pip_ubuntu_srv'
   ansible.builtin.pip:
-    name: "{{ pip_ubuntu_tv }}"
+    name: "{{ pip_ubuntu_srv }}"
     state: latest
     executable: "{{ pip_exec }}"
     extra_args: "{{ pip_args }}"
-  when: pip_ubuntu_tv is defined
+  when: pip_ubuntu_srv is defined
 
 
 - name: Create Jellyfin directories
@@ -39,13 +39,14 @@
     - /media/external/Jellyfin
     - /media/external/Jellyfin/config
     - /media/external/Jellyfin/cache
+  tags: jellyfin
 
 - name: Deploy Jellyfin container
   containers.podman.podman_container:
     name: jellyfin
     hostname: "{{ hostname }}-jellyfin"
     image: docker.io/jellyfin/jellyfin
-    restart_policy: on-failure
+    restart_policy: always
     ports:
       - "7359:7359/udp"
       - "8096:8096/tcp"
@@ -53,6 +54,7 @@
       - "type=bind,source=/media/external,target=/media,ro=true"
       - "type=bind,source=/media/external/Jellyfin/config,target=/config"
       - "type=bind,source=/media/external/Jellyfin/cache,target=/cache"
+  tags: jellyfin
 
 # TODO: Tailscale container here
 

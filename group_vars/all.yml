@@ -52,6 +52,7 @@ brew_macos:
   - tmux
   - tmux-xpanes
   - tree
+  - tree-sitter-cli
   - vim
   - watch
   - wget
@@ -187,9 +188,10 @@ apt_ubuntu:
 
 apt_ubuntu_tv:
   - abcde
-  - jellyfin
+  - podman
 
 apt_ubuntu_vm:
+  - podman
   - qemu-guest-agent
   - ubuntu-desktop
 
@@ -203,6 +205,7 @@ linuxbrew_ubuntu:
   - pyright
   - rustup
   - tmux-xpanes
+  - tree-sitter-cli
   - yaml-language-server
   - zsh-autosuggestions
 

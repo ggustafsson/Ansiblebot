@@ -12,8 +12,8 @@
     git_pyttipanna: git@github.com:ggustafsson/Pyttipanna.git
     git_skrot: git@github.com:ggustafsson/Skrot.git
   roles:
-    - common
-    - macos
-    - macos_home
-    - common_nvim
-    - common_post
+    - { role: 'common', tags: 'common' }
+    - { role: 'macos', tags: 'macos' }
+    - { role: 'macos_home', tags: 'macos_home' }
+    - { role: 'common_nvim', tags: 'common_nvim' }
+    - { role: 'common_post', tags: 'common_post' }

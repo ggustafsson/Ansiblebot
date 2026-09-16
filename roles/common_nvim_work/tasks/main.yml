@@ -1,12 +1,12 @@
-- name: Git clone/pull misc Vim plugins
-  ansible.builtin.git:
-    repo: "{{ item.url }}"
-    dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
-  diff: false
-  loop:
-    - name: vim-terraform
-      url: https://github.com/hashivim/vim-terraform.git
-  notify: Generate help tags
+# - name: Git clone/pull misc Vim plugins
+#   ansible.builtin.git:
+#     repo: "{{ item.url }}"
+#     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+#   diff: false
+#   loop:
+#     - name: x
+#       url: y
+#   notify: Generate help tags
 
 # - name: Git clone/pull misc Neovim plugins
 #   ansible.builtin.git:

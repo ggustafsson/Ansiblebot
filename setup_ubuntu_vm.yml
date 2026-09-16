@@ -1,8 +1,8 @@
 - name: Setup Ubuntu system - VM
   hosts: ubuntu_vm
   roles:
-    - common
-    - linux_ubuntu
-    - linux_ubuntu_vm
-    - common_nvim
-    - common_post
+    - { role: 'common', tags: 'common' }
+    - { role: 'linux_ubuntu', tags: 'linux_ubuntu' }
+    - { role: 'linux_ubuntu_vm', tags: 'linux_ubuntu_vm' }
+    - { role: 'common_nvim', tags: 'common_nvim' }
+    - { role: 'common_post', tags: 'common_post' }

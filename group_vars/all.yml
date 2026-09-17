@@ -94,9 +94,8 @@ brew_macos_work:
   - sshpass
   - stern
   - syft
-  - terraform
-  - terraform-ls
   - terragrunt
+  - tofu-ls
   - uv
   - yq
 

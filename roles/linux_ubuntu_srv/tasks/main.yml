@@ -51,9 +51,7 @@
       - "7359:7359/udp"
       - "8096:8096/tcp"
     mount:
-      - "type=bind,source=/media/external/MP3,target=/media/MP3,ro=true"
-      - "type=bind,source=/media/external/Movies,target=/media/Movies,ro=true"
-      - "type=bind,source=/media/external/Torrents,target=/media/Torrents,ro=true"
+      - "type=bind,source=/media/external,target=/media,ro=true"
       - "type=bind,source=/media/external/Jellyfin/config,target=/config"
       - "type=bind,source=/media/external/Jellyfin/cache,target=/cache"
   tags: jellyfin

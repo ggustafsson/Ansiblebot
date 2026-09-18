@@ -182,7 +182,7 @@ apt_ubuntu:
   - yt-dlp
   - zsh
 
-# apt_ubuntu_lxc:
+# apt_ubuntu_cnt:
 #   - x
 
 apt_ubuntu_srv:
@@ -208,7 +208,7 @@ linuxbrew_ubuntu:
   - yaml-language-server
   - zsh-autosuggestions
 
-# linuxbrew_ubuntu_lxc:
+# linuxbrew_ubuntu_cnt:
 #   - x
 
 # linuxbrew_ubuntu_srv:
@@ -237,7 +237,7 @@ go_common:
 # go_ubuntu:
 #   - x
 
-# go_ubuntu_lxc:
+# go_ubuntu_cnt:
 #   - x
 
 # go_ubuntu_srv:
@@ -262,7 +262,7 @@ pip_macos_work:
 # pip_ubuntu:
 #   - x
 
-# pip_ubuntu_lxc:
+# pip_ubuntu_cnt:
 #   - x
 
 # pip_ubuntu_srv:

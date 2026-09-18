@@ -1,2 +1,2 @@
 ansible_connection: docker
-hostname: ubuntu-lxc1
+hostname: ubuntu-cnt1

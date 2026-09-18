@@ -24,11 +24,11 @@
 - name: Setup Ubuntu
   hosts: ubuntu-rolling-base
   vars:
-    hostname: ubuntu-lxc1
+    hostname: ubuntu-cnt1
   roles:
     - common
     - linux_ubuntu
-    - linux_ubuntu_lxc
+    - linux_ubuntu_cnt
     - common_nvim
     - common_post
 
@@ -38,6 +38,6 @@
   gather_facts: false
   vars:
     docker_base: ubuntu-rolling-base
-    docker_build: ubuntu-lxc1
+    docker_build: ubuntu-cnt1
   roles:
     - docker_snapshot

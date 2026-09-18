@@ -2,12 +2,12 @@
 localhost
 
 [ubuntu:children]
-ubuntu_lxc
+ubuntu_cnt
 ubuntu_srv
 ubuntu_vm
 
-[ubuntu_lxc]
-ubuntu-lxc1
+[ubuntu_cnt]
+ubuntu-cnt1
 
 [ubuntu_srv]
 ubuntu-srv1

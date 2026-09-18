@@ -1,0 +1,29 @@
+- name: Install APT packages from list 'apt_ubuntu_cnt'
+  ansible.builtin.apt:
+    name: "{{ apt_ubuntu_cnt }}"
+    state: latest
+  become: true
+  when: apt_ubuntu_cnt is defined
+
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu_cnt'
+  community.general.homebrew:
+    name: "{{ linuxbrew_ubuntu_cnt }}"
+    state: latest
+    force_formula: true
+  when: linuxbrew_ubuntu_cnt is defined
+
+- name: Install Go packages from list 'go_ubuntu_cnt'
+  ansible.builtin.shell:
+    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
+    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
+  loop: "{{ go_ubuntu_cnt }}"
+  when: go_ubuntu_cnt is defined
+  changed_when: false
+
+- name: Install Pip packages from list 'pip_ubuntu_cnt'
+  ansible.builtin.pip:
+    name: "{{ pip_ubuntu_cnt }}"
+    state: latest
+    executable: "{{ pip_exec }}"
+    extra_args: "{{ pip_args }}"
+  when: pip_ubuntu_cnt is defined

@@ -81,6 +81,7 @@
       - net_raw
     env:
       TSIDP_STATE_DIR: "/var/lib/tailscale"
+      TS_AUTHKEY: "{{ linux_ubuntu_srv_tailscale_authkey | default('undefined') }}"
       TS_EXTRA_ARGS: "--advertise-exit-node"
   tags: tailscale
 

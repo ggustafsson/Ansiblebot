@@ -1,1 +1,2 @@
 cleanup_tmp.yml
+group_vars/all/secrets.yml

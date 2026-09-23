@@ -13,7 +13,7 @@
   gather_facts: false
   vars:
     docker_base: ubuntu-rolling-base
-    user_name: gleg
+    user_name: "{{ ansible_user }}"
     user_group: users
     user_groups: sudo
     user_shell: /bin/zsh

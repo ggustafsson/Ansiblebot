@@ -1,7 +1,7 @@
 - name: Set hostname to {{ hostname }}
+  become: true
   ansible.builtin.hostname:
     name: "{{ hostname }}"
-  become: true
   when: ansible_facts.virtualization_type != "docker"
 
 

@@ -14,44 +14,44 @@
     exclusive: true
 
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
+  become: true
   ansible.builtin.template:
     src: sshd_config.d/AllowUsers.conf.j2
     dest: /etc/ssh/sshd_config.d/AllowUsers.conf
     owner: root
     group: root
     mode: "0644"
-  become: true
   notify: Restart SSH
 
 - name: Ensure locale sv_SE.UTF-8 is present
+  become: true
   community.general.locale_gen:
     name: sv_SE.UTF-8
     state: present
-  become: true
 
 
 - name: Upgrade all APT packages
+  become: true
   ansible.builtin.apt:
     update_cache: true
     upgrade: full
     autoremove: true
-  become: true
 
 - name: Install APT packages from list 'apt_ubuntu'
+  become: true
   ansible.builtin.apt:
     name: "{{ apt_ubuntu }}"
     state: latest
-  become: true
   when: apt_ubuntu is defined
 
 - name: Create directory {{ path_brew }}
+  become: true
   ansible.builtin.file:
     path: "{{ path_brew }}"
     state: directory
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
-  become: true
 
 - name: Git clone/pull Linuxbrew repos
   ansible.builtin.git:

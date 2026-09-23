@@ -32,13 +32,13 @@
     password: "{{ user_password }}"
 
 - name: Create file /etc/sudoers.d/custom
+  become: true
   ansible.builtin.template:
     src: sudoers.d/custom.j2
     dest: /etc/sudoers.d/custom
     owner: root
     group: root
     mode: "0640"
-  become: true
 
 - name: Re-add Docker container {{ docker_base }} to Ansible hosts inventory
   ansible.builtin.add_host:

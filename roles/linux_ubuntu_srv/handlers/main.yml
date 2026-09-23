@@ -1,4 +1,4 @@
 - name: Update APT cache
+  become: true
   ansible.builtin.apt:
     update_cache: true
-  become: true

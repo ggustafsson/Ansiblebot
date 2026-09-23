@@ -108,8 +108,8 @@ cask_macos:
   - visual-studio-code
 
 cask_macos_root:
-  - google-chrome
   - 1password
+  - google-chrome
 
 cask_macos_home:
   - handbrake
@@ -117,8 +117,8 @@ cask_macos_home:
   - transmission
   - vlc
 
-# cask_macos_home_root:
-#   - x
+cask_macos_home_root:
+  - tailscale-app
 
 cask_macos_work:
   - 1password-cli

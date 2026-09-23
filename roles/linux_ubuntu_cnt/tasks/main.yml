@@ -1,8 +1,8 @@
 - name: Install APT packages from list 'apt_ubuntu_cnt'
+  become: true
   ansible.builtin.apt:
     name: "{{ apt_ubuntu_cnt }}"
     state: latest
-  become: true
   when: apt_ubuntu_cnt is defined
 
 - name: Install Homebrew packages from list 'linuxbrew_ubuntu_cnt'

@@ -1,12 +1,13 @@
-- name: Enable IP forwarding
+- name: Set misc kernel parameters
   become: true
   ansible.posix.sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
-    sysctl_file: /etc/sysctl.d/99-forwarding.conf
+    sysctl_file: /etc/sysctl.d/99-override.conf
     state: present
     reload: true
   loop:
+    - { key: fs.inotify.max_user_watches, value: 524288 }
     - { key: net.ipv4.ip_forward, value: 1 }
     - { key: net.ipv6.conf.all.forwarding, value: 1 }
 

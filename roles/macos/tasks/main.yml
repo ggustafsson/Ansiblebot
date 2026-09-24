@@ -1,3 +1,13 @@
+- name: Create file /etc/sudoers.d/custom
+  become: true
+  ansible.builtin.template:
+    src: sudoers.d/custom.j2
+    dest: /etc/sudoers.d/custom
+    owner: root
+    group: wheel
+    mode: "0640"
+
+
 - name: Create misc directories
   ansible.builtin.file:
     path: "{{ item }}"
@@ -46,15 +56,6 @@
     - "{{ path_home }}/Pictures/.localized"
     - "{{ path_home }}/Public/.localized"
     - "{{ path_home }}/Sites/.localized"
-
-- name: Create file /etc/sudoers.d/custom
-  become: true
-  ansible.builtin.template:
-    src: sudoers.d/custom.j2
-    dest: /etc/sudoers.d/custom
-    owner: root
-    group: wheel
-    mode: "0640"
 
 
 - name: Create directory {{ path_brew }}
@@ -121,6 +122,33 @@
     executable: "{{ pip_exec }}"
     extra_args: "{{ pip_args }}"
   when: pip_macos is defined
+
+- name: Check installed Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --list-extensions
+  register: code_extensions
+  changed_when: false
+
+- name: Install Visual Studio Code extensions
+  ansible.builtin.command:
+    cmd: code --install-extension "{{ item }}"
+  loop:
+    - asvetliakov.vscode-neovim
+    - bierner.markdown-mermaid
+    - golang.go
+    - jebbs.plantuml
+    - ms-azuretools.vscode-docker
+    - ms-python.flake8
+    - ms-python.pylint
+    - ms-python.python
+    - ms-vscode-remote.remote-containers
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - redhat.ansible
+    - redhat.vscode-yaml
+    - rust-lang.rust-analyzer
+  when: item not in code_extensions.stdout
+  changed_when: true
 
 
 - name: Create misc directories
@@ -212,34 +240,6 @@
 #   notify: Restart Dock
 #   when: path_wallpaper not in dock_wallpaper.stdout
 #   changed_when: true
-
-
-- name: Check installed Visual Studio Code extensions
-  ansible.builtin.command:
-    cmd: code --list-extensions
-  register: code_extensions
-  changed_when: false
-
-- name: Install Visual Studio Code extensions
-  ansible.builtin.command:
-    cmd: code --install-extension "{{ item }}"
-  loop:
-    - asvetliakov.vscode-neovim
-    - bierner.markdown-mermaid
-    - golang.go
-    - jebbs.plantuml
-    - ms-azuretools.vscode-docker
-    - ms-python.flake8
-    - ms-python.pylint
-    - ms-python.python
-    - ms-vscode-remote.remote-containers
-    - ms-vscode-remote.remote-ssh
-    - ms-vscode-remote.remote-ssh-edit
-    - redhat.ansible
-    - redhat.vscode-yaml
-    - rust-lang.rust-analyzer
-  when: item not in code_extensions.stdout
-  changed_when: true
 
 
 - name: Create misc nnn bookmarks

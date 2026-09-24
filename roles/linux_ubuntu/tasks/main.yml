@@ -1,10 +1,8 @@
-- name: Create misc directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0700"
-  loop:
-    - "{{ path_home }}/Documents/Text"
+- name: Ensure locale sv_SE.UTF-8 is present
+  become: true
+  community.general.locale_gen:
+    name: sv_SE.UTF-8
+    state: present
 
 - name: Add public SSH keys to authorized_keys
   ansible.posix.authorized_key:
@@ -23,11 +21,13 @@
     mode: "0644"
   notify: Restart SSH
 
-- name: Ensure locale sv_SE.UTF-8 is present
-  become: true
-  community.general.locale_gen:
-    name: sv_SE.UTF-8
-    state: present
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "{{ path_home }}/Documents/Text"
 
 
 - name: Upgrade all APT packages

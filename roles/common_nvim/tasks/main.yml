@@ -97,4 +97,8 @@
       url: https://github.com/windwp/nvim-ts-autotag.git
   notify:
     - Generate help tags
-    - Update Treesitter parsers
+
+- name: Update all Treesitter parsers
+  ansible.builtin.command:
+    cmd: nvim -c 'TSUpdate' -c q
+  changed_when: true

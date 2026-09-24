@@ -1,3 +1,12 @@
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "{{ path_home }}/Bitbucket"
+
+
 - name: Git clone/pull Homebrew repos
   ansible.builtin.git:
     repo: "{{ item.repo }}"
@@ -7,7 +16,6 @@
   loop:
     - repo: https://github.com/hashicorp/homebrew-tap
       dest: "{{ path_brew }}/Library/Taps/hashicorp/homebrew-tap"
-
 
 - name: Install Homebrew packages from list 'brew_macos_work'
   community.general.homebrew:
@@ -45,16 +53,6 @@
     executable: "{{ pip_exec }}"
     extra_args: "{{ pip_args }}"
   when: pip_macos_work is defined
-
-
-- name: Create misc directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0700"
-  loop:
-    - "{{ path_home }}/Bitbucket"
-
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:

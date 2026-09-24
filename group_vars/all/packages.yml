@@ -113,6 +113,7 @@ cask_macos_root:
 
 cask_macos_home:
   - handbrake
+  - signal
   - tor-browser
   - transmission
   - vlc
@@ -188,6 +189,7 @@ apt_ubuntu:
 apt_ubuntu_srv:
   - abcde
   - podman
+  - tailscale
 
 apt_ubuntu_vm:
   - podman

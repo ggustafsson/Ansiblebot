@@ -1,3 +1,41 @@
+- name: Enable IP forwarding
+  become: true
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_file: /etc/sysctl.d/99-forwarding.conf
+    state: present
+    reload: true
+  loop:
+    - key: net.ipv4.ip_forward
+      value: 1
+    - key: net.ipv6.conf.all.forwarding
+      value: 1
+
+- name: Disable DNSStubListener in systemd-resolved
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: '^#?DNSStubListener='
+    line: 'DNSStubListener=no'
+    state: present
+  notify: Restart systemd-resolved
+
+
+- name: Add Tailscale APT repository
+  become: true
+  ansible.builtin.deb822_repository:
+    name: tailscale
+    uris: https://pkgs.tailscale.com/stable/ubuntu
+    suites: "{{ ansible_facts['distribution_release'] }}"
+    components: main
+    signed_by: https://pkgs.tailscale.com/stable/ubuntu/resolute.noarmor.gpg
+    state: present
+  notify: Update APT cache
+
+- name: Flush handlers immediately
+  ansible.builtin.meta: flush_handlers
+
 - name: Install APT packages from list 'apt_ubuntu_srv'
   become: true
   ansible.builtin.apt:
@@ -29,6 +67,58 @@
   when: pip_ubuntu_srv is defined
 
 
+- name: Create AdGuard directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ ansible_facts['user_id'] }}"
+    mode: "0755"
+  loop:
+    - /media/external/AdGuard
+    - /media/external/AdGuard/conf
+    - /media/external/AdGuard/work
+  tags: adguard
+
+- name: Deploy AdGuard container
+  become: true
+  containers.podman.podman_container:
+    name: adguard
+    hostname: "{{ hostname }}-adguard"
+    image: docker.io/adguard/adguardhome
+    ports:
+      - 53:53/tcp
+      - 443:443/tcp
+      - 3000:3000/tcp
+    mount:
+      - type=bind,source=/media/external/AdGuard/conf,target=/opt/adguardhome/conf
+      - type=bind,source=/media/external/AdGuard/work,target=/opt/adguardhome/work
+    env:
+      TZ: Europe/Stockholm
+    cap_add:
+      - net_bind_service
+    cap_drop:
+      - all
+  tags: adguard
+
+- name: Generate systemd unit file for AdGuard container
+  become: true
+  containers.podman.podman_generate_systemd:
+    name: adguard
+    no_header: true
+    dest: /etc/systemd/system
+    restart_policy: always
+  tags: adguard
+
+- name: Ensure AdGuard container is started and enabled
+  become: true
+  ansible.builtin.systemd:
+    name: container-adguard
+    enabled: true
+    state: started
+    daemon_reload: true
+  tags: adguard
+
+
 - name: Create Jellyfin directories
   ansible.builtin.file:
     path: "{{ item }}"
@@ -37,8 +127,8 @@
     mode: "0755"
   loop:
     - /media/external/Jellyfin
-    - /media/external/Jellyfin/config
     - /media/external/Jellyfin/cache
+    - /media/external/Jellyfin/config
   tags: jellyfin
 
 - name: Deploy Jellyfin container
@@ -46,44 +136,33 @@
     name: jellyfin
     hostname: "{{ hostname }}-jellyfin"
     image: docker.io/jellyfin/jellyfin
-    restart_policy: unless-stopped
     ports:
-      - "7359:7359/udp"
-      - "8096:8096/tcp"
+      - 7359:7359/udp
+      - 8096:8096/tcp
     mount:
-      - "type=bind,source=/media/external,target=/media,ro=true"
-      - "type=bind,source=/media/external/Jellyfin/config,target=/config"
-      - "type=bind,source=/media/external/Jellyfin/cache,target=/cache"
+      - type=bind,source=/media/external,target=/media,ro=true
+      - type=bind,source=/media/external/Jellyfin/config,target=/config
+      - type=bind,source=/media/external/Jellyfin/cache,target=/cache
+    env:
+      TZ: Europe/Stockholm
   tags: jellyfin
 
+- name: Generate systemd unit file for Jellyfin container
+  containers.podman.podman_generate_systemd:
+    name: jellyfin
+    no_header: true
+    dest: ~/.config/systemd/user
+    restart_policy: always
+  tags: jellyfin
 
-- name: Create Tailscale directories
-  become: true
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ ansible_facts['user_id'] }}"
-    mode: "0700"
-  loop:
-    - /var/lib/tailscale
-  tags: tailscale
-
-- name: Deploy Tailscale container
-  containers.podman.podman_container:
-    name: tailscale
-    hostname: "{{ hostname }}-tailscale"
-    image: docker.io/tailscale/tailscale:latest
-    restart_policy: unless-stopped
-    mount:
-      - "type=bind,source=/var/lib/tailscale,target=/var/lib/tailscale"
-    cap_add:
-      - net_admin
-      - net_raw
-    env:
-      TSIDP_STATE_DIR: "/var/lib/tailscale"
-      TS_AUTHKEY: "{{ linux_ubuntu_srv_tailscale_authkey | default('undefined') }}"
-      TS_EXTRA_ARGS: "--advertise-exit-node"
-  tags: tailscale
+- name: Ensure Jellyfin container is started and enabled
+  ansible.builtin.systemd:
+    name: container-jellyfin
+    scope: user
+    enabled: true
+    state: started
+    daemon_reload: true
+  tags: jellyfin
 
 
 - name: Create misc nnn bookmarks

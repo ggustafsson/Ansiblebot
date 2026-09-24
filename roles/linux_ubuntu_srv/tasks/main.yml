@@ -75,9 +75,9 @@
     group: root
     mode: "0700"
   loop:
-    - /media/external/AdGuard
-    - /media/external/AdGuard/conf
-    - /media/external/AdGuard/work
+    - /srv/adguard
+    - /srv/adguard/conf
+    - /srv/adguard/work
   tags: adguard
 
 - name: Deploy AdGuard container
@@ -92,8 +92,8 @@
       - 443:443/tcp
       - 3000:3000/tcp
     mount:
-      - type=bind,source=/media/external/AdGuard/conf,target=/opt/adguardhome/conf
-      - type=bind,source=/media/external/AdGuard/work,target=/opt/adguardhome/work
+      - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
+      - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
     env:
       TZ: Europe/Stockholm
     cap_add:
@@ -129,9 +129,9 @@
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0755"
   loop:
-    - /media/external/Jellyfin
-    - /media/external/Jellyfin/cache
-    - /media/external/Jellyfin/config
+    - /srv/jellyfin
+    - /srv/jellyfin/cache
+    - /srv/jellyfin/config
   tags: jellyfin
 
 - name: Deploy Jellyfin container
@@ -144,8 +144,8 @@
       - 8096:8096/tcp
     mount:
       - type=bind,source=/media/external,target=/media,ro=true
-      - type=bind,source=/media/external/Jellyfin/config,target=/config
-      - type=bind,source=/media/external/Jellyfin/cache,target=/cache
+      - type=bind,source=/srv/jellyfin/config,target=/config
+      - type=bind,source=/srv/jellyfin/cache,target=/cache
     env:
       TZ: Europe/Stockholm
   tags: jellyfin

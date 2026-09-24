@@ -10,6 +10,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
   loop:
     - "{{ path_home }}"
@@ -26,6 +27,7 @@
     path: "{{ path_home }}/.ssh/id_ed25519"
     state: file
     owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: "0600"
   when: id_ed25519.stat.exists
 

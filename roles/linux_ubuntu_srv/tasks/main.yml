@@ -66,11 +66,13 @@
 
 
 - name: Create AdGuard directories
+  become: true
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ ansible_facts['user_id'] }}"
-    mode: "0755"
+    owner: root
+    group: root
+    mode: "0700"
   loop:
     - /media/external/AdGuard
     - /media/external/AdGuard/conf
@@ -85,6 +87,7 @@
     image: docker.io/adguard/adguardhome
     ports:
       - 53:53/tcp
+      - 80:80/tcp
       - 443:443/tcp
       - 3000:3000/tcp
     mount:
@@ -122,6 +125,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: "0755"
   loop:
     - /media/external/Jellyfin

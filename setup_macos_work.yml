@@ -4,9 +4,9 @@
     hostname: Twoson
     path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Stone.png
   roles:
-    - { role: 'common', tags: 'common' }
-    - { role: 'macos', tags: 'macos' }
-    - { role: 'macos_work', tags: 'macos_work' }
-    - { role: 'common_nvim', tags: 'common_nvim' }
-    # - { role: 'common_nvim_work', tags: 'common_nvim_work' }
-    - { role: 'common_post', tags: 'common_post' }
+    - { role: common,           tags: common }
+    - { role: macos,            tags: macos }
+    - { role: macos_work,       tags: macos_work }
+    - { role: common_nvim,      tags: common_nvim }
+    - { role: common_nvim_work, tags: common_nvim_work }
+    - { role: common_post,      tags: common_post }

@@ -13,7 +13,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ## Browser Extensions
 - [ ] Install plugin 1Password/Bitwarden
-- [ ] Install plugin Adblock Plus
 
 ## Calendar
 - [ ] Alerts - Time to Leave

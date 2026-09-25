@@ -7,9 +7,9 @@
     name:
       - apt-utils
       - build-essential
-      - curl
       - git
-      - sudo
+      - locales
+      - sudo-rs
       - unminimize
     state: latest
 
@@ -23,7 +23,11 @@
     name: root
     password: "{{ user_password }}"
 
-- name: Add user {{ user_name }} with primary group {{ user_group }}
+- name: Add group {{ user_group }}
+  ansible.builtin.group:
+    name: "{{ user_group }}"
+
+- name: Add user {{ user_name }}
   ansible.builtin.user:
     name: "{{ user_name }}"
     group: "{{ user_group }}"
@@ -32,7 +36,6 @@
     password: "{{ user_password }}"
 
 - name: Create file /etc/sudoers.d/custom
-  become: true
   ansible.builtin.template:
     src: sudoers.d/custom.j2
     dest: /etc/sudoers.d/custom

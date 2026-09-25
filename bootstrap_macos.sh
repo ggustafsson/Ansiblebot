@@ -51,5 +51,5 @@ echo
 mkdir ~/Projects
 git clone $git_url ~/Projects/Ansiblebot
 cd ~/Projects/Ansiblebot
-ansible-playbook $playbook --ask-become -v
+ansible-playbook $playbook --ask-become --diff
 rm -rf ~/Library/Python

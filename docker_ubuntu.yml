@@ -2,19 +2,19 @@
   hosts: localhost
   gather_facts: false
   vars:
-    docker_base: ubuntu-rolling-base
-    docker_image: ubuntu:rolling
+    docker_image: ubuntu:latest
+    docker_base: ubuntu-base
   roles:
     - docker_build
 
 
 - name: Bootstrap Ubuntu
-  hosts: ubuntu-rolling-base
+  hosts: ubuntu-base
   gather_facts: false
   vars:
-    docker_base: ubuntu-rolling-base
-    user_name: "{{ ansible_user }}"
-    user_group: users
+    docker_base: ubuntu-base
+    user_name: "{{ lookup('env', 'USER') }}"
+    user_group: "{{ lookup('env', 'USER') }}"
     user_groups: sudo
     user_shell: /bin/zsh
     user_password: $6$XyhyxtjslO9vryoo$xg3yUcbw91HobO8iSNY//ZKXuIajISEHLK0HinOcgwNG3WUlSQyLzOcdmeFvB2B0F0D2otmMYXW4ei2Y4wuaQ.
@@ -22,9 +22,9 @@
     - docker_ubuntu
 
 - name: Setup Ubuntu
-  hosts: ubuntu-rolling-base
+  hosts: ubuntu-base
   vars:
-    hostname: ubuntu-cnt1
+    hostname: ubuntu-cnt
   roles:
     - common
     - linux_ubuntu
@@ -32,12 +32,11 @@
     - common_nvim
     - common_post
 
-
 - name: Snapshot container
   hosts: localhost
   gather_facts: false
   vars:
-    docker_base: ubuntu-rolling-base
-    docker_build: ubuntu-cnt1
+    docker_base: ubuntu-base
+    docker_build: ubuntu-cnt
   roles:
     - docker_snapshot

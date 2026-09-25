@@ -7,7 +7,6 @@
     group: wheel
     mode: "0640"
 
-
 - name: Create misc directories
   ansible.builtin.file:
     path: "{{ item }}"
@@ -123,6 +122,7 @@
     extra_args: "{{ pip_args }}"
   when: pip_macos is defined
 
+
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:
     cmd: code --list-extensions
@@ -221,13 +221,13 @@
     - defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
   changed_when: false
 
-- name: Check desktop wallpaper
-  ansible.builtin.command:
-    cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "SELECT value FROM data ORDER BY ROWID DESC LIMIT 1"
-  register: dock_wallpaper
-  changed_when: false
-
 # FIXME: Make this work for macOS Sonoma.
+# - name: Check desktop wallpaper
+#   ansible.builtin.command:
+#     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "SELECT value FROM data ORDER BY ROWID DESC LIMIT 1"
+#   register: dock_wallpaper
+#   changed_when: false
+#
 # - name: Set desktop wallpaper
 #   ansible.builtin.command:
 #     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "{{ item }}"
@@ -240,6 +240,16 @@
 #   notify: Restart Dock
 #   when: path_wallpaper not in dock_wallpaper.stdout
 #   changed_when: true
+
+
+- name: Deploy ubuntu-cnt container
+  community.docker.docker_container:
+    name: ubuntu-cnt1
+    hostname: ubuntu-cnt1
+    image: ubuntu-cnt:latest
+    pull: never
+    restart_policy: unless-stopped
+  tags: ubuntu-cnt
 
 
 - name: Create misc nnn bookmarks

@@ -1,35 +1,3 @@
-- name: Ensure locale sv_SE.UTF-8 is present
-  become: true
-  community.general.locale_gen:
-    name: sv_SE.UTF-8
-    state: present
-
-- name: Add public SSH keys to authorized_keys
-  ansible.posix.authorized_key:
-    user: "{{ ansible_facts['user_id'] }}"
-    key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
-    state: present
-    exclusive: true
-
-- name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
-  become: true
-  ansible.builtin.template:
-    src: sshd_config.d/AllowUsers.conf.j2
-    dest: /etc/ssh/sshd_config.d/AllowUsers.conf
-    owner: root
-    group: root
-    mode: "0644"
-  notify: Restart SSH
-
-- name: Create misc directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0700"
-  loop:
-    - "{{ path_home }}/Documents/Text"
-
-
 - name: Upgrade all APT packages
   become: true
   ansible.builtin.apt:
@@ -94,6 +62,38 @@
     executable: "{{ pip_exec }}"
     extra_args: "{{ pip_args }}"
   when: pip_ubuntu is defined
+
+
+- name: Ensure locale sv_SE.UTF-8 is present
+  become: true
+  community.general.locale_gen:
+    name: sv_SE.UTF-8
+    state: present
+
+- name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
+  become: true
+  ansible.builtin.template:
+    src: sshd_config.d/AllowUsers.conf.j2
+    dest: /etc/ssh/sshd_config.d/AllowUsers.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart SSH
+
+- name: Add public SSH keys to authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ ansible_facts['user_id'] }}"
+    key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
+    state: present
+    exclusive: true
+
+- name: Create misc directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "{{ path_home }}/Documents/Text"
 
 
 - name: Create misc symbolic links

@@ -23,20 +23,20 @@
 # https://formulae.brew.sh/formula/rustup
 - name: Execute command 'rustup install'
   ansible.builtin.command:
-    cmd: rustup install
+    cmd: "{{ path_brew }}/bin/rustup install"
   when: not rustup.stat.exists
   changed_when: true
 
 - name: Execute command 'rustup update'
   ansible.builtin.command:
-    cmd: rustup update
+    cmd: "{{ path_brew }}/bin/rustup update"
   when: rustup.stat.exists
   changed_when: false
 
 # https://rust-lang.github.io/rustup/installation/index.html#enable-tab-completion-for-bash-fish-zsh-or-powershell
 - name: Execute commands 'rustup completions zsh [cargo]'
   ansible.builtin.shell:
-    cmd: "{{ item }}"
+    cmd: "{{ path_brew }}/bin/{{ item }}"
   loop:
     - rustup completions zsh > {{ path_brew }}/share/zsh/site-functions/_rustup
     - rustup completions zsh cargo > {{ path_brew }}/share/zsh/site-functions/_cargo

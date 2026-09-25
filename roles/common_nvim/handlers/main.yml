@@ -1,5 +1,5 @@
 - name: Generate help tags for all plugins
   ansible.builtin.command:
-    cmd: nvim -c 'helptags ALL' -c q
+    cmd: "{{ path_brew }}/bin/nvim -c 'helptags ALL' -c q"
   listen: Generate help tags
   changed_when: true

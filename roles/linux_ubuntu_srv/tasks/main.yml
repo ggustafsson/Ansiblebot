@@ -100,6 +100,8 @@
       - net_bind_service
     cap_drop:
       - all
+    log_opt:
+      max_size: 100mb
   tags: adguard
 
 - name: Generate systemd unit file for AdGuard container
@@ -148,6 +150,8 @@
       - type=bind,source=/srv/jellyfin/cache,target=/cache
     env:
       TZ: Europe/Stockholm
+    log_opt:
+      max_size: 100mb
   tags: jellyfin
 
 - name: Generate systemd unit file for Jellyfin container

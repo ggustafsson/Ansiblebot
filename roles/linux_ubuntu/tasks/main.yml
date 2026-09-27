@@ -70,6 +70,22 @@
     name: sv_SE.UTF-8
     state: present
 
+- name: Disable dynamic MOTD in PAM configurations
+  become: true
+  vars:
+    rule_1: { regexp: '(session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic)', line: '# \1' }
+    rule_2: { regexp: '(session\s+optional\s+pam_motd.so noupdate)', line: '# \1' }
+  ansible.builtin.lineinfile:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backrefs: true
+  loop:
+    - "{{ rule_1 | combine({'path': '/etc/pam.d/login'}) }}"
+    - "{{ rule_2 | combine({'path': '/etc/pam.d/login'}) }}"
+    - "{{ rule_1 | combine({'path': '/etc/pam.d/sshd'}) }}"
+    - "{{ rule_2 | combine({'path': '/etc/pam.d/sshd'}) }}"
+
 - name: Create file /etc/ssh/sshd_config.d/AllowUsers.conf
   become: true
   ansible.builtin.template:

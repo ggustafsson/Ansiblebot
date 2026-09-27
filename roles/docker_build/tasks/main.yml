@@ -9,4 +9,4 @@
   ansible.builtin.add_host:
     name: "{{ docker_base }}"
     ansible_connection: docker
-    ansible_ssh_user: root
+    ansible_user: root

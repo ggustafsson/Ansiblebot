@@ -17,6 +17,7 @@ Setup and/or maintain systems:
     ansible-playbook setup_macos_work.yml --ask-become --diff
 
     ansible-playbook setup_ubuntu_srv.yml --ask-become --diff
+    ansible-playbook setup_ubuntu_cnt.yml --ask-become --diff
     ansible-playbook setup_ubuntu_vm.yml  --ask-become --diff
 
 Build new Docker container image:
@@ -29,4 +30,5 @@ Clean up leftovers on systems:
     nvim cleanup_tmp.yml
     ansible-playbook cleanup_tmp.yml --limit localhost  --ask-become --diff
     ansible-playbook cleanup_tmp.yml --limit ubuntu_srv --ask-become --diff
+    ansible-playbook cleanup_tmp.yml --limit ubuntu_cnt --ask-become --diff
     ansible-playbook cleanup_tmp.yml --limit ubuntu_vm  --ask-become --diff

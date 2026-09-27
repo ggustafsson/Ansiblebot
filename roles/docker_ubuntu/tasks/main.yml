@@ -9,6 +9,7 @@
       - build-essential
       - git
       - locales
+      - sudo # FIXME: Remove after Ansible release with sudo-rs support.
       - sudo-rs
       - unminimize
     state: latest
@@ -43,8 +44,13 @@
     group: root
     mode: "0640"
 
+- name: Set default locale to en_US.UTF-8
+  ansible.builtin.command:
+    cmd: update-locale LANG=en_US.UTF-8
+  changed_when: true
+
 - name: Re-add Docker container {{ docker_base }} to Ansible hosts inventory
   ansible.builtin.add_host:
     name: "{{ docker_base }}"
     ansible_connection: docker
-    ansible_ssh_user: "{{ user_name }}"
+    ansible_user: "{{ user_name }}"

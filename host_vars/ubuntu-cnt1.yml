@@ -1,2 +1,3 @@
 ansible_connection: docker
+ansible_user: "{{ lookup('env', 'USER') }}"
 hostname: ubuntu-cnt1

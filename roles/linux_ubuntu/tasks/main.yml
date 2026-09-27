@@ -64,6 +64,11 @@
   when: pip_ubuntu is defined
 
 
+- name: Set timezone to Europe/Stockholm
+  become: true
+  community.general.timezone:
+    name: Europe/Stockholm
+
 - name: Ensure locale sv_SE.UTF-8 is present
   become: true
   community.general.locale_gen:

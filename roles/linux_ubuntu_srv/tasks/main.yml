@@ -88,9 +88,9 @@
     image: docker.io/adguard/adguardhome
     ports:
       - 53:53/tcp
-      - 80:80/tcp
+      - 80:80/tcp  # Initial config only
       - 443:443/tcp
-      - 3000:3000/tcp
+      - 3000:3000/tcp  # Initial config only
     mount:
       - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
       - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
@@ -143,7 +143,8 @@
     image: docker.io/jellyfin/jellyfin
     ports:
       - 7359:7359/udp
-      - 8096:8096/tcp
+      - 8096:8096/tcp  # Initial config only
+      - 8920:8920/tcp
     mount:
       - type=bind,source=/media/external,target=/media,ro=true
       - type=bind,source=/srv/jellyfin/config,target=/config

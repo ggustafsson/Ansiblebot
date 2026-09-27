@@ -44,6 +44,11 @@
     group: root
     mode: "0640"
 
+- name: Ensure locale en_US.UTF-8 is present
+  community.general.locale_gen:
+    name: en_US.UTF-8
+    state: present
+
 - name: Set default locale to en_US.UTF-8
   ansible.builtin.command:
     cmd: update-locale LANG=en_US.UTF-8

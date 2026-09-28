@@ -9,6 +9,7 @@
   loop:
     - { key: fs.inotify.max_user_watches, value: 524288 }
     - { key: net.ipv4.ip_forward, value: 1 }
+    - { key: net.ipv4.ip_unprivileged_port_start, value: 0 }
     - { key: net.ipv6.conf.all.forwarding, value: 1 }
 
 - name: Disable DNSStubListener in systemd-resolved
@@ -66,30 +67,33 @@
   when: pip_ubuntu_srv is defined
 
 
-- name: Create AdGuard directories
+- name: Create directories for containers
   become: true
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: root
-    group: root
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
   loop:
     - /srv/adguard
     - /srv/adguard/conf
     - /srv/adguard/work
-  tags: adguard
+    - /srv/jellyfin
+    - /srv/jellyfin/cache
+    - /srv/jellyfin/config
+  tags: containers
 
 - name: Deploy AdGuard container
-  become: true
   containers.podman.podman_container:
     name: adguard
     hostname: "{{ hostname }}-adguard"
     image: docker.io/adguard/adguardhome
     ports:
+      - 53:53/udp
       - 53:53/tcp
       - 80:80/tcp
-      # - 3000:3000/tcp
+      - 3000:3000/tcp
     mount:
       - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
       - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
@@ -101,39 +105,7 @@
       - all
     log_opt:
       max_size: 100mb
-  tags: adguard
-
-- name: Generate systemd unit file for AdGuard container
-  become: true
-  containers.podman.podman_generate_systemd:
-    name: adguard
-    no_header: true
-    dest: /etc/systemd/system
-    restart_policy: always
-  tags: adguard
-
-- name: Ensure AdGuard container is started and enabled
-  become: true
-  ansible.builtin.systemd:
-    name: container-adguard
-    enabled: true
-    state: started
-    daemon_reload: true
-  tags: adguard
-
-
-- name: Create Jellyfin directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ ansible_facts['user_id'] }}"
-    group: "{{ ansible_facts['user_gid'] }}"
-    mode: "0755"
-  loop:
-    - /srv/jellyfin
-    - /srv/jellyfin/cache
-    - /srv/jellyfin/config
-  tags: jellyfin
+  tags: containers
 
 - name: Deploy Jellyfin container
   containers.podman.podman_container:
@@ -151,24 +123,28 @@
       TZ: Europe/Stockholm
     log_opt:
       max_size: 100mb
-  tags: jellyfin
+  tags: containers
 
-- name: Generate systemd unit file for Jellyfin container
+- name: Generate systemd unit files for containers
   containers.podman.podman_generate_systemd:
-    name: jellyfin
+    name: "{{ item }}"
     no_header: true
     dest: ~/.config/systemd/user
     restart_policy: always
-  tags: jellyfin
+  loop: &container_list
+    - adguard
+    - jellyfin
+  tags: containers
 
-- name: Ensure Jellyfin container is started and enabled
+- name: Ensure containers are started and enabled
   ansible.builtin.systemd:
-    name: container-jellyfin
+    name: "container-{{ item }}"
     scope: user
     enabled: true
     state: started
     daemon_reload: true
-  tags: jellyfin
+  loop: *container_list
+  tags: containers
 
 
 - name: Create misc nnn bookmarks

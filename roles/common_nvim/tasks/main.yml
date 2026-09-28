@@ -42,6 +42,8 @@
     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
   diff: false
   loop:
+    - name: d2-vim
+      url: https://github.com/d2lang/d2-vim.git
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
 

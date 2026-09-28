@@ -84,7 +84,7 @@
     - /srv/jellyfin/config
   tags: containers
 
-- name: Deploy AdGuard container
+- name: Deploy container adguard
   containers.podman.podman_container:
     name: adguard
     hostname: "{{ hostname }}-adguard"
@@ -107,7 +107,7 @@
       max_size: 100mb
   tags: containers
 
-- name: Deploy Jellyfin container
+- name: Deploy container jellyfin
   containers.podman.podman_container:
     name: jellyfin
     hostname: "{{ hostname }}-jellyfin"
@@ -125,7 +125,7 @@
       max_size: 100mb
   tags: containers
 
-- name: Generate systemd unit files for containers
+- name: Generate systemd units for containers
   containers.podman.podman_generate_systemd:
     name: "{{ item }}"
     no_header: true

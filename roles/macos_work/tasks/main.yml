@@ -23,6 +23,7 @@
   when: cask_macos_work is defined
 
 - name: Install Homebrew applications from list 'cask_macos_work_root'
+  become: true
   community.general.homebrew_cask:
     name: "{{ cask_macos_work_root }}"
     state: latest

@@ -3,7 +3,6 @@
   vars:
     hostname: Onett
     git_16x256: git@github.com:ggustafsson/16x256.nvim.git
-    git_dockerfiles: git@github.com:ggustafsson/Dockerfiles.git
     git_dotfiles: git@github.com:ggustafsson/Dotfiles.git
     git_godis: git@github.com:ggustafsson/godis.git
     git_kjell: git@github.com:ggustafsson/Kjell.git

@@ -25,8 +25,6 @@
     dest: "{{ item.name }}"
   diff: false
   loop:
-    - name: "{{ path_projects }}/Dockerfiles"
-      url: "{{ git_dockerfiles }}"
     - name: "{{ path_projects }}/Project-Assets"
       url: "{{ git_projectassets }}"
 
@@ -100,6 +98,7 @@
   when: cask_macos is defined
 
 - name: Install Homebrew applications from list 'cask_macos_root'
+  become: true
   community.general.homebrew_cask:
     name: "{{ cask_macos_root }}"
     state: latest
@@ -134,9 +133,7 @@
     cmd: code --install-extension "{{ item }}"
   loop:
     - asvetliakov.vscode-neovim
-    - bierner.markdown-mermaid
     - golang.go
-    - jebbs.plantuml
     - ms-azuretools.vscode-docker
     - ms-python.flake8
     - ms-python.pylint
@@ -147,6 +144,7 @@
     - redhat.ansible
     - redhat.vscode-yaml
     - rust-lang.rust-analyzer
+    - terrastruct.d2
   when: item not in code_extensions.stdout
   changed_when: true
 
@@ -242,7 +240,7 @@
 #   changed_when: true
 
 
-- name: Deploy ubuntu-cnt container
+- name: Deploy container ubuntu-cnt
   community.docker.docker_container:
     name: ubuntu-cnt1
     hostname: ubuntu-cnt1
@@ -251,7 +249,7 @@
     restart_policy: unless-stopped
     env:
       TZ: Europe/Stockholm
-  tags: ubuntu-cnt
+  tags: containers
 
 
 - name: Create misc nnn bookmarks

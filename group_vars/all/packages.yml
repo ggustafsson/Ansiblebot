@@ -7,6 +7,7 @@ brew_macos:
   - bash-language-server
   - coreutils
   - curl
+  - d2
   - dialog
   - diffutils
   - docker
@@ -131,7 +132,7 @@ cask_macos_work:
 #   - x
 
 
-# XXX: There is no virtual package for latest Lua, must specify "lua5.4".
+# XXX: There is no virtual package for latest Lua, must specify "lua5.X".
 apt_ubuntu:
   - ansible
   - ansible-lint
@@ -200,12 +201,12 @@ apt_ubuntu_vm:
 linuxbrew_ubuntu:
   - ansible-language-server
   - bash-language-server
+  - d2
   - fzf
   - lua-language-server
   - neovim
   - pyright
   - rustup
-  - tmux-xpanes
   - tree-sitter-cli
   - yaml-language-server
   - zsh-autosuggestions
@@ -216,8 +217,8 @@ linuxbrew_ubuntu:
 # linuxbrew_ubuntu_srv:
 #   - x
 
-# linuxbrew_ubuntu_vm:
-#   - x
+linuxbrew_ubuntu_vm:
+  - tmux-xpanes
 
 
 go_common:

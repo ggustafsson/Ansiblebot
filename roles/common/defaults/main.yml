@@ -5,7 +5,6 @@ path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dotfiles"
 
-git_dockerfiles: https://github.com/ggustafsson/Dockerfiles.git
 git_dotfiles: https://github.com/ggustafsson/Dotfiles.git
 git_godis: https://github.com/ggustafsson/godis.git
 git_kjell: https://github.com/ggustafsson/Kjell.git

@@ -12,7 +12,7 @@ Here be dragons... and settings that are not easy to automate through Ansible
 - [ ] Open `Dotfiles/Misc/SF-Mono-Regular.otf`
 
 ## Browser Extensions
-- [ ] Install plugin 1Password/Bitwarden
+- [ ] Install plugin 1Password/Bitwarden/etc
 
 ## Calendar
 - [ ] Alerts - Time to Leave
@@ -107,6 +107,16 @@ Here be dragons... and settings that are not easy to automate through Ansible
 
 ### Notifications & Focus
 - [ ] Disable: Allow notifications: When the screen is locked
+
+## Safari
+- [ ] View - Show Status Bar
+- [ ] General - Safari opens with: All non-private windows from last session
+- [ ] General - Disable: Open safe files after downloading
+- [ ] AutoFill - Disable: Usernames and passwords
+- [ ] Websites - Notifications - Disable: Allow websites to ask for ...
+- [ ] Advanced - Show full website address
+- [ ] Advanced - Disable: Show colour in compact tab bar
+- [ ] Advanced - Show Develop menu in menu bar
 
 ### Security & Privacy
 - [ ] General - Require password immediately

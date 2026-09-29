@@ -58,16 +58,6 @@ Here be dragons... and settings that are not easy to automate through Ansible
 ## Notification Center
 - [ ] Add and remove widgets
 
-## Safari
-- [ ] View - Show Status Bar
-- [ ] General - Safari opens with: All non-private windows from last session
-- [ ] General - Disable: Open safe files after downloading
-- [ ] AutoFill - Disable: Usernames and passwords
-- [ ] Websites - Notifications - Disable: Allow websites to ask for ...
-- [ ] Advanced - Show full website address
-- [ ] Advanced - Disable: Show colour in compact tab bar
-- [ ] Advanced - Show Develop menu in menu bar
-
 ## Spaces
 - [ ] Add up to 5 spaces on main display
 - [ ] Add up to 4 spaces on secondary display

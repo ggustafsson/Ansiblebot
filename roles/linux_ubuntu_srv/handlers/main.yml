@@ -3,6 +3,12 @@
   ansible.builtin.apt:
     update_cache: true
 
+- name: Reload Caddy
+  containers.podman.podman_container:
+    name: caddy
+    state: started
+    command: caddy reload --config /etc/caddy/Caddyfile
+
 - name: Restart systemd-resolved
   become: true
   ansible.builtin.systemd:

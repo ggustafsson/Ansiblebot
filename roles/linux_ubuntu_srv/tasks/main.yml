@@ -79,9 +79,49 @@
     - /srv/adguard
     - /srv/adguard/conf
     - /srv/adguard/work
+    - /srv/caddy
     - /srv/jellyfin
     - /srv/jellyfin/cache
     - /srv/jellyfin/config
+  tags: containers
+
+- name: Create shared container network
+  containers.podman.podman_network:
+    name: internal
+    state: present
+    # recreate: true
+    # force: true
+  tags: containers
+
+- name: Populate Caddyfile configuration
+  ansible.builtin.template:
+    src: templates/caddy/Caddyfile.j2
+    dest: /srv/caddy/Caddyfile
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
+    mode: "0644"
+  vars:
+    sites:
+      - { domain: "adguard.{{ hostname }}.local",  upstream: adguard:80 }
+      - { domain: "jellyfin.{{ hostname }}.local", upstream: jellyfin:8096 }
+  notify: Reload Caddy
+  tags: containers
+
+- name: Deploy container caddy
+  containers.podman.podman_container:
+    name: caddy
+    hostname: "{{ hostname }}-caddy"
+    image: docker.io/library/caddy:latest
+    network:
+      - internal
+    ports:
+      - 443:443/tcp
+    mount:
+      - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
+    env:
+      TZ: Europe/Stockholm
+    log_opt:
+      max_size: 100mb
   tags: containers
 
 - name: Deploy container adguard
@@ -89,6 +129,8 @@
     name: adguard
     hostname: "{{ hostname }}-adguard"
     image: docker.io/adguard/adguardhome
+    network:
+      - internal
     ports:
       - 53:53/udp
       - 53:53/tcp
@@ -99,10 +141,6 @@
       - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
     env:
       TZ: Europe/Stockholm
-    cap_add:
-      - net_bind_service
-    cap_drop:
-      - all
     log_opt:
       max_size: 100mb
   tags: containers
@@ -112,6 +150,8 @@
     name: jellyfin
     hostname: "{{ hostname }}-jellyfin"
     image: docker.io/jellyfin/jellyfin
+    network:
+      - internal
     ports:
       - 7359:7359/udp
       - 8096:8096/tcp
@@ -133,6 +173,7 @@
     restart_policy: always
   loop: &container_list
     - adguard
+    - caddy
     - jellyfin
   tags: containers
 

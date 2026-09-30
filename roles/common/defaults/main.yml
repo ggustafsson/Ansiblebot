@@ -1,3 +1,5 @@
+path_brew: "{{ (ansible_facts['os_family'] == 'Darwin') | ternary('/opt/homebrew', '/home/linuxbrew/.linuxbrew') }}"
+
 path_home: "{{ ansible_facts['user_dir'] }}"
 path_golang: "{{ path_home }}/.golang" # GOPATH
 path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
@@ -5,6 +7,7 @@ path_nnn_bms: "{{ path_home }}/.config/nnn/bookmarks"
 path_projects: "{{ path_home }}/Projects"
 path_dotfiles: "{{ path_projects }}/Dotfiles"
 
+git_brew: https://github.com/Homebrew/brew.git
 git_dotfiles: https://github.com/ggustafsson/Dotfiles.git
 git_godis: https://github.com/ggustafsson/godis.git
 git_kjell: https://github.com/ggustafsson/Kjell.git

@@ -1,4 +1,3 @@
-path_brew: /opt/homebrew
 path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
 # Specify PIP executable so we always end up using Python from Homebrew.

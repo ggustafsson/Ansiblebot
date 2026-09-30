@@ -12,34 +12,13 @@
     state: latest
   when: apt_ubuntu is defined
 
-- name: Create directory {{ path_brew }}
-  become: true
-  ansible.builtin.file:
-    path: "{{ path_brew }}"
-    state: directory
-    owner: "{{ ansible_facts['user_id'] }}"
-    group: "{{ ansible_facts['user_gid'] }}"
-    mode: "0700"
-
-- name: Git clone/pull Linuxbrew repos
-  ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-    update: false # Let Linuxbrew handle updates.
-  diff: false
-  loop:
-    - repo: https://github.com/Homebrew/brew.git
-      dest: "{{ path_brew }}"
-    - repo: https://github.com/Homebrew/homebrew-core
-      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
-
-- name: Upgrade all Linuxbrew packages
+- name: Upgrade all Homebrew packages
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
     path: "{{ path_brew }}/bin"
 
-- name: Install Linuxbrew packages from list 'linuxbrew_ubuntu'
+- name: Install Homebrew packages from list 'linuxbrew_ubuntu'
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu }}"
     state: latest

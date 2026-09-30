@@ -55,29 +55,6 @@
     - "{{ path_home }}/Sites/.localized"
 
 
-- name: Create directory {{ path_brew }}
-  become: true
-  ansible.builtin.file:
-    path: "{{ path_brew }}"
-    state: directory
-    owner: "{{ ansible_facts['user_id'] }}"
-    group: "{{ ansible_facts['user_gid'] }}"
-    mode: "0755"
-
-- name: Git clone/pull Homebrew repos
-  ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-    update: false # Let Homebrew handle updates.
-  diff: false
-  loop:
-    - repo: https://github.com/Homebrew/brew.git
-      dest: "{{ path_brew }}"
-    - repo: https://github.com/Homebrew/homebrew-core
-      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-core"
-    - repo: https://github.com/Homebrew/homebrew-cask
-      dest: "{{ path_brew }}/Library/Taps/homebrew/homebrew-cask"
-
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
     update_homebrew: true

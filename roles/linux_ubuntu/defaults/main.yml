@@ -1,4 +1,2 @@
-path_brew: /home/linuxbrew/.linuxbrew
-
 pip_exec: "/usr/bin/pip3"
 pip_args: "--break-system-packages"

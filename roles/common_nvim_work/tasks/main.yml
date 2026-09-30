@@ -2,6 +2,7 @@
 #   ansible.builtin.git:
 #     repo: "{{ item.url }}"
 #     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+#     single_branch: true
 #   diff: false
 #   loop:
 #     - name: x
@@ -12,6 +13,7 @@
 #   ansible.builtin.git:
 #     repo: "{{ item.url }}"
 #     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+#     single_branch: true
 #   diff: false
 #   loop:
 #     - name: x

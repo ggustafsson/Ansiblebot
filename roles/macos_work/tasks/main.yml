@@ -1,12 +1,9 @@
-- name: Git clone/pull Homebrew repos
-  ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-    update: false # Let Homebrew handle updates.
-  diff: false
+- name: Add misc Homebrew taps
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
   loop:
-    - repo: https://github.com/hashicorp/homebrew-tap
-      dest: "{{ path_brew }}/Library/Taps/hashicorp/homebrew-tap"
+    - hashicorp/tap
 
 - name: Install Homebrew packages from list 'brew_macos_work'
   community.general.homebrew:

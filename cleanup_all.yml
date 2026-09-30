@@ -50,4 +50,5 @@
       ansible.builtin.command:
         cmd: code --uninstall-extension "{{ item }}"
       loop: "{{ uninstall_vscode }}"
+      changed_when: true
       when: uninstall_vscode is defined

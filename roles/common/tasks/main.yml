@@ -32,6 +32,27 @@
   when: id_ed25519.stat.exists
 
 
+- name: Create directory {{ path_brew }}
+  become: true
+  ansible.builtin.file:
+    path: "{{ path_brew }}"
+    state: directory
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
+    mode: "0700"
+
+- name: Git clone Homebrew repo
+  ansible.builtin.git:
+    repo: "{{ git_brew }}"
+    dest: "{{ path_brew }}"
+    single_branch: true
+    update: false # Let Homebrew handle updates.
+  diff: false
+  notify:
+    - Get latest Homebrew git tag
+    - Checkout latest tag on branch stable
+
+
 - name: Create misc directories
   ansible.builtin.file:
     path: "{{ item }}"

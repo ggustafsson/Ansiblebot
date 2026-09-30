@@ -102,7 +102,7 @@
     mode: "0644"
   vars:
     sites:
-      - { domain: "adguard.{{ hostname }}.local",  upstream: adguard:80 }
+      - { domain: "adguard.{{ hostname }}.local", upstream: adguard:80 }
       - { domain: "jellyfin.{{ hostname }}.local", upstream: jellyfin:8096 }
   notify: Reload Caddy
   tags: containers

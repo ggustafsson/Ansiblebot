@@ -223,6 +223,7 @@
     path: /var/run/docker.sock
     follow: true
   register: docker_socket_stat
+  tags: containers
 
 - name: Deploy container ubuntu-cnt
   community.docker.docker_container:

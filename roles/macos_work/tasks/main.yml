@@ -24,6 +24,8 @@
     name: "{{ cask_macos_work_root }}"
     state: latest
     install_options: appdir=/Applications
+  environment:
+    SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
   when: cask_macos_work_root is defined
 
 - name: Install Go packages from list 'go_macos_work'

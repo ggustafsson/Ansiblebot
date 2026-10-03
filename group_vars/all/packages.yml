@@ -101,17 +101,16 @@ brew_macos_work:
   - yq
 
 cask_macos:
-  - dropbox
-  - google-chrome
   - hammerspoon
   - rancher
   - the-unarchiver
   - utm
   - visual-studio-code
-  - wireshark-app
 
-# cask_macos_root:
-#   - x
+cask_macos_root:
+  - dropbox
+  - google-chrome
+  - wireshark-app
 
 cask_macos_home:
   - handbrake

@@ -218,6 +218,12 @@
 #   changed_when: true
 
 
+- name: Check if /var/run/docker.sock exists
+  ansible.builtin.stat:
+    path: /var/run/docker.sock
+    follow: true
+  register: docker_socket_stat
+
 - name: Deploy container ubuntu-cnt
   community.docker.docker_container:
     name: ubuntu-cnt1
@@ -227,6 +233,7 @@
     restart_policy: unless-stopped
     env:
       TZ: Europe/Stockholm
+  when: docker_socket_stat.stat.exists
   tags: containers
 
 

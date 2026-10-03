@@ -52,6 +52,9 @@
     - Get latest Homebrew git tag
     - Checkout latest tag on branch stable
 
+- name: Run handlers immediately
+  ansible.builtin.meta: flush_handlers
+
 
 - name: Create misc directories
   ansible.builtin.file:

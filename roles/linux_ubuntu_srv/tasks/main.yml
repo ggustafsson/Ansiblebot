@@ -33,8 +33,16 @@
     state: present
   notify: Update APT cache
 
-- name: Flush handlers immediately
+- name: Run handlers immediately
   ansible.builtin.meta: flush_handlers
+
+- name: Uninstall misc APT packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - unattended-upgrades
 
 - name: Install APT packages from list 'apt_ubuntu_srv'
   become: true

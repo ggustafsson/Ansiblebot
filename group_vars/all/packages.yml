@@ -120,6 +120,7 @@ cask_macos_home:
   - vlc
 
 cask_macos_home_root:
+  - mullvad-vpn
   - tailscale-app
 
 cask_macos_work:

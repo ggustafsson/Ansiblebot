@@ -1,10 +1,10 @@
 {
-  metrics
+	metrics
 }
 {% for site in sites %}
 
-{{ site.domain }}:443 {
-  tls internal
-  reverse_proxy {{ site.upstream }}
+{{ site.domain }} {
+	tls internal
+	reverse_proxy {{ site.upstream }}
 }
 {% endfor %}

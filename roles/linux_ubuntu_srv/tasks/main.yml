@@ -126,10 +126,10 @@
       - 443:443/tcp
     mount:
       - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
-    env:
-      TZ: Europe/Stockholm
     log_opt:
       max_size: 100mb
+    env:
+      TZ: Europe/Stockholm
   tags: containers
 
 - name: Deploy container adguard
@@ -147,10 +147,10 @@
     mount:
       - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
       - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
-    env:
-      TZ: Europe/Stockholm
     log_opt:
       max_size: 100mb
+    env:
+      TZ: Europe/Stockholm
   tags: containers
 
 - name: Deploy container jellyfin
@@ -167,10 +167,10 @@
       - type=bind,source=/media/external,target=/media,ro=true
       - type=bind,source=/srv/jellyfin/config,target=/config
       - type=bind,source=/srv/jellyfin/cache,target=/cache
-    env:
-      TZ: Europe/Stockholm
     log_opt:
       max_size: 100mb
+    env:
+      TZ: Europe/Stockholm
   tags: containers
 
 - name: Generate systemd units for containers

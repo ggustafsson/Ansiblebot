@@ -59,6 +59,7 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
+    force_formula: true
 
 - name: Install Homebrew packages from list 'brew_macos'
   community.general.homebrew:
@@ -249,3 +250,5 @@
       dest: Dropbox - Split-Brain
     - src: "{{ path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot
+    - src: "{{ path_projects }}/Project-Assets"
+      dest: Projects - Project-Assets

@@ -16,6 +16,7 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
+    force_formula: true
     path: "{{ path_brew }}/bin"
 
 - name: Install Homebrew packages from list 'linuxbrew_ubuntu'

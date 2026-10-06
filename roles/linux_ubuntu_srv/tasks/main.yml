@@ -125,6 +125,7 @@
     name: caddy
     hostname: "{{ hostname }}-caddy"
     image: docker.io/library/caddy:latest
+    pull: newer
     network:
       - internal
     ports:
@@ -141,7 +142,8 @@
   containers.podman.podman_container:
     name: adguard
     hostname: "{{ hostname }}-adguard"
-    image: docker.io/adguard/adguardhome
+    image: docker.io/adguard/adguardhome:latest
+    pull: newer
     network:
       - internal
     ports:
@@ -162,7 +164,8 @@
   containers.podman.podman_container:
     name: jellyfin
     hostname: "{{ hostname }}-jellyfin"
-    image: docker.io/jellyfin/jellyfin
+    image: docker.io/jellyfin/jellyfin:latest
+    pull: newer
     network:
       - internal
     ports:

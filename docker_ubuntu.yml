@@ -7,7 +7,6 @@
   roles:
     - docker_build
 
-
 - name: Bootstrap Ubuntu
   hosts: ubuntu-base
   gather_facts: false

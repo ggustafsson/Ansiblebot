@@ -2,6 +2,7 @@
   community.docker.docker_container:
     name: "{{ docker_base }}"
     image: "{{ docker_image }}"
+    pull: always
     state: started
     command: sleep infinity
 

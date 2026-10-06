@@ -63,11 +63,7 @@
     state: link
     force: true
   loop:
-    - src: /Volumes/External 1
-      dest: Volumes - External 1
-    - src: /Volumes/External 2
-      dest: Volumes - External 2
-    - src: /Volumes/Keychain 1
-      dest: Volumes - Keychain 1
-    - src: /Volumes/Keychain 2
-      dest: Volumes - Keychain 2
+    - src: /Volumes/External
+      dest: Volumes - External
+    - src: /Volumes/Keychain
+      dest: Volumes - Keychain

@@ -79,6 +79,7 @@
   ansible.builtin.command:
     cmd: "loginctl enable-linger {{ ansible_facts['user_id'] }}"
     creates: "/var/lib/systemd/linger/{{ ansible_facts['user_id'] }}"
+  tags: containers
 
 - name: Create directories for containers
   become: true
@@ -112,7 +113,47 @@
   notify: Reload Caddy
   tags: containers
 
-- name: Create shared container network
+- name: Define all containers
+  ansible.builtin.set_fact:
+    podman_defaults:
+      network:
+        - internal
+      log_opt:
+        max_size: 100mb
+      env:
+        TZ: Europe/Stockholm
+
+    podman_containers:
+      - name: adguard
+        image: docker.io/adguard/adguardhome:latest
+        ports:
+          - 53:53/udp
+          - 53:53/tcp
+          - 80:80/tcp
+          - 3000:3000/tcp
+        mounts:
+          - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
+          - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
+
+      - name: caddy
+        image: docker.io/library/caddy:latest
+        ports:
+          - 443:443/tcp
+        mounts:
+          - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
+
+      - name: jellyfin
+        image: docker.io/jellyfin/jellyfin:latest
+        ports:
+          - 7359:7359/udp
+          - 8096:8096/tcp
+        mounts:
+          - type=bind,source=/media/external,target=/media,ro=true
+          - type=bind,source=/srv/jellyfin/config,target=/config
+          - type=bind,source=/srv/jellyfin/cache,target=/cache
+  tags: containers
+
+- name: Create container network
   containers.podman.podman_network:
     name: internal
     state: present
@@ -120,108 +161,53 @@
     # force: true
   tags: containers
 
-- name: Pull container image caddy
+- name: Pull container images
   containers.podman.podman_image:
-    name: docker.io/library/caddy:latest
+    name: "{{ item.image }}"
     force: true
-  register: image_pull
+  loop: "{{ podman_containers }}"
+  loop_control:
+    label: "{{ item.image }}"
+  register: images_pulled
   tags: containers
 
-- name: Deploy container caddy
+- name: Deploy all containers
   containers.podman.podman_container:
-    name: caddy
-    hostname: "{{ hostname }}-caddy"
-    image: docker.io/library/caddy:latest
-    recreate: "{{ image_pull.changed }}"
-    network:
-      - internal
-    ports:
-      - 443:443/tcp
-    mount:
-      - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
-    log_opt:
-      max_size: 100mb
-    env:
-      TZ: Europe/Stockholm
-  tags: containers
-
-- name: Pull container image adguard
-  containers.podman.podman_image:
-    name: docker.io/adguard/adguardhome:latest
-    force: true
-  register: image_pull
-  tags: containers
-
-- name: Deploy container adguard
-  containers.podman.podman_container:
-    name: adguard
-    hostname: "{{ hostname }}-adguard"
-    image: docker.io/adguard/adguardhome:latest
-    recreate: "{{ image_pull.changed }}"
-    network:
-      - internal
-    ports:
-      - 53:53/udp
-      - 53:53/tcp
-      - 80:80/tcp
-      - 3000:3000/tcp
-    mount:
-      - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
-      - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
-    log_opt:
-      max_size: 100mb
-    env:
-      TZ: Europe/Stockholm
-  tags: containers
-
-- name: Pull container image jellyfin
-  containers.podman.podman_image:
-    name: docker.io/jellyfin/jellyfin:latest
-    force: true
-  register: image_pull
-  tags: containers
-
-- name: Deploy container jellyfin
-  containers.podman.podman_container:
-    name: jellyfin
-    hostname: "{{ hostname }}-jellyfin"
-    image: docker.io/jellyfin/jellyfin:latest
-    recreate: "{{ image_pull.changed }}"
-    network:
-      - internal
-    ports:
-      - 7359:7359/udp
-      - 8096:8096/tcp
-    mount:
-      - type=bind,source=/media/external,target=/media,ro=true
-      - type=bind,source=/srv/jellyfin/config,target=/config
-      - type=bind,source=/srv/jellyfin/cache,target=/cache
-    log_opt:
-      max_size: 100mb
-    env:
-      TZ: Europe/Stockholm
+    name: "{{ item.item.name }}"
+    hostname: "{{ hostname }}-{{ item.item.name }}"
+    image: "{{ item.item.image }}"
+    recreate: "{{ item.changed }}"
+    network: "{{ podman_defaults.network }}"
+    ports: "{{ item.item.ports | default(omit) }}"
+    mount: "{{ item.item.mounts | default(omit) }}"
+    log_opt: "{{ podman_defaults.log_opt }}"
+    env: "{{ podman_defaults.env | combine(item.item.env | default({})) }}"
+  loop: "{{ images_pulled.results }}"
+  loop_control:
+    label: "{{ item.item.name }}"
   tags: containers
 
 - name: Generate systemd units for containers
   containers.podman.podman_generate_systemd:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     no_header: true
     dest: ~/.config/systemd/user
     restart_policy: always
-  loop: &container_list
-    - adguard
-    - caddy
-    - jellyfin
+  loop: "{{ podman_containers }}"
+  loop_control:
+    label: "{{ item.name }}"
   tags: containers
 
-- name: Ensure containers are started and enabled
+- name: Enable systemd units for containers
   ansible.builtin.systemd:
-    name: "container-{{ item }}"
+    name: "container-{{ item.name }}"
     scope: user
     enabled: true
     state: started
     daemon_reload: true
-  loop: *container_list
+  loop: "{{ podman_containers }}"
+  loop_control:
+    label: "container-{{ item.name }}"
   tags: containers
 
 

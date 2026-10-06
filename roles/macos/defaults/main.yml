@@ -1,5 +1,7 @@
 path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
+git_projectassets: https://github.com/ggustafsson/Project-Assets.git
+
 cask_sudo_askpass: "{{ path_home }}/Projects/Kvickt/Scripts/askpass"
 
 # Specify PIP executable so we always end up using Python from Homebrew.

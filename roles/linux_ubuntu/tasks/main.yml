@@ -80,10 +80,10 @@
     mode: "0644"
   notify: Restart SSH
 
-- name: Add public SSH keys to authorized_keys
+- name: Add public SSH key to authorized_keys
   ansible.posix.authorized_key:
     user: "{{ ansible_facts['user_id'] }}"
-    key: "{% for key in query('fileglob', 'ssh/id_*.pub') %}{{ lookup('file', key) ~ '\n' }}{% endfor %}"
+    key: "{{ lookup('file', 'id_ed25519.pub') }}"
     state: present
     exclusive: true
 

@@ -1,5 +1,6 @@
 path_wallpaper: /System/Library/Desktop Pictures/Solid Colors/Teal.png
 
+git_kvickt: https://github.com/ggustafsson/Kvickt.git
 git_projectassets: https://github.com/ggustafsson/Project-Assets.git
 
 cask_sudo_askpass: "{{ path_home }}/Projects/Kvickt/Scripts/askpass"

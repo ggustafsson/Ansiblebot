@@ -84,8 +84,6 @@
       url: "{{ git_godis }}"
     - name: "{{ path_projects }}/Kjell"
       url: "{{ git_kjell }}"
-    - name: "{{ path_projects }}/Kvickt"
-      url: "{{ git_kvickt }}"
     - name: "{{ path_projects }}/Pyttipanna"
       url: "{{ git_pyttipanna }}"
     - name: "{{ path_projects }}/Skrot"
@@ -140,8 +138,6 @@
       dest: Projects - Godis
     - src: "{{ path_projects }}/Kjell/src"
       dest: Projects - Kjell
-    - src: "{{ path_projects }}/Kvickt"
-      dest: Projects - Kvickt
     - src: "{{ path_projects }}/Pyttipanna/src"
       dest: Projects - Pyttipanna
     - src: "{{ path_projects }}/Skrot"

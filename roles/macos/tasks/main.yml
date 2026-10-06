@@ -25,6 +25,8 @@
     dest: "{{ item.name }}"
   diff: false
   loop:
+    - name: "{{ path_projects }}/Kvickt"
+      url: "{{ git_kvickt }}"
     - name: "{{ path_projects }}/Project-Assets"
       url: "{{ git_projectassets }}"
 
@@ -250,5 +252,7 @@
       dest: Dropbox - Split-Brain
     - src: "{{ path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot
+    - src: "{{ path_projects }}/Kvickt"
+      dest: Projects - Kvickt
     - src: "{{ path_projects }}/Project-Assets"
       dest: Projects - Project-Assets

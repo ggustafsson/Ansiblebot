@@ -93,6 +93,11 @@
     - /srv/jellyfin/config
   tags: containers
 
+- name: Enable linger for user
+  ansible.builtin.command:
+    cmd: "loginctl enable-linger {{ ansible_facts['user_id'] }}"
+    creates: "/var/lib/systemd/linger/{{ ansible_facts['user_id'] }}"
+
 - name: Create shared container network
   containers.podman.podman_network:
     name: internal

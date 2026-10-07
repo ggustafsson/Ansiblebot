@@ -153,8 +153,6 @@
   containers.podman.podman_network:
     name: "{{ item }}"
     state: present
-    # recreate: true
-    # force: true
   loop: "{{ podman_defaults.network }}"
   tags: containers
 

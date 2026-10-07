@@ -108,8 +108,8 @@
     mode: "0644"
   vars:
     sites:
-      - { domain: adguard, upstream: host.containers.internal:3000 }
-      - { domain: jellyfin, upstream: jellyfin:8096 }
+      - { http: false, domain: adguard, upstream: host.containers.internal:3000 }
+      - { http: true, domain: jellyfin, upstream: jellyfin:8096 }
   notify: Reload Caddy
   tags: containers
 
@@ -135,6 +135,7 @@
       - name: caddy
         image: docker.io/library/caddy:latest
         ports:
+          - 80:80/tcp
           - 443:443/tcp
         mounts:
           - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
@@ -147,6 +148,8 @@
           - type=bind,source=/media/external,target=/media,ro=true
           - type=bind,source=/srv/jellyfin/config,target=/config
           - type=bind,source=/srv/jellyfin/cache,target=/cache
+        env:
+          JELLYFIN_PublishedServerUrl: http://jellyfin
   tags: containers
 
 - name: Create container network

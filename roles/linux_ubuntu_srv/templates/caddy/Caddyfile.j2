@@ -1,9 +1,15 @@
 {
-	metrics
+	metrics {
+		per_host
+	}
 }
 {% for site in sites %}
 
-{{ site.domain }} {
+{% if site.http is true %}
+http://{{ site.domain }} {
+	reverse_proxy {{ site.upstream }}
+}
+https://{% endif %}{{ site.domain }} {
 	tls internal
 	reverse_proxy {{ site.upstream }}
 }

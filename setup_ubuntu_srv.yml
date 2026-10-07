@@ -1,5 +1,7 @@
 - name: Setup Ubuntu system - SRV
   hosts: ubuntu_srv
+  # FIXME: Remove after Ansible release with sudo-rs support.
+  become_exe: sudo.ws
   roles:
     - { role: common, tags: common }
     - { role: linux_ubuntu, tags: linux_ubuntu }

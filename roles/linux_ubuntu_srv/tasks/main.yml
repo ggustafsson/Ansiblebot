@@ -108,8 +108,8 @@
     mode: "0644"
   vars:
     sites:
-      - { domain: "adguard.{{ hostname }}.local", upstream: adguard:80 }
-      - { domain: "jellyfin.{{ hostname }}.local", upstream: jellyfin:8096 }
+      - { domain: adguard, upstream: host.containers.internal:3000 }
+      - { domain: jellyfin, upstream: jellyfin:8096 }
   notify: Reload Caddy
   tags: containers
 
@@ -126,11 +126,8 @@
     podman_containers:
       - name: adguard
         image: docker.io/adguard/adguardhome:latest
-        ports:
-          - 53:53/udp
-          - 53:53/tcp
-          - 80:80/tcp
-          - 3000:3000/tcp
+        network:
+          - host
         mounts:
           - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
           - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
@@ -146,7 +143,6 @@
         image: docker.io/jellyfin/jellyfin:latest
         ports:
           - 7359:7359/udp
-          - 8096:8096/tcp
         mounts:
           - type=bind,source=/media/external,target=/media,ro=true
           - type=bind,source=/srv/jellyfin/config,target=/config
@@ -177,12 +173,12 @@
     name: "{{ item.item.name }}"
     hostname: "{{ hostname }}-{{ item.item.name }}"
     image: "{{ item.item.image }}"
-    recreate: "{{ item.changed }}"
-    network: "{{ podman_defaults.network }}"
+    network: "{{ item.item.network | default(podman_defaults.network) }}"
     ports: "{{ item.item.ports | default(omit) }}"
     mount: "{{ item.item.mounts | default(omit) }}"
     log_opt: "{{ podman_defaults.log_opt }}"
     env: "{{ podman_defaults.env | combine(item.item.env | default({})) }}"
+    recreate: "{{ item.changed }}"
   loop: "{{ images_pulled.results }}"
   loop_control:
     label: "{{ item.item.name }}"

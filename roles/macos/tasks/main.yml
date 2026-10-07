@@ -22,12 +22,12 @@
 - name: Git clone/pull misc projects
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ item.name }}"
+    dest: "{{ path_projects }}/{{ item.name }}"
   diff: false
   loop:
-    - name: "{{ path_projects }}/Kvickt"
+    - name: "Kvickt"
       url: "{{ git_kvickt }}"
-    - name: "{{ path_projects }}/Project-Assets"
+    - name: "Project-Assets"
       url: "{{ git_projectassets }}"
 
 - name: Create misc symbolic links

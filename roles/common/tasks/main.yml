@@ -75,18 +75,18 @@
 - name: Git clone/pull misc projects
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ item.name }}"
+    dest: "{{ path_projects }}/{{ item.name }}"
   diff: false
   loop:
-    - name: "{{ path_dotfiles }}"
+    - name: "Dotfiles"
       url: "{{ git_dotfiles }}"
-    - name: "{{ path_projects }}/Godis"
+    - name: "Godis"
       url: "{{ git_godis }}"
-    - name: "{{ path_projects }}/Kjell"
+    - name: "Kjell"
       url: "{{ git_kjell }}"
-    - name: "{{ path_projects }}/Pyttipanna"
+    - name: "Pyttipanna"
       url: "{{ git_pyttipanna }}"
-    - name: "{{ path_projects }}/Skrot"
+    - name: "Skrot"
       url: "{{ git_skrot }}"
 
 - name: Create misc symbolic links

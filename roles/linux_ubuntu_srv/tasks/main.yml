@@ -21,6 +21,13 @@
     state: present
   notify: Restart systemd-resolved
 
+- name: Check stats of swap file
+  ansible.builtin.stat:
+    path: /swap.img
+  register: swap_file_stat
+  notify: Recreate swap
+  changed_when: not swap_file_stat.stat.exists or swap_file_stat.stat.size > (2 * 1024 * 1024 * 1024)
+
 
 - name: Add Tailscale APT repository
   become: true

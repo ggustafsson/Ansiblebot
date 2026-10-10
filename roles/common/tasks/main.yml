@@ -48,7 +48,7 @@
     single_branch: true
     update: false # Let Homebrew handle updates.
   diff: false
-  notify: Homebrew git branch stable
+  notify: Homebrew git branch
 
 - name: Run handlers immediately
   ansible.builtin.meta: flush_handlers

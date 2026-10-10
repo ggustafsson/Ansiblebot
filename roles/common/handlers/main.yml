@@ -1,17 +1,17 @@
-- name: Homebrew git branch stable
-  block:
-    # noqa: command-instead-of-module
-    - name: Get latest Homebrew git tag
-      ansible.builtin.command:
-        cmd: git describe --tags --abbrev=0
-        chdir: "{{ path_brew }}"
-      register: git_tags
-      changed_when: false
+# noqa: command-instead-of-module
+- name: Get latest Homebrew git tag
+  listen: Homebrew git branch
+  ansible.builtin.command:
+    cmd: git describe --tags --abbrev=0
+    chdir: "{{ path_brew }}"
+  register: git_tags
+  changed_when: false
 
-    # noqa: command-instead-of-module
-    - name: Checkout latest tag on branch stable
-      ansible.builtin.command:
-        cmd: "git checkout --quiet --force -B stable {{ git_tags.stdout_lines | first }}"
-        chdir: "{{ path_brew }}"
-      when: git_tags.stdout_lines | length > 0
-      changed_when: true
+# noqa: command-instead-of-module
+- name: Checkout latest tag on branch stable
+  listen: Homebrew git branch
+  ansible.builtin.command:
+    cmd: "git checkout --quiet --force -B stable {{ git_tags.stdout_lines | first }}"
+    chdir: "{{ path_brew }}"
+  when: git_tags.stdout_lines | length > 0
+  changed_when: true

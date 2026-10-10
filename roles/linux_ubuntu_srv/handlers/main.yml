@@ -14,3 +14,45 @@
   ansible.builtin.systemd:
     name: systemd-resolved
     state: restarted
+
+
+- name: Turn off swap
+  listen: Recreate swap
+  become: true
+  ansible.builtin.command: swapoff /swap.img
+  failed_when: false
+  changed_when: true
+
+- name: Empty swap file
+  listen: Recreate swap
+  become: true
+  ansible.builtin.copy:
+    content: ""
+    dest: /swap.img
+    owner: root
+    group: root
+    mode: "0600"
+
+- name: Set CoW attribute because of Btrfs
+  listen: Recreate swap
+  become: true
+  ansible.builtin.command: chattr +C /swap.img
+  changed_when: true
+
+- name: Allocate 2GB for swap file
+  listen: Recreate swap
+  become: true
+  ansible.builtin.command: dd if=/dev/zero of=/swap.img bs=1M count=2048
+  changed_when: true
+
+- name: Set up swap area
+  listen: Recreate swap
+  become: true
+  ansible.builtin.command: mkswap /swap.img
+  changed_when: true
+
+- name: Turn on swap
+  listen: Recreate swap
+  become: true
+  ansible.builtin.command: swapon /swap.img
+  changed_when: true

@@ -31,6 +31,7 @@ brew_macos:
   - lua
   - lua-language-server
   - lynx
+  - mosh
   - neovim
   - nmap
   - nnn
@@ -162,6 +163,7 @@ apt_ubuntu:
   - libreadline-dev
   - lua5.5
   - lynx
+  - mosh
   - nmap
   - nnn
   - npm

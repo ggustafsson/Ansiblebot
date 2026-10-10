@@ -115,6 +115,7 @@ cask_macos_root:
 
 cask_macos_home:
   - handbrake
+  - signal
   - tor-browser
   - transmission
   - vlc

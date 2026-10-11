@@ -68,3 +68,22 @@
     mode: "0700"
   loop:
     - "{{ path_home }}/Bitbucket"
+
+
+# - name: Execute misc 'x completion zsh' commands
+#   ansible.builtin.shell:
+#     cmd: "{{ item }}"
+#   loop:
+#     - kubectl completion zsh > {{ path_brew }}/share/zsh/site-functions/_kubectl
+#   changed_when: true
+
+
+# - name: Create misc nnn bookmarks
+#   ansible.builtin.file:
+#     src: "{{ item.src }}"
+#     dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+#     state: link
+#     force: true
+#   loop:
+#     - src: x
+#       dest: y

@@ -216,6 +216,14 @@
   tags: containers
 
 
+- name: Execute misc 'x completion zsh' commands
+  ansible.builtin.shell:
+    cmd: "{{ item }}"
+  loop:
+    - tailscale completion zsh > {{ path_brew }}/share/zsh/site-functions/_tailscale
+  changed_when: true
+
+
 - name: Create misc nnn bookmarks
   ansible.builtin.file:
     src: "{{ item.src }}"

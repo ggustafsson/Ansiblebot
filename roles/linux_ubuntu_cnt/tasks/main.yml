@@ -18,7 +18,7 @@
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_ubuntu_cnt }}"
   when: go_ubuntu_cnt is defined
-  changed_when: false
+  changed_when: true
 
 - name: Install Pip packages from list 'pip_ubuntu_cnt'
   ansible.builtin.pip:

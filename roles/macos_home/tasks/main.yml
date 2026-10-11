@@ -27,7 +27,7 @@
     cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
   loop: "{{ go_macos_home }}"
   when: go_macos_home is defined
-  changed_when: false
+  changed_when: true
 
 - name: Install Pip packages from list 'pip_macos_home'
   ansible.builtin.pip:

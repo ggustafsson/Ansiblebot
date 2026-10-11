@@ -125,6 +125,7 @@
     podman_defaults:
       network:
         - internal
+      log_driver: json-file
       log_opt:
         max_size: 100mb
       env:
@@ -184,8 +185,9 @@
     network: "{{ item.item.network | default(podman_defaults.network) }}"
     ports: "{{ item.item.ports | default(omit) }}"
     mount: "{{ item.item.mounts | default(omit) }}"
-    log_opt: "{{ podman_defaults.log_opt }}"
     env: "{{ podman_defaults.env | combine(item.item.env | default({})) }}"
+    log_driver: "{{ podman_defaults.log_driver }}"
+    log_opt: "{{ podman_defaults.log_opt }}"
     recreate: "{{ item.changed }}"
   loop: "{{ images_pulled.results }}"
   loop_control:

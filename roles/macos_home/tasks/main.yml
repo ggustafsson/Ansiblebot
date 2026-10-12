@@ -56,11 +56,9 @@
       dest: "{{ path_home }}/Documents/Reading"
 
 
-- name: Execute misc 'x completion zsh' commands
+- name: Execute misc 'tailscale completion zsh' command
   ansible.builtin.shell:
-    cmd: "{{ item }}"
-  loop:
-    - tailscale completion zsh > {{ path_brew }}/share/zsh/site-functions/_tailscale
+    cmd: tailscale completion zsh > {{ path_brew }}/share/zsh/site-functions/_tailscale
   changed_when: true
 
 

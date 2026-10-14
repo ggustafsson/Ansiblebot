@@ -2,24 +2,15 @@
   community.general.homebrew:
     name: "{{ brew_macos_home }}"
     state: latest
-    force_formula: true
   when: brew_macos_home is defined
 
 - name: Install Homebrew applications from list 'cask_macos_home'
   community.general.homebrew_cask:
     name: "{{ cask_macos_home }}"
     state: latest
-    install_options: appdir=~/Applications
-  when: cask_macos_home is defined
-
-- name: Install Homebrew applications from list 'cask_macos_home_root'
-  community.general.homebrew_cask:
-    name: "{{ cask_macos_home_root }}"
-    state: latest
-    install_options: appdir=/Applications
   environment:
     SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
-  when: cask_macos_home_root is defined
+  when: cask_macos_home is defined
 
 - name: Install Go packages from list 'go_macos_home'
   ansible.builtin.shell:

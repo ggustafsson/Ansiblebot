@@ -16,14 +16,12 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
-    force_formula: true
     path: "{{ path_brew }}/bin"
 
 - name: Install Homebrew packages from list 'linuxbrew_ubuntu'
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu }}"
     state: latest
-    force_formula: true
     path: "{{ path_brew }}/bin"
   when: linuxbrew_ubuntu is defined
 

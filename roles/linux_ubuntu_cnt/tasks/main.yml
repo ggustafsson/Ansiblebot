@@ -9,7 +9,6 @@
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu_cnt }}"
     state: latest
-    force_formula: true
   when: linuxbrew_ubuntu_cnt is defined
 
 - name: Install Go packages from list 'go_ubuntu_cnt'

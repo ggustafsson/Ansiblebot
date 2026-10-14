@@ -62,7 +62,6 @@
   community.general.homebrew:
     name: "{{ linuxbrew_ubuntu_srv }}"
     state: latest
-    force_formula: true
   when: linuxbrew_ubuntu_srv is defined
 
 - name: Install Go packages from list 'go_ubuntu_srv'

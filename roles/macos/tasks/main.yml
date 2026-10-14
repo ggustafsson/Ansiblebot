@@ -13,7 +13,6 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/Applications"
     - "{{ path_home }}/Library/CloudStorage/Dropbox"
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
     - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
@@ -61,30 +60,20 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
-    force_formula: true
 
 - name: Install Homebrew packages from list 'brew_macos'
   community.general.homebrew:
     name: "{{ brew_macos }}"
     state: latest
-    force_formula: true
   when: brew_macos is defined
 
 - name: Install Homebrew applications from list 'cask_macos'
   community.general.homebrew_cask:
     name: "{{ cask_macos }}"
     state: latest
-    install_options: appdir=~/Applications
-  when: cask_macos is defined
-
-- name: Install Homebrew applications from list 'cask_macos_root'
-  community.general.homebrew_cask:
-    name: "{{ cask_macos_root }}"
-    state: latest
-    install_options: appdir=/Applications
   environment:
     SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
-  when: cask_macos_root is defined
+  when: cask_macos is defined
 
 - name: Install Go packages from list 'go_macos'
   ansible.builtin.shell:

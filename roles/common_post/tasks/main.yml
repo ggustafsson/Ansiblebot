@@ -20,9 +20,12 @@
     path: "{{ path_home }}/.rustup"
   register: rustup
 
-- name: Execute command 'rustup install'
+- name: Execute command 'rustup install' etc
   ansible.builtin.command:
-    cmd: "{{ path_brew }}/bin/rustup install"
+    cmd: "{{ path_brew }}/bin/{{ item }}"
+  loop:
+    - rustup install
+    - rustup component add rust-analyzer
   when: not rustup.stat.exists
   changed_when: true
 

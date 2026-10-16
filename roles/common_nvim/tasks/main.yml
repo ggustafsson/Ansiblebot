@@ -67,6 +67,8 @@
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
+    - name: gitsigns.nvim
+      url: https://github.com/lewis6991/gitsigns.nvim.git
 
     - name: luasnip
       url: https://github.com/L3MON4D3/LuaSnip.git

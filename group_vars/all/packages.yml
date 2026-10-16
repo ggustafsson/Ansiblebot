@@ -77,8 +77,8 @@ brew_macos_home:
 
 brew_macos_work:
   - age
-  - akamai
   - awscli
+  - git-cliff
   - goreleaser
   - hashicorp/tap/vault
   - helm
@@ -91,11 +91,8 @@ brew_macos_work:
   - packer
   - prometheus
   - rbw
-  - salt-lint
   - sops
   - sshpass
-  - stern
-  - syft
   - terragrunt
   - tofu-ls
   - uv

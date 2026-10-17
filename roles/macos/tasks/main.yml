@@ -60,6 +60,8 @@
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
+  environment:
+    SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
 
 - name: Install Homebrew packages from list 'brew_macos'
   community.general.homebrew:

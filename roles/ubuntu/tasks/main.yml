@@ -26,9 +26,11 @@
   when: linuxbrew_ubuntu is defined
 
 - name: Install Go packages from list 'go_ubuntu'
-  ansible.builtin.shell:
-    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
-    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
+  ansible.builtin.command:
+    cmd: go install "{{ item }}"
+  environment:
+    # This is needed when bootstraping (pre ~/.zshenv population).
+    GOPATH: "{{ path_golang }}"
   loop: "{{ go_ubuntu }}"
   when: go_ubuntu is defined
   changed_when: true

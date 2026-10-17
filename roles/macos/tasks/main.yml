@@ -76,9 +76,11 @@
   when: cask_macos is defined
 
 - name: Install Go packages from list 'go_macos'
-  ansible.builtin.shell:
-    # Custom GOPATH is needed when bootstraping (pre ~/.zshenv population).
-    cmd: GOPATH={{ path_golang | quote }} go install {{ item | quote }}
+  ansible.builtin.command:
+    cmd: go install "{{ item }}"
+  environment:
+    # This is needed when bootstraping (pre ~/.zshenv population).
+    GOPATH: "{{ path_golang }}"
   loop: "{{ go_macos }}"
   when: go_macos is defined
   changed_when: true

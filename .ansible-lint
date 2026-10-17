@@ -1,7 +1,6 @@
 # https://yamllint.readthedocs.io/en/stable/rules.html
 
 skip_list:
-  - command-instead-of-shell
   - git-latest
   - name[template] # Allow Jinja templates inside of names.
   - package-latest

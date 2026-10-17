@@ -1,0 +1,32 @@
+# FIXME: Enable when ready!
+
+# hostname: ubuntu-srv2
+
+# ubuntu_srv_container_dirs:
+#   - /srv/caddy
+#   - /srv/jellyfin
+#   - /srv/jellyfin/cache
+#   - /srv/jellyfin/config
+
+# ubuntu_srv_container_definitions:
+#   - name: caddy
+#     image: docker.io/library/caddy:latest
+#     ports:
+#       - 80:80/tcp
+#       - 443:443/tcp
+#     mounts:
+#       - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
+
+#   - name: jellyfin
+#     image: docker.io/jellyfin/jellyfin:latest
+#     ports:
+#       - 7359:7359/udp
+#     mounts:
+#       - type=bind,source=/media/external,target=/media,ro=true
+#       - type=bind,source=/srv/jellyfin/config,target=/config
+#       - type=bind,source=/srv/jellyfin/cache,target=/cache
+#     env:
+#       JELLYFIN_PublishedServerUrl: http://jellyfin
+
+# ubuntu_srv_caddy_sites:
+#   - { http: true, domain: jellyfin, upstream: jellyfin:8096 }

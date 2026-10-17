@@ -11,6 +11,8 @@ ubuntu-cnt1
 
 [ubuntu_srv]
 ubuntu-srv1
+# FIXME: Enable when ready!
+# ubuntu-srv2
 
 [ubuntu_vm]
 ubuntu-vm1

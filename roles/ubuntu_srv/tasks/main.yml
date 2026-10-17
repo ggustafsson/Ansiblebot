@@ -7,7 +7,6 @@
     state: present
     reload: true
   loop:
-    - { key: fs.inotify.max_user_watches, value: 524288 }
     - { key: net.ipv4.ip_forward, value: 1 }
     - { key: net.ipv4.ip_unprivileged_port_start, value: 0 }
     - { key: net.ipv6.conf.all.forwarding, value: 1 }
@@ -20,13 +19,6 @@
     line: 'DNSStubListener=no'
     state: present
   notify: Restart systemd-resolved
-
-- name: Check stats of swap file
-  ansible.builtin.stat:
-    path: /swap.img
-  register: swap_file_stat
-  notify: Recreate swap
-  changed_when: not swap_file_stat.stat.exists or swap_file_stat.stat.size > (2 * 1024 * 1024 * 1024)
 
 
 - name: Add Tailscale APT repository
@@ -95,14 +87,7 @@
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
-  loop:
-    - /srv/adguard
-    - /srv/adguard/conf
-    - /srv/adguard/work
-    - /srv/caddy
-    - /srv/jellyfin
-    - /srv/jellyfin/cache
-    - /srv/jellyfin/config
+  loop: "{{ ubuntu_srv_container_dirs }}"
   tags: containers
 
 - name: Populate Caddyfile configuration
@@ -112,65 +97,21 @@
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0644"
-  vars:
-    sites:
-      - { http: false, domain: adguard, upstream: host.containers.internal:3000 }
-      - { http: true, domain: jellyfin, upstream: jellyfin:8096 }
   notify: Reload Caddy
-  tags: containers
-
-- name: Define all containers
-  ansible.builtin.set_fact:
-    podman_defaults:
-      network:
-        - internal
-      log_driver: json-file
-      log_opt:
-        max_size: 100mb
-      env:
-        TZ: Europe/Stockholm
-
-    podman_containers:
-      - name: adguard
-        image: docker.io/adguard/adguardhome:latest
-        network:
-          - host
-        mounts:
-          - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
-          - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
-
-      - name: caddy
-        image: docker.io/library/caddy:latest
-        ports:
-          - 80:80/tcp
-          - 443:443/tcp
-        mounts:
-          - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
-
-      - name: jellyfin
-        image: docker.io/jellyfin/jellyfin:latest
-        ports:
-          - 7359:7359/udp
-        mounts:
-          - type=bind,source=/media/external,target=/media,ro=true
-          - type=bind,source=/srv/jellyfin/config,target=/config
-          - type=bind,source=/srv/jellyfin/cache,target=/cache
-        env:
-          JELLYFIN_PublishedServerUrl: http://jellyfin
   tags: containers
 
 - name: Create container network
   containers.podman.podman_network:
     name: "{{ item }}"
     state: present
-  loop: "{{ podman_defaults.network }}"
+  loop: "{{ ubuntu_srv_container_defaults.network }}"
   tags: containers
 
 - name: Pull container images
   containers.podman.podman_image:
     name: "{{ item.image }}"
     force: true
-  loop: "{{ podman_containers }}"
+  loop: "{{ ubuntu_srv_container_definitions }}"
   loop_control:
     label: "{{ item.image }}"
   register: images_pulled
@@ -181,12 +122,12 @@
     name: "{{ item.item.name }}"
     hostname: "{{ hostname }}-{{ item.item.name }}"
     image: "{{ item.item.image }}"
-    network: "{{ item.item.network | default(podman_defaults.network) }}"
+    network: "{{ item.item.network | default(ubuntu_srv_container_defaults.network) }}"
     ports: "{{ item.item.ports | default(omit) }}"
     mount: "{{ item.item.mounts | default(omit) }}"
-    env: "{{ podman_defaults.env | combine(item.item.env | default({})) }}"
-    log_driver: "{{ podman_defaults.log_driver }}"
-    log_opt: "{{ podman_defaults.log_opt }}"
+    env: "{{ ubuntu_srv_container_defaults.env | combine(item.item.env | default({})) }}"
+    log_driver: "{{ ubuntu_srv_container_defaults.log_driver }}"
+    log_opt: "{{ ubuntu_srv_container_defaults.log_opt }}"
     recreate: "{{ item.changed }}"
   loop: "{{ images_pulled.results }}"
   loop_control:
@@ -199,7 +140,7 @@
     no_header: true
     dest: ~/.config/systemd/user
     restart_policy: always
-  loop: "{{ podman_containers }}"
+  loop: "{{ ubuntu_srv_container_definitions }}"
   loop_control:
     label: "{{ item.name }}"
   tags: containers
@@ -211,7 +152,7 @@
     enabled: true
     state: started
     daemon_reload: true
-  loop: "{{ podman_containers }}"
+  loop: "{{ ubuntu_srv_container_definitions }}"
   loop_control:
     label: "container-{{ item.name }}"
   tags: containers

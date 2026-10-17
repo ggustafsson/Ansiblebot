@@ -1,1 +1,42 @@
 hostname: ubuntu-srv1
+
+ubuntu_srv_container_dirs:
+  - /srv/adguard
+  - /srv/adguard/conf
+  - /srv/adguard/work
+  - /srv/caddy
+  - /srv/jellyfin
+  - /srv/jellyfin/cache
+  - /srv/jellyfin/config
+
+ubuntu_srv_container_definitions:
+  - name: adguard
+    image: docker.io/adguard/adguardhome:latest
+    network:
+      - host
+    mounts:
+      - type=bind,source=/srv/adguard/conf,target=/opt/adguardhome/conf
+      - type=bind,source=/srv/adguard/work,target=/opt/adguardhome/work
+
+  - name: caddy
+    image: docker.io/library/caddy:latest
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    mounts:
+      - type=bind,source=/srv/caddy/Caddyfile,target=/etc/caddy/Caddyfile,ro=true
+
+  - name: jellyfin
+    image: docker.io/jellyfin/jellyfin:latest
+    ports:
+      - 7359:7359/udp
+    mounts:
+      - type=bind,source=/media/external,target=/media,ro=true
+      - type=bind,source=/srv/jellyfin/config,target=/config
+      - type=bind,source=/srv/jellyfin/cache,target=/cache
+    env:
+      JELLYFIN_PublishedServerUrl: http://jellyfin
+
+ubuntu_srv_caddy_sites:
+  - { http: false, domain: adguard, upstream: host.containers.internal:3000 }
+  - { http: true, domain: jellyfin, upstream: jellyfin:8096 }

@@ -1,0 +1,8 @@
+ubuntu_srv_container_defaults:
+  network:
+    - internal
+  log_driver: json-file
+  log_opt:
+    max_size: 100mb
+  env:
+    TZ: Europe/Stockholm

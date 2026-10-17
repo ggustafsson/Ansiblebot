@@ -5,7 +5,7 @@
 		per_host
 	}
 }
-{% for site in sites %}
+{% for site in ubuntu_srv_caddy_sites %}
 
 {% if site.http is true %}
 http://{{ site.domain }} {

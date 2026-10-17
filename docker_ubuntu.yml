@@ -26,8 +26,8 @@
     hostname: ubuntu-cnt
   roles:
     - common
-    - linux_ubuntu
-    - linux_ubuntu_cnt
+    - ubuntu
+    - ubuntu_cnt
     - common_nvim
     - common_post
 

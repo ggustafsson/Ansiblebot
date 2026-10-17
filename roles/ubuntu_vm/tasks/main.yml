@@ -13,7 +13,7 @@
 
 - name: Install Go packages from list 'go_ubuntu_vm'
   ansible.builtin.command:
-    cmd: go install "{{ item }}"
+    cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
     GOPATH: "{{ path_golang }}"

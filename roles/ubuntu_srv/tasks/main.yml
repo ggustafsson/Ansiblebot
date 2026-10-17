@@ -58,7 +58,7 @@
 
 - name: Install Go packages from list 'go_ubuntu_srv'
   ansible.builtin.command:
-    cmd: go install "{{ item }}"
+    cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
     GOPATH: "{{ path_golang }}"
@@ -77,8 +77,8 @@
 
 - name: Enable user lingering
   ansible.builtin.command:
-    cmd: "loginctl enable-linger {{ ansible_facts['user_id'] }}"
-    creates: "/var/lib/systemd/linger/{{ ansible_facts['user_id'] }}"
+    cmd: loginctl enable-linger {{ ansible_facts['user_id'] }}
+    creates: /var/lib/systemd/linger/{{ ansible_facts['user_id'] }}
   tags: containers
 
 - name: Create directories for containers

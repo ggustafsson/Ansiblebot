@@ -48,7 +48,7 @@
 
     - name: Uninstall Visual Studio Code extensions
       ansible.builtin.command:
-        cmd: code --uninstall-extension "{{ item }}"
+        cmd: code --uninstall-extension {{ item | quote }}
       loop: "{{ uninstall_vscode }}"
       changed_when: true
       when: uninstall_vscode is defined

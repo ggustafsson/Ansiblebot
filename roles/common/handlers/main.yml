@@ -11,7 +11,7 @@
 - name: Checkout latest tag on branch stable
   listen: Homebrew git branch
   ansible.builtin.command:
-    cmd: "git checkout --quiet --force -B stable {{ git_tags.stdout_lines | first }}"
+    cmd: git checkout --quiet --force -B stable {{ git_tags.stdout_lines | first }}
     chdir: "{{ path_brew }}"
   when: git_tags.stdout_lines | length > 0
   changed_when: true

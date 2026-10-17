@@ -77,7 +77,7 @@
 
 - name: Install Go packages from list 'go_macos'
   ansible.builtin.command:
-    cmd: go install "{{ item }}"
+    cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
     GOPATH: "{{ path_golang }}"
@@ -102,7 +102,7 @@
 
 - name: Install Visual Studio Code extensions
   ansible.builtin.command:
-    cmd: code --install-extension "{{ item }}"
+    cmd: code --install-extension {{ item | quote }}
   loop:
     - asvetliakov.vscode-neovim
     - golang.go
@@ -200,12 +200,12 @@
 #
 # - name: Set desktop wallpaper
 #   ansible.builtin.command:
-#     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "{{ item }}"
+#     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db {{ item | quote }}
 #   loop:
 #     - DELETE FROM data
 #     - DELETE FROM pictures
 #     - DELETE FROM preferences
-#     - "INSERT INTO data (value) VALUES ('{{ path_wallpaper }}')"
+#     - INSERT INTO data (value) VALUES ('{{ path_wallpaper }}')
 #     - INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
 #   notify: Restart Dock
 #   when: path_wallpaper not in dock_wallpaper.stdout

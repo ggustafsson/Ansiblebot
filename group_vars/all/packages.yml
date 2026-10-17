@@ -99,29 +99,35 @@ brew_macos_work:
   - yq
 
 cask_macos:
-  - dropbox
-  - google-chrome
   - hammerspoon
   - rancher
   - the-unarchiver
   - utm
   - visual-studio-code
+
+cask_macos_root:
+  - dropbox
+  - google-chrome
   - wireshark-app
 
 cask_macos_home:
   - handbrake
-  - mullvad-vpn
   - signal
-  - tailscale-app
   - tor-browser
   - transmission
   - vlc
 
+cask_macos_home_root:
+  - mullvad-vpn
+  - tailscale-app
+
 cask_macos_work:
-  - 1password
   - 1password-cli
   - claude-code
   - slack
+
+cask_macos_work_root:
+  - 1password
 
 
 # XXX: There is no virtual package for latest Lua, must specify "lua5.X".

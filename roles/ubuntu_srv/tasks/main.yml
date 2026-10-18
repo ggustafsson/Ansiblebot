@@ -172,6 +172,5 @@
     dest: "{{ path_nnn_bms }}/{{ item.dest }}"
     state: link
     force: true
-  loop:
-    - src: /media/external
-      dest: media - external
+  loop: "{{ ubuntu_srv_nnn_bookmarks }}"
+  when: apt_ubuntu_srv is defined

@@ -1,5 +1,9 @@
 hostname: ubuntu-srv1
 
+ubuntu_srv_nnn_bookmarks:
+  - src: /media/external
+    dest: media - external
+
 ubuntu_srv_container_dirs:
   - /srv/adguard
   - /srv/adguard/conf

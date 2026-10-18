@@ -2,6 +2,10 @@
 
 # hostname: ubuntu-srv2
 
+# ubuntu_srv_nnn_bookmarks:
+#   - src: /media/external
+#     dest: media - external
+
 # ubuntu_srv_container_dirs:
 #   - /srv/caddy
 #   - /srv/jellyfin

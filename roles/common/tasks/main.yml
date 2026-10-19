@@ -69,6 +69,7 @@
     - "{{ shared_path_home }}/Downloads"
     - "{{ shared_path_home }}/Playground"
     - "{{ shared_path_projects }}"
+    - "{{ shared_path_projects }}/Local"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
@@ -86,6 +87,14 @@
       url: "{{ shared_git_pyttipanna }}"
     - name: "Skrot"
       url: "{{ shared_git_skrot }}"
+
+- name: Initialize local Git repository
+  ansible.builtin.command:
+    # noqa: command-instead-of-module
+    cmd: git init
+    chdir: "{{ shared_path_projects }}/Local"
+  args:
+    creates: "{{ shared_path_projects }}/Local/.git"
 
 - name: Create misc symbolic links
   ansible.builtin.file:

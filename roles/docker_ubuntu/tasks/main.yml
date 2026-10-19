@@ -14,9 +14,9 @@
       - unminimize
     state: latest
 
-# noqa: risky-shell-pipe
 - name: Execute command 'unminimize'
   ansible.builtin.shell:
+    # noqa: risky-shell-pipe
     cmd: yes | unminimize
   changed_when: true
 

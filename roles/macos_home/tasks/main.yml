@@ -1,34 +1,34 @@
-- name: Install Homebrew packages from list 'brew_macos_home'
+- name: Install Homebrew packages from list 'shared_brew_macos_home'
   community.general.homebrew:
-    name: "{{ brew_macos_home }}"
+    name: "{{ shared_brew_macos_home }}"
     state: latest
-  when: brew_macos_home is defined
+  when: shared_brew_macos_home is defined
 
-- name: Install Homebrew applications from list 'cask_macos_home'
+- name: Install Homebrew applications from list 'shared_cask_macos_home'
   community.general.homebrew_cask:
-    name: "{{ cask_macos_home }}"
+    name: "{{ shared_cask_macos_home }}"
     state: latest
   environment:
-    SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
-  when: cask_macos_home is defined
+    SUDO_ASKPASS: "{{ shared_sudo_askpass }}"
+  when: shared_cask_macos_home is defined
 
-- name: Install Go packages from list 'go_macos_home'
+- name: Install Go packages from list 'shared_go_macos_home'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_macos_home }}"
-  when: go_macos_home is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_macos_home }}"
+  when: shared_go_macos_home is defined
   changed_when: true
 
-- name: Install Pip packages from list 'pip_macos_home'
+- name: Install Pip packages from list 'shared_pip_macos_home'
   ansible.builtin.pip:
-    name: "{{ pip_macos_home }}"
+    name: "{{ shared_pip_macos_home }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
-  when: pip_macos_home is defined
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
+  when: shared_pip_macos_home is defined
 
 
 - name: Create misc directories
@@ -37,7 +37,7 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
+    - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Reading"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -45,20 +45,20 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Reading"
-      dest: "{{ path_home }}/Documents/Reading"
+    - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Reading"
+      dest: "{{ shared_path_home }}/Documents/Reading"
 
 
 - name: Execute misc 'tailscale completion zsh' command
   ansible.builtin.shell:
-    cmd: tailscale completion zsh > {{ path_brew }}/share/zsh/site-functions/_tailscale
+    cmd: tailscale completion zsh > {{ shared_path_brew }}/share/zsh/site-functions/_tailscale
   changed_when: true
 
 
 - name: Create misc nnn bookmarks
   ansible.builtin.file:
     src: "{{ item.src }}"
-    dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+    dest: "{{ shared_path_nnn_bms }}/{{ item.dest }}"
     state: link
     force: true
   loop:

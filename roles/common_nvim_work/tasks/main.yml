@@ -1,7 +1,7 @@
 # - name: Git clone/pull misc Vim plugins
 #   ansible.builtin.git:
 #     repo: "{{ item.url }}"
-#     dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+#     dest: "{{ shared_path_nvim_pack_vim }}/{{ item.name }}"
 #     single_branch: true
 #   diff: false
 #   loop:
@@ -12,7 +12,7 @@
 # - name: Git clone/pull misc Neovim plugins
 #   ansible.builtin.git:
 #     repo: "{{ item.url }}"
-#     dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+#     dest: "{{ shared_path_nvim_pack_nvim }}/{{ item.name }}"
 #     single_branch: true
 #   diff: false
 #   loop:

@@ -1,0 +1,23 @@
+shared_path_home: "{{ ansible_facts['user_dir'] }}"
+shared_path_golang: "{{ shared_path_home }}/.golang" # GOPATH
+shared_path_nnn_bms: "{{ shared_path_home }}/.config/nnn/bookmarks"
+
+shared_path_projects: "{{ shared_path_home }}/Projects"
+shared_path_dotfiles: "{{ shared_path_projects }}/Dotfiles"
+
+shared_path_nvim_config: "{{ shared_path_home }}/.config/nvim"
+shared_path_nvim_local: "{{ shared_path_home }}/.local/share/nvim"
+shared_path_nvim_pack_ggustafsson: "{{ shared_path_nvim_local }}/site/pack/ggustafsson/start"
+shared_path_nvim_pack_vim: "{{ shared_path_nvim_local }}/site/pack/vim/start"
+shared_path_nvim_pack_nvim: "{{ shared_path_nvim_local }}/site/pack/nvim/start"
+
+shared_git_16x256: https://github.com/ggustafsson/16x256.nvim.git
+shared_git_brew: https://github.com/Homebrew/brew.git
+shared_git_dotfiles: https://github.com/ggustafsson/Dotfiles.git
+shared_git_godis: https://github.com/ggustafsson/godis.git
+shared_git_kjell: https://github.com/ggustafsson/Kjell.git
+shared_git_kvickt: https://github.com/ggustafsson/Kvickt.git
+shared_git_nnndir: https://github.com/ggustafsson/nnn-dir.nvim.git
+shared_git_projectassets: https://github.com/ggustafsson/Project-Assets.git
+shared_git_pyttipanna: https://github.com/ggustafsson/Pyttipanna.git
+shared_git_skrot: https://github.com/ggustafsson/Skrot.git

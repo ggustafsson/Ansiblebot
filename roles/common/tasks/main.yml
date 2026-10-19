@@ -13,29 +13,29 @@
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0700"
   loop:
-    - "{{ path_home }}"
-    - "{{ path_home }}/.gnupg"
-    - "{{ path_home }}/.ssh"
+    - "{{ shared_path_home }}"
+    - "{{ shared_path_home }}/.gnupg"
+    - "{{ shared_path_home }}/.ssh"
 
-- name: Get stats on {{ path_home }}/.ssh/id_ed25519
+- name: Get stats on {{ shared_path_home }}/.ssh/id_ed25519
   ansible.builtin.stat:
-    path: "{{ path_home }}/.ssh/id_ed25519"
-  register: id_ed25519
+    path: "{{ shared_path_home }}/.ssh/id_ed25519"
+  register: common_id_ed25519
 
-- name: Set file permissions on {{ path_home }}/.ssh/id_ed25519
+- name: Set file permissions on {{ shared_path_home }}/.ssh/id_ed25519
   ansible.builtin.file:
-    path: "{{ path_home }}/.ssh/id_ed25519"
+    path: "{{ shared_path_home }}/.ssh/id_ed25519"
     state: file
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: "0600"
-  when: id_ed25519.stat.exists
+  when: common_id_ed25519.stat.exists
 
 
-- name: Create directory {{ path_brew }}
+- name: Create directory {{ shared_path_brew }}
   become: true
   ansible.builtin.file:
-    path: "{{ path_brew }}"
+    path: "{{ shared_path_brew }}"
     state: directory
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
@@ -43,8 +43,8 @@
 
 - name: Git clone Homebrew repo
   ansible.builtin.git:
-    repo: "{{ git_brew }}"
-    dest: "{{ path_brew }}"
+    repo: "{{ shared_git_brew }}"
+    dest: "{{ shared_path_brew }}"
     single_branch: true
     update: false # Let Homebrew handle updates.
   diff: false
@@ -60,32 +60,32 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/.config"
-    - "{{ path_nnn_bms }}"
-    - "{{ path_home }}/.local"
-    - "{{ path_home }}/.local/bin"
-    - "{{ path_home }}/.local/share"
-    - "{{ path_home }}/Documents"
-    - "{{ path_home }}/Downloads"
-    - "{{ path_home }}/Playground"
-    - "{{ path_projects }}"
+    - "{{ shared_path_home }}/.config"
+    - "{{ shared_path_nnn_bms }}"
+    - "{{ shared_path_home }}/.local"
+    - "{{ shared_path_home }}/.local/bin"
+    - "{{ shared_path_home }}/.local/share"
+    - "{{ shared_path_home }}/Documents"
+    - "{{ shared_path_home }}/Downloads"
+    - "{{ shared_path_home }}/Playground"
+    - "{{ shared_path_projects }}"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_projects }}/{{ item.name }}"
+    dest: "{{ shared_path_projects }}/{{ item.name }}"
   diff: false
   loop:
     - name: "Dotfiles"
-      url: "{{ git_dotfiles }}"
+      url: "{{ shared_git_dotfiles }}"
     - name: "Godis"
-      url: "{{ git_godis }}"
+      url: "{{ shared_git_godis }}"
     - name: "Kjell"
-      url: "{{ git_kjell }}"
+      url: "{{ shared_git_kjell }}"
     - name: "Pyttipanna"
-      url: "{{ git_pyttipanna }}"
+      url: "{{ shared_git_pyttipanna }}"
     - name: "Skrot"
-      url: "{{ git_skrot }}"
+      url: "{{ shared_git_skrot }}"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -93,50 +93,50 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_dotfiles }}/config/htop"
-      dest: "{{ path_home }}/.config/htop"
-    - src: "{{ path_dotfiles }}/config/pylintrc"
-      dest: "{{ path_home }}/.config/pylintrc"
-    - src: "{{ path_dotfiles }}/config/yamllint"
-      dest: "{{ path_home }}/.config/yamllint"
-    - src: "{{ path_dotfiles }}/gitconfig"
-      dest: "{{ path_home }}/.gitconfig"
-    - src: "{{ path_dotfiles }}/gitignore_global"
-      dest: "{{ path_home }}/.gitignore_global"
-    - src: "{{ path_dotfiles }}/local/share/figlet"
-      dest: "{{ path_home }}/.local/share/figlet"
-    - src: "{{ path_dotfiles }}/lynxrc"
-      dest: "{{ path_home }}/.lynxrc"
-    - src: "{{ path_dotfiles }}/pythonrc"
-      dest: "{{ path_home }}/.pythonrc"
-    - src: "{{ path_dotfiles }}/ssh/config"
-      dest: "{{ path_home }}/.ssh/config"
-    - src: "{{ path_dotfiles }}/tmux.conf"
-      dest: "{{ path_home }}/.tmux.conf"
-    - src: "{{ path_dotfiles }}/zlogin"
-      dest: "{{ path_home }}/.zlogin"
-    - src: "{{ path_dotfiles }}/zshenv"
-      dest: "{{ path_home }}/.zshenv"
-    - src: "{{ path_dotfiles }}/zshrc"
-      dest: "{{ path_home }}/.zshrc"
+    - src: "{{ shared_path_dotfiles }}/config/htop"
+      dest: "{{ shared_path_home }}/.config/htop"
+    - src: "{{ shared_path_dotfiles }}/config/pylintrc"
+      dest: "{{ shared_path_home }}/.config/pylintrc"
+    - src: "{{ shared_path_dotfiles }}/config/yamllint"
+      dest: "{{ shared_path_home }}/.config/yamllint"
+    - src: "{{ shared_path_dotfiles }}/gitconfig"
+      dest: "{{ shared_path_home }}/.gitconfig"
+    - src: "{{ shared_path_dotfiles }}/gitignore_global"
+      dest: "{{ shared_path_home }}/.gitignore_global"
+    - src: "{{ shared_path_dotfiles }}/local/share/figlet"
+      dest: "{{ shared_path_home }}/.local/share/figlet"
+    - src: "{{ shared_path_dotfiles }}/lynxrc"
+      dest: "{{ shared_path_home }}/.lynxrc"
+    - src: "{{ shared_path_dotfiles }}/pythonrc"
+      dest: "{{ shared_path_home }}/.pythonrc"
+    - src: "{{ shared_path_dotfiles }}/ssh/config"
+      dest: "{{ shared_path_home }}/.ssh/config"
+    - src: "{{ shared_path_dotfiles }}/tmux.conf"
+      dest: "{{ shared_path_home }}/.tmux.conf"
+    - src: "{{ shared_path_dotfiles }}/zlogin"
+      dest: "{{ shared_path_home }}/.zlogin"
+    - src: "{{ shared_path_dotfiles }}/zshenv"
+      dest: "{{ shared_path_home }}/.zshenv"
+    - src: "{{ shared_path_dotfiles }}/zshrc"
+      dest: "{{ shared_path_home }}/.zshrc"
 
 
 - name: Create misc nnn bookmarks
   ansible.builtin.file:
     src: "{{ item.src }}"
-    dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+    dest: "{{ shared_path_nnn_bms }}/{{ item.dest }}"
     state: link
     force: true
   loop:
-    - src: "{{ path_home }}/Documents/Text"
+    - src: "{{ shared_path_home }}/Documents/Text"
       dest: Documents - Text
-    - src: "{{ path_projects }}/Dotfiles"
+    - src: "{{ shared_path_projects }}/Dotfiles"
       dest: Projects - Dotfiles
-    - src: "{{ path_projects }}/Godis"
+    - src: "{{ shared_path_projects }}/Godis"
       dest: Projects - Godis
-    - src: "{{ path_projects }}/Kjell/src"
+    - src: "{{ shared_path_projects }}/Kjell/src"
       dest: Projects - Kjell
-    - src: "{{ path_projects }}/Pyttipanna/src"
+    - src: "{{ shared_path_projects }}/Pyttipanna/src"
       dest: Projects - Pyttipanna
-    - src: "{{ path_projects }}/Skrot"
+    - src: "{{ shared_path_projects }}/Skrot"
       dest: Projects - Skrot

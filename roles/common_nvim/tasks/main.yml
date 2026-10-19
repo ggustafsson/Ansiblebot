@@ -4,22 +4,22 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_nvim_local }}"
-    - "{{ path_nvim_local }}/backup"
-    - "{{ path_nvim_pack_ggustafsson }}"
-    - "{{ path_nvim_pack_vim }}"
-    - "{{ path_nvim_pack_nvim }}"
+    - "{{ shared_path_nvim_local }}"
+    - "{{ shared_path_nvim_local }}/backup"
+    - "{{ shared_path_nvim_pack_ggustafsson }}"
+    - "{{ shared_path_nvim_pack_vim }}"
+    - "{{ shared_path_nvim_pack_nvim }}"
 
 - name: Git clone/pull personal Neovim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_projects }}/{{ item.name }}"
+    dest: "{{ shared_path_projects }}/{{ item.name }}"
   diff: false
   loop:
     - name: 16x256.nvim
-      url: "{{ git_16x256 }}"
+      url: "{{ shared_git_16x256 }}"
     - name: nnn-dir.nvim
-      url: "{{ git_nnndir }}"
+      url: "{{ shared_git_nnndir }}"
 
 - name: Create symbolic links to Dotfiles, colorschemes, etc
   ansible.builtin.file:
@@ -27,19 +27,19 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_dotfiles }}/config/nvim"
-      dest: "{{ path_nvim_config }}"
-    - src: "{{ path_projects }}/16x256.nvim"
-      dest: "{{ path_nvim_pack_ggustafsson }}/16x256.nvim"
-    - src: "{{ path_projects }}/nnn-dir.nvim"
-      dest: "{{ path_nvim_pack_ggustafsson }}/nnn-dir.nvim"
-    - src: "{{ path_home }}/.local/share/fzf"
-      dest: "{{ path_nvim_pack_vim }}/fzf"
+    - src: "{{ shared_path_dotfiles }}/config/nvim"
+      dest: "{{ shared_path_nvim_config }}"
+    - src: "{{ shared_path_projects }}/16x256.nvim"
+      dest: "{{ shared_path_nvim_pack_ggustafsson }}/16x256.nvim"
+    - src: "{{ shared_path_projects }}/nnn-dir.nvim"
+      dest: "{{ shared_path_nvim_pack_ggustafsson }}/nnn-dir.nvim"
+    - src: "{{ shared_path_home }}/.local/share/fzf"
+      dest: "{{ shared_path_nvim_pack_vim }}/fzf"
 
 - name: Git clone/pull misc Vim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_nvim_pack_vim }}/{{ item.name }}"
+    dest: "{{ shared_path_nvim_pack_vim }}/{{ item.name }}"
     single_branch: true
   diff: false
   loop:
@@ -61,7 +61,7 @@
 - name: Git clone/pull misc Neovim plugins
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_nvim_pack_nvim }}/{{ item.name }}"
+    dest: "{{ shared_path_nvim_pack_nvim }}/{{ item.name }}"
     single_branch: true
   diff: false
   loop:
@@ -105,5 +105,6 @@
 
 - name: Update all Treesitter parsers
   ansible.builtin.command:
-    cmd: "{{ path_brew }}/bin/nvim -c TSUpdate -c q"
+    # Path is needed when bootstraping (pre ~/.zshenv population).
+    cmd: "{{ shared_path_brew }}/bin/nvim -c TSUpdate -c q"
   changed_when: true

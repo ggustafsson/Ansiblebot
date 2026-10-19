@@ -5,43 +5,43 @@
     upgrade: full
     autoremove: true
 
-- name: Install APT packages from list 'apt_ubuntu'
+- name: Install APT packages from list 'shared_apt_ubuntu'
   become: true
   ansible.builtin.apt:
-    name: "{{ apt_ubuntu }}"
+    name: "{{ shared_apt_ubuntu }}"
     state: latest
-  when: apt_ubuntu is defined
+  when: shared_apt_ubuntu is defined
 
 - name: Upgrade all Homebrew packages
   community.general.homebrew:
     update_homebrew: true
     upgrade_all: true
-    path: "{{ path_brew }}/bin"
+    path: "{{ shared_path_brew }}/bin"
 
-- name: Install Homebrew packages from list 'linuxbrew_ubuntu'
+- name: Install Homebrew packages from list 'shared_linuxbrew_ubuntu'
   community.general.homebrew:
-    name: "{{ linuxbrew_ubuntu }}"
+    name: "{{ shared_linuxbrew_ubuntu }}"
     state: latest
-    path: "{{ path_brew }}/bin"
-  when: linuxbrew_ubuntu is defined
+    path: "{{ shared_path_brew }}/bin"
+  when: shared_linuxbrew_ubuntu is defined
 
-- name: Install Go packages from list 'go_ubuntu'
+- name: Install Go packages from list 'shared_go_ubuntu'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_ubuntu }}"
-  when: go_ubuntu is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_ubuntu }}"
+  when: shared_go_ubuntu is defined
   changed_when: true
 
-- name: Install Pip packages from list 'pip_ubuntu'
+- name: Install Pip packages from list 'shared_pip_ubuntu'
   ansible.builtin.pip:
-    name: "{{ pip_ubuntu }}"
+    name: "{{ shared_pip_ubuntu }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
-  when: pip_ubuntu is defined
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
+  when: shared_pip_ubuntu is defined
 
 
 - name: Set timezone to Europe/Stockholm
@@ -94,7 +94,7 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/Documents/Text"
+    - "{{ shared_path_home }}/Documents/Text"
 
 - name: Create misc symbolic links as root
   become: true
@@ -112,7 +112,7 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_brew }}/opt/fzf"
-      dest: "{{ path_home }}/.local/share/fzf"
-    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
-      dest: "{{ path_home }}/.local/share/zsh-autosuggestions"
+    - src: "{{ shared_path_brew }}/opt/fzf"
+      dest: "{{ shared_path_home }}/.local/share/fzf"
+    - src: "{{ shared_path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+      dest: "{{ shared_path_home }}/.local/share/zsh-autosuggestions"

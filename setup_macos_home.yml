@@ -2,15 +2,15 @@
   hosts: macos
   vars:
     hostname: Onett
-    git_16x256: git@github.com:ggustafsson/16x256.nvim.git
-    git_dotfiles: git@github.com:ggustafsson/Dotfiles.git
-    git_godis: git@github.com:ggustafsson/godis.git
-    git_kjell: git@github.com:ggustafsson/Kjell.git
-    git_kvickt: git@github.com:ggustafsson/Kvickt.git
-    git_nnndir: git@github.com:ggustafsson/nnn-dir.nvim.git
-    git_projectassets: git@github.com:ggustafsson/Project-Assets.git
-    git_pyttipanna: git@github.com:ggustafsson/Pyttipanna.git
-    git_skrot: git@github.com:ggustafsson/Skrot.git
+    shared_git_16x256: git@github.com:ggustafsson/16x256.nvim.git
+    shared_git_dotfiles: git@github.com:ggustafsson/Dotfiles.git
+    shared_git_godis: git@github.com:ggustafsson/godis.git
+    shared_git_kjell: git@github.com:ggustafsson/Kjell.git
+    shared_git_kvickt: git@github.com:ggustafsson/Kvickt.git
+    shared_git_nnndir: git@github.com:ggustafsson/nnn-dir.nvim.git
+    shared_git_projectassets: git@github.com:ggustafsson/Project-Assets.git
+    shared_git_pyttipanna: git@github.com:ggustafsson/Pyttipanna.git
+    shared_git_skrot: git@github.com:ggustafsson/Skrot.git
   roles:
     - { role: common, tags: common }
     - { role: macos, tags: macos }

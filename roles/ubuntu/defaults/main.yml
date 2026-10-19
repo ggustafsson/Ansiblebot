@@ -1,2 +1,0 @@
-pip_exec: /usr/bin/pip3
-pip_args: --break-system-packages

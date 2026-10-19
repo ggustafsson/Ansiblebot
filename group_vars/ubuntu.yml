@@ -1,0 +1,4 @@
+shared_path_brew: /home/linuxbrew/.linuxbrew
+
+shared_pip_exec: /usr/bin/pip3
+shared_pip_args: --break-system-packages

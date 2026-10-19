@@ -43,35 +43,35 @@
   loop:
     - unattended-upgrades
 
-- name: Install APT packages from list 'apt_ubuntu_srv'
+- name: Install APT packages from list 'shared_apt_ubuntu_srv'
   become: true
   ansible.builtin.apt:
-    name: "{{ apt_ubuntu_srv }}"
+    name: "{{ shared_apt_ubuntu_srv }}"
     state: latest
-  when: apt_ubuntu_srv is defined
+  when: shared_apt_ubuntu_srv is defined
 
-- name: Install Homebrew packages from list 'linuxbrew_ubuntu_srv'
+- name: Install Homebrew packages from list 'shared_linuxbrew_ubuntu_srv'
   community.general.homebrew:
-    name: "{{ linuxbrew_ubuntu_srv }}"
+    name: "{{ shared_linuxbrew_ubuntu_srv }}"
     state: latest
-  when: linuxbrew_ubuntu_srv is defined
+  when: shared_linuxbrew_ubuntu_srv is defined
 
-- name: Install Go packages from list 'go_ubuntu_srv'
+- name: Install Go packages from list 'shared_go_ubuntu_srv'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_ubuntu_srv }}"
-  when: go_ubuntu_srv is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_ubuntu_srv }}"
+  when: shared_go_ubuntu_srv is defined
   changed_when: true
 
 - name: Install Pip packages from list 'pip_ubuntu_srv'
   ansible.builtin.pip:
     name: "{{ pip_ubuntu_srv }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
   when: pip_ubuntu_srv is defined
 
 
@@ -116,7 +116,7 @@
   loop: "{{ ubuntu_srv_container_definitions }}"
   loop_control:
     label: "{{ item.image }}"
-  register: images_pulled
+  register: ubuntu_srv_images_pulled
   tags: containers
 
 - name: Deploy all containers
@@ -131,7 +131,7 @@
     log_driver: "{{ ubuntu_srv_container_defaults.log_driver }}"
     log_opt: "{{ ubuntu_srv_container_defaults.log_opt }}"
     recreate: "{{ item.changed }}"
-  loop: "{{ images_pulled.results }}"
+  loop: "{{ ubuntu_srv_images_pulled.results }}"
   loop_control:
     label: "{{ item.item.name }}"
   tags: containers
@@ -149,28 +149,28 @@
 
 - name: Enable systemd units for containers
   ansible.builtin.systemd:
-    name: "container-{{ item.name }}"
+    name: container-{{ item.name }}
     scope: user
     enabled: true
     state: started
     daemon_reload: true
   loop: "{{ ubuntu_srv_container_definitions }}"
   loop_control:
-    label: "container-{{ item.name }}"
+    label: container-{{ item.name }}
   tags: containers
 
 
 - name: Execute misc 'tailscale completion zsh' command
   ansible.builtin.shell:
-    cmd: tailscale completion zsh > {{ path_brew }}/share/zsh/site-functions/_tailscale
+    cmd: tailscale completion zsh > {{ shared_path_brew }}/share/zsh/site-functions/_tailscale
   changed_when: true
 
 
 - name: Create misc nnn bookmarks
   ansible.builtin.file:
     src: "{{ item.src }}"
-    dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+    dest: "{{ shared_path_nnn_bms }}/{{ item.dest }}"
     state: link
     force: true
   loop: "{{ ubuntu_srv_nnn_bookmarks }}"
-  when: apt_ubuntu_srv is defined
+  when: shared_apt_ubuntu_srv is defined

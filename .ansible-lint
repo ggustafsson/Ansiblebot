@@ -4,4 +4,3 @@ skip_list:
   - git-latest
   - name[template] # Allow Jinja templates inside of names.
   - package-latest
-  - var-naming[no-role-prefix] # Do not force role name in var names.

@@ -13,21 +13,21 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/Library/CloudStorage/Dropbox"
-    - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
-    - "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
-    - "{{ path_home }}/Storage"
+    - "{{ shared_path_home }}/Library/CloudStorage/Dropbox"
+    - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
+    - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
+    - "{{ shared_path_home }}/Storage"
 
 - name: Git clone/pull misc projects
   ansible.builtin.git:
     repo: "{{ item.url }}"
-    dest: "{{ path_projects }}/{{ item.name }}"
+    dest: "{{ shared_path_projects }}/{{ item.name }}"
   diff: false
   loop:
     - name: "Kvickt"
-      url: "{{ git_kvickt }}"
+      url: "{{ shared_git_kvickt }}"
     - name: "Project-Assets"
-      url: "{{ git_projectassets }}"
+      url: "{{ shared_git_projectassets }}"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -35,25 +35,25 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - src: "{{ path_dotfiles }}/gnupg/gpg-agent.conf"
-      dest: "{{ path_home }}/.gnupg/gpg-agent.conf"
-    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
-      dest: "{{ path_home }}/Documents/Text"
+    - src: "{{ shared_path_dotfiles }}/gnupg/gpg-agent.conf"
+      dest: "{{ shared_path_home }}/.gnupg/gpg-agent.conf"
+    - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
+      dest: "{{ shared_path_home }}/Documents/Text"
 
 - name: Delete misc files
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop:
-    - "{{ path_home }}/Desktop/.localized"
-    - "{{ path_home }}/Documents/.localized"
-    - "{{ path_home }}/Downloads/.localized"
-    - "{{ path_home }}/Library/.localized"
-    - "{{ path_home }}/Movies/.localized"
-    - "{{ path_home }}/Music/.localized"
-    - "{{ path_home }}/Pictures/.localized"
-    - "{{ path_home }}/Public/.localized"
-    - "{{ path_home }}/Sites/.localized"
+    - "{{ shared_path_home }}/Desktop/.localized"
+    - "{{ shared_path_home }}/Documents/.localized"
+    - "{{ shared_path_home }}/Downloads/.localized"
+    - "{{ shared_path_home }}/Library/.localized"
+    - "{{ shared_path_home }}/Movies/.localized"
+    - "{{ shared_path_home }}/Music/.localized"
+    - "{{ shared_path_home }}/Pictures/.localized"
+    - "{{ shared_path_home }}/Public/.localized"
+    - "{{ shared_path_home }}/Sites/.localized"
 
 
 - name: Upgrade all Homebrew packages
@@ -61,45 +61,45 @@
     update_homebrew: true
     upgrade_all: true
   environment:
-    SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
+    SUDO_ASKPASS: "{{ shared_sudo_askpass }}"
 
-- name: Install Homebrew packages from list 'brew_macos'
+- name: Install Homebrew packages from list 'shared_brew_macos'
   community.general.homebrew:
-    name: "{{ brew_macos }}"
+    name: "{{ shared_brew_macos }}"
     state: latest
-  when: brew_macos is defined
+  when: shared_brew_macos is defined
 
-- name: Install Homebrew applications from list 'cask_macos'
+- name: Install Homebrew applications from list 'shared_cask_macos'
   community.general.homebrew_cask:
-    name: "{{ cask_macos }}"
+    name: "{{ shared_cask_macos }}"
     state: latest
   environment:
-    SUDO_ASKPASS: "{{ cask_sudo_askpass }}"
-  when: cask_macos is defined
+    SUDO_ASKPASS: "{{ shared_sudo_askpass }}"
+  when: shared_cask_macos is defined
 
-- name: Install Go packages from list 'go_macos'
+- name: Install Go packages from list 'shared_go_macos'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_macos }}"
-  when: go_macos is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_macos }}"
+  when: shared_go_macos is defined
   changed_when: true
 
-- name: Install Pip packages from list 'pip_macos'
+- name: Install Pip packages from list 'shared_pip_macos'
   ansible.builtin.pip:
-    name: "{{ pip_macos }}"
+    name: "{{ shared_pip_macos }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
-  when: pip_macos is defined
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
+  when: shared_pip_macos is defined
 
 
 - name: Check installed Visual Studio Code extensions
   ansible.builtin.command:
     cmd: code --list-extensions
-  register: code_extensions
+  register: macos_code_extensions
   changed_when: false
 
 - name: Install Visual Studio Code extensions
@@ -119,7 +119,7 @@
     - redhat.vscode-yaml
     - rust-lang.rust-analyzer
     - terrastruct.d2
-  when: item not in code_extensions.stdout
+  when: item not in macos_code_extensions.stdout
   changed_when: true
 
 
@@ -129,9 +129,9 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ path_home }}/.docker/cli-plugins"
-    - "{{ path_home }}/Library/Application Support/Code"
-    - "{{ path_home }}/Library/Application Support/Code/User"
+    - "{{ shared_path_home }}/.docker/cli-plugins"
+    - "{{ shared_path_home }}/Library/Application Support/Code"
+    - "{{ shared_path_home }}/Library/Application Support/Code/User"
 
 - name: Create misc symbolic links
   ansible.builtin.file:
@@ -140,23 +140,23 @@
     state: link
   loop:
     - src: /opt/homebrew/opt/docker-compose/bin/docker-compose
-      dest: "{{ path_home }}/.docker/cli-plugins/docker-compose"
-    - src: "{{ path_dotfiles }}/hammerspoon"
-      dest: "{{ path_home }}/.hammerspoon"
-    - src: "{{ path_brew }}/opt/fzf"
-      dest: "{{ path_home }}/.local/share/fzf"
-    - src: "{{ path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
-      dest: "{{ path_home }}/.local/share/zsh-autosuggestions"
-    - src: "{{ path_dotfiles }}/vscode/keybindings.json"
-      dest: "{{ path_home }}/Library/Application Support/Code/User/keybindings.json"
-    - src: "{{ path_dotfiles }}/vscode/settings.json"
-      dest: "{{ path_home }}/Library/Application Support/Code/User/settings.json"
+      dest: "{{ shared_path_home }}/.docker/cli-plugins/docker-compose"
+    - src: "{{ shared_path_dotfiles }}/hammerspoon"
+      dest: "{{ shared_path_home }}/.hammerspoon"
+    - src: "{{ shared_path_brew }}/opt/fzf"
+      dest: "{{ shared_path_home }}/.local/share/fzf"
+    - src: "{{ shared_path_brew }}/opt/zsh-autosuggestions/share/zsh-autosuggestions"
+      dest: "{{ shared_path_home }}/.local/share/zsh-autosuggestions"
+    - src: "{{ shared_path_dotfiles }}/vscode/keybindings.json"
+      dest: "{{ shared_path_home }}/Library/Application Support/Code/User/keybindings.json"
+    - src: "{{ shared_path_dotfiles }}/vscode/settings.json"
+      dest: "{{ shared_path_home }}/Library/Application Support/Code/User/settings.json"
 
-- name: Add {{ path_brew }}/bin/zsh to /etc/shells
+- name: Add {{ shared_path_brew }}/bin/zsh to /etc/shells
   become: true
   ansible.builtin.lineinfile:
     path: /etc/shells
-    line: "{{ path_brew }}/bin/zsh"
+    line: "{{ shared_path_brew }}/bin/zsh"
 
 
 - name: Execute misc 'defaults' commands
@@ -197,7 +197,7 @@
 # - name: Check desktop wallpaper
 #   ansible.builtin.command:
 #     cmd: sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "SELECT value FROM data ORDER BY ROWID DESC LIMIT 1"
-#   register: dock_wallpaper
+#   register: macos_dock_wallpaper
 #   changed_when: false
 #
 # - name: Set desktop wallpaper
@@ -207,10 +207,10 @@
 #     - DELETE FROM data
 #     - DELETE FROM pictures
 #     - DELETE FROM preferences
-#     - INSERT INTO data (value) VALUES ('{{ path_wallpaper }}')
+#     - INSERT INTO data (value) VALUES ('{{ macos_wallpaper }}')
 #     - INSERT INTO preferences (key, data_id, picture_id) VALUES (1, 1, 1)
 #   notify: Restart Dock
-#   when: path_wallpaper not in dock_wallpaper.stdout
+#   when: macos_wallpaper not in macos_dock_wallpaper.stdout
 #   changed_when: true
 
 
@@ -218,7 +218,7 @@
   ansible.builtin.stat:
     path: /var/run/docker.sock
     follow: true
-  register: docker_socket_stat
+  register: macos_docker_socket_stat
   tags: containers
 
 - name: Deploy container ubuntu-cnt
@@ -230,22 +230,22 @@
     restart_policy: unless-stopped
     env:
       TZ: Europe/Stockholm
-  when: docker_socket_stat.stat.exists
+  when: macos_docker_socket_stat.stat.exists
   tags: containers
 
 
 - name: Create misc nnn bookmarks
   ansible.builtin.file:
     src: "{{ item.src }}"
-    dest: "{{ path_nnn_bms }}/{{ item.dest }}"
+    dest: "{{ shared_path_nnn_bms }}/{{ item.dest }}"
     state: link
     force: true
   loop:
-    - src: "{{ path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
+    - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
       dest: Dropbox - Split-Brain
-    - src: "{{ path_projects }}/Ansiblebot"
+    - src: "{{ shared_path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot
-    - src: "{{ path_projects }}/Kvickt"
+    - src: "{{ shared_path_projects }}/Kvickt"
       dest: Projects - Kvickt
-    - src: "{{ path_projects }}/Project-Assets"
+    - src: "{{ shared_path_projects }}/Project-Assets"
       dest: Projects - Project-Assets

@@ -1,43 +1,46 @@
-- name: Install Go packages from list 'go_common'
+- name: Install Go packages from list 'shared_go_common'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_common }}"
-  when: go_common is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_common }}"
+  when: shared_go_common is defined
   changed_when: true
 
-- name: Install Pip packages from list 'pip_common'
+- name: Install Pip packages from list 'shared_pip_common'
   ansible.builtin.pip:
-    name: "{{ pip_common }}"
+    name: "{{ shared_pip_common }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
-  when: pip_common is defined
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
+  when: shared_pip_common is defined
 
 
-- name: Get stats on {{ path_home }}/.rustup
+- name: Get stats on {{ shared_path_home }}/.rustup
   ansible.builtin.stat:
-    path: "{{ path_home }}/.rustup"
-  register: rustup
+    path: "{{ shared_path_home }}/.rustup"
+  register: common_post_rustup
 
 - name: Execute command 'rustup install' etc
   ansible.builtin.command:
-    cmd: "{{ path_brew }}/bin/{{ item }}"
+    # Path is needed when bootstraping (pre ~/.zshenv population).
+    cmd: "{{ shared_path_brew }}/bin/{{ item }}"
   loop:
     - rustup install
     - rustup component add rust-analyzer
-  when: not rustup.stat.exists
+  when: not common_post_rustup.stat.exists
   changed_when: true
 
 - name: Execute command 'rustup update'
   ansible.builtin.command:
-    cmd: "{{ path_brew }}/bin/rustup update"
-  when: rustup.stat.exists
+    # See comment above...
+    cmd: "{{ shared_path_brew }}/bin/rustup update"
+  when: common_post_rustup.stat.exists
   changed_when: true
 
 - name: Execute command 'rustup completions zsh cargo'
   ansible.builtin.shell:
-    cmd: "{{ path_brew }}/bin/rustup completions zsh cargo > {{ path_brew }}/share/zsh/site-functions/_cargo"
+    # See comment above...
+    cmd: "{{ shared_path_brew }}/bin/rustup completions zsh cargo > {{ shared_path_brew }}/share/zsh/site-functions/_cargo"
   changed_when: true

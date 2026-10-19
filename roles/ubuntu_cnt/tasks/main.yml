@@ -1,30 +1,30 @@
-- name: Install APT packages from list 'apt_ubuntu_cnt'
+- name: Install APT packages from list 'shared_apt_ubuntu_cnt'
   become: true
   ansible.builtin.apt:
-    name: "{{ apt_ubuntu_cnt }}"
+    name: "{{ shared_apt_ubuntu_cnt }}"
     state: latest
-  when: apt_ubuntu_cnt is defined
+  when: shared_apt_ubuntu_cnt is defined
 
-- name: Install Homebrew packages from list 'linuxbrew_ubuntu_cnt'
+- name: Install Homebrew packages from list 'shared_linuxbrew_ubuntu_cnt'
   community.general.homebrew:
-    name: "{{ linuxbrew_ubuntu_cnt }}"
+    name: "{{ shared_linuxbrew_ubuntu_cnt }}"
     state: latest
-  when: linuxbrew_ubuntu_cnt is defined
+  when: shared_linuxbrew_ubuntu_cnt is defined
 
-- name: Install Go packages from list 'go_ubuntu_cnt'
+- name: Install Go packages from list 'shared_go_ubuntu_cnt'
   ansible.builtin.command:
     cmd: go install {{ item | quote }}
   environment:
     # This is needed when bootstraping (pre ~/.zshenv population).
-    GOPATH: "{{ path_golang }}"
-  loop: "{{ go_ubuntu_cnt }}"
-  when: go_ubuntu_cnt is defined
+    GOPATH: "{{ shared_path_golang }}"
+  loop: "{{ shared_go_ubuntu_cnt }}"
+  when: shared_go_ubuntu_cnt is defined
   changed_when: true
 
-- name: Install Pip packages from list 'pip_ubuntu_cnt'
+- name: Install Pip packages from list 'shared_pip_ubuntu_cnt'
   ansible.builtin.pip:
-    name: "{{ pip_ubuntu_cnt }}"
+    name: "{{ shared_pip_ubuntu_cnt }}"
     state: latest
-    executable: "{{ pip_exec }}"
-    extra_args: "{{ pip_args }}"
-  when: pip_ubuntu_cnt is defined
+    executable: "{{ shared_pip_exec }}"
+    extra_args: "{{ shared_pip_args }}"
+  when: shared_pip_ubuntu_cnt is defined

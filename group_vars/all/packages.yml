@@ -1,4 +1,4 @@
-brew_macos:
+shared_brew_macos:
   - ansible
   - ansible-language-server
   - ansible-lint
@@ -64,7 +64,7 @@ brew_macos:
   - zsh
   - zsh-autosuggestions
 
-brew_macos_home:
+shared_brew_macos_home:
   - cuetools
   - exiftool
   - ffmpeg
@@ -75,7 +75,7 @@ brew_macos_home:
   - svtplay-dl
   - yt-dlp
 
-brew_macos_work:
+shared_brew_macos_work:
   - age
   - awscli
   - git-cliff
@@ -98,7 +98,7 @@ brew_macos_work:
   - uv
   - yq
 
-cask_macos:
+shared_cask_macos:
   - dropbox
   - google-chrome
   - hammerspoon
@@ -108,7 +108,7 @@ cask_macos:
   - visual-studio-code
   - wireshark-app
 
-cask_macos_home:
+shared_cask_macos_home:
   - handbrake
   - mullvad-vpn
   - signal
@@ -117,7 +117,7 @@ cask_macos_home:
   - transmission
   - vlc
 
-cask_macos_work:
+shared_cask_macos_work:
   - 1password
   - 1password-cli
   - claude-code
@@ -125,7 +125,7 @@ cask_macos_work:
 
 
 # XXX: There is no virtual package for latest Lua, must specify "lua5.X".
-apt_ubuntu:
+shared_apt_ubuntu:
   - ansible
   - ansible-lint
   - asciinema
@@ -177,21 +177,21 @@ apt_ubuntu:
   - yt-dlp
   - zsh
 
-# apt_ubuntu_cnt:
+# shared_apt_ubuntu_cnt:
 #   - x
 
-apt_ubuntu_srv:
+shared_apt_ubuntu_srv:
   - abcde
   - podman
   - tailscale
 
-apt_ubuntu_vm:
+shared_apt_ubuntu_vm:
   - podman
   - qemu-guest-agent
   - ubuntu-desktop
 
 
-linuxbrew_ubuntu:
+shared_linuxbrew_ubuntu:
   - ansible-language-server
   - bash-language-server
   - d2
@@ -204,65 +204,65 @@ linuxbrew_ubuntu:
   - yaml-language-server
   - zsh-autosuggestions
 
-# linuxbrew_ubuntu_cnt:
+# shared_linuxbrew_ubuntu_cnt:
 #   - x
 
-# linuxbrew_ubuntu_srv:
+# shared_linuxbrew_ubuntu_srv:
 #   - x
 
-linuxbrew_ubuntu_vm:
+shared_linuxbrew_ubuntu_vm:
   - tmux-xpanes
 
 
-go_common:
+shared_go_common:
   - github.com/go-delve/delve/cmd/dlv@latest
   - golang.org/x/tools/cmd/godoc@latest
   - golang.org/x/tools/cmd/goimports@latest
   - golang.org/x/tools/gopls@latest
   - honnef.co/go/tools/cmd/staticcheck@latest
 
-# go_macos:
+# shared_go_macos:
 #   - x
 
-# go_macos_home:
+# shared_go_macos_home:
 #   - x
 
-# go_macos_work:
+# shared_go_macos_work:
 #   - x
 
-# go_ubuntu:
+# shared_go_ubuntu:
 #   - x
 
-# go_ubuntu_cnt:
+# shared_go_ubuntu_cnt:
 #   - x
 
-# go_ubuntu_srv:
+# shared_go_ubuntu_srv:
 #   - x
 
-# go_ubuntu_vm:
+# shared_go_ubuntu_vm:
 #   - x
 
 
-# pip_common:
+# shared_pip_common:
 #   - x
 
-pip_macos:
+shared_pip_macos:
   - docker
 
-# pip_macos_home:
+# shared_pip_macos_home:
 #   - x
 
-pip_macos_work:
+shared_pip_macos_work:
   - pika
 
-# pip_ubuntu:
+# shared_pip_ubuntu:
 #   - x
 
-# pip_ubuntu_cnt:
+# shared_pip_ubuntu_cnt:
 #   - x
 
-# pip_ubuntu_srv:
+# shared_pip_ubuntu_srv:
 #   - x
 
-# pip_ubuntu_vm:
+# shared_pip_ubuntu_vm:
 #   - x

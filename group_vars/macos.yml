@@ -1,0 +1,6 @@
+shared_path_brew: /opt/homebrew
+
+shared_pip_exec: "{{ shared_path_brew }}/bin/pip3"
+shared_pip_args: --break-system-packages
+
+shared_sudo_askpass: "{{ shared_path_home }}/Projects/Kvickt/Scripts/askpass"

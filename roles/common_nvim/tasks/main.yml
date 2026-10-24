@@ -48,8 +48,6 @@
     - name: fzf.vim
       url: https://github.com/junegunn/fzf.vim.git
 
-    - name: vim-commentary
-      url: https://github.com/tpope/vim-commentary.git
     - name: vim-repeat
       url: https://github.com/tpope/vim-repeat.git
     - name: vim-speeddating
@@ -67,8 +65,16 @@
   loop:
     - name: ansible-vim
       url: https://github.com/pearofducks/ansible-vim.git
+    - name: comment.nvim
+      url: https://github.com/numToStr/Comment.nvim.git
     - name: gitsigns.nvim
       url: https://github.com/lewis6991/gitsigns.nvim.git
+    - name: nvim-lspconfig
+      url: https://github.com/neovim/nvim-lspconfig.git
+    - name: nvim-treesitter
+      url: https://github.com/nvim-treesitter/nvim-treesitter.git
+    - name: nvim-ts-autotag
+      url: https://github.com/windwp/nvim-ts-autotag.git
 
     - name: luasnip
       url: https://github.com/L3MON4D3/LuaSnip.git
@@ -94,15 +100,6 @@
       url: https://github.com/hrsh7th/cmp-nvim-lua.git
     - name: cmp-path
       url: https://github.com/hrsh7th/cmp-path.git
-
-    - name: nvim-lspconfig
-      url: https://github.com/neovim/nvim-lspconfig.git
-
-    - name: nvim-treesitter
-      url: https://github.com/nvim-treesitter/nvim-treesitter.git
-
-    - name: nvim-ts-autotag
-      url: https://github.com/windwp/nvim-ts-autotag.git
   notify: Generate help tags
 
 - name: Update all Treesitter parsers

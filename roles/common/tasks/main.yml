@@ -88,7 +88,7 @@
     - name: "Skrot"
       url: "{{ shared_git_skrot }}"
 
-- name: Initialize local Git repository
+- name: Initialize Git repository Local
   ansible.builtin.command:
     # noqa: command-instead-of-module
     cmd: git init
@@ -145,6 +145,8 @@
       dest: Projects - Godis
     - src: "{{ shared_path_projects }}/Kjell/src"
       dest: Projects - Kjell
+    - src: "{{ shared_path_projects }}/Local"
+      dest: Projects - Local
     - src: "{{ shared_path_projects }}/Pyttipanna/src"
       dest: Projects - Pyttipanna
     - src: "{{ shared_path_projects }}/Skrot"

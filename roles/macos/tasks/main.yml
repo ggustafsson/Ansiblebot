@@ -15,6 +15,7 @@
   loop:
     - "{{ shared_path_home }}/Library/CloudStorage/Dropbox"
     - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
+    - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/AI-Slop"
     - "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
     - "{{ shared_path_home }}/Storage"
 
@@ -39,6 +40,8 @@
       dest: "{{ shared_path_home }}/.gnupg/gpg-agent.conf"
     - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/Text"
       dest: "{{ shared_path_home }}/Documents/Text"
+    - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain/AI-Slop"
+      dest: "{{ shared_path_home }}/Projects/AI-Slop"
 
 - name: Delete misc files
   ansible.builtin.file:
@@ -243,6 +246,8 @@
   loop:
     - src: "{{ shared_path_home }}/Library/CloudStorage/Dropbox/Split-Brain"
       dest: Dropbox - Split-Brain
+    - src: "{{ shared_path_projects }}/AI-Slop"
+      dest: Projects - AI-Slop
     - src: "{{ shared_path_projects }}/Ansiblebot"
       dest: Projects - Ansiblebot
     - src: "{{ shared_path_projects }}/Kvickt"
